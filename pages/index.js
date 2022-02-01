@@ -11,6 +11,13 @@ import React from 'react'
 export default function Home() {
   const [summonerData, setSummonerData] = useState([]);
   const [summonerName, setSummonerName] = useState("");
+  const [requested, setRequested] = useState(false);
+
+  useEffect(() => {
+    setRequested(false)
+  }, [])
+
+  console.log("summonerName is: " + summonerName)
 
   return (
     <Flex 
@@ -20,7 +27,18 @@ export default function Home() {
       justifyContent={"center"}>
         <Box
           h="2000">
-            <SearchBar></SearchBar>
+            <SearchBar
+              setRequested={setRequested}
+              setSummonerName={setSummonerName}
+            >
+            </SearchBar>
+            <SummonerDetails
+              requested={requested}
+              setRequested={setRequested}
+              summonerName={summonerName}
+              setSummonerData={setSummonerData}>
+
+            </SummonerDetails>
         </Box>
     </Flex>
   )

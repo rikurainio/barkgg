@@ -2,21 +2,27 @@ import axios from 'axios'
 import { Flex, Box, HStack, Vstack, UnorderedList, ListItem, List } from '@chakra-ui/react'
 import { Image } from 'next/image'
 
-const SummonerDetails = (summonerName) => {
+const SummonerDetails = ({setSummonerData, summonerName, requested, setRequested}) => {
     const API_KEY = "RGAPI-62747a68-6d7e-4a29-8891-a18ba363cbc3"
     const API_KEY_TEXT = "?api_key="
-
     const summonerData = [];
 
-    axios
+
+    if(requested){
+        axios
         .get('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + summonerName + API_KEY_TEXT + API_KEY)
-        .then(repsonse => {
-            summonerData = repsonse.data
-            console.log(Response.data)
+        .then(response => {
+            setSummonerData(response.data)
+            summonerData = response.data
+            console.log(response.data)
+            setRequested(false)
         })
         .catch(error => {
             console.log("Could not fetch data from requested endpoint. Error: " + error)
+            setRequested(false)
         })
+    }
+    
 
     //RENDER
     return (

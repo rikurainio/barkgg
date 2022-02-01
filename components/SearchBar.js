@@ -6,15 +6,17 @@ import React from 'react'
 import { useState } from "react";
 
 
-const SearchBar = (props) => {
-    const [userInput, setUserInput] = useState("");
+const SearchBar = ({ setSummonerName, setRequested }) => {
+    const userInput = ""
 
     function handleCaptureUserInput (event) {
-        setUserInput(event.target.value)
-        console.log("User is searching for: " + userInput)
+        event.preventDefault
+        userInput = event.target.value
     }
 
     function handleSearchUser (event) {
+        setSummonerName(userInput)
+        setRequested(true)
         console.log('Requesting user: ' + userInput)
     }
 
@@ -49,8 +51,6 @@ const SearchBar = (props) => {
                     </InputGroup>
                 </Stack>
             </HStack>
-
-            
         </Flex>
     )
 }
