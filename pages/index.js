@@ -14,8 +14,10 @@ export default function Home() {
   const [summonerData, setSummonerData] = useState({});
   const [summonerName, setSummonerName] = useState("");
   const [requested, setRequested] = useState(false);
+  const [summonerIconId, setSummonerIconId] = useState(0);
 
-  console.log("sumdata: ", summonerData)
+  //LOGS
+  console.log("summoner icon id: ", summonerIconId)
 
   useEffect(() => {
     setRequested(false)
@@ -38,6 +40,7 @@ export default function Home() {
               requested={requested}
               setRequested={setRequested}
               summonerName={summonerName}
+              setSummonerIconId={setSummonerIconId}
               setSummonerData={setSummonerData}>
             </SummonerDetails>
 
