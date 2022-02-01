@@ -16,13 +16,14 @@ const MatchHistory = ({puuid}) => {
     console.log("matchdata: ", matchData)
 
     // SETTINGS FOR AXIOS.GET MATCHIDS
-    const API_KEY = "RGAPI-619b15a5-d227-49c0-8b50-1be5d2b1e3dc"
+    const API_KEY = process.env.API_KEY
     const API_KEY_TEXT = "&api_key="
     const BASE_URL = "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/ZVh2B7K9CtAHjBiWewQ09fwY7w3QSP5KRuefE8c7zD4DLpT08RbLrhM6K-pZGNWlsiBestWhGNubqA/ids?start=0&count=10"
 
     // SETTINGS FOR AXIOS.GET SINGLE MATCH DATA
     const API_KEY_TEXT_2 = "?api_key="
-    const BASE_URL_2 = "https://europe.api.riotgames.com/lol/match/v5/matches/EUW1_5705616853"
+    const MATCH_PARAM = matchIds[0]
+    const BASE_URL_2 = "https://europe.api.riotgames.com/lol/match/v5/matches/" + MATCH_PARAM
 
     useEffect(() => {
         axiosTryGetMatchIds()

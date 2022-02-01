@@ -1,6 +1,9 @@
 {
   "name": "barkgg",
   "private": true,
+  "browser": {
+    "fs": false
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

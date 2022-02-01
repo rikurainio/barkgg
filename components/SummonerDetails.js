@@ -5,9 +5,11 @@ import { Image } from 'next/image'
 const SummonerDetails = ({setSummonerData, summonerName, requested, setRequested, setSummonerIconId, setPuuid}) => {
 
     // SETTINGS FOR API REQUEST
-    const API_KEY = "RGAPI-619b15a5-d227-49c0-8b50-1be5d2b1e3dc"
+    const API_KEY = process.env.API_KEY
     const API_KEY_TEXT = "?api_key="
     const BASE_URL = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
+    console.log("APIKEY: ", API_KEY)
+
 
     async function axiosTryGet() {
         try {
