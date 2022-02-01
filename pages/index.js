@@ -7,6 +7,8 @@ import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
 import { useState, useEffect } from 'react'
 import MatchHistory from '../components/MatchHistory'
+import MatchHistoryContainer from '../components/MatchHistoryContainer'
+
 
 import React from 'react'
 //HOME
@@ -30,9 +32,11 @@ export default function Home() {
       as="div" 
       className="content-container"
       alignContent={"center"}
-      justifyContent={"center"}>
+      justifyContent={"center"}
+      alignItems={"center"}
+      >
         <Box
-          h="2000">
+          >
             <SearchBar
               setRequested={setRequested}
               setSummonerName={setSummonerName}
@@ -50,13 +54,8 @@ export default function Home() {
               summonerData={summonerData}>
             </SummonerInfoBox>
 
-            <MatchHistory>
-            </MatchHistory>
-            <MatchHistory>
-            </MatchHistory>
-            <MatchHistory>
-            </MatchHistory>
-
+            <MatchHistoryContainer>
+            </MatchHistoryContainer>
         </Box>
     </Flex>
   )

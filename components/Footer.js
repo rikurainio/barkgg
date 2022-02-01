@@ -3,8 +3,9 @@ import { Flex, Box, Heading } from '@chakra-ui/react'
 const Footer = () => {
     return (
         <Flex
+            min-height={"100vh"}
             className="footer--pin"
-            backgroundColor="red.500"
+            backgroundColor="teal.500"
             as="footer">
 
             <Flex
