@@ -6,6 +6,8 @@ import SearchBar from '../components/SearchBar'
 import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
 import { useState, useEffect } from 'react'
+import MatchHistory from '../components/MatchHistory'
+
 import React from 'react'
 //HOME
 export default function Home() {
@@ -47,6 +49,13 @@ export default function Home() {
             <SummonerInfoBox
               summonerData={summonerData}>
             </SummonerInfoBox>
+
+            <MatchHistory>
+            </MatchHistory>
+            <MatchHistory>
+            </MatchHistory>
+            <MatchHistory>
+            </MatchHistory>
 
         </Box>
     </Flex>

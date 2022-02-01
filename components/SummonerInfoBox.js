@@ -52,9 +52,30 @@ const SummonerInfoBox = ({summonerData}) => {
                                 Level {summonerValues['summonerLevel']}
                             </Text>
                         </ListItem>
+                        <ListItem>
+                            <Text fontSize={12}>
+                                Account ID: {summonerValues['accountId']}
+                            </Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text fontSize={12}>
+                                Encrypted PUUID: {summonerValues['puuid']}
+                            </Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text fontSize={12}>
+                                Encrypted ID: {summonerValues['id']}
+                            </Text>
+                        </ListItem>
+                        <ListItem>
+                            <Text fontSize={12}>
+                                Revision date: {summonerValues['revisionDate']}
+                            </Text>
+                        </ListItem>
                     </List>
 
                     <Image
+                        borderRadius='5px'
                         src={pathToSummonerIcon2}
                         width={100}
                         height={100}>

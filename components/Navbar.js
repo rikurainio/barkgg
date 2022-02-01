@@ -7,7 +7,7 @@ const Navbar = () => {
     
     return (
         <Flex
-            backgroundColor="red.500"
+            backgroundColor="teal.500"
             as="nav"
         >
             <Flex
