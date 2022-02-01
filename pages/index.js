@@ -3,21 +3,23 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import SearchBar from '../components/SearchBar'
-import PlayerInfoBox from '../components/PlayerInfoBox'
+import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
 import { useState, useEffect } from 'react'
 import React from 'react'
 //HOME
 export default function Home() {
-  const [summonerData, setSummonerData] = useState([]);
+
+  // CONTAINERS FOR PLAYER VAR
+  const [summonerData, setSummonerData] = useState({});
   const [summonerName, setSummonerName] = useState("");
   const [requested, setRequested] = useState(false);
+
+  console.log("sumdata: ", summonerData)
 
   useEffect(() => {
     setRequested(false)
   }, [])
-
-  console.log("summonerName is: " + summonerName)
 
   return (
     <Flex 
@@ -37,8 +39,12 @@ export default function Home() {
               setRequested={setRequested}
               summonerName={summonerName}
               setSummonerData={setSummonerData}>
-
             </SummonerDetails>
+
+            <SummonerInfoBox
+              summonerData={summonerData}>
+            </SummonerInfoBox>
+
         </Box>
     </Flex>
   )

@@ -17,7 +17,6 @@ const SearchBar = ({ setSummonerName, setRequested }) => {
     function handleSearchUser (event) {
         setSummonerName(userInput)
         setRequested(true)
-        console.log('Requesting user: ' + userInput)
     }
 
     return (
