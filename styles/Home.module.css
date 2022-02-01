@@ -6,9 +6,6 @@
   min-height: calc(100vh - 50px);
 }
 
-.navbar--text {
-  font-size: large;
-}
 
 .main {
   min-height: 100vh;

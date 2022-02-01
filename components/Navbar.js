@@ -1,7 +1,10 @@
 import { Flex, Heading, Text, VStack, HStack, Box } from "@chakra-ui/react"
 import SearchBar from "./SearchBar";
+import React from 'react'
+import { useState } from "react";
 
-const Navbar = (props) => {
+const Navbar = () => {
+    
     return (
         <Flex
             backgroundColor="red.500"
@@ -29,7 +32,6 @@ const Navbar = (props) => {
                     </Box>
 
                     <Box>
-                        <SearchBar></SearchBar>
                     </Box>
                 </HStack>
                 

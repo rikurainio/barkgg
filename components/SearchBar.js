@@ -1,13 +1,16 @@
-import { Input, Flex, Box, Text, Stack, InputGroup, InputLeftElement,
+import { Input, Flex, Box, Text, Stack, HStack, InputGroup, InputLeftElement,
             InputRightElement, Button } from '@chakra-ui/react'
 
 import { ViewIcon, Search2Icon } from '@chakra-ui/icons'
+import React from 'react'
+import { useState } from "react";
+
 
 const SearchBar = (props) => {
-    const userInput = "";
+    const [userInput, setUserInput] = useState("");
 
     function handleCaptureUserInput (event) {
-        userInput = event.target.value
+        setUserInput(event.target.value)
         console.log("User is searching for: " + userInput)
     }
 
@@ -18,28 +21,36 @@ const SearchBar = (props) => {
     return (
         <Flex
             className="searchbar"
-            as="div">
+            as="div"
+            marginTop={10}>
 
-            <Stack>
-                <InputGroup
-                        backgroundColor={"white"}
-                    >
-                    <Input
-                        variant='outline'
-                        placeholder='search user'
-                        onChange={handleCaptureUserInput}
-                    >
-                    </Input>
-                    <InputRightElement
-                    >
-                        <Button
-                            onClick={handleSearchUser}
+            <HStack>
+                <Text fontSize={"xl"} as="em">
+                    Search for summoner
+                </Text>
+                <Stack>
+                    <InputGroup
+                            backgroundColor={"white"}
                         >
-                            <Search2Icon></Search2Icon>
-                        </Button>
-                    </InputRightElement>
-                </InputGroup>
-            </Stack>
+                        <Input
+                            variant='outline'
+                            placeholder='search user'
+                            onChange={handleCaptureUserInput}
+                        >
+                        </Input>
+                        <InputRightElement
+                        >
+                            <Button
+                                onClick={handleSearchUser}
+                            >
+                                <Search2Icon></Search2Icon>
+                            </Button>
+                        </InputRightElement>
+                    </InputGroup>
+                </Stack>
+            </HStack>
+
+            
         </Flex>
     )
 }
