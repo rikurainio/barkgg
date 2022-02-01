@@ -10,7 +10,7 @@ const SummonerInfoBox = ({summonerData}) => {
         const pathToSummonerIcon = "/ddragon/dragontail-9.3.1/9.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         const pathToSummonerIcon2 = "https://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summonerIconId.toString() + ".png"
 
-        console.log("pathi: ",pathToSummonerIcon)
+        //console.log("pathi: ",pathToSummonerIcon)
 
         return (
             <Box
@@ -20,26 +20,6 @@ const SummonerInfoBox = ({summonerData}) => {
                 className='summonerinfobox'
             >
                     <Text>RESULTS</Text>
-                    {
-                        /*
-                        Object.keys(summonerValues).map((obj, i) => {
-                            return (
-                                <div>
-                                    {summonerValues[obj]}
-                                </div>
-                            )
-                        })
-                        */
-                        /*
-                        Object.keys(summonerValues).map((obj, i) => {
-                            return (
-                                <div>
-                                    {summonerValues['name']}
-                                </div>
-                            )
-                        })
-                        */
-                    }
 
                     <List>
                         <ListItem>
@@ -54,7 +34,7 @@ const SummonerInfoBox = ({summonerData}) => {
                         </ListItem>
                         <ListItem>
                             <Text fontSize={12}>
-                                Account ID: {summonerValues['accountId']}
+                                Encrypted Account ID: {summonerValues['accountId']}
                             </Text>
                         </ListItem>
                         <ListItem>
@@ -85,7 +65,7 @@ const SummonerInfoBox = ({summonerData}) => {
 
     }
     catch (err) {
-        console.log("couldnt parse obj")
+        //console.log("couldnt parse obj")
 
         return (
             <div>

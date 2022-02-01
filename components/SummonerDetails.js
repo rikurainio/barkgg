@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Flex, Box, UnorderedList } from '@chakra-ui/react'
 import { Image } from 'next/image'
 
-const SummonerDetails = ({setSummonerData, summonerName, requested, setRequested, setSummonerIconId}) => {
+const SummonerDetails = ({setSummonerData, summonerName, requested, setRequested, setSummonerIconId, setPuuid}) => {
 
     // SETTINGS FOR API REQUEST
     const API_KEY = "RGAPI-619b15a5-d227-49c0-8b50-1be5d2b1e3dc"
@@ -15,6 +15,7 @@ const SummonerDetails = ({setSummonerData, summonerName, requested, setRequested
             const {data:response} = await axios.get(BASE_URL + summonerName + API_KEY_TEXT + API_KEY)
             setSummonerData(JSON.stringify(response))
             setSummonerIconId((response)['profileIconId'])
+            setPuuid((response)['puuid'])
         }
         catch (error) {
             setRequested(false)

@@ -17,23 +17,23 @@ export default function Home() {
   // CONTAINERS FOR PLAYER VAR
   const [summonerData, setSummonerData] = useState({});
   const [summonerName, setSummonerName] = useState("");
+  const [puuid, setPuuid] = useState("")
   const [requested, setRequested] = useState(false);
   const [summonerIconId, setSummonerIconId] = useState(0);
 
   //LOGS
-  console.log("summoner icon id: ", summonerIconId)
+  //console.log("summoner icon id: ", summonerIconId)
 
   useEffect(() => {
     setRequested(false)
   }, [])
 
   return (
-    <Flex 
+    <Flex  
+      height={2000}
       as="div" 
       className="content-container"
-      alignContent={"center"}
       justifyContent={"center"}
-      alignItems={"center"}
       >
         <Box
           >
@@ -47,6 +47,7 @@ export default function Home() {
               setRequested={setRequested}
               summonerName={summonerName}
               setSummonerIconId={setSummonerIconId}
+              setPuuid={setPuuid}
               setSummonerData={setSummonerData}>
             </SummonerDetails>
 
@@ -54,8 +55,13 @@ export default function Home() {
               summonerData={summonerData}>
             </SummonerInfoBox>
 
-            <MatchHistoryContainer>
-            </MatchHistoryContainer>
+            { puuid != "" && (
+              <MatchHistoryContainer puuid={puuid}>
+              </MatchHistoryContainer>
+            )
+            }
+
+
         </Box>
     </Flex>
   )
