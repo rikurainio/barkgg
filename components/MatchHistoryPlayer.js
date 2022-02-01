@@ -7,13 +7,13 @@ const MatchHistoryPlayer = (props) => {
             justifyContent={"center"}
             className="matchhistoryplayer">
                 <Box
-                    classname="ally-team">
+                    className="ally-team">
                         <VStack>
                             <Text> Allies here </Text>
                         </VStack>
                 </Box>
                 <Box
-                    classname="enemy-team">
+                    className="enemy-team">
                         <VStack>
                             <Text> Enemies here </Text>
                         </VStack>
