@@ -14,3 +14,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.navbar--text {
+  font-size: 26px;
+}
