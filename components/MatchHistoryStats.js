@@ -14,8 +14,15 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
         const totalKills = allyTeamTotalKills
 
         if(totalKills && participation > 0){
-            console.log("calc")
-            return (participation / totalKills * 100).toPrecision(2).toString()
+            const result = (participation / totalKills * 100).toPrecision(2).toString()
+            console.log("KP calced: ", participation, "/", totalKills, "* 100",result)
+
+            if(result == 100){
+                return "100"
+            }
+            else{
+                return result
+            }
         }
 
         if(totalKills || participation == 0){
