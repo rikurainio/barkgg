@@ -8,7 +8,11 @@ import axios from 'axios'
 
 import { useEffect, useState } from 'react'
 
-const MatchHistory = ({matchData}) => {
+const MatchHistory = ({info, metadata}) => {
+    //console.log("|MATCHHISTORY |INFO:", info, " | METADATA: ",metadata)
+    console.log(" INFO:: ", JSON.stringify(info))
+    console.log(" METADATA:: ", JSON.stringify(metadata))
+
     return (
         <Box
             minH={150}

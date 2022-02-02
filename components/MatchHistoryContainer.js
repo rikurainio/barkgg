@@ -5,7 +5,8 @@ import axios from 'axios'
 import { m } from 'framer-motion'
 
 const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleMatchData, requested2, setRequested2}) => {
-
+    //const [matchInfo, setMatchInfo] = useState({})
+    //const [matchMetaData, setMatchMetaData] = useState({})
 
     useEffect(() => {
         if(setMatchData.length && puuid != ""){
@@ -21,6 +22,11 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
             .catch()
         }
     }, [])
+
+    // TEST VAR
+    const info = {}
+    const metadata = {}
+
 
     // SETTINGS FOR API REQUEST
     const API_KEY = process.env.API_KEY
@@ -46,6 +52,7 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
         }
      }
 
+    // AXIOS GET SINGLE MATCH DATA CHUNK FOR X AMOUNT OF GAMES
     async function axiosTryGetMatchDataByMatchId(matchid) {
 
         try{
@@ -59,8 +66,20 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
         }
     }
 
-    function getValues(){
+    // HELPER FUNCTION
+    function parseValues(){
+        console.log("metadata --> ", singleMatchData[0]['metadata'])
+        console.log("info --> ",  singleMatchData[0]['info'])
+        info = singleMatchData[0]['info']
+        metadata = singleMatchData[0]['metadata']
 
+        //setMatchInfo(info)
+        //setMatchMetaData(metadata)
+
+    }
+
+    if(singleMatchData.length){
+        parseValues()
     }
 
      return (
@@ -74,7 +93,19 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
                 fontSize={40}>
                 Matches
             </Heading>
-            
+
+            <Box>
+                {/*Array(singleMatchData.length).fill(<MatchHistory></MatchHistory>)*/}
+                {Array
+                    .from(Array(singleMatchData.length))
+                    .map((x, index) => 
+                        <MatchHistory
+                            info={singleMatchData[index]['info']}
+                            metadata={singleMatchData[index]['metadata']}>
+                        </MatchHistory>
+                )}
+            </Box>
+           
         </Flex>
     )
 }

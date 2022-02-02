@@ -26,9 +26,9 @@ export default function Home() {
 
   //LOGS
   //console.log("summoner icon id: ", summonerIconId)
-  console.log(matchData)
+  //console.log(matchData)
   //console.log(summonerData)
-  console.log(singleMatchData)
+  //console.log(singleMatchData)
 
   useEffect(() => {
     setRequested(false)
@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <Flex  
-      height={2000}
+      height={6000}
       as="div" 
       className="content-container"
       justifyContent={"center"}
