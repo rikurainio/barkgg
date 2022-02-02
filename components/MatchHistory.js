@@ -33,6 +33,8 @@ const MatchHistory = ({info, metadata, selfName}) => {
 
     }
 
+    const selfObj = {}
+
     // FIND SELF FROM ALL THE PARTICIPANTS
     if(selfName){
         const self = info.participants.filter(participant => {
@@ -44,6 +46,7 @@ const MatchHistory = ({info, metadata, selfName}) => {
             self = self[0]
         }
         console.log("I am", self.summonerName)
+        selfObj = self
     }
 
     //console.log("info: ", relevantInfo)
@@ -63,7 +66,7 @@ const MatchHistory = ({info, metadata, selfName}) => {
                 height={100}>
                 <HStack >
                     <MatchHistoryTimeMode></MatchHistoryTimeMode>
-                    <MatchHistoryChampAndRunes></MatchHistoryChampAndRunes>
+                    <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
                     <MatchHistoryStats participants={relevantInfo.participants}></MatchHistoryStats>
                     <MatchHistoryItems></MatchHistoryItems>
                     <MatchHistoryPlayer participants={relevantInfo.participants}></MatchHistoryPlayer>
