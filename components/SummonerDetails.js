@@ -34,7 +34,7 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
         try{
             const id = summonerId
             const {data:response} = await axios.get(BASE_URL_LEAGUE + id + API_KEY_TEXT + API_KEY)
-            console.log("got ", response)
+            //console.log("got ", response)
             setLeagueData(response)
             return response
         }

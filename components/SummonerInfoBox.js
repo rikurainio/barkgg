@@ -1,6 +1,8 @@
 import {Flex,Text, Box, Center, VStack, HStack, ListItem, List, Heading, color} from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import asd from '../public/ddragon/profileIconData.json'
+import { render } from "react-dom";
+import { LayeredImage } from "react-layered-image";
 
 const SummonerInfoBox = ({summonerData, leagueData}) => {
     const solo = {}
@@ -33,10 +35,9 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
             solo = leagueData['0']
             flex = leagueData['1']
 
-            console.log("my rank is: ", solo.tier)
+            //console.log("my rank is: ", solo.tier)
 
             RANKED_WINGS_SRC = "./wings/wings_" + (solo.tier).toLowerCase() + ".png"
-
         }
 
         return (
@@ -82,32 +83,25 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                         </ListItem>
                     </List>
 
-                    <Box
-                        className='summonericonbox'>
-                        <Box>
-                            <Image
-                                backgroundColor={"red.500"}
-                                alignSelf={"center"}
-                                position={"absolute"}
-                                borderRadius='2px'
-                                src={CDN1231}
-                                boxSize={100}>
-                            </Image>
-                        </Box>
+                    <Box>
+                        <Image
+                            borderRadius='full'
+                            src={CDN1231}
+                            boxSize={100}>
 
-                        {/*
-                        <Box className='wingbox'>
-                            <Image
-                                backgroundColor={"whiteAlpha.600"}
-                                alignSelf={"center"}
-                                position={"absolute"}
-                                src={RANKED_WINGS_SRC}
-                                width={300}
-                            >
+                            
+                        </Image>
+                        <Box
+                            marginTop={-274}>
+                            <Image  
+                                    marginLeft={"-93.8px"}
+                                    src={RANKED_WINGS_SRC}
+                                    width={290}>
                             </Image>
                         </Box>
-                        */}
+                        
                     </Box>
+                        
             </Box>
         )
 

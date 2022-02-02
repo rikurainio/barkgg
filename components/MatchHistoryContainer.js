@@ -12,7 +12,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
         if(setMatchData.length && puuid != ""){
             axiosTryGetMatchIds()
             .then(response => {
-                console.log("response: ", response.length)
+                //console.log("response: ", response.length)
                 for(let i=0; i < response.length; i++){
                     //console.log("matchid= ", response[i])
                     axiosTryGetMatchDataByMatchId(response[i])

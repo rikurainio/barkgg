@@ -4,7 +4,7 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
     function calculateKDA (kills, deaths, assists) {
         if(deaths == 0){
-            return "PERECT KDA"
+            return "PERFECT"
         }
         return ((kills + assists) / deaths).toPrecision(3).toString() + ":1"
     }
@@ -15,7 +15,7 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
         if(totalKills && participation > 0){
             const result = (participation / totalKills * 100).toPrecision(2).toString()
-            console.log("KP calced: ", participation, "/", totalKills, "* 100",result)
+            //console.log("KP calced: ", participation, "/", totalKills, "* 100",result)
 
             if(result == 100){
                 return "100"

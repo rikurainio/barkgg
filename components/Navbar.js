@@ -1,4 +1,5 @@
-import { Flex, Heading, Text, HStack, Box } from "@chakra-ui/react"
+import { Flex, Heading, Text, HStack, Box, Image } from "@chakra-ui/react"
+//import { Image } from 'next/image'
 import React from 'react'
 
 const Navbar = () => {
@@ -10,7 +11,6 @@ const Navbar = () => {
             <Flex
                 marginTop={0}
                 as="div">
-
                 <HStack
                     >
                     <Box
@@ -27,7 +27,6 @@ const Navbar = () => {
                         <Text className="navbar--text">
                         </Text>
                     </Box>
-
                     <Box>
                     </Box>
                 </HStack>

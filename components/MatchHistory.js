@@ -99,8 +99,8 @@ const MatchHistory = ({info, metadata, selfName}) => {
     //console.log("info: ", relevantInfo)
     //console.log("metadata", relevantMetaData)
     //console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
-    console.log("selfteam: ", selfObj.teamId)
-    console.log("my team object is : ", allyTeamObj)
+    //console.log("selfteam: ", selfObj.teamId)
+    //console.log("my team object is : ", allyTeamObj)
     //console.log("teams: ", team1, team2)
 
 
@@ -118,7 +118,13 @@ const MatchHistory = ({info, metadata, selfName}) => {
                 >
                 <HStack
                     >
-                    <MatchHistoryTimeMode></MatchHistoryTimeMode>
+                    <MatchHistoryTimeMode 
+                        gameMode={info.gameMode}
+                        gameEnded={info.gameEndTimestamp}
+                        win={allyTeamObj.win}
+                        gameDuration={info.gameDuration}>
+                        
+                    </MatchHistoryTimeMode>
                     <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
                     <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
                     <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>

@@ -7,7 +7,8 @@ const MatchHistoryPlayer = ({participants}) => {
         return (
             <Flex
                 fontSize={"14px"}
-                padding={0}
+                paddingTop={2}
+                paddingBottom={2}
                 className="matchhistoryplayer">
                     <Box
                         className="ally-team">
