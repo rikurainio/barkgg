@@ -135,18 +135,30 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                             marginLeft={"200"}
                             >
                             <ListItem>
+                                
                                 <Heading
                                     fontSize={"80px"}>
                                     {summonerValues['name']}
                                 </Heading>
                             </ListItem>
-                            <ListItem>
-                                <Text
-                                    marginTop={"10px"}
-                                    fontSize={25}>
-                                    Level {summonerValues['summonerLevel']}
-                                </Text>
-                            </ListItem> 
+
+                            <Box
+                                marginLeft={"6px"}>
+                                <ListItem>
+                                    <Text
+                                        marginTop={"10px"}
+                                        fontSize={25}>
+                                        Level {summonerValues['summonerLevel']}
+                                    </Text>
+                                    <Box>
+                                        <Heading
+                                            fontSize={"15px"}>
+                                            {solo.tier}
+                                        </Heading>
+                                    </Box>
+                                </ListItem> 
+                            </Box>
+
                         </List>
                 </Box>
             )
