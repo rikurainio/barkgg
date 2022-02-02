@@ -7,6 +7,7 @@ import { LayeredImage } from "react-layered-image";
 const SummonerInfoBox = ({summonerData, leagueData}) => {
     const solo = {}
     const flex = {}
+    const tft = {}
 
     const RankColor = {
         Challenger: "teal.500",
@@ -32,79 +33,158 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
         const RANKED_WINGS_SRC = ""
 
         if(leagueData.length){
-            solo = leagueData['0']
-            flex = leagueData['1']
+            const rankedQueuesFound = leagueData.length
 
-            //console.log("my rank is: ", solo.tier)
+            for(let i=0; i < rankedQueuesFound; i++){
 
+                // HAS ALL RANKED TYPES
+                if(rankedQueuesFound == 3){
+                    if(leagueData['0'].queueType == "RANKED_SOLO_5x5"){
+                        solo = leagueData['0']
+                    }
+                    if(leagueData['0'].queueType == "RANKED_FLEX_SR"){
+                        flex = leagueData['0']
+                    }
+                    if(leagueData['0'].queueType == "RANKED_TFT_PAIRS"){
+                        tft = leagueData['0']
+                    }
+                    if(leagueData['1'].queueType == "RANKED_SOLO_5x5"){
+                        solo = leagueData['1']
+                    }
+                    if(leagueData['1'].queueType == "RANKED_FLEX_SR"){
+                        flex = leagueData['1']
+                    }
+                    if(leagueData['1'].queueType == "RANKED_TFT_PAIRS"){
+                        tft = leagueData['1']
+                    }
+                    if(leagueData['2'].queueType == "RANKED_SOLO_5x5"){
+                        solo = leagueData['2']
+                    }
+                    if(leagueData['2'].queueType == "RANKED_FLEX_SR"){
+                        flex = leagueData['2']
+                    }
+                    if(leagueData['2'].queueType == "RANKED_TFT_PAIRS"){
+                        tft = leagueData['2']
+                    }
+                }
+
+                //HAS SOME 2
+                if(rankedQueuesFound == 2){
+                    if(leagueData['0'].queueType == "RANKED_SOLO_5x5"){
+                        solo = leagueData['0']
+                    }
+                    if(leagueData['0'].queueType == "RANKED_FLEX_SR"){
+                        flex = leagueData['0']
+                    }
+                    if(leagueData['0'].queueType == "RANKED_TFT_PAIRS"){
+                        tft = leagueData['0']
+                    }
+                    if(leagueData['1'].queueType == "RANKED_SOLO_5x5"){
+                        solo = leagueData['1']
+                    }
+                    if(leagueData['1'].queueType == "RANKED_FLEX_SR"){
+                        flex = leagueData['1']
+                    }
+                    if(leagueData['1'].queueType == "RANKED_TFT_PAIRS"){
+                        tft = leagueData['1']
+                    }
+                }
+
+                //HAS ONLY 1
+                if(rankedQueuesFound == 1){
+                    if(leagueData['0'].queueType == "RANKED_SOLO_5x5"){
+                        solo = leagueData['0']
+                    }
+                    if(leagueData['0'].queueType == "RANKED_FLEX_SR"){
+                        flex = leagueData['0']
+                    }
+                    if(leagueData['0'].queueType == "RANKED_TFT_PAIRS"){
+                        tft = leagueData['0']
+                    }
+                }
+            }
             RANKED_WINGS_SRC = "./wings/wings_" + (solo.tier).toLowerCase() + ".png"
         }
 
-        return (
-            <Box
-                width={500}
-                height={300}
-                as="div"
-                className='summonerinfobox'
-            >
-                    <Text>RESULTS</Text>
-
-                    <List
-                        marginBottom={"20px"}>
-                        <ListItem>
-                            <Heading>
-                                {summonerValues['name']}
-                            </Heading>
-                        </ListItem>
-                        <ListItem>
-                            <Text fontSize={25}>
-                                Level {summonerValues['summonerLevel']}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text fontSize={12}>
-                                Encrypted Account ID: {summonerValues['accountId']}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text fontSize={12}>
-                                Encrypted PUUID: {summonerValues['puuid']}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text fontSize={12}>
-                                Encrypted ID: {summonerValues['id']}
-                            </Text>
-                        </ListItem>
-                        <ListItem>
-                            <Text fontSize={12}>
-                                Revision date: {summonerValues['revisionDate']}
-                            </Text>
-                        </ListItem>
-                    </List>
-
-                    <Box>
-                        <Image
-                            borderRadius='full'
-                            src={CDN1231}
-                            boxSize={100}>
-
+        if(solo.tier != undefined){
+            return (
+                <Box
+                    marginTop={"120px"}
+                    className='summonerinfobox'
+                >
+                        <Box>
+                            <Image
+                                borderRadius='full'
+                                src={CDN1231}
+                                boxSize={100}>
+    
+                                
+                            </Image>
+                            <Box
+                                marginTop={-274}>
+                                <Image  
+                                        marginLeft={"-93.8px"}
+                                        src={RANKED_WINGS_SRC}
+                                        width={290}>
+                                </Image>
+                            </Box>
                             
-                        </Image>
-                        <Box
-                            marginTop={-274}>
-                            <Image  
-                                    marginLeft={"-93.8px"}
-                                    src={RANKED_WINGS_SRC}
-                                    width={290}>
+                        </Box>
+                        <List
+                            marginTop={"-240"}
+                            marginLeft={"200"}
+                            >
+                            <ListItem>
+                                <Heading
+                                    fontSize={"80px"}>
+                                    {summonerValues['name']}
+                                </Heading>
+                            </ListItem>
+                            <ListItem>
+                                <Text
+                                    marginTop={"10px"}
+                                    fontSize={25}>
+                                    Level {summonerValues['summonerLevel']}
+                                </Text>
+                            </ListItem> 
+                        </List>
+                </Box>
+            )
+        }
+        else{
+            return (
+                <Box
+                    marginTop={"120px"}
+                    className='summonerinfobox'
+                >
+                        <Box>
+                            <Image
+                                borderRadius='full'
+                                src={CDN1231}
+                                boxSize={100}>
                             </Image>
                         </Box>
-                        
-                    </Box>
-                        
-            </Box>
-        )
-
+                        <List
+                            marginTop={"-240"}
+                            marginLeft={"200"}
+                            >
+                            <ListItem>
+                                <Heading
+                                    fontSize={"80px"}>
+                                    {summonerValues['name']}
+                                </Heading>
+                            </ListItem>
+                            <ListItem>
+                                <Text
+                                    marginTop={"10px"}
+                                    fontSize={25}>
+                                    Level {summonerValues['summonerLevel']}
+                                </Text>
+                            </ListItem> 
+                        </List>
+                </Box>
+            )
+        }
     }
     catch (err) {
         //console.log("couldnt parse obj")
