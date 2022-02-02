@@ -9,6 +9,10 @@ const SummonerInfoBox = ({summonerData}) => {
         const summonerIconId = summonerValues['profileIconId']
         const pathToSummonerIcon = "/ddragon/dragontail-9.3.1/9.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         const pathToSummonerIcon2 = "https://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summonerIconId.toString() + ".png"
+        //const pathToSummonerIconStatic = "./ddragon/dragontail-12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
+        //const testPath = "./ddragon/dragontail-12.3.1/12.3.1/img/profileicon" + summonerIconId.toString() + ".png"
+        const CDN1231 = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
+
 
         //console.log("pathi: ",pathToSummonerIcon)
 
@@ -57,7 +61,7 @@ const SummonerInfoBox = ({summonerData}) => {
                     <Image
                         marginTop={3}
                         borderRadius='5px'
-                        src={pathToSummonerIcon2}
+                        src={CDN1231}
                         width={100}
                         height={100}>
                     </Image>

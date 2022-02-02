@@ -1,4 +1,4 @@
-import { Flex, Box, Text, List, ListItem, Heading } from '@chakra-ui/react'
+import { Flex, Box, Text, List, ListItem, Heading, VStack, HStack } from '@chakra-ui/react'
 import MatchHistory from './MatchHistory'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -59,6 +59,10 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
         }
     }
 
+    function getValues(){
+
+    }
+
      return (
         <Flex
         marginTop={50}
@@ -70,6 +74,7 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
                 fontSize={40}>
                 Matches
             </Heading>
+            
         </Flex>
     )
 }
