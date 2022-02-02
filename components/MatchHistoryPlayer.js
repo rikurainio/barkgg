@@ -13,7 +13,7 @@ const MatchHistoryPlayer = ({participants}) => {
                     <Box
                         className="ally-team">
                         <VStack>
-                            <Heading fontSize={"14px"}>Ally</Heading>
+                            <Heading fontSize={"14px"}>Team 1</Heading>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -25,7 +25,7 @@ const MatchHistoryPlayer = ({participants}) => {
                     <Box
                         className="enemy-team">
                             <VStack>
-                            <Heading fontSize={"14px"}>Opponent</Heading>
+                            <Heading fontSize={"14px"}>Team 2</Heading>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 

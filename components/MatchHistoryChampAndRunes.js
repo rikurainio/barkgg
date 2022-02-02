@@ -21,20 +21,28 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
             (relevantInfo.championName.toLowerCase()).charAt(0).toUpperCase()
              + (relevantInfo.championName.slice(1)) + ".png"
 
+    const SUMMONER_SPELL_BY_ID
+        = "./summonerspells/"
 
     return (
         <Box
             className='matchhistorychampandrunes'>
                 <HStack>
-                    {/*
-                    <Box>
-                        {<Text>{relevantInfo.championId}</Text>}
-                    </Box>
-                    */}
-                    <VStack>
-                        <Text fontSize={"10px"}>summoner1: {relevantInfo.summoner1Id}</Text>
-                        <Text fontSize={"10px"}>summoner2: {relevantInfo.summoner2Id}</Text>
-                    </VStack>
+                    <HStack
+                        marginBottom={"10px"}>
+                        <Image
+                            src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
+                            boxSize={"35px"}
+                            borderRadius={3}>
+                            
+                        </Image>
+                        <Image
+                            src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
+                            boxSize={"35px"}
+                            borderRadius={3}>
+                            
+                        </Image>
+                    </HStack>
                 </HStack>
                 <Box>
                     <Image
