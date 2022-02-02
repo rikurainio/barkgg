@@ -14,8 +14,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
             .then(response => {
                 console.log("response: ", response.length)
                 for(let i=0; i < response.length; i++){
-                    console.log("matchid= ", response[i])
-                    
+                    //console.log("matchid= ", response[i])
                     axiosTryGetMatchDataByMatchId(response[i])
                 }
             })
@@ -68,8 +67,8 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
 
     // HELPER FUNCTION
     function parseValues(){
-        console.log("metadata --> ", singleMatchData[0]['metadata'])
-        console.log("info --> ",  singleMatchData[0]['info'])
+        //console.log("metadata --> ", singleMatchData[0]['metadata'])
+        //console.log("info --> ",  singleMatchData[0]['info'])
         info = singleMatchData[0]['info']
         metadata = singleMatchData[0]['metadata']
     }
@@ -80,6 +79,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
 
      return (
         <Flex
+        className="matchhistorycontainer"
         marginTop={50}
         flexDirection={"column"}
         marginBottom={50}

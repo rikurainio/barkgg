@@ -1,4 +1,4 @@
-import {Box, HStack, VStack, Image, Text } from '@chakra-ui/react'
+import {Box, HStack, VStack, Image, Text, Heading } from '@chakra-ui/react'
 
 const MatchHistoryPlayer = ({participants}) => {
     //console.log("participants | ", participants)

@@ -18,17 +18,20 @@ export default function Home() {
   const [summonerData, setSummonerData] = useState({});
   const [summonerName, setSummonerName] = useState("");
   const [puuid, setPuuid] = useState("")
+  const [encryptedSummonerId, setEncryptedSummonerId] = useState("")
   const [requested, setRequested] = useState(false);
   const [requested2, setRequested2] = useState(false);
   const [summonerIconId, setSummonerIconId] = useState(0);
   const [matchData, setMatchData] = useState({})
   const [singleMatchData, setSingleMatchData] = useState([])
+  const [leagueData, setLeagueData] = useState([])
 
   //LOGS
   //console.log("summoner icon id: ", summonerIconId)
   //console.log(matchData)
   //console.log(summonerData)
   //console.log(singleMatchData)
+  //console.log(encryptedSummonerId)
 
   useEffect(() => {
     setRequested(false)
@@ -53,12 +56,17 @@ export default function Home() {
             >
             </SearchBar>
             <SummonerDetails
+              encryptedSummonerId={encryptedSummonerId}
+              setEncryptedSummonerId={setEncryptedSummonerId}
               requested={requested}
               setRequested={setRequested}
               summonerName={summonerName}
               setSummonerIconId={setSummonerIconId}
               setPuuid={setPuuid}
-              setSummonerData={setSummonerData}>
+              summonerData={summonerData}
+              setSummonerData={setSummonerData}
+              setLeagueData={setLeagueData}
+              >
             </SummonerDetails>
 
             <SummonerInfoBox

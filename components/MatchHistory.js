@@ -47,24 +47,27 @@ const MatchHistory = ({info, metadata, selfName}) => {
         // GET OBJ OUT 1 ITEM ARRAY...
         if(self){
             self = self[0]
-        }
-        console.log("I am", self.summonerName)
-        selfObj = self
 
-        itemsBuilt = {
-            item0: self.item0,
-            item1: self.item1,
-            item2: self.item2,
-            item3: self.item3,
-            item4: self.item4,
-            item5: self.item5,
-            item6: self.item6,
+            if(self){
+                itemsBuilt = {
+                    item0: self.item0,
+                    item1: self.item1,
+                    item2: self.item2,
+                    item3: self.item3,
+                    item4: self.item4,
+                    item5: self.item5,
+                    item6: self.item6,
+                }
+            }
         }
+        //console.log("I am", self.summonerName)
+        selfObj = self
     }
 
     //console.log("info: ", relevantInfo)
     //console.log("metadata", relevantMetaData)
-    console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
+    //console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
+    //console.log("self: ", selfObj)
 
     if(info && metadata){
         return (

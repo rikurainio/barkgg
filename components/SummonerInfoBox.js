@@ -12,8 +12,6 @@ const SummonerInfoBox = ({summonerData}) => {
         //const pathToSummonerIconStatic = "./ddragon/dragontail-12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         //const testPath = "./ddragon/dragontail-12.3.1/12.3.1/img/profileicon" + summonerIconId.toString() + ".png"
         const CDN1231 = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
-
-
         //console.log("pathi: ",pathToSummonerIcon)
 
         return (

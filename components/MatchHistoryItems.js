@@ -11,7 +11,7 @@ const MatchHistoryItems = ({itemsBuilt}) => {
 
     // HAS 7 ITEMS BUILD FROM 0 to IDX 6????????????????????????? trinket?
     const IMG_SOURCES = [""]
-    console.log("ib" , itemsBuilt)
+    //console.log("ib" , itemsBuilt)
 
     if(itemsBuilt){
         for(let i=0; i < Object.keys(itemsBuilt).length; i++){
@@ -19,7 +19,7 @@ const MatchHistoryItems = ({itemsBuilt}) => {
         }
     }
 
-    console.log("CDN addresses for built items: ", IMG_SOURCES)
+    //console.log("CDN addresses for built items: ", IMG_SOURCES)
 
     return (
         <Box

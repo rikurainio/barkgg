@@ -1,4 +1,4 @@
-import { Flex, Box, VStack, HStack, Text, Image } from '@chakra-ui/react'
+import { Flex, Box, VStack, HStack, Text, Image, Heading } from '@chakra-ui/react'
 
 const MatchHistoryChampAndRunes = ({selfObj}) => {
     //HELPER FOR RELEVANT DATA
@@ -43,7 +43,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                         borderRadius={0}>
 
                     </Image>
-                    <Text>{relevantInfo.championName}</Text>
+                    <Heading fontSize={"24px"}>{relevantInfo.championName}</Heading>
                 </Box>
         </Box>
     )
