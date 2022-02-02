@@ -32,8 +32,29 @@ const MatchHistory = ({info, metadata, selfName}) => {
         participants: metadata.participants
 
     }
-
+    
+    const team1 = info.teams[0]
+    const team2 = info.teams[1]
     const selfObj = {}
+    const selfTeam = 100
+    const teamsList = []
+    const blueTeam = {}
+    const redTeam = {}
+    const allyTeamObj = {}
+
+    const releveantTeam1Data = {
+        win: team1.win,
+        firstBlood: team1.objectives.champion.first,
+        teamTotalKills: team1.objectives.champion.kills,
+        teamDragonKills: team1.objectives.dragon.kills
+    }
+    const releveantTeam2Data = {
+        win: team2.win,
+        firstBlood: team2.objectives.champion.first,
+        teamTotalKills: team2.objectives.champion.kills,
+        teamDragonKills: team2.objectives.dragon.kills
+    }
+
 
     //ITEMS FOR SELF (ID)
     const itemsBuilt = {}
@@ -62,29 +83,44 @@ const MatchHistory = ({info, metadata, selfName}) => {
         }
         //console.log("I am", self.summonerName)
         selfObj = self
+        selfTeam = selfObj.teamId
+        teamsList = info.teams
+        blueTeam = info.teams[0]
+        redTeam = info.teams[1]
+
+        if(selfTeam == blueTeam.teamId){
+            allyTeamObj = blueTeam
+        }
+        if(selfTeam == redTeam.teamId){
+            allyTeamObj = redTeam
+        }
     }
 
     //console.log("info: ", relevantInfo)
     //console.log("metadata", relevantMetaData)
     //console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
-    //console.log("self: ", selfObj)
+    console.log("selfteam: ", selfObj.teamId)
+    console.log("my team object is : ", allyTeamObj)
+    //console.log("teams: ", team1, team2)
+
 
     if(info && metadata){
         return (
             <Box
-                minH={150}
-                maxH={150}
-                mt={10}
-                mb={10}
+                width={"100%"}
+                height={"100%"}
+                mt={5}
+                mb={5}
                 display={'flex'}
                 align='center'
                 backgroundColor="#d4d4d4"
                 borderRadius={5}
-                height={100}>
-                <HStack >
+                >
+                <HStack
+                    >
                     <MatchHistoryTimeMode></MatchHistoryTimeMode>
                     <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
-                    <MatchHistoryStats participants={relevantInfo.participants}></MatchHistoryStats>
+                    <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
                     <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
                     <MatchHistoryPlayer participants={relevantInfo.participants}></MatchHistoryPlayer>
                 </HStack>

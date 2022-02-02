@@ -43,7 +43,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                         borderRadius={0}>
 
                     </Image>
-                    <Heading fontSize={"24px"}>{relevantInfo.championName}</Heading>
+                    <Heading fontSize={"15px"}>{relevantInfo.championName}</Heading>
                 </Box>
         </Box>
     )

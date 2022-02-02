@@ -80,9 +80,9 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
      return (
         <Flex
         className="matchhistorycontainer"
-        marginTop={50}
+        marginTop={"40px"}
         flexDirection={"column"}
-        marginBottom={50}
+        marginBottom={"0px"}
         >
             
             <Heading

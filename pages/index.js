@@ -70,7 +70,9 @@ export default function Home() {
             </SummonerDetails>
 
             <SummonerInfoBox
-              summonerData={summonerData}>
+              summonerData={summonerData}
+              leagueData={leagueData}
+              >
             </SummonerInfoBox>
 
             { puuid != "" && (

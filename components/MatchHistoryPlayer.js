@@ -1,17 +1,18 @@
-import {Box, HStack, VStack, Image, Text, Heading } from '@chakra-ui/react'
+import {Box, VStack, Text, Heading, Spacer, Flex } from '@chakra-ui/react'
 
 const MatchHistoryPlayer = ({participants}) => {
     //console.log("participants | ", participants)
 
     if(participants.length == 10){
         return (
-            <Box
-                display={"flex"}
-                justifyContent={"center"}
+            <Flex
+                fontSize={"14px"}
+                padding={0}
                 className="matchhistoryplayer">
                     <Box
                         className="ally-team">
                         <VStack>
+                            <Heading fontSize={"14px"}>Ally</Heading>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -19,9 +20,11 @@ const MatchHistoryPlayer = ({participants}) => {
                             )}
                         </VStack>
                     </Box>
+                    <Spacer />
                     <Box
                         className="enemy-team">
                             <VStack>
+                            <Heading fontSize={"14px"}>Opponent</Heading>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -29,7 +32,7 @@ const MatchHistoryPlayer = ({participants}) => {
                             )}
                         </VStack>
                     </Box>
-            </Box>
+            </Flex>
         )
     }
     else{
