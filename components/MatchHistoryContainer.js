@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { m } from 'framer-motion'
 
-const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleMatchData, requested2, setRequested2}) => {
+const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, setSingleMatchData, requested2, setRequested2}) => {
     //const [matchInfo, setMatchInfo] = useState({})
     //const [matchMetaData, setMatchMetaData] = useState({})
 
@@ -72,10 +72,6 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
         console.log("info --> ",  singleMatchData[0]['info'])
         info = singleMatchData[0]['info']
         metadata = singleMatchData[0]['metadata']
-
-        //setMatchInfo(info)
-        //setMatchMetaData(metadata)
-
     }
 
     if(singleMatchData.length){
@@ -100,6 +96,7 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
                     .from(Array(singleMatchData.length))
                     .map((x, index) => 
                         <MatchHistory
+                            selfName={selfName}
                             info={singleMatchData[index]['info']}
                             metadata={singleMatchData[index]['metadata']}>
                         </MatchHistory>

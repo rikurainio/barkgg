@@ -67,7 +67,8 @@ export default function Home() {
 
             { puuid != "" && (
               <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
-                                      setSingleMatchData={setSingleMatchData} requested2={requested2} setRequested2={setRequested2}>
+                                      setSingleMatchData={setSingleMatchData} requested2={requested2}
+                                      setRequested2={setRequested2} selfName={summonerName}>
               </MatchHistoryContainer>
             )
             }
