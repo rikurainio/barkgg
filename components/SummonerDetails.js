@@ -24,7 +24,7 @@ const SummonerDetails = ({setSummonerData, summonerName, requested, setRequested
             console.log(error);
         }
     }
-    if(requested){
+    if(requested && summonerName){
         axiosTryGet()
     }
     

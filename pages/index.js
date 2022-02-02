@@ -27,7 +27,7 @@ export default function Home() {
   //LOGS
   //console.log("summoner icon id: ", summonerIconId)
   console.log(matchData)
-  console.log(summonerData)
+  //console.log(summonerData)
   console.log(singleMatchData)
 
   useEffect(() => {

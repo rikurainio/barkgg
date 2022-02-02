@@ -8,18 +8,17 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
 
 
     useEffect(() => {
-        if(setMatchData.length){
-            
-        axiosTryGetMatchIds()
-        .then(response => {
-            console.log("response: ", response.length)
-            for(let i=0; i < response.length; i++){
-                console.log("matchid= ", response[i])
-                
-                axiosTryGetMatchDataByMatchId(response[i])
-            }
-        })
-        .catch()
+        if(setMatchData.length && puuid != ""){
+            axiosTryGetMatchIds()
+            .then(response => {
+                console.log("response: ", response.length)
+                for(let i=0; i < response.length; i++){
+                    console.log("matchid= ", response[i])
+                    
+                    axiosTryGetMatchDataByMatchId(response[i])
+                }
+            })
+            .catch()
         }
     }, [])
 
@@ -41,8 +40,9 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
         return response
         }
         catch (error) {
-        setRequested2(false)
-        console.log(error);
+            setRequested2(false)
+            console.log(error);
+            return
         }
      }
 
@@ -55,14 +55,10 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
         }
         catch (error) {
             console.log(error)
+            return
         }
     }
-     /*
-     if(requested2){
-         axiosTryGetMatchIds
-     }
-     */
-     //RENDER
+
      return (
         <Flex
         marginTop={50}
@@ -73,12 +69,6 @@ const MatchHistoryContainer = ({puuid, setMatchData, singleMatchData, setSingleM
             <Heading
                 fontSize={40}>
                 Matches
-
-                <List>
-                    {singleMatchData.map(matchData => {
-                        <ListItem><Text>{JSON.stringify(matchData.metadata)}</Text></ListItem>
-                    })}
-                </List>
             </Heading>
         </Flex>
     )
