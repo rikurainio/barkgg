@@ -6,7 +6,7 @@ import React from 'react'
 import { useState } from "react";
 
 
-const SearchBar = ({ setSummonerName, setRequested }) => {
+const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName, setRequested, setRequested2 }) => {
     const userInput = ""
 
     function handleCaptureUserInput (event) {
@@ -15,8 +15,12 @@ const SearchBar = ({ setSummonerName, setRequested }) => {
     }
 
     function handleSearchUser (event) {
+        setPuuid("")
+        setMatchData({})
+        setSingleMatchData([])
         setSummonerName(userInput)
         setRequested(true)
+        setRequested2(true)
     }
 
     return (

@@ -1,10 +1,7 @@
-import { Flex, Heading, Text, VStack, HStack, Box } from "@chakra-ui/react"
-import SearchBar from "./SearchBar";
+import { Flex, Heading, Text, HStack, Box } from "@chakra-ui/react"
 import React from 'react'
-import { useState } from "react";
 
 const Navbar = () => {
-    
     return (
         <Flex
             backgroundColor="teal.500"

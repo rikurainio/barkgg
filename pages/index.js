@@ -19,10 +19,16 @@ export default function Home() {
   const [summonerName, setSummonerName] = useState("");
   const [puuid, setPuuid] = useState("")
   const [requested, setRequested] = useState(false);
+  const [requested2, setRequested2] = useState(false);
   const [summonerIconId, setSummonerIconId] = useState(0);
+  const [matchData, setMatchData] = useState({})
+  const [singleMatchData, setSingleMatchData] = useState([])
 
   //LOGS
   //console.log("summoner icon id: ", summonerIconId)
+  console.log(matchData)
+  console.log(summonerData)
+  console.log(singleMatchData)
 
   useEffect(() => {
     setRequested(false)
@@ -38,7 +44,11 @@ export default function Home() {
         <Box
           >
             <SearchBar
+              setPuuid={setPuuid}
+              setMatchData={setMatchData}
+              setSingleMatchData={setSingleMatchData}
               setRequested={setRequested}
+              setRequested2={setRequested2}
               setSummonerName={setSummonerName}
             >
             </SearchBar>
@@ -56,7 +66,8 @@ export default function Home() {
             </SummonerInfoBox>
 
             { puuid != "" && (
-              <MatchHistoryContainer puuid={puuid}>
+              <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
+                                      setSingleMatchData={setSingleMatchData} requested2={requested2} setRequested2={setRequested2}>
               </MatchHistoryContainer>
             )
             }

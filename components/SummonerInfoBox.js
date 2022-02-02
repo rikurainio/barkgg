@@ -55,6 +55,7 @@ const SummonerInfoBox = ({summonerData}) => {
                     </List>
 
                     <Image
+                        marginTop={3}
                         borderRadius='5px'
                         src={pathToSummonerIcon2}
                         width={100}
