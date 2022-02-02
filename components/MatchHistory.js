@@ -35,6 +35,9 @@ const MatchHistory = ({info, metadata, selfName}) => {
 
     const selfObj = {}
 
+    //ITEMS FOR SELF (ID)
+    const itemsBuilt = {}
+    
     // FIND SELF FROM ALL THE PARTICIPANTS
     if(selfName){
         const self = info.participants.filter(participant => {
@@ -47,10 +50,21 @@ const MatchHistory = ({info, metadata, selfName}) => {
         }
         console.log("I am", self.summonerName)
         selfObj = self
+
+        itemsBuilt = {
+            item0: self.item0,
+            item1: self.item1,
+            item2: self.item2,
+            item3: self.item3,
+            item4: self.item4,
+            item5: self.item5,
+            item6: self.item6,
+        }
     }
 
     //console.log("info: ", relevantInfo)
     //console.log("metadata", relevantMetaData)
+    console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
 
     if(info && metadata){
         return (
@@ -68,7 +82,7 @@ const MatchHistory = ({info, metadata, selfName}) => {
                     <MatchHistoryTimeMode></MatchHistoryTimeMode>
                     <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
                     <MatchHistoryStats participants={relevantInfo.participants}></MatchHistoryStats>
-                    <MatchHistoryItems></MatchHistoryItems>
+                    <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
                     <MatchHistoryPlayer participants={relevantInfo.participants}></MatchHistoryPlayer>
                 </HStack>
             </Box>

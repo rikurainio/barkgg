@@ -1,7 +1,26 @@
 import {Box, HStack, VStack, Image } from '@chakra-ui/react'
 
 // HELPER COMPONENT FOR RENDERING BUILT ITEMS
-const MatchHistoryItems = (props) => {
+const MatchHistoryItems = ({itemsBuilt}) => {
+
+    //SERVE ITEM IMG FROM CDN BY ITEM ID
+    /*
+    const CDN1231_IMG_BY_ITEM_ID
+        = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/1001" + itemId + ".png"
+    */
+
+    // HAS 7 ITEMS BUILD FROM 0 to IDX 6????????????????????????? trinket?
+    const IMG_SOURCES = [""]
+    console.log("ib" , itemsBuilt)
+
+    if(itemsBuilt){
+        for(let i=0; i < Object.keys(itemsBuilt).length; i++){
+            IMG_SOURCES.push("https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/" + itemsBuilt['item' + i] + ".png")
+        }
+    }
+
+    console.log("CDN addresses for built items: ", IMG_SOURCES)
+
     return (
         <Box
             justifyContent={"center"}
@@ -10,26 +29,30 @@ const MatchHistoryItems = (props) => {
 
                 <VStack>
                     <HStack spacing="1">
-                        <Box width={8} height={8}>
-                            <Image src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13411a5318c77e70/5fa1eff9f9cf41781dad68e2/3153_Fighter_T3_BladeoftheRuinedKing.png"></Image>
-                        </Box>
-                        <Box width={8} height={8}>
-                            <Image src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13411a5318c77e70/5fa1eff9f9cf41781dad68e2/3153_Fighter_T3_BladeoftheRuinedKing.png"></Image>
-                        </Box>
-                        <Box width={8} height={8}>
-                            <Image src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13411a5318c77e70/5fa1eff9f9cf41781dad68e2/3153_Fighter_T3_BladeoftheRuinedKing.png"></Image>
-                        </Box>
+                        {
+                            (IMG_SOURCES.slice(1, (IMG_SOURCES.length / 2))).map(source => {
+                                return(
+                                    <Image
+                                        src={source}
+                                        fallbackSrc={"itemFallBackImg.png"}
+                                        boxSize={10}>
+                                    </Image>
+                                )
+                            })
+                        }
                     </HStack>
                     <HStack spacing="1">
-                        <Box width={8} height={8}>
-                            <Image src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13411a5318c77e70/5fa1eff9f9cf41781dad68e2/3153_Fighter_T3_BladeoftheRuinedKing.png"></Image>
-                        </Box>
-                        <Box width={8} height={8}>
-                            <Image src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13411a5318c77e70/5fa1eff9f9cf41781dad68e2/3153_Fighter_T3_BladeoftheRuinedKing.png"></Image>
-                        </Box>
-                        <Box width={8} height={8}>
-                            <Image src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt13411a5318c77e70/5fa1eff9f9cf41781dad68e2/3153_Fighter_T3_BladeoftheRuinedKing.png"></Image>
-                        </Box>
+                    {
+                            (IMG_SOURCES.slice(IMG_SOURCES.length / 2, -1)).map(source => {
+                                return(
+                                    <Image
+                                        src={source}
+                                        fallbackSrc={"itemFallBackImg.png"}
+                                        boxSize={10}>
+                                    </Image>
+                                )
+                            })
+                        }
                     </HStack>
                 </VStack>
                 

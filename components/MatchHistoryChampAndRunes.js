@@ -15,8 +15,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
 
     }
 
-    //SERVER IMG FROM CDN
-
+    //SERVE IMG FROM CDN
     const CDN1231_IMG_BY_CHAMP_NAME
         = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/" +
             (relevantInfo.championName.toLowerCase()).charAt(0).toUpperCase()
@@ -33,8 +32,8 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                     </Box>
                     */}
                     <VStack>
-                        <Text>{relevantInfo.summoner1Id}</Text>
-                        <Text>{relevantInfo.summoner2Id}</Text>
+                        <Text fontSize={"10px"}>summoner1: {relevantInfo.summoner1Id}</Text>
+                        <Text fontSize={"10px"}>summoner2: {relevantInfo.summoner2Id}</Text>
                     </VStack>
                 </HStack>
                 <Box>
