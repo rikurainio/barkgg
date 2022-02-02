@@ -119,7 +119,7 @@ const MatchHistory = ({info, metadata, selfName}) => {
                 <HStack
                     >
                     <MatchHistoryTimeMode 
-                        gameMode={info.gameMode}
+                        gameMode={info}
                         gameEnded={info.gameEndTimestamp}
                         win={allyTeamObj.win}
                         gameDuration={info.gameDuration}>
