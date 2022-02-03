@@ -9,7 +9,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
             = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/"
     
     function handleSearchPlayerViaMatchHistory(event){
-        console.log("clicked: " + event.target.innerText)
+        //console.log("clicked: " + event.target.innerText)
 
         if(event.target.innerText){
             const summonerNameToSearch = event.target.innerText

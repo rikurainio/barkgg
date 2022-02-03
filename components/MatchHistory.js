@@ -28,12 +28,14 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         participants: info.participants
     }
 
+    /*
     const relevantMetaData = {
         dataVersion: metadata.dataVersion,
         matchId: metadata.matchId,
         participants: metadata.participants
 
     }
+    */
     
     const team1 = info.teams[0]
     const team2 = info.teams[1]
@@ -84,7 +86,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
 
                 selfObj = self
-                console.log('\n', "my info is :", info, '\n', "I am", self.summonerName)
+                //console.log('\n', "my info is :", info, '\n', "I am", self.summonerName)
                 selfTeam = selfObj.teamId
                 teamsList = info.teams
                 blueTeam = info.teams[0]

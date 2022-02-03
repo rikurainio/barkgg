@@ -44,7 +44,7 @@ export default function Home() {
     setMatchData({})
     setSingleMatchData([])
     setLeagueData([])
-    console.log("resetted all")
+    //console.log("resetted all")
 
     setRequested(true)
   }
