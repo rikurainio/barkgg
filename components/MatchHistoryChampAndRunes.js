@@ -29,7 +29,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
         = "./runes/"
 
 
-    console.log("r_info", relevantInfo.styles)
+    //console.log("r_info", relevantInfo.styles)
 
     return (
         <Box

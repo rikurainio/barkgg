@@ -3,9 +3,9 @@ import { Flex, Box, Text, Heading } from '@chakra-ui/react'
 const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
     //console.log("what is time: ", gameEnded)
 
-    console.log("gameMode: ", gameMode.gameType, "gameType:", 
+    /*console.log("gameMode: ", gameMode.gameType, "gameType:", 
                     gameMode.gameMode, "gameName: ", gameMode.gameName, "mapId",
-                        gameMode.mapId, "queueID: ",gameMode.queueId)
+                        gameMode.mapId, "queueID: ",gameMode.queueId) */
 
     function getRankedText(gameType, mapId, queueId){
 

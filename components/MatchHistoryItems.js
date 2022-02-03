@@ -15,7 +15,12 @@ const MatchHistoryItems = ({itemsBuilt}) => {
 
     if(itemsBuilt){
         for(let i=0; i < Object.keys(itemsBuilt).length; i++){
-            IMG_SOURCES.push("https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/" + itemsBuilt['item' + i] + ".png")
+            if(itemsBuilt['item' + i] == 0){
+                IMG_SOURCES.push("")
+            }
+            else{
+                IMG_SOURCES.push("https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/" + itemsBuilt['item' + i] + ".png")
+            }
         }
     }
 
@@ -55,8 +60,6 @@ const MatchHistoryItems = ({itemsBuilt}) => {
                         }
                     </HStack>
                 </VStack>
-                
-
         </Box>
     )
 }
