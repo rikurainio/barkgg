@@ -8,6 +8,10 @@ import axios from 'axios'
 
 import { useEffect, useState } from 'react'
 
+// FRAMER MOTION
+import { motion, isValidMotionPropr } from 'framer-motion'
+const MotionBox = motion(Box)
+
 // INFO AND METADTA LOOPED BY AMOUNT OF GAMES
 // ONE ROUND IS UNIQUE INFO
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
@@ -109,7 +113,8 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
     if(info && metadata){
         return (
-            <Box
+            <MotionBox
+                whileHover={{scale: 1.03}}
                 className={"matchhistorycard"}
                 mt={5}
                 mb={5}
@@ -135,7 +140,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
                     </MatchHistoryPlayer>
                 </HStack>
-            </Box>
+            </MotionBox>
         )
     }
     else{

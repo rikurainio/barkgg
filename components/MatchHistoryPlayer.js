@@ -2,6 +2,7 @@ import {Box, VStack, Text, Heading, Spacer, Flex, Image, HStack,
             Button, ButtonGroup } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
 
+
 const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates}) => {
     //console.log("participants | ", participants)
     const CDN1231_IMG_BY_CHAMP_NAME_2

@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { m } from 'framer-motion'
 
+import { motion, isValidMotionPropr } from 'framer-motion'
+const MotionBox = motion(Box)
+
 const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
                                     setSingleMatchData, requested2, setRequested2, setSummonerName
                                         , resetComponentStates}) => {
@@ -99,11 +102,11 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     }
 
      return (
-        <Flex
-        className="matchhistorycontainer"
-        marginTop={"40px"}
-        flexDirection={"column"}
-        marginBottom={"0px"}
+        <MotionBox
+            className="matchhistorycontainer"
+            marginTop={"40px"}
+            flexDirection={"column"}
+            marginBottom={"0px"}
         >
             
             <Heading
@@ -131,7 +134,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
                 )}
             </Box>
            
-        </Flex>
+        </MotionBox>
     )
 }
 
