@@ -42,12 +42,12 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
                         <Text>/</Text>
                         <Heading fontSize="20px">{selfObj.assists}</Heading>
                 </Box>
-                <Box>
+                <Box width={"100px"}>
                     <Text fontSize="15px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
                 </Box>
 
                 <HStack>
-                    <Text>LvL {selfObj.champLevel}</Text>
+                    <Text>Level {selfObj.champLevel}</Text>
                 </HStack>
                 <Box>
                     <Text>({selfObj.totalMinionsKilled} CS)</Text>
@@ -55,8 +55,9 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
                 
                 <Box>
                     <Text
+                        noOfLines={1}
                         fontSize="16px">{
-                        calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)} % KP
+                        calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)}<strong>%</strong> KP
                     </Text>
                 </Box>
         </Box>

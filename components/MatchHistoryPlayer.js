@@ -23,7 +23,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
         return (
             <Flex
                 paddingLeft={"15px"}
-                paddingRight={"10px"}
+                paddingRight={"20px"}
                 paddingTop={1}
                 paddingBottom={1}
                 className="matchhistoryplayer">
@@ -56,6 +56,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     isTruncated
+                                                    fontSize={[participants[index].summonerName.length > 14 ? "16px" : "16px"]}
                                                     height={"25px"}>
                                                         {participants[index].summonerName}
                                                 </Text>
@@ -98,6 +99,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     isTruncated
+                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "16px" : "16px"]}
                                                     height={"25px"}>
                                                         {participants[index+5].summonerName}
                                                 </Text>

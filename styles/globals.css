@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;500&family=Questrial&family=Roboto+Mono:wght@100&family=Roboto:wght@100&family=Sawarabi+Mincho&family=Tinos&family=Ubuntu:wght@300&display=swap');
+
 .matchhistorycard {
     min-height: 100px;
     min-width: 100%;
 }
 
 .matchhistoryplayer {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
 }
 
 .matchhistorycontainer {
@@ -22,4 +24,8 @@
 
 a:hover {
     color: #7ac6ff;
+}
+
+.search-player-name-button-text {
+    color: black;
 }

@@ -76,7 +76,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                                 borderRadius={3}>
 
                             </Image>
-                            <Heading paddingTop={"2px"} fontSize={"15px"}>{relevantInfo.championName}</Heading>
+                            <Heading textAlign={"center"} paddingTop={"2px"} fontSize={"15px"}>{relevantInfo.championName}</Heading>
                         </Box>
                     </VStack>
                 </HStack>
