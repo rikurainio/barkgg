@@ -156,7 +156,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                             <Box>
                                 <Heading
                                     fontSize={"15px"}>
-                                    {solo.tier}
+                                    {solo.tier ? solo.tier + " (Solo Queue)" : "Unranked (Solo Queue)"}
                                 </Heading>
                             </Box>
                         </ListItem> 
