@@ -15,7 +15,12 @@ export const customTheme = extendTheme({
         danger: "red.300",
     },
 
+    fonts: {
+    },
+
+
     fontSize: {
+        matchHistoryCard: "24px",
         large: 200,
     },
     config,

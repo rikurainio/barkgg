@@ -107,8 +107,8 @@ const MatchHistory = ({info, metadata, selfName}) => {
     if(info && metadata){
         return (
             <Box
-                width={"100%"}
-                height={"100%"}
+                width={"1045px"}
+                className={"matchhistorycard"}
                 mt={5}
                 mb={5}
                 display={'flex'}

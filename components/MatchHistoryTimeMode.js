@@ -31,8 +31,8 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
     // AAMUJA SILLE KETÄ NÄKEE TÄN :-----D
     return (
         <Box
-            marginLeft={"20px"}
-            marginRight={"40px"}>
+            marginLeft={"15px"}
+            marginRight={"20px"}>
             <Heading
                 fontSize={"15px"}>
                 {getRankedText(gameMode.gameType, gameMode.mapId, gameMode.queueId)}

@@ -1,0 +1,20 @@
+.matchhistorycard {
+    min-height: 100px;
+    min-width: 100%;
+}
+
+.matchhistoryplayer {
+    max-height: 200px;
+    max-width: 150px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.matchhistorycontainer {
+    min-width: 100%
+}
+
+.matchhistorystats {
+    font-size: 16px;
+}

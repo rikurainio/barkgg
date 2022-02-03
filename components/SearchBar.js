@@ -1,5 +1,5 @@
 import { Input, Flex, Box, Text, Stack, HStack, InputGroup, InputLeftElement,
-            InputRightElement, Button } from '@chakra-ui/react'
+            InputRightElement, Button, Form } from '@chakra-ui/react'
 
 import { ViewIcon, Search2Icon } from '@chakra-ui/icons'
 import React from 'react'
@@ -15,6 +15,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
     }
 
     function handleSearchUser (event) {
+        event.preventDefault
         setPuuid("")
         setMatchData({})
         setSingleMatchData([])
@@ -35,6 +36,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                 </Text>
                 <Stack>
                     <InputGroup
+                            onSubmit={handleSearchUser}
                             backgroundColor={"white"}
                         >
                         <Input
@@ -46,6 +48,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                         <InputRightElement
                         >
                             <Button
+                                type={"Submit"}
                                 onClick={handleSearchUser}
                             >
                                 <Search2Icon></Search2Icon>

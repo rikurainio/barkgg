@@ -33,14 +33,15 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
 
     return (
         <Box
+            paddingRight={"10px"}
+            paddingTop={"10px"}
+            paddingBottom={"0px"}
             className='matchhistorychampandrunes'>
                 <HStack>
 
                     <Image
-                        marginTop={"31px"}
-                        marginRight={"10px"}
-                        w={"100%"}
-                        h={"100%"}
+                        marginTop={"0px"}
+                        marginRight={"25px"}
                         src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
                         boxSize={"60px"}
                         borderRadius={3}>
@@ -67,7 +68,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                         <Box>
                             <Image
                                 src={CDN1231_IMG_BY_CHAMP_NAME}
-                                boxSize={20}
+                                boxSize={"80px"}
                                 borderRadius={0}>
 
                             </Image>

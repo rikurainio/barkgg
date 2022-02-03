@@ -5,7 +5,7 @@ import React from 'react'
 const Navbar = () => {
     return (
         <Flex
-            backgroundColor="silver"
+            backgroundColor="teal.500"
             as="nav"
         >
             <Flex

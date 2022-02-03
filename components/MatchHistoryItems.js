@@ -28,7 +28,6 @@ const MatchHistoryItems = ({itemsBuilt}) => {
 
     return (
         <Box
-            justifyContent={"center"}
             display={"flex"}
             className='matchhistoryitems'>
 

@@ -10,13 +10,13 @@ const MatchHistoryPlayer = ({participants}) => {
         return (
             <Flex
                 paddingLeft={"40px"}
-                fontSize={"14px"}
                 paddingTop={2}
                 paddingBottom={2}
                 className="matchhistoryplayer">
                     <Box
                         className="ally-team">
-                        <VStack>
+                        <VStack
+                            spacing={"1px"}>
                             <Heading fontSize={"14px"}>Team 1</Heading>
                             {Array
                             .from(Array(participants.length - 5))
@@ -51,7 +51,8 @@ const MatchHistoryPlayer = ({participants}) => {
                     <Box
                         paddingLeft={"40px"}
                         className="enemy-team">
-                            <VStack>
+                            <VStack
+                                spacing={"1px"}>
                             <Heading fontSize={"14px"}>Team 2</Heading>
                             {Array
                             .from(Array(participants.length - 5))
