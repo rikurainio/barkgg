@@ -19,6 +19,16 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
         }
     }
 
+    // FIDDLESTICK BUGS BECAUSE FiddleSticks SHOULD BE Fiddlesticks
+    function getFixedSummonerName(championName){
+        if(championName == "FiddleSticks"){
+            return "Fiddlesticks"
+        }
+        else{
+            return championName
+        }
+    }
+
     if(participants.length == 10){
         return (
             <Flex
@@ -34,12 +44,12 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                             <Heading fontSize={"14px"}>Team 1</Heading>
                             {Array
                             .from(Array(participants.length - 5))
-                            .map((participant, index) =>
+                            .map((participant, index) => 
                                 <Box>
                                     <HStack>
                                         <Image
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
-                                                    + (participants[index].championName)
+                                                    + (getFixedSummonerName(participants[index].championName))
                                                     + ".png"
                                                 }
                                             boxSize={"30px"}>
@@ -82,7 +92,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                     <HStack>
                                         <Image
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
-                                                    + (participants[index+5].championName)
+                                                    + (getFixedSummonerName(participants[index+5].championName))
                                                     + ".png"
                                                 }
                                             boxSize={"30px"}>

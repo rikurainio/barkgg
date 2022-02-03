@@ -18,7 +18,13 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
             summoner2Id: selfObj.summoner2Id,
     
             styles: selfObj.perks.styles
+
+            
         }
+        if(selfObj.championName == "FiddleSticks"){
+            relevantInfo.championName = "Fiddlesticks"
+        }
+
     }
     
     //SERVE IMG FROM CDN
