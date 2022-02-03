@@ -22,6 +22,12 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
         setSummonerName(userInput)
         setRequested(true)
         setRequested2(true)
+
+        clearFields()
+    }
+
+    function clearFields() {
+        document.getElementById("userInput").value=""
     }
 
     return (
@@ -40,6 +46,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                             backgroundColor={"white"}
                         >
                         <Input
+                            id={"userInput"}
                             variant='outline'
                             placeholder='search user'
                             onChange={handleCaptureUserInput}
