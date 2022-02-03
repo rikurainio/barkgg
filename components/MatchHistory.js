@@ -113,7 +113,7 @@ const MatchHistory = ({info, metadata, selfName}) => {
                 mb={5}
                 display={'flex'}
                 align='center'
-                backgroundColor="#d4d4d4"
+                backgroundColor={allyTeamObj.win ? "teal.100" : "gray.200"}
                 borderRadius={5}
                 >
                 <HStack
