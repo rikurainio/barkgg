@@ -1,10 +1,15 @@
-import {Box, VStack, Text, Heading, Spacer, Flex, Image, HStack } from '@chakra-ui/react'
+import {Box, VStack, Text, Heading, Spacer, Flex, Image, HStack,
+            Button, ButtonGroup } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/react'
 
-const MatchHistoryPlayer = ({participants}) => {
+const MatchHistoryPlayer = ({participants, setSummonerName}) => {
     //console.log("participants | ", participants)
     const CDN1231_IMG_BY_CHAMP_NAME_2
             = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/"
     
+    function handleSearchPlayerViaMatchHistory(event){
+        console.log("clicked: " + event.target.innerText)
+    }
 
     if(participants.length == 10){
         return (
@@ -34,7 +39,9 @@ const MatchHistoryPlayer = ({participants}) => {
                                         <Box
                                             textAlign={"left"}
                                             width={"140px"}>
-                                            <Text  noOfLines={"1"} isTruncated height={"25px"}>{participants[index].summonerName}</Text>
+                                            <Link>
+                                                <Text  noOfLines={"1"} isTruncated height={"25px"}>{participants[index].summonerName}</Text>
+                                            </Link>
                                         </Box>
                                     </HStack>
                                 </Box>
@@ -64,7 +71,19 @@ const MatchHistoryPlayer = ({participants}) => {
                                         <Box
                                             textAlign={"left"}
                                             width={"140px"}>
-                                            <Text noOfLines={1} isTruncated height={"25px"}>{participants[index+5].summonerName}</Text>
+                                            <Button
+                                                variant='link'
+                                                onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
+                                                className="search-player-name-button"
+                                                >
+                                                <Text
+                                                    className={"search-player-name-button-text"}
+                                                    noOfLines={"1"}
+                                                    isTruncated
+                                                    height={"25px"}>
+                                                        {participants[index].summonerName}
+                                                </Text>
+                                            </Button>  
                                         </Box>
                                     </HStack>
                                 </Box>

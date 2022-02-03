@@ -33,7 +33,6 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
         const words = dateString.split(' ')
         const lastWord = words.pop()
         const firstWord = words.shift()
-        console.log("words: ", words)
         
         if(wordPosition == "FIRST"){
             return firstWord
@@ -46,8 +45,6 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
             return words
         }
     }
-
-
 
     // AAMUJA SILLE KETÄ NÄKEE TÄN :-----D
     return (

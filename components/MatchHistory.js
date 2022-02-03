@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react'
 
 // INFO AND METADTA LOOPED BY AMOUNT OF GAMES
 // ONE ROUND IS UNIQUE INFO
-const MatchHistory = ({info, metadata, selfName}) => {
+const MatchHistory = ({info, metadata, selfName, setSummonerName}) => {
     //console.log("|MATCHHISTORY |INFO:", info, " | METADATA: ",metadata)
     //console.log(" INFO:: ", JSON.stringify(info))
     //console.log(" METADATA:: ", JSON.stringify(metadata))
@@ -126,7 +126,11 @@ const MatchHistory = ({info, metadata, selfName}) => {
                     <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
                     <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
                     <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
-                    <MatchHistoryPlayer participants={relevantInfo.participants}></MatchHistoryPlayer>
+                    <MatchHistoryPlayer
+                        participants={relevantInfo.participants}
+                        setSummonerName={setSummonerName}>
+
+                    </MatchHistoryPlayer>
                 </HStack>
             </Box>
         )

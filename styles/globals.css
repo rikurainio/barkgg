@@ -19,3 +19,7 @@
 .matchhistorytimemode {
     padding-left: 1%;
 }
+
+a:hover {
+    color: #7ac6ff;
+}

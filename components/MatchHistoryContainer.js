@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { m } from 'framer-motion'
 
-const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, setSingleMatchData, requested2, setRequested2}) => {
+const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
+                                    setSingleMatchData, requested2, setRequested2, setSummonerName}) => {
     //const [matchInfo, setMatchInfo] = useState({})
     //const [matchMetaData, setMatchMetaData] = useState({})
 
@@ -78,13 +79,13 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
 
     if(singleMatchData.length){
         parseValues()
-        console.log("matches data", singleMatchData)
+        //console.log("matches data", singleMatchData)
 
         singleMatchData.sort((elemA, elemB) => {
             //console.log("element A: ", elemA, "element B", elemB)
             const a = elemA['info'].gameEndTimestamp
             const b = elemB['info'].gameEndTimestamp
-            console.log("a,b", a,b)
+            //console.log("a,b", a,b)
 
             if(a < b){
                 return 1
@@ -94,12 +95,6 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
             }
             return 0
         })
-
-        console.log("SORTED TIMESTAMPS")
-        for(let i=0; i < singleMatchData.length; i++){
-            console.log(singleMatchData[i]['info'].gameEndTimestamp)
-        }
-
     }
 
      return (
@@ -128,7 +123,8 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
                         <MatchHistory
                             selfName={selfName}
                             info={singleMatchData[index]['info']}
-                            metadata={singleMatchData[index]['metadata']}>
+                            metadata={singleMatchData[index]['metadata']}
+                            setSummonerName={setSummonerName}>
                         </MatchHistory>
                 )}
             </Box>

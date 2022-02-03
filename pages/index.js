@@ -1,17 +1,12 @@
 import { Flex, Heading, Box, Text } from '@chakra-ui/react'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import SearchBar from '../components/SearchBar'
 import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
 import { useState, useEffect } from 'react'
-import MatchHistory from '../components/MatchHistory'
 import MatchHistoryContainer from '../components/MatchHistoryContainer'
-
-
 import React from 'react'
-//HOME
+
+
 export default function Home() {
 
   // CONTAINERS FOR PLAYER VAR
@@ -46,6 +41,7 @@ export default function Home() {
       >
         <Box
           >
+            {/* COLLECT USER INPUT FROM UI */}
             <SearchBar
               setPuuid={setPuuid}
               setMatchData={setMatchData}
@@ -55,6 +51,8 @@ export default function Home() {
               setSummonerName={setSummonerName}
             >
             </SearchBar>
+
+            {/* FETCH SUMMONER PROFILE DATA */}
             <SummonerDetails
               encryptedSummonerId={encryptedSummonerId}
               setEncryptedSummonerId={setEncryptedSummonerId}
@@ -69,16 +67,20 @@ export default function Home() {
               >
             </SummonerDetails>
 
+            {/* SHOW SUMMONER PROFILE DATA */}
             <SummonerInfoBox
               summonerData={summonerData}
               leagueData={leagueData}
               >
             </SummonerInfoBox>
 
+            {/* MATCH HISTORY RELATED COMPONENTS INSIDE*/}
+            {/* AXIOS GET MATCH HISTORY DATA */}
+            {/* SHOW MATCH HISTORY DATA */}
             { puuid != "" && (
               <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
                                       setSingleMatchData={setSingleMatchData} requested2={requested2}
-                                      setRequested2={setRequested2} selfName={summonerName}>
+                                      setRequested2={setRequested2} selfName={summonerName} setSummonerName={setSummonerName}>
               </MatchHistoryContainer>
             )
             }
