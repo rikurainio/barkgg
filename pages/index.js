@@ -32,6 +32,23 @@ export default function Home() {
     setRequested(false)
   }, [])
 
+  // RESET ALL USESTATES
+  function resetComponentStates (){
+    setSummonerData({})
+    setSummonerName("")
+    setPuuid("")
+    setEncryptedSummonerId("")
+    setRequested(false)
+    setRequested2(false)
+    setSummonerIconId(0)
+    setMatchData({})
+    setSingleMatchData([])
+    setLeagueData([])
+    console.log("resetted all")
+
+    setRequested(true)
+  }
+
   return (
     <Flex  
       height={6000}
@@ -80,12 +97,11 @@ export default function Home() {
             { puuid != "" && (
               <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
                                       setSingleMatchData={setSingleMatchData} requested2={requested2}
-                                      setRequested2={setRequested2} selfName={summonerName} setSummonerName={setSummonerName}>
+                                      setRequested2={setRequested2} selfName={summonerName}
+                                      setSummonerName={setSummonerName} resetComponentStates={resetComponentStates}>
               </MatchHistoryContainer>
             )
             }
-
-
         </Box>
     </Flex>
   )

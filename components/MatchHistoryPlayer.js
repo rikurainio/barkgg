@@ -2,13 +2,21 @@ import {Box, VStack, Text, Heading, Spacer, Flex, Image, HStack,
             Button, ButtonGroup } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
 
-const MatchHistoryPlayer = ({participants, setSummonerName}) => {
+const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates}) => {
     //console.log("participants | ", participants)
     const CDN1231_IMG_BY_CHAMP_NAME_2
             = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/"
     
     function handleSearchPlayerViaMatchHistory(event){
         console.log("clicked: " + event.target.innerText)
+
+        if(event.target.innerText){
+            const summonerNameToSearch = event.target.innerText
+            if(summonerNameToSearch){
+                resetComponentStates()
+                setSummonerName(summonerNameToSearch)
+            }
+        }
     }
 
     if(participants.length == 10){
@@ -39,9 +47,19 @@ const MatchHistoryPlayer = ({participants, setSummonerName}) => {
                                         <Box
                                             textAlign={"left"}
                                             width={"140px"}>
-                                            <Link>
-                                                <Text  noOfLines={"1"} isTruncated height={"25px"}>{participants[index].summonerName}</Text>
-                                            </Link>
+                                            <Button
+                                                variant='link'
+                                                onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
+                                                className="search-player-name-button"
+                                                >
+                                                <Text
+                                                    className={"search-player-name-button-text"}
+                                                    noOfLines={"1"}
+                                                    isTruncated
+                                                    height={"25px"}>
+                                                        {participants[index].summonerName}
+                                                </Text>
+                                            </Button> 
                                         </Box>
                                     </HStack>
                                 </Box>
@@ -81,7 +99,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName}) => {
                                                     noOfLines={"1"}
                                                     isTruncated
                                                     height={"25px"}>
-                                                        {participants[index].summonerName}
+                                                        {participants[index+5].summonerName}
                                                 </Text>
                                             </Button>  
                                         </Box>

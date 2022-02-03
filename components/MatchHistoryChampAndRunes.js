@@ -2,20 +2,25 @@ import { Flex, Box, VStack, HStack, Text, Image, Heading } from '@chakra-ui/reac
 
 const MatchHistoryChampAndRunes = ({selfObj}) => {
     //HELPER FOR RELEVANT DATA
-    const relevantInfo = {
-        championId: selfObj.championId,
-        championName: selfObj.championName,
 
-        kills: selfObj.kills,
-        deaths: selfObj.deaths,
-        assists: selfObj.assists,
+    const relevantInfo = {}
 
-        summoner1Id: selfObj.summoner1Id,
-        summoner2Id: selfObj.summoner2Id,
-
-        styles: selfObj.perks.styles
+    if(selfObj){
+        relevantInfo = {
+            championId: selfObj.championId,
+            championName: selfObj.championName,
+    
+            kills: selfObj.kills,
+            deaths: selfObj.deaths,
+            assists: selfObj.assists,
+    
+            summoner1Id: selfObj.summoner1Id,
+            summoner2Id: selfObj.summoner2Id,
+    
+            styles: selfObj.perks.styles
+        }
     }
-
+    
     //SERVE IMG FROM CDN
     const CDN1231_IMG_BY_CHAMP_NAME
         = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/" +

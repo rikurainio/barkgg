@@ -10,12 +10,10 @@ import { useEffect, useState } from 'react'
 
 // INFO AND METADTA LOOPED BY AMOUNT OF GAMES
 // ONE ROUND IS UNIQUE INFO
-const MatchHistory = ({info, metadata, selfName, setSummonerName}) => {
+const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     //console.log("|MATCHHISTORY |INFO:", info, " | METADATA: ",metadata)
     //console.log(" INFO:: ", JSON.stringify(info))
     //console.log(" METADATA:: ", JSON.stringify(metadata))
-
-    //const participants = [0,1,2,3,4,5,6,7,8,9]
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
@@ -79,14 +77,18 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName}) => {
                     item5: self.item5,
                     item6: self.item6,
                 }
+
+
+                selfObj = self
+                console.log('\n', "my info is :", info, '\n', "I am", self.summonerName)
+                selfTeam = selfObj.teamId
+                teamsList = info.teams
+                blueTeam = info.teams[0]
+                redTeam = info.teams[1]
+
             }
         }
-        //console.log("I am", self.summonerName)
-        selfObj = self
-        selfTeam = selfObj.teamId
-        teamsList = info.teams
-        blueTeam = info.teams[0]
-        redTeam = info.teams[1]
+        
 
         if(selfTeam == blueTeam.teamId){
             allyTeamObj = blueTeam
@@ -128,7 +130,8 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName}) => {
                     <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
                     <MatchHistoryPlayer
                         participants={relevantInfo.participants}
-                        setSummonerName={setSummonerName}>
+                        setSummonerName={setSummonerName}
+                        resetComponentStates={resetComponentStates}>
 
                     </MatchHistoryPlayer>
                 </HStack>

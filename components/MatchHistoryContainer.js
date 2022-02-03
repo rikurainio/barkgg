@@ -5,7 +5,8 @@ import axios from 'axios'
 import { m } from 'framer-motion'
 
 const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
-                                    setSingleMatchData, requested2, setRequested2, setSummonerName}) => {
+                                    setSingleMatchData, requested2, setRequested2, setSummonerName
+                                        , resetComponentStates}) => {
     //const [matchInfo, setMatchInfo] = useState({})
     //const [matchMetaData, setMatchMetaData] = useState({})
 
@@ -33,7 +34,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     const API_KEY_TEXT = "?api_key="
     const API_KEY_TEXT2 = "&api_key="
     const BASE_URL = "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"
-                        + puuid + "/ids?start=0&count=10" + API_KEY_TEXT2 + API_KEY
+                        + puuid + "/ids?start=0&count=5" + API_KEY_TEXT2 + API_KEY
 
     const BASE_URL_MATCHDATA = "https://europe.api.riotgames.com/lol/match/v5/matches/"
 
@@ -124,7 +125,8 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
                             selfName={selfName}
                             info={singleMatchData[index]['info']}
                             metadata={singleMatchData[index]['metadata']}
-                            setSummonerName={setSummonerName}>
+                            setSummonerName={setSummonerName}
+                            resetComponentStates={resetComponentStates}>
                         </MatchHistory>
                 )}
             </Box>
