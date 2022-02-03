@@ -39,6 +39,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                 paddingBottom={1}
                 className="matchhistoryplayer">
                     <Box
+                        key={"box-team1"}
                         className="team1">
                         <VStack
                             spacing={"1px"}>
@@ -46,9 +47,9 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
-                                <Box>
-                                    <HStack>
-                                        <Image
+                                <Box >
+                                    <HStack > 
+                                        <Image 
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
                                                     + (getFixedSummonerName(participants[index].championName))
                                                     + ".png"
@@ -67,7 +68,8 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     isTruncated
-                                                    fontSize={[participants[index].summonerName.length > 14 ? "16px" : "16px"]}
+                                                    fontWeight={"thin"}
+                                                    fontSize={[participants[index].summonerName.length > 14 ? "19px" : "19px"]}
                                                     height={"25px"}>
                                                         {participants[index].summonerName}
                                                 </Text>
@@ -81,6 +83,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
 
                     
                     <Box
+                        key={"box-team2"}
                         paddingLeft={"40px"}
                         className="team2">
                             <VStack
@@ -90,8 +93,8 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
                                  <Box>
-                                    <HStack>
-                                        <Image
+                                    <HStack >
+                                        <Image 
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
                                                     + (getFixedSummonerName(participants[index+5].championName))
                                                     + ".png"
@@ -110,7 +113,8 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     isTruncated
-                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "16px" : "16px"]}
+                                                    fontWeight={"thin"}
+                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "19px" : "19px"]}
                                                     height={"25px"}>
                                                         {participants[index+5].summonerName}
                                                 </Text>

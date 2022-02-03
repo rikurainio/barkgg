@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { Heading } from '@chakra-ui/react'
+import { useEffect } from 'react'
+
 
 const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested,
                             setRequested, setSummonerIconId, setPuuid,
@@ -11,7 +13,6 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
     const BASE_URL = "https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
     const BASE_URL_LEAGUE = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
     //console.log("APIKEY: ", API_KEY)
-
 
     async function axiosTryGet() {
         try {
@@ -54,7 +55,6 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
             },
         )
     }
-    
     //RENDER
     return (
         <div></div>
