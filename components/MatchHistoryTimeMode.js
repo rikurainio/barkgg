@@ -28,21 +28,66 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
         }
     }
 
+    // HELPER FUNCTION FOR STRING RENDERING
+    function parseDateString(dateString, wordPosition){
+        const words = dateString.split(' ')
+        const lastWord = words.pop()
+        const firstWord = words.shift()
+        console.log("words: ", words)
+        
+        if(wordPosition == "FIRST"){
+            return firstWord
+        }
+        if(wordPosition == "LAST"){
+            const lastWordNoMs = lastWord.slice(0,-3)
+            return lastWordNoMs
+        }
+        else{
+            return words
+        }
+    }
+
+
+
     // AAMUJA SILLE KETÄ NÄKEE TÄN :-----D
     return (
         <Box
-            marginLeft={"15px"}
-            marginRight={"20px"}>
+            className='matchhistorytimemode'
+            >
             <Heading
                 fontSize={"15px"}>
                 {getRankedText(gameMode.gameType, gameMode.mapId, gameMode.queueId)}
             </Heading>
-            <Text> {(new Date(gameEnded)
+
+            {/*
+            <Text fontSize={"20px"}> {(new Date(gameEnded)
                 .toLocaleString())
-                .toString().slice(0, (new Date(gameEnded)
-                .toLocaleString())
-                .toString().length - 3)} </Text>
-            <Text> {win ? <Text>Win</Text> : <Text>Loss</Text>} </Text>
+                .toString()
+                .slice(0, (new Date(gameEnded).toLocaleString())
+                .toString().length - 3)}
+
+            </Text>
+            */}
+            
+            {/* DATE REPRESENTATION */}
+            <Text>
+                {parseDateString((new Date(gameEnded)
+                    .toLocaleString())
+                    .toString(), "FIRST")}
+            </Text>
+            <Text>
+                {parseDateString((new Date(gameEnded)
+                    .toLocaleString())
+                    .toString(), "LAST")}
+            </Text>
+
+              
+       
+
+            <Text>
+            {win ? <Text>Win</Text> : <Text>Loss</Text>}
+            </Text>
+
             <Text fontSize={"sm"}> {Math.floor(gameDuration / 60)} Minutes </Text>
         </Box>
     )

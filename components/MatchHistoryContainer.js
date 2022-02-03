@@ -32,7 +32,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
     const API_KEY_TEXT = "?api_key="
     const API_KEY_TEXT2 = "&api_key="
     const BASE_URL = "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"
-                        + puuid + "/ids?start=0&count=15" + API_KEY_TEXT2 + API_KEY
+                        + puuid + "/ids?start=0&count=10" + API_KEY_TEXT2 + API_KEY
 
     const BASE_URL_MATCHDATA = "https://europe.api.riotgames.com/lol/match/v5/matches/"
 
@@ -116,7 +116,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
                 <Text
                     paddingLeft={"3px"}
                     fontSize="sm">
-                    past (15 Games)
+                    past (10 Games)
                 </Text>
             </Heading>
 

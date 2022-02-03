@@ -103,18 +103,16 @@ const MatchHistory = ({info, metadata, selfName}) => {
     //console.log("my team object is : ", allyTeamObj)
     //console.log("teams: ", team1, team2)
 
+    // DARK MODE allyTeamObj.win ? "blue.700" : "red.800"
 
     if(info && metadata){
         return (
             <Box
-                width={"1045px"}
                 className={"matchhistorycard"}
                 mt={5}
                 mb={5}
-                display={'flex'}
-                align='center'
-                backgroundColor={allyTeamObj.win ? "gainsboro" : "darkgray"}
-                borderRadius={5}
+                backgroundColor={allyTeamObj.win ? "blue.200" : "red.200"}
+                borderRadius={7}
                 >
                 <HStack
                     >

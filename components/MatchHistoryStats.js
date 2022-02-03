@@ -32,36 +32,30 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
     return (
         <Box
-            paddingLeft={"20px"}
-            paddingRight={"20px"}
-            paddingTop={"0px"}
-            align={"left"}
             className='matchhistorystats'>
-                <Box>
-                    <HStack>
+                <Box
+                    display={"flex"}
+                    flexDirection={"row"}>
                         <Heading fontSize="20px">{selfObj.kills}</Heading>
                         <Text>/</Text>
                         <Heading fontSize="20px">{selfObj.deaths}</Heading>
                         <Text>/</Text>
                         <Heading fontSize="20px">{selfObj.assists}</Heading>
-                    </HStack>
                 </Box>
                 <Box>
                     <Text fontSize="15px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
                 </Box>
 
                 <HStack>
-                    <Box>
-                        <Text>LvL {selfObj.champLevel}</Text>
-                    </Box>
-                    <Box>
-                        <Text>({selfObj.totalMinionsKilled} CS)</Text>
-                    </Box>
+                    <Text>LvL {selfObj.champLevel}</Text>
                 </HStack>
+                <Box>
+                    <Text>({selfObj.totalMinionsKilled} CS)</Text>
+                </Box>
                 
                 <Box>
                     <Text
-                        fontSize="17px">{
+                        fontSize="16px">{
                         calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)} % KP
                     </Text>
                 </Box>

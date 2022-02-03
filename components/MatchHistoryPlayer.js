@@ -9,12 +9,13 @@ const MatchHistoryPlayer = ({participants}) => {
     if(participants.length == 10){
         return (
             <Flex
-                paddingLeft={"40px"}
-                paddingTop={2}
-                paddingBottom={2}
+                paddingLeft={"15px"}
+                paddingRight={"10px"}
+                paddingTop={1}
+                paddingBottom={1}
                 className="matchhistoryplayer">
                     <Box
-                        className="ally-team">
+                        className="team1">
                         <VStack
                             spacing={"1px"}>
                             <Heading fontSize={"14px"}>Team 1</Heading>
@@ -27,19 +28,13 @@ const MatchHistoryPlayer = ({participants}) => {
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
                                                     + (participants[index].championName)
                                                     + ".png"
-
-                                                    /*
-                                                    + (participants[index].summonerName).charAt(0).toUpperCase()
-                                                    + (participants[index].summonerName).substring(1) + ".png"
-                                                
-                                                    */
                                                 }
                                             boxSize={"30px"}>
                                         </Image>
                                         <Box
                                             textAlign={"left"}
                                             width={"140px"}>
-                                            <Text>{participants[index].summonerName}</Text>
+                                            <Text  noOfLines={"1"} isTruncated height={"25px"}>{participants[index].summonerName}</Text>
                                         </Box>
                                     </HStack>
                                 </Box>
@@ -50,7 +45,7 @@ const MatchHistoryPlayer = ({participants}) => {
                     
                     <Box
                         paddingLeft={"40px"}
-                        className="enemy-team">
+                        className="team2">
                             <VStack
                                 spacing={"1px"}>
                             <Heading fontSize={"14px"}>Team 2</Heading>
@@ -63,19 +58,13 @@ const MatchHistoryPlayer = ({participants}) => {
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
                                                     + (participants[index+5].championName)
                                                     + ".png"
-
-                                                    /*
-                                                    + (participants[index].summonerName).charAt(0).toUpperCase()
-                                                    + (participants[index].summonerName).substring(1) + ".png"
-                                                
-                                                    */
                                                 }
                                             boxSize={"30px"}>
                                         </Image>
                                         <Box
                                             textAlign={"left"}
                                             width={"140px"}>
-                                            <Text>{participants[index+5].summonerName}</Text>
+                                            <Text noOfLines={1} isTruncated height={"25px"}>{participants[index+5].summonerName}</Text>
                                         </Box>
                                     </HStack>
                                 </Box>

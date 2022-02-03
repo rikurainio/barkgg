@@ -33,7 +33,6 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
 
     return (
         <Box
-            paddingRight={"10px"}
             paddingTop={"10px"}
             paddingBottom={"0px"}
             className='matchhistorychampandrunes'>
@@ -41,7 +40,6 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
 
                     <Image
                         marginTop={"0px"}
-                        marginRight={"25px"}
                         src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
                         boxSize={"60px"}
                         borderRadius={3}>
@@ -53,6 +51,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                             marginBottom={"0px"}
                             >
                             <Image
+                                objectFit={"cover"}
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
                                 boxSize={"35px"}
                                 borderRadius={3}>
@@ -69,14 +68,13 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                             <Image
                                 src={CDN1231_IMG_BY_CHAMP_NAME}
                                 boxSize={"80px"}
-                                borderRadius={0}>
+                                borderRadius={3}>
 
                             </Image>
-                            <Heading fontSize={"15px"}>{relevantInfo.championName}</Heading>
+                            <Heading paddingTop={"2px"} fontSize={"15px"}>{relevantInfo.championName}</Heading>
                         </Box>
                     </VStack>
                 </HStack>
-                
         </Box>
     )
 }
