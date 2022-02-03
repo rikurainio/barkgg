@@ -82,8 +82,24 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData, 
 
         singleMatchData.sort((elemA, elemB) => {
             //console.log("element A: ", elemA, "element B", elemB)
-            return elemA['info'].gameEndTimestamp >= elemB['info'].gameEndTimestamp
+            const a = elemA['info'].gameEndTimestamp
+            const b = elemB['info'].gameEndTimestamp
+            console.log("a,b", a,b)
+
+            if(a < b){
+                return 1
+            }
+            if(a > b){
+                return -1
+            }
+            return 0
         })
+
+        console.log("SORTED TIMESTAMPS")
+        for(let i=0; i < singleMatchData.length; i++){
+            console.log(singleMatchData[i]['info'].gameEndTimestamp)
+        }
+
     }
 
      return (
