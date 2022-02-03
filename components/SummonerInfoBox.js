@@ -31,6 +31,8 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
         const CDN1231 = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         //console.log("pathi: ",pathToSummonerIcon)
         const RANKED_WINGS_SRC = ""
+        const NO_SOLO_RANK_WINGS_WHITE = "./wings/wings_white.png"
+        const NO_SOLO_RANK_WINGS_BLACK = "./wings/wings_black.png"
 
         if(leagueData.length){
             const rankedQueuesFound = leagueData.length
@@ -103,100 +105,65 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                     }
                 }
             }
-            RANKED_WINGS_SRC = "./wings/wings_" + (solo.tier).toLowerCase() + ".png"
+            if(solo.tier){
+                RANKED_WINGS_SRC = "./wings/wings_" + (solo.tier).toLowerCase() + ".png"
+            }
         }
 
-        if(solo.tier != undefined){
-            return (
-                <Box
-                    marginTop={"120px"}
-                    className='summonerinfobox'
-                >
-                        <Box>
-                            <Image
-                                borderRadius='full'
-                                src={CDN1231}
-                                boxSize={100}>
-    
-                                
-                            </Image>
-                            <Box
-                                marginTop={-274}>
-                                <Image  
-                                        marginLeft={"-93.8px"}
-                                        src={RANKED_WINGS_SRC}
-                                        width={290}>
-                                </Image>
-                            </Box>
-                            
-                        </Box>
-                        <List
-                            marginTop={"-240"}
-                            marginLeft={"200"}
-                            >
-                            <ListItem>
-                                
-                                <Heading
-                                    fontSize={"80px"}>
-                                    {summonerValues['name']}
-                                </Heading>
-                            </ListItem>
 
-                            <Box
-                                marginLeft={"6px"}>
-                                <ListItem>
-                                    <Text
-                                        marginTop={"10px"}
-                                        fontSize={25}>
-                                        Level {summonerValues['summonerLevel']}
-                                    </Text>
-                                    <Box>
-                                        <Heading
-                                            fontSize={"15px"}>
-                                            {solo.tier}
-                                        </Heading>
-                                    </Box>
-                                </ListItem> 
-                            </Box>
+        return (
+            <Box
+                marginTop={"120px"}
+                className='summonerinfobox'
+            >
+                <Box>
+                    <Image
+                        borderRadius='full'
+                        src={CDN1231}
+                        boxSize={100}>
+                    </Image>
 
-                        </List>
+                    <Box
+                        marginTop={-274}>
+                        <Image  
+                                marginLeft={"-93.8px"}
+                                src={solo.tier ? RANKED_WINGS_SRC : NO_SOLO_RANK_WINGS_BLACK}
+                                width={290}>
+                        </Image>
+                    </Box>
                 </Box>
-            )
-        }
-        else{
-            return (
-                <Box
-                    marginTop={"120px"}
-                    className='summonerinfobox'
-                >
-                        <Box>
-                            <Image
-                                borderRadius='full'
-                                src={CDN1231}
-                                boxSize={100}>
-                            </Image>
-                        </Box>
-                        <List
-                            marginTop={"-240"}
-                            marginLeft={"200"}
-                            >
-                            <ListItem>
+                
+                <List
+                    marginTop={solo.tier ? "-240" : "-240px"}
+                    marginLeft={solo.tier ? "200" : "200"}
+                    >
+                    <ListItem>
+                        
+                        <Heading
+                            fontSize={"80px"}>
+                            {summonerValues['name']}
+                        </Heading>
+                    </ListItem>
+
+                    <Box
+                        marginLeft={"6px"}>
+                        <ListItem>
+                            <Text
+                                marginTop={"10px"}
+                                fontSize={25}>
+                                Level {summonerValues['summonerLevel']}
+                            </Text>
+                            <Box>
                                 <Heading
-                                    fontSize={"80px"}>
-                                    {summonerValues['name']}
+                                    fontSize={"15px"}>
+                                    {solo.tier}
                                 </Heading>
-                            </ListItem>
-                            <ListItem>
-                                <Text
-                                    marginTop={"10px"}
-                                    fontSize={25}>
-                                    Level {summonerValues['summonerLevel']}
-                                </Text>
-                            </ListItem> 
-                        </List>
-                </Box>
-            )
-        }
+                            </Box>
+                        </ListItem> 
+                    </Box>
+                </List>
+            </Box>
+        )
     }
     catch (err) {
         //console.log("couldnt parse obj")
