@@ -143,7 +143,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                     <ListItem>
                         <Box>
                             <Heading
-                                fontSize={"80px"}>
+                                fontSize={"60px"}>
                                 {summonerValues['name']}
                             </Heading>
                         </Box>
@@ -160,7 +160,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                         
                         <Box>
                             <Heading
-                                fontSize={"15px"}>
+                                fontSize={"18px"}>
                                 {solo.tier ? solo.tier + " (Solo Queue)" : "Unranked (Solo Queue)"}
                             </Heading>
                         </Box>

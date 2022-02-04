@@ -126,7 +126,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                 className={"matchhistorycard"}
                 mt={5}
                 mb={5}
-                backgroundColor={allyTeamObj.win ? "blue.200" : "red.300"}
+                backgroundColor={allyTeamObj.win ? "blue.900" : "red.900"}
                 borderRadius={7}
                 >
                 <HStack
