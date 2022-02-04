@@ -53,15 +53,18 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
         const self = info.participants.filter(participant => {
 
-            console.log("participant summonername: ",
-                participant.summonerName
-                    .toUpperCase()
-                    .trim())
-            console.log("selfName to upper: ",
-                 selfName
-                    .toUpperCase()
-                    .trim())
-            return (participant.summonerName).toUpperCase().trim() == selfName.toUpperCase().trim()
+            // TRIM RIOT SUMMONER NAME & REMOVE WHITESPACE
+            return (participant.summonerName)
+                        .toUpperCase()
+                        .trim()
+                        .replace(/\s/g, "")
+                        
+                        == 
+                        
+                    selfName
+                        .toUpperCase()
+                        .trim()
+                        .replace(/\s/g, "")
         })
         console.log("self after matching --> ", self)
 
