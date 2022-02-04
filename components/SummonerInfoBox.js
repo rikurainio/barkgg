@@ -120,57 +120,62 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 marginTop={"70px"}
                 className='summonerinfobox'
             >
-                <Box
-                    paddingTop={"26px"}>
-
-                    <Box>
-                        <Image
-                            borderRadius='full'
-                            src={CDN1231}
-                            width={100}>
-                        </Image>
-                    </Box>
+                <Box paddingLeft={"80px"}>
                     <Box
-                        marginTop={-274}>
-                        <Image  
-                                marginLeft={"-93.8px"}
-                                src={solo.tier ? RANKED_WINGS_SRC : NO_SOLO_RANK_WINGS_BLACK}
-                                width={290}>
-                        </Image>
+                        paddingTop={"26px"}>
+
+                        <Box>
+                            <Image
+                                borderRadius='full'
+                                src={CDN1231}
+                                width={100}>
+                            </Image>
+                        </Box>
+                        <Box
+                            marginTop={-274}>
+                            <Image  
+                                    marginLeft={"-93.8px"}
+                                    src={solo.tier ? RANKED_WINGS_SRC : NO_SOLO_RANK_WINGS_BLACK}
+                                    width={290}>
+                            </Image>
+                        </Box>
                     </Box>
+                    
+                    <List
+                        marginTop={solo.tier ? "-240" : "-240px"}
+                        marginLeft={solo.tier ? "200" : "200"}>
+
+                        <ListItem>
+                            <Box>
+                                <Heading
+                                    paddingTop={"15px"}
+                                    fontSize={"60px"}>
+                                    {summonerValues['name']}
+                                </Heading>
+                            </Box>
+                        </ListItem>
+
+                        <ListItem>
+                            <Box>
+                                <Text
+                                    fontSize={25}>
+                                    Level {summonerValues['summonerLevel']}
+                                </Text>
+                            </Box>
+                            
+                            <Box>
+                                <Heading
+                                    fontSize={"18px"}>
+                                    {solo.tier ? solo.tier +  " " + solo.rank + " (Solo Queue) " : "Unranked (Solo Queue)"}
+                                </Heading>
+                                <Text>
+                                    random text here
+                                </Text>
+                            </Box>
+                        </ListItem> 
+                    </List>
                 </Box>
-                
-                <List
-                    marginTop={solo.tier ? "-240" : "-240px"}
-                    marginLeft={solo.tier ? "200" : "200"}>
-
-                    <ListItem>
-                        <Box>
-                            <Heading
-                                paddingTop={"15px"}
-                                fontSize={"60px"}>
-                                {summonerValues['name']}
-                            </Heading>
-                        </Box>
-                    </ListItem>
-
-                    <ListItem>
-                        <Box>
-                            <Text
-                                marginTop={"10px"}
-                                fontSize={25}>
-                                Level {summonerValues['summonerLevel']}
-                            </Text>
-                        </Box>
-                        
-                        <Box>
-                            <Heading
-                                fontSize={"18px"}>
-                                {solo.tier ? solo.tier + " (Solo Queue)" : "Unranked (Solo Queue)"}
-                            </Heading>
-                        </Box>
-                    </ListItem> 
-                </List>
+               
             </Box>
         )
     }
