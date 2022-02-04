@@ -72,9 +72,8 @@ export default function Home() {
 
   return (
     <Flex
-      background={"gray.300"}
-      backgroundImage={"url('backgrounds/background_dm_01.jpg')"}
-      backgroundImage={"url('backgrounds/background_dm_01.jpg'), linear-gradient(transparent, black)"}
+      background={"black"}
+      backgroundImage={"url('backgrounds/xinzhaoart.png')"}
       backgroundSize={"100%"}
       backgroundRepeat={"no-repeat"}
       height={"2100px"}
