@@ -37,8 +37,8 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
             marginTop={10}>
 
             <HStack>
-                <Box>
-                    <Text fontSize={"xl"} as="em">
+                <Box marginRight={"20px"}>
+                    <Text fontSize={"25px"} as="em">
                         Search for summoner
                     </Text>
                 </Box>
@@ -46,6 +46,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                 <Box>
                     <Stack>
                         <InputGroup
+                                size={"lg"}
                                 onSubmit={handleSearchUser}
                                 backgroundColor={"white"}
                             >
@@ -57,7 +58,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                             >
                             </Input>
                             <InputRightElement
-                            >
+                                paddingRight={"4px"}>
                                 <Button
                                     type={"Submit"}
                                     onClick={handleSearchUser}
