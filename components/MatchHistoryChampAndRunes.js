@@ -28,41 +28,35 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
     
     return (
         <Box
-            paddingTop={"10px"}
-            paddingBottom={"0px"}
             className='matchhistorychampandrunes'>
                 <HStack>
 
-                    <Image
-                        marginTop={"0px"}
-                        src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
-                        boxSize={"60px"}
-                        borderRadius={3}>
-                            
-                    </Image>
-                    <Image
-                        marginTop={"0px"}
-                        src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
-                        boxSize={"40px"}
-                        borderRadius={3}>
-                            
-                    </Image>
-
+                    <VStack>
+                        <Image
+                            src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
+                            boxSize={"60px"}
+                            >
+                        </Image>
+                        <Image
+                            src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
+                            width={"32px"}
+                            >
+                        </Image>
+                    </VStack>
+                    
                     <VStack>
                         <HStack
-                            marginBottom={"0px"}
                             >
                             <Image
-                                objectFit={"cover"}
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
                                 boxSize={"35px"}
-                                borderRadius={3}>
+                                borderRadius={1}>
                                 
                             </Image>
                             <Image
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
                                 boxSize={"35px"}
-                                borderRadius={3}>
+                                borderRadius={1}>
                                 
                             </Image>
                         </HStack>
@@ -70,7 +64,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                             <Image
                                 src={CDN1231_IMG_BY_CHAMP_NAME}
                                 boxSize={"80px"}
-                                borderRadius={3}>
+                                borderRadius={1}>
 
                             </Image>
                             <Heading textAlign={"center"} paddingTop={"2px"} fontSize={"15px"}>{relevantInfo.championName}</Heading>
