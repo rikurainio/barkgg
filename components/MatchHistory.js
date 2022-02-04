@@ -9,12 +9,10 @@ import MatchHistoryTimeMode from './MatchHistoryTimeMode'
 import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
-// INFO AND METADTA LOOPED BY AMOUNT OF GAMES
-// ONE ROUND IS UNIQUE INFO
+// COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD
+// info PROP CONTAINS DATA FOR A SINGULAR MATCH
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
-    //console.log("|MATCHHISTORY |INFO:", info, " | METADATA: ",metadata)
-    //console.log(" INFO:: ", JSON.stringify(info))
-    //console.log(" METADATA:: ", JSON.stringify(metadata))
+    console.log(" INFO KEYS:: ", Object.keys(info))
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
@@ -52,11 +50,20 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
     
     // FIND SELF FROM ALL THE PARTICIPANTS
     if(selfName){
-        //console.log("selfname: ", selfName)
 
         const self = info.participants.filter(participant => {
-            return (participant.summonerName).toUpperCase() == selfName.toUpperCase()
+
+            console.log("participant summonername: ",
+                participant.summonerName
+                    .toUpperCase()
+                    .trim())
+            console.log("selfName to upper: ",
+                 selfName
+                    .toUpperCase()
+                    .trim())
+            return (participant.summonerName).toUpperCase().trim() == selfName.toUpperCase().trim()
         })
+        console.log("self after matching --> ", self)
 
         // GET OBJ OUT 1 ITEM ARRAY...
         if(self){
@@ -64,11 +71,10 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                 self = self[0]
             }
             catch (error){
-                //console.log("problem settings self", error)
+                console.log("problem settings self", error)
             }
 
             if(self){
-                //console.log("self : ", self)
                 itemsBuilt = {
                     item0: self.item0,
                     item1: self.item1,
@@ -79,7 +85,6 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                     item6: self.item6,
                 }
                 selfObj = self
-                //console.log('\n', "my info is :", info, '\n', "I am", self.summonerName)
                 selfTeam = selfObj.teamId
                 teamsList = info.teams
                 blueTeam = info.teams[0]
@@ -95,10 +100,11 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         }
     }
 
-    //console.log("info: ", relevantInfo)
+    console.log("relevant info: ", relevantInfo)
     //console.log("metadata", relevantMetaData)
     //console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
-    //console.log("selfteam: ", selfObj.teamId)
+    console.log("I am: ", selfObj)
+    console.log("my team object is: ", selfObj.teamId)
     //console.log("my team object is : ", allyTeamObj)
     //console.log("teams: ", team1, team2)
 

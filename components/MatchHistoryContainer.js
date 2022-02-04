@@ -92,7 +92,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     }
 
     console.log("MATCHES DATA LIST: "
-    +"\n" + JSON.stringify(singleMatchData, null, 2)
+     /*+"\n" + JSON.stringify(singleMatchData, null, 2) */
     +"\n" + "FOUND DATA CHUNK FOR " + singleMatchData.length + " MATCHES.")
 
     return (
