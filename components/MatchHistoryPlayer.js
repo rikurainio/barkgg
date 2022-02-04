@@ -60,14 +60,16 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                             textAlign={"left"}
                                             width={"140px"}>
                                             <Button
+                                                maxW={"20xp"}
                                                 variant='link'
+                                                isTruncated
+                                                display={"block"}
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
                                                 >
                                                 <Text
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
-                                                    isTruncated
                                                     fontWeight={"thin"}
                                                     fontSize={[participants[index].summonerName.length > 14 ? "19px" : "19px"]}
                                                     height={"25px"}>
@@ -105,7 +107,10 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                             textAlign={"left"}
                                             width={"140px"}>
                                             <Button
+                                                maxW={"20xp"}
                                                 variant='link'
+                                                isTruncated
+                                                display={"block"}
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
                                                 >

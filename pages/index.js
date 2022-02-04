@@ -2,10 +2,32 @@ import { Flex, Heading, Box, Text } from '@chakra-ui/react'
 import SearchBar from '../components/SearchBar'
 import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import MatchHistoryContainer from '../components/MatchHistoryContainer'
 import React from 'react'
 
+
+const SummonerContext = createContext(undefined)
+
+export function SummonerProvider({ children }){
+  const [summoner, setSummoner] = useState({})
+  return (
+    <SummonerContext.Provider
+      value={{summoner, setSummoner}}>
+        {children}
+    </SummonerContext.Provider>
+  )
+}
+
+export function useSummoner() {
+  const context = useContext(SummonerContext)
+
+  if(!context){
+    throw new Error('useSummoner must be used inside a "SummonerProvider"!')
+  }
+  
+  return context
+}
 
 export default function Home() {
 

@@ -4,12 +4,9 @@ import MatchHistoryItems from './MatchHistoryItems'
 import MatchHistoryPlayer from './MatchHistoryPlayer'
 import MatchHistoryStats from './MatchHistoryStats'
 import MatchHistoryTimeMode from './MatchHistoryTimeMode'
-import axios from 'axios'
-
-import { useEffect, useState } from 'react'
 
 // FRAMER MOTION
-import { motion, isValidMotionPropr } from 'framer-motion'
+import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
 // INFO AND METADTA LOOPED BY AMOUNT OF GAMES
@@ -27,15 +24,6 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
         participants: info.participants
     }
-
-    /*
-    const relevantMetaData = {
-        dataVersion: metadata.dataVersion,
-        matchId: metadata.matchId,
-        participants: metadata.participants
-
-    }
-    */
     
     const team1 = info.teams[0]
     const team2 = info.teams[1]
@@ -59,21 +47,28 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         teamDragonKills: team2.objectives.dragon.kills
     }
 
-
     //ITEMS FOR SELF (ID)
     const itemsBuilt = {}
     
     // FIND SELF FROM ALL THE PARTICIPANTS
     if(selfName){
+        //console.log("selfname: ", selfName)
+
         const self = info.participants.filter(participant => {
             return (participant.summonerName).toUpperCase() == selfName.toUpperCase()
         })
 
         // GET OBJ OUT 1 ITEM ARRAY...
         if(self){
-            self = self[0]
+            try{
+                self = self[0]
+            }
+            catch (error){
+                //console.log("problem settings self", error)
+            }
 
             if(self){
+                //console.log("self : ", self)
                 itemsBuilt = {
                     item0: self.item0,
                     item1: self.item1,
@@ -83,19 +78,15 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                     item5: self.item5,
                     item6: self.item6,
                 }
-
-
                 selfObj = self
                 //console.log('\n', "my info is :", info, '\n', "I am", self.summonerName)
                 selfTeam = selfObj.teamId
                 teamsList = info.teams
                 blueTeam = info.teams[0]
                 redTeam = info.teams[1]
-
             }
         }
         
-
         if(selfTeam == blueTeam.teamId){
             allyTeamObj = blueTeam
         }
@@ -111,16 +102,22 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
     //console.log("my team object is : ", allyTeamObj)
     //console.log("teams: ", team1, team2)
 
-    // DARK MODE allyTeamObj.win ? "blue.700" : "red.800"
+    // GIGA CHECKER
+    if(info && metadata
+            && Object.keys(info).length > 0
+            && Object.keys(metadata).length > 0
+            && typeof(info) == "object"
+            && typeof(metadata) == "object"
+            && selfObj && Object.keys(selfObj).length > 0
+            && allyTeamObj && Object.keys(allyTeamObj).length > 0){
 
-    if(info && metadata){
         return (
             <MotionBox
                 whileHover={{scale: 1.03}}
                 className={"matchhistorycard"}
                 mt={5}
                 mb={5}
-                backgroundColor={allyTeamObj.win ? "blue.200" : "red.200"}
+                backgroundColor={allyTeamObj.win ? "blue.200" : "red.300"}
                 borderRadius={7}
                 >
                 <HStack
@@ -146,11 +143,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         )
     }
     else{
-        return (
-            <Box>
-                <Text> Couldn't find match data </Text> 
-            </Box>
-        )
+        return(null);
     }
 }
 

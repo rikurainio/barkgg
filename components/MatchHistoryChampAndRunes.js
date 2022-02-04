@@ -1,47 +1,31 @@
-import { Flex, Box, VStack, HStack, Text, Image, Heading } from '@chakra-ui/react'
+import {Box, VStack, HStack, Image, Heading } from '@chakra-ui/react'
 
 const MatchHistoryChampAndRunes = ({selfObj}) => {
-    //HELPER FOR RELEVANT DATA
-
-    const relevantInfo = {}
-
-    if(selfObj){
-        relevantInfo = {
-            championId: selfObj.championId,
-            championName: selfObj.championName,
-    
-            kills: selfObj.kills,
-            deaths: selfObj.deaths,
-            assists: selfObj.assists,
-    
-            summoner1Id: selfObj.summoner1Id,
-            summoner2Id: selfObj.summoner2Id,
-    
-            styles: selfObj.perks.styles
-
-            
-        }
-        if(selfObj.championName == "FiddleSticks"){
-            relevantInfo.championName = "Fiddlesticks"
-        }
-
-    }
-    
-    //SERVE IMG FROM CDN
-    const CDN1231_IMG_BY_CHAMP_NAME
-        = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/" +
-            (relevantInfo.championName.toLowerCase()).charAt(0).toUpperCase()
-             + (relevantInfo.championName.slice(1)) + ".png"
 
     const SUMMONER_SPELL_BY_ID
         = "./summonerspells/"
-
     const RUNE_BY_ID
         = "./runes/"
+    const relevantInfo = {
+        championId: selfObj.championId,
+        championName: selfObj.championName,
+        kills: selfObj.kills,
+        deaths: selfObj.deaths,
+        assists: selfObj.assists,
+        summoner1Id: selfObj.summoner1Id,
+        summoner2Id: selfObj.summoner2Id,
+        styles: (typeof selfObj.perks.styles === 'undefined') ? {} : selfObj.perks.styles
+    }
+    
+    const CDN1231_IMG_BY_CHAMP_NAME
+        = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/" +
+            (relevantInfo.championName.toLowerCase()).charAt(0).toUpperCase()
+            + (relevantInfo.championName.slice(1)) + ".png"
 
-
-    //console.log("r_info", relevantInfo.styles)
-
+    if(selfObj.championName == "FiddleSticks"){
+        relevantInfo.championName = "Fiddlesticks"
+    }
+    
     return (
         <Box
             paddingTop={"10px"}
@@ -53,6 +37,13 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                         marginTop={"0px"}
                         src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
                         boxSize={"60px"}
+                        borderRadius={3}>
+                            
+                    </Image>
+                    <Image
+                        marginTop={"0px"}
+                        src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
+                        boxSize={"40px"}
                         borderRadius={3}>
                             
                     </Image>

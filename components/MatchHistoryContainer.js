@@ -1,17 +1,14 @@
-import { Flex, Box, Text, List, ListItem, Heading, VStack, HStack } from '@chakra-ui/react'
+import { Box, Text, List, ListItem, Heading } from '@chakra-ui/react'
 import MatchHistory from './MatchHistory'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
-import { m } from 'framer-motion'
 
-import { motion, isValidMotionPropr } from 'framer-motion'
+import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
 const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
                                     setSingleMatchData, requested2, setRequested2, setSummonerName
                                         , resetComponentStates}) => {
-    //const [matchInfo, setMatchInfo] = useState({})
-    //const [matchMetaData, setMatchMetaData] = useState({})
 
     useEffect(() => {
         if(setMatchData.length && puuid != ""){
@@ -27,6 +24,12 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         }
     }, [])
 
+
+    console.log("MATCH HISTORY CONTAINER GETS THESE PROPS: "
+                 +"\n" + "self name: " + selfName
+                 +"\n" + "puuId: " + puuid
+                 +"\n" + "requested " + requested2)
+
     // TEST VAR
     const info = {}
     const metadata = {}
@@ -37,7 +40,6 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     const API_KEY_TEXT2 = "&api_key="
     const BASE_URL = "https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/"
                         + puuid + "/ids?start=0&count=5" + API_KEY_TEXT2 + API_KEY
-
     const BASE_URL_MATCHDATA = "https://europe.api.riotgames.com/lol/match/v5/matches/"
 
     // TRY GET MATCHIDS BY BASE_URL
@@ -69,27 +71,16 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         }
     }
 
-    // HELPER FUNCTION
     function parseValues(){
-        //console.log("metadata --> ", singleMatchData[0]['metadata'])
-        //console.log("info --> ",  singleMatchData[0]['info'])
         info = singleMatchData[0]['info']
         metadata = singleMatchData[0]['metadata']
     }
 
-    function compare(a, b){
-    }
-
     if(singleMatchData.length){
         parseValues()
-        //console.log("matches data", singleMatchData)
-
         singleMatchData.sort((elemA, elemB) => {
-            //console.log("element A: ", elemA, "element B", elemB)
             const a = elemA['info'].gameEndTimestamp
             const b = elemB['info'].gameEndTimestamp
-            //console.log("a,b", a,b)
-
             if(a < b){
                 return 1
             }
@@ -100,47 +91,45 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         })
     }
 
-     return (
-        <MotionBox
-            className="matchhistorycontainer"
-            marginTop={"40px"}
-            flexDirection={"column"}
-            marginBottom={"0px"}
-        >
-            
-            <Heading
-                fontSize={40}>
-                Matches
-                <Text
-                    paddingLeft={"3px"}
-                    fontSize="sm">
-                    past (10 Games)
-                </Text>
-            </Heading>
+    console.log("MATCHES DATA LIST: "
+    +"\n" + JSON.stringify(singleMatchData, null, 2)
+    +"\n" + "FOUND DATA CHUNK FOR " + singleMatchData.length + " MATCHES.")
 
-            <Box>
-                {/*Array(singleMatchData.length).fill(<MatchHistory></MatchHistory>)*/}
-                <List>
-                    {Array
-                        .from(Array(singleMatchData.length))
-                        .map((x, index) =>
-                        
-                            <ListItem>
-                                <MatchHistory
-                                    key={x}
-                                    selfName={selfName}
-                                    info={singleMatchData[index]['info']}
-                                    metadata={singleMatchData[index]['metadata']}
-                                    setSummonerName={setSummonerName}
-                                    resetComponentStates={resetComponentStates}>
-                                </MatchHistory>
-                            </ListItem>
-                    )}
-                </List>
-            </Box>
-           
-        </MotionBox>
-    )
+    return (
+    <MotionBox
+        className="matchhistorycontainer"
+        marginTop={"40px"}
+        flexDirection={"column"}
+        marginBottom={"0px"}>
+        
+        <Heading
+            fontSize={40}>
+            Matches
+            <Text
+                paddingLeft={"3px"}
+                fontSize="sm">
+                past (5 Games)
+            </Text>
+        </Heading>
+
+        <Box>
+            <List>
+                {Array
+                    .from(Array(singleMatchData.length))
+                    .map((x, index) =>
+                        <ListItem>
+                            <MatchHistory
+                                selfName={selfName}
+                                info={singleMatchData[index]['info']}
+                                metadata={singleMatchData[index]['metadata']}
+                                setSummonerName={setSummonerName}
+                                resetComponentStates={resetComponentStates}>
+                            </MatchHistory>
+                        </ListItem>)}
+            </List>
+        </Box>
+    </MotionBox>
+)
 }
 
 export default MatchHistoryContainer
