@@ -113,19 +113,23 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
 
         return (
             <Box
-                marginTop={"120px"}
+                marginBottom={"20px"}
+                height={"170px"}
+                bgColor={"rgba(0, 0, 0, .38)"}
+                borderRadius={"7px"}
+                marginTop={"70px"}
                 className='summonerinfobox'
             >
-                <Box>
+                <Box
+                    paddingTop={"26px"}>
 
                     <Box>
                         <Image
                             borderRadius='full'
                             src={CDN1231}
-                            boxSize={100}>
+                            width={100}>
                         </Image>
                     </Box>
-
                     <Box
                         marginTop={-274}>
                         <Image  
@@ -143,6 +147,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                     <ListItem>
                         <Box>
                             <Heading
+                                paddingTop={"15px"}
                                 fontSize={"60px"}>
                                 {summonerValues['name']}
                             </Heading>
