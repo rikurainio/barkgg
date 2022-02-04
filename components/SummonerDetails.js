@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Heading } from '@chakra-ui/react'
+import { Heading, Box } from '@chakra-ui/react'
 import { useEffect } from 'react'
 
 
@@ -35,7 +35,6 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
         try{
             const id = summonerId
             const {data:response} = await axios.get(BASE_URL_LEAGUE + id + API_KEY_TEXT + API_KEY)
-            //console.log("got ", response)
             setLeagueData(response)
             return response
         }
@@ -43,7 +42,6 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
             console.log(error);
             return
         }
-
     }
 
     if(requested && summonerName){
@@ -56,9 +54,7 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
         )
     }
     //RENDER
-    return (
-        <div></div>
-    )
+    return (null);
 }
 
 export default SummonerDetails

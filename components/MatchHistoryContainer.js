@@ -31,7 +31,6 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     const info = {}
     const metadata = {}
 
-
     // SETTINGS FOR API REQUEST
     const API_KEY = process.env.API_KEY
     const API_KEY_TEXT = "?api_key="
@@ -121,17 +120,23 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
 
             <Box>
                 {/*Array(singleMatchData.length).fill(<MatchHistory></MatchHistory>)*/}
-                {Array
-                    .from(Array(singleMatchData.length))
-                    .map((x, index) => 
-                        <MatchHistory
-                            selfName={selfName}
-                            info={singleMatchData[index]['info']}
-                            metadata={singleMatchData[index]['metadata']}
-                            setSummonerName={setSummonerName}
-                            resetComponentStates={resetComponentStates}>
-                        </MatchHistory>
-                )}
+                <List>
+                    {Array
+                        .from(Array(singleMatchData.length))
+                        .map((x, index) =>
+                        
+                            <ListItem>
+                                <MatchHistory
+                                    key={x}
+                                    selfName={selfName}
+                                    info={singleMatchData[index]['info']}
+                                    metadata={singleMatchData[index]['metadata']}
+                                    setSummonerName={setSummonerName}
+                                    resetComponentStates={resetComponentStates}>
+                                </MatchHistory>
+                            </ListItem>
+                    )}
+                </List>
             </Box>
            
         </MotionBox>

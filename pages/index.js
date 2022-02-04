@@ -80,15 +80,13 @@ export default function Home() {
               setPuuid={setPuuid}
               summonerData={summonerData}
               setSummonerData={setSummonerData}
-              setLeagueData={setLeagueData}
-              >
+              setLeagueData={setLeagueData}>
             </SummonerDetails>
 
             {/* SHOW SUMMONER PROFILE DATA */}
             <SummonerInfoBox
               summonerData={summonerData}
-              leagueData={leagueData}
-              >
+              leagueData={leagueData}>
             </SummonerInfoBox>
 
             {/* MATCH HISTORY RELATED COMPONENTS INSIDE*/}

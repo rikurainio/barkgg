@@ -117,11 +117,14 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 className='summonerinfobox'
             >
                 <Box>
-                    <Image
-                        borderRadius='full'
-                        src={CDN1231}
-                        boxSize={100}>
-                    </Image>
+
+                    <Box>
+                        <Image
+                            borderRadius='full'
+                            src={CDN1231}
+                            boxSize={100}>
+                        </Image>
+                    </Box>
 
                     <Box
                         marginTop={-274}>
@@ -135,44 +138,39 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 
                 <List
                     marginTop={solo.tier ? "-240" : "-240px"}
-                    marginLeft={solo.tier ? "200" : "200"}
-                    >
+                    marginLeft={solo.tier ? "200" : "200"}>
+
                     <ListItem>
-                        
-                        <Heading
-                            fontSize={"80px"}>
-                            {summonerValues['name']}
-                        </Heading>
+                        <Box>
+                            <Heading
+                                fontSize={"80px"}>
+                                {summonerValues['name']}
+                            </Heading>
+                        </Box>
                     </ListItem>
 
-                    <Box
-                        marginLeft={"6px"}>
-                        <ListItem>
+                    <ListItem>
+                        <Box>
                             <Text
                                 marginTop={"10px"}
                                 fontSize={25}>
                                 Level {summonerValues['summonerLevel']}
                             </Text>
-                            <Box>
-                                <Heading
-                                    fontSize={"15px"}>
-                                    {solo.tier ? solo.tier + " (Solo Queue)" : "Unranked (Solo Queue)"}
-                                </Heading>
-                            </Box>
-                        </ListItem> 
-                    </Box>
+                        </Box>
+                        
+                        <Box>
+                            <Heading
+                                fontSize={"15px"}>
+                                {solo.tier ? solo.tier + " (Solo Queue)" : "Unranked (Solo Queue)"}
+                            </Heading>
+                        </Box>
+                    </ListItem> 
                 </List>
             </Box>
         )
     }
     catch (err) {
-        //console.log("couldnt parse obj")
-
-        return (
-            <div>
-
-            </div>
-        )
+        return (null)
     }
 }
 

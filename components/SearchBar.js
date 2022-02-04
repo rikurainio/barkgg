@@ -37,32 +37,37 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
             marginTop={10}>
 
             <HStack>
-                <Text fontSize={"xl"} as="em">
-                    Search for summoner
-                </Text>
-                <Stack>
-                    <InputGroup
-                            onSubmit={handleSearchUser}
-                            backgroundColor={"white"}
-                        >
-                        <Input
-                            id={"userInput"}
-                            variant='outline'
-                            placeholder='search user'
-                            onChange={handleCaptureUserInput}
-                        >
-                        </Input>
-                        <InputRightElement
-                        >
-                            <Button
-                                type={"Submit"}
-                                onClick={handleSearchUser}
+                <Box>
+                    <Text fontSize={"xl"} as="em">
+                        Search for summoner
+                    </Text>
+                </Box>
+            
+                <Box>
+                    <Stack>
+                        <InputGroup
+                                onSubmit={handleSearchUser}
+                                backgroundColor={"white"}
                             >
-                                <Search2Icon></Search2Icon>
-                            </Button>
-                        </InputRightElement>
-                    </InputGroup>
-                </Stack>
+                            <Input
+                                id={"userInput"}
+                                variant='outline'
+                                placeholder='search user'
+                                onChange={handleCaptureUserInput}
+                            >
+                            </Input>
+                            <InputRightElement
+                            >
+                                <Button
+                                    type={"Submit"}
+                                    onClick={handleSearchUser}
+                                >
+                                    <Search2Icon></Search2Icon>
+                                </Button>
+                            </InputRightElement>
+                        </InputGroup>
+                    </Stack>
+                </Box>
             </HStack>
         </Flex>
     )

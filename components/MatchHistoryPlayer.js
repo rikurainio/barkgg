@@ -129,15 +129,8 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
         )
     }
     else{
-        reutrn (
-            <Box>
-                <Text>
-                    ?
-                </Text>
-            </Box>
-        )
+        return(null);
     }
-    
 }
 
 export default MatchHistoryPlayer
