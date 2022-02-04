@@ -1,20 +1,38 @@
-import { Flex, Box, Heading } from '@chakra-ui/react'
+import { Flex, Text, Box, HStack, Heading } from '@chakra-ui/react'
 
 const Footer = () => {
     return (
         <Flex
-            min-height={"100vh"}
+            justifyContent={"center"}
             className="footer--pin"
-            backgroundColor="teal.500"
+            backgroundColor="gray.300"
             as="footer">
 
-            <Flex
+            <Box
+                flexDirection={"row"}
+                paddingBottom={"20px"}
                 as="h1"
             >
-                <Heading>
-                    Footer
-                </Heading>
-            </Flex>
+                <Box>
+                    <HStack paddingTop={"6px"} spacing={"30px"}>
+                        <Text>
+                            About
+                        </Text>
+                        <Text>
+                            Copyright Notice
+                        </Text>
+                        <Text>
+                            Sitemap
+                        </Text>
+                        <Text>
+                            Contact
+                        </Text>
+                        <Text>
+                            Socials
+                        </Text>
+                    </HStack>
+                </Box>
+            </Box>
         </Flex>
     )
 }

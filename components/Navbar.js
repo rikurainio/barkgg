@@ -6,6 +6,8 @@ import React from 'react'
 const Navbar = () => {
     return (
         <Flex
+            paddingBottom={"5px"}
+            paddingRight={"260px"}
             justifyContent={"center"}
             width={"-moz-fit-content"}
             backgroundColor="gray.300"
@@ -17,6 +19,7 @@ const Navbar = () => {
                 as="div">
 
                 <Box
+                    marginRight={"0px"}
                     width={300}
                     justifyContent={"space-between"}>   
                     <Heading
@@ -33,22 +36,22 @@ const Navbar = () => {
                     alignContent={"center"}
                     >
                     <HStack
-                        spacing={"70px"}>
+                        spacing={"20px"}>
                             <Link href="/">
                                 <a>
-                                    <Text fontWeight={100} fontSize={"30px"} className="navbar-link-text">
+                                    <Text fontWeight={100} fontSize={"22px"} className="navbar-link-text">
                                         Profile
                                     </Text>
                                 </a>
                             </Link>
                             <Link href="/stats">
                                 <a>
-                                    <Text fontWeight={100} fontSize={"30px"} className="navbar-link-text">Summoner Stats</Text>
+                                    <Text fontWeight={100} fontSize={"22px"} className="navbar-link-text">Summoner Stats</Text>
                                 </a>
                             </Link>
                             <Link href="/livegame">
                                 <a>
-                                    <Text fontWeight={100} fontSize={"30px"} className="navbar-link-text">Live Game</Text>
+                                    <Text fontWeight={100} fontSize={"22px"} className="navbar-link-text">Live Game</Text>
                                 </a>
                             </Link>
                     </HStack>

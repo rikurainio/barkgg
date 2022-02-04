@@ -1,4 +1,4 @@
-import { Flex, Heading, Box, Text } from '@chakra-ui/react'
+import { Flex, Heading, Box, Text, background } from '@chakra-ui/react'
 import SearchBar from '../components/SearchBar'
 import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
@@ -67,13 +67,17 @@ export default function Home() {
     setSingleMatchData([])
     setLeagueData([])
     //console.log("resetted all")
-
     setRequested(true)
   }
 
   return (
-    <Flex  
-      height={6000}
+    <Flex
+      background={"gray.300"}
+      backgroundImage={"url('backgrounds/background_dm_01.jpg')"}
+      backgroundImage={"url('backgrounds/background_dm_01.jpg'), linear-gradient(transparent, black)"}
+      backgroundSize={"100%"}
+      backgroundRepeat={"no-repeat"}
+      height={"2100px"}
       as="div" 
       className="content-container"
       justifyContent={"center"}

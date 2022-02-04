@@ -1,18 +1,21 @@
-import {Box, HStack } from '@chakra-ui/react'
+import {Box, HStack, useDisclosure } from '@chakra-ui/react'
 import MatchHistoryChampAndRunes from './MatchHistoryChampAndRunes'
 import MatchHistoryItems from './MatchHistoryItems'
 import MatchHistoryPlayer from './MatchHistoryPlayer'
 import MatchHistoryStats from './MatchHistoryStats'
 import MatchHistoryTimeMode from './MatchHistoryTimeMode'
+import { Fade, ScaleFade, Slide, SlideFade } from '@chakra-ui/react'
 
 // FRAMER MOTION
 import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
+
 // COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD
 // info PROP CONTAINS DATA FOR A SINGULAR MATCH
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     console.log(" INFO KEYS:: ", Object.keys(info))
+
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
@@ -122,13 +125,13 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
         return (
             <MotionBox
-                whileHover={{scale: 1.03}}
-                className={"matchhistorycard"}
-                mt={5}
-                mb={5}
-                backgroundColor={allyTeamObj.win ? "blue.900" : "red.900"}
-                borderRadius={7}
-                >
+            whileHover={{scale: 1.03}}
+            className={"matchhistorycard"}
+            mt={5}
+            mb={5}
+            backgroundColor={allyTeamObj.win ? "blue.900" : "red.900"}
+            borderRadius={7}
+            >
                 <HStack
                     >
                     <MatchHistoryTimeMode 
