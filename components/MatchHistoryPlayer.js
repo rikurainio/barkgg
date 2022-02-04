@@ -33,8 +33,8 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
     if(participants.length == 10){
         return (
             <Flex
-                paddingLeft={"15px"}
-                paddingRight={"20px"}
+                paddingLeft={"5px"}
+                paddingRight={"10px"}
                 paddingTop={1}
                 paddingBottom={1}
                 className="matchhistoryplayer">
@@ -58,12 +58,12 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                         </Image>
                                         <Box
                                             textAlign={"left"}
-                                            width={"140px"}>
+                                            width={"130px"}>
                                             <Button
-                                                maxW={"20xp"}
                                                 variant='link'
+                                                display={"inline-block"}
+                                                maxW={"150px"}
                                                 isTruncated
-                                                display={"block"}
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
                                                 >
@@ -72,7 +72,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     noOfLines={"1"}
                                                     fontWeight={"thin"}
                                                     fontSize={[participants[index].summonerName.length > 14 ? "19px" : "19px"]}
-                                                    height={"25px"}>
+                                                    >
                                                         {participants[index].summonerName}
                                                 </Text>
                                             </Button> 
@@ -105,12 +105,12 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                         </Image>
                                         <Box
                                             textAlign={"left"}
-                                            width={"140px"}>
+                                            width={"150px"}>
                                             <Button
-                                                maxW={"20xp"}
                                                 variant='link'
+                                                display={"inline-block"}
+                                                maxW={"150px"}
                                                 isTruncated
-                                                display={"block"}
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
                                                 >
@@ -120,7 +120,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     isTruncated
                                                     fontWeight={"thin"}
                                                     fontSize={[participants[index+5].summonerName.length > 14 ? "19px" : "19px"]}
-                                                    height={"25px"}>
+                                                    >
                                                         {participants[index+5].summonerName}
                                                 </Text>
                                             </Button>  
