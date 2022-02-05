@@ -22,7 +22,7 @@ const styles = {
             color: mode('black', '#dfe1dc')(props),
         },
         p: {
-            color: mode('black', '#dfe1dc')(props),
+            color: mode('black', '#d3d0ca')(props),
         }
     }),
 };
