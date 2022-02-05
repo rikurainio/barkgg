@@ -17,7 +17,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
     console.log(" INFO KEYS:: ", Object.keys(info))
 
     const modeColorsWin2 = useColorModeValue('rgba(123, 223, 254, 0.8)', 'rgba(31, 45, 63, 0.90)')
-    const modeColorsLose2 = useColorModeValue('rgba(254, 123, 123, 0.8)', 'rgba(70, 26, 26, 0.90)')
+    const modeColorsLose2 = useColorModeValue('rgba(255, 120, 120, 0.8)', 'rgba(70, 26, 26, 0.90)')
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
