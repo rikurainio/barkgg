@@ -85,7 +85,6 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                             )}
                         </VStack>
                     </Box>
-
                     
                     <Box
                         key={"box-team2"}
