@@ -28,31 +28,34 @@ const MatchHistoryItems = ({itemsBuilt}) => {
 
     return (
         <Box
-            display={"flex"}
+            paddingRight={"30px"}
+            width={["400px", "500px", "600px"]}
             className='matchhistoryitems'>
 
                 <VStack>
-                    <HStack spacing="1">
+                    <HStack spacing="0.5">
                         {
                             (IMG_SOURCES.slice(1, (IMG_SOURCES.length / 2))).map(source => {
                                 return(
                                     <Image
+                                        className="itemimg"
                                         src={source}
                                         fallbackSrc={"itemFallBackImg1.png"}
-                                        boxSize={10}>
+                                        boxSize={8}>
                                     </Image>
                                 )
                             })
                         }
                     </HStack>
-                    <HStack spacing="1">
+                    <HStack spacing="0.5">
                     {
                             (IMG_SOURCES.slice(IMG_SOURCES.length / 2, -1)).map(source => {
                                 return(
                                     <Image
+                                        className="itemimg"
                                         src={source}
                                         fallbackSrc={"itemFallBackImg1.png"}
-                                        boxSize={10}>
+                                        boxSize={8}>
                                     </Image>
                                 )
                             })

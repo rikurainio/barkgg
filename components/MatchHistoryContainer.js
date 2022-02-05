@@ -98,12 +98,12 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     return (
     <MotionBox
         className="matchhistorycontainer"
-        marginTop={"40px"}
+        marginTop={"70px"}
         flexDirection={"column"}
-        marginBottom={"0px"}>
+        >
         
         <Heading
-            fontSize={40}>
+            fontSize={"32px"}>
             Matches
             <Text
                 paddingLeft={"3px"}

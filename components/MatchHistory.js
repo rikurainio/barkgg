@@ -129,8 +129,10 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             <MotionBox
             whileHover={{scale: 1.03}}
             className={"matchhistorycard"}
-            mt={5}
-            mb={5}
+            mt={"25px"}
+            mb={"10px"}
+            pl={"5px"}
+            pr={"10px"}
             backgroundColor={allyTeamObj.win ? modeColorsWin2 : modeColorsLose2}
             borderRadius={7}
             >

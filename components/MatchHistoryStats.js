@@ -32,17 +32,16 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
     return (
         <Box
+            width={"100%"}
             className='matchhistorystats'>
-                <Box
-                    display={"flex"}
-                    flexDirection={"row"}>
-                        <Heading fontSize="20px">{selfObj.kills}</Heading>
-                        <Text>/</Text>
-                        <Heading fontSize="20px">{selfObj.deaths}</Heading>
-                        <Text>/</Text>
-                        <Heading fontSize="20px">{selfObj.assists}</Heading>
+                <Box alignContent={"flex-start"} display={"flex"}>
+                        <Heading paddingTop={"0px"} paddingRight={"5px"} fontWeight={500} fontSize="16px">{selfObj.kills}</Heading>
+                        <Text marginRight={"4px"} fontSize={"14px"} fontWeight={500}>/</Text>
+                        <Heading paddingRight={"5px"} fontWeight={500} fontSize="16px">{selfObj.deaths}</Heading>
+                        <Text marginRight={"4px"} fontSize={"14px"} fontWeight={500}>/</Text>
+                        <Heading  fontWeight={500} fontSize="16px">{selfObj.assists}</Heading>
                 </Box>
-                <Box width={"100px"}>
+                <Box >
                     <Text fontSize="15px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
                 </Box>
 

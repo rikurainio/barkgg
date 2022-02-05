@@ -28,47 +28,52 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
     
     return (
         <Box
+            width={"100%"}
+            paddingTop={"5px"}
+            paddingLeft={"5px"}
             className='matchhistorychampandrunes'>
                 <HStack>
+                    <VStack>
 
-                    <VStack>
-                        <Image
-                            src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
-                            boxSize={"60px"}
-                            >
-                        </Image>
-                        <Image
-                            src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
-                            width={"32px"}
-                            >
-                        </Image>
-                    </VStack>
-                    
-                    <VStack>
+                        <HStack paddingRight={"6px"} spacing={"-1px"}>
+                            <Image
+                                src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
+                                boxSize={"36px"}
+                                >
+                            </Image>
+                            <Image
+                                src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
+                                boxSize={"20px"}
+                                >
+                            </Image>
+                        </HStack>
+
                         <HStack
-                            >
+                            spacing={"4px"}>
                             <Image
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
-                                boxSize={"35px"}
-                                borderRadius={1}>
+                                boxSize={"27px"}
+                                borderRadius={4}>
                                 
                             </Image>
                             <Image
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
-                                boxSize={"35px"}
-                                borderRadius={1}>
+                                boxSize={"27px"}
+                                borderRadius={4}>
                                 
                             </Image>
                         </HStack>
+
                         <Box>
                             <Image
                                 src={CDN1231_IMG_BY_CHAMP_NAME}
-                                boxSize={"80px"}
-                                borderRadius={1}>
+                                borderRadius={2}
+                                boxSize={"64px"}>
 
                             </Image>
-                            <Heading textAlign={"center"} paddingTop={"2px"} fontSize={"15px"}>{relevantInfo.championName}</Heading>
+                            <Heading textAlign={"center"} paddingTop={"2px"} fontWeight={100} fontSize={"15px"}>{relevantInfo.championName}</Heading>
                         </Box>
+
                     </VStack>
                 </HStack>
         </Box>

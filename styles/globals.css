@@ -1,16 +1,14 @@
 
 
 .matchhistorycard {
-    min-height: 100px;
-    min-width: 100%;
+    max-width: 690px;
+    min-height: 179px;
+    max-height: 100px;
 }
 
-.matchhistorycontainer {
-    min-width: 100%
-}
 
-.matchhistorystats {
-    font-size: 15px;
+.matchhistorychampandrunes {
+    font-size: 13px;
 }
 
 .matchhistorytimemode {
@@ -19,8 +17,4 @@
 
 a:hover {
     color: #7ac6ff;
-}
-
-.search-player-name-button-text {
-    color: black;
 }
