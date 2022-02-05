@@ -11,7 +11,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
     const flex = {}
     const tft = {}
 
-    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .85)', 'rgba(0, 0, 0, .25)')    
+    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .74)', 'rgba(0, 0, 0, .55)')    
 
     const RankColor = {
         Challenger: "teal.500",
