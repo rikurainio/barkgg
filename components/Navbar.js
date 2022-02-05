@@ -1,18 +1,88 @@
 import { Flex, Heading, Text, HStack, Box, Image } from "@chakra-ui/react"
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
 import Link from 'next/link'
 //import { Image } from 'next/image'
 import React from 'react'
 
 const Navbar = () => {
+    const [serverStatus, setServerStatus] = useState("online")
+    const GET_STATUS_URL = "https://euw1.api.riotgames.com/lol/status/v3/shard-data"
+    const API_QUERY = "?api_key="
+
+    useEffect(() => {
+        axiosTryGetServerStatus()
+        .then(response => {
+            console.log("response from status api", response['services']['0']['status'])
+
+            if(response['services']['0']['status'] == 'online'){
+                setServerStatus('online')
+                return response
+            }
+            else{
+                setServerStatus('offline')
+                return response
+            }
+            return response
+        })
+    }, [])
+
+    async function axiosTryGetServerStatus(){
+        try{
+            const {data:response} = await axios.get(GET_STATUS_URL + API_QUERY + process.env.API_KEY)
+            setServerStatus(response)
+            return response
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    function isServerOnline(){
+        if(serverStatus == 'online'){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
     return (
-        <Flex
+        <Box>
+            <Flex
             paddingBottom={"5px"}
             paddingRight={"260px"}
-            justifyContent={"center"}
+            justifyContent={"left"}
             width={"-moz-fit-content"}
             backgroundColor="gray.300"
-            as="nav"
-        >
+            as="nav">
+
+            <Box
+                display={"flex"}
+                className="server-status-container">
+
+                <Heading
+                paddingTop={"40px"}
+                fontWeight={100}
+                fontSize={"18px"}
+                paddingLeft={"10px"}
+                >
+                euw server status:
+                </Heading>
+
+                <Heading
+                    paddingTop={"40px"}
+                    fontWeight={100}
+                    fontSize={"18px"}
+                    paddingLeft={"5px"}
+                    paddingRight={"500px"}
+                    style={isServerOnline() ? {color: "green"} : {color: "red"}}>
+                        {isServerOnline() ? "online" : "down"}
+                </Heading>
+            </Box>
+            
+
             <Flex
                 paddingTop={"20px"}
                 marginTop={0}
@@ -23,7 +93,7 @@ const Navbar = () => {
                     width={300}
                     justifyContent={"space-between"}>   
                     <Heading
-                        fontSize={35}
+                        fontSize={40}
                         pr={10}>
                         Bark.GG
                     </Heading>
@@ -33,7 +103,6 @@ const Navbar = () => {
                 
                 <Box
                     display={"flex"}
-                    alignContent={"center"}
                     >
                     <HStack
                         spacing={"20px"}>
@@ -58,8 +127,9 @@ const Navbar = () => {
                 </Box>
                 
                 
+                </Flex>
             </Flex>
-        </Flex>
+        </Box>
     )
 }
 
