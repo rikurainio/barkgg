@@ -1,4 +1,6 @@
-import {Flex,Text, Box, Center, VStack, HStack, ListItem, List, Heading, color} from '@chakra-ui/react'
+import {Flex,Text, Box, Center, VStack, HStack,
+        useColorModeValue, useColorMode, ListItem,
+         List, Heading, color} from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import asd from '../public/ddragon/profileIconData.json'
 import { render } from "react-dom";
@@ -8,6 +10,8 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
     const solo = {}
     const flex = {}
     const tft = {}
+
+    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .65)', 'rgba(0, 0, 0, .59)')    
 
     const RankColor = {
         Challenger: "teal.500",
@@ -115,7 +119,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
             <Box
                 display={"flex"}
                 height={"170px"}
-                bgColor={"rgba(0, 0, 0, .38)"}
+                bgColor={modeColorsShadowBox}
                 borderRadius={"7px"}
                 marginTop={"70px"}
                 className='summonerinfobox'

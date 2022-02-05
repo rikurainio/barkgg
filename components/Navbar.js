@@ -1,5 +1,6 @@
-import { Flex, Heading, Text, HStack, Box, Image } from "@chakra-ui/react"
+import { Flex, Heading, Text, HStack, Box, Image, useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
+import { Switch } from '@chakra-ui/react'
 import axios from 'axios'
 
 import Link from 'next/link'
@@ -7,6 +8,10 @@ import Link from 'next/link'
 import React from 'react'
 
 const Navbar = () => {
+
+    const { colorMode, toggleColorMode } = useColorMode()
+    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(25, 29, 28)')
+
     const [serverStatus, setServerStatus] = useState("online")
     const GET_STATUS_URL = "https://euw1.api.riotgames.com/lol/status/v3/shard-data"
     const API_QUERY = "?api_key="
@@ -52,10 +57,8 @@ const Navbar = () => {
         <Box>
             <Flex
             paddingBottom={"5px"}
-            paddingRight={"260px"}
             justifyContent={"left"}
-            width={"-moz-fit-content"}
-            backgroundColor="gray.300"
+            backgroundColor={modeColorsFooterNavbar}
             as="nav">
 
             <Box
@@ -71,17 +74,17 @@ const Navbar = () => {
                 euw server status:
                 </Heading>
 
-                <Heading
-                    paddingTop={"40px"}
-                    fontWeight={100}
-                    fontSize={"18px"}
-                    paddingLeft={"5px"}
-                    paddingRight={"500px"}
-                    style={isServerOnline() ? {color: "green"} : {color: "red"}}>
-                        {isServerOnline() ? "online" : "down"}
-                </Heading>
+                <Box
+                    >
+                    <Heading
+                        paddingTop={"39px"}
+                        fontWeight={100}
+                        fontSize={"19px"}
+                        style={isServerOnline() ? {color: "green"} : {color: "red"}}>
+                            {isServerOnline() ? "online" : "down"}
+                    </Heading>
+                </Box>
             </Box>
-            
 
             <Flex
                 paddingTop={"20px"}
@@ -89,8 +92,8 @@ const Navbar = () => {
                 as="div">
 
                 <Box
-                    marginRight={"0px"}
-                    width={300}
+                    paddingBottom={"2px"}
+                    marginLeft={"310px"}
                     justifyContent={"space-between"}>   
                     <Heading
                         fontSize={40}
@@ -125,8 +128,16 @@ const Navbar = () => {
                             </Link>
                     </HStack>
                 </Box>
-                
-                
+
+                <Box
+                    className="color-mode-container"
+                    display={"flex"}
+                    marginLeft={"230px"}
+                    paddingTop={"8px"}
+                    >
+                    <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Lights</Text>
+                    <Switch size='lg' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
+                </Box>
                 </Flex>
             </Flex>
         </Box>

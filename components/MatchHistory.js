@@ -4,7 +4,7 @@ import MatchHistoryItems from './MatchHistoryItems'
 import MatchHistoryPlayer from './MatchHistoryPlayer'
 import MatchHistoryStats from './MatchHistoryStats'
 import MatchHistoryTimeMode from './MatchHistoryTimeMode'
-import { Fade, ScaleFade, Slide, SlideFade } from '@chakra-ui/react'
+import { Fade, ScaleFade, Slide, SlideFade, useColorModeValue, useColorMode } from '@chakra-ui/react'
 
 // FRAMER MOTION
 import { motion } from 'framer-motion'
@@ -16,6 +16,8 @@ const MotionBox = motion(Box)
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     console.log(" INFO KEYS:: ", Object.keys(info))
 
+    const modeColorsWin2 = useColorModeValue('rgba(153, 167, 177, 0.80)', 'rgba(31, 45, 63, 0.75)')
+    const modeColorsLose2 = useColorModeValue('rgba(177, 153, 153, 0.80)', 'rgba(70, 26, 26, 0.75)')
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
@@ -129,7 +131,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             className={"matchhistorycard"}
             mt={5}
             mb={5}
-            backgroundColor={allyTeamObj.win ? "blue.900" : "red.900"}
+            backgroundColor={allyTeamObj.win ? modeColorsWin2 : modeColorsLose2}
             borderRadius={7}
             >
                 <HStack

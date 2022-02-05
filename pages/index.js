@@ -1,4 +1,4 @@
-import { Flex, Heading, Box, Text, background } from '@chakra-ui/react'
+import { Flex, Heading, Box, Text, background, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import SearchBar from '../components/SearchBar'
 import SummonerInfoBox from '../components/SummonerInfoBox'
 import SummonerDetails from '../components/SummonerDetails'
@@ -43,6 +43,8 @@ export default function Home() {
   const [singleMatchData, setSingleMatchData] = useState([])
   const [leagueData, setLeagueData] = useState([])
 
+  const { colorMode, toggleColorMode } = useColorMode()
+
   //LOGS
   //console.log("summoner icon id: ", summonerIconId)
   //console.log(matchData)
@@ -72,8 +74,8 @@ export default function Home() {
 
   return (
     <Flex
-      background={"black"}
-      backgroundImage={"url('backgrounds/xinzhaoart.png')"}
+      background={colorMode === 'light' ? "#F8F8F8" : "black"}
+      backgroundImage={colorMode === 'light' ? 'backgrounds/yolobear.png' : 'backgrounds/xinzhaoart.png'}
       backgroundSize={"100%"}
       backgroundRepeat={"no-repeat"}
       height={"2100px"}

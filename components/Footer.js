@@ -1,11 +1,13 @@
-import { Flex, Text, Box, HStack, Heading } from '@chakra-ui/react'
+import { Flex, Text, Box, HStack, Heading, useColorMode, useColorModeValue } from '@chakra-ui/react'
 
 const Footer = () => {
+    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(25, 29, 28)')
+
     return (
         <Flex
             justifyContent={"center"}
             className="footer--pin"
-            backgroundColor="gray.300"
+            backgroundColor={modeColorsFooterNavbar}
             as="footer">
 
             <Box

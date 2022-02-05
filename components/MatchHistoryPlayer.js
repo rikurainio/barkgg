@@ -1,5 +1,5 @@
 import {Box, VStack, Text, Heading, Spacer, Flex, Image, HStack,
-            Button, ButtonGroup } from '@chakra-ui/react'
+            Button, ButtonGroup, useColorModeValue, useColorMode } from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
 
 
@@ -8,6 +8,8 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
     const CDN1231_IMG_BY_CHAMP_NAME_2
             = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/"
     
+    const modeColorsText = useColorModeValue('black', '#f5efed')
+
     function handleSearchPlayerViaMatchHistory(event){
         //console.log("clicked: " + event.target.innerText)
 
@@ -68,6 +70,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                 className="search-player-name-button"
                                                 >
                                                 <Text
+                                                    color={modeColorsText}
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     fontWeight={"thin"}
@@ -115,6 +118,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                 className="search-player-name-button"
                                                 >
                                                 <Text
+                                                    color={modeColorsText}
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     isTruncated
