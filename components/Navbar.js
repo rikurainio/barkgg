@@ -77,7 +77,8 @@ const Navbar = () => {
                 <Box
                     >
                     <Heading
-                        paddingTop={"39px"}
+                        paddingLeft={"2px"}
+                        paddingTop={"38.4px"}
                         fontWeight={100}
                         fontSize={"19px"}
                         style={isServerOnline() ? {color: "green"} : {color: "red"}}>
