@@ -1,7 +1,7 @@
 import { Flex, Text, Box, HStack, Heading, useColorMode, useColorModeValue } from '@chakra-ui/react'
 
 const Footer = () => {
-    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(25, 29, 28)')
+    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(53, 54, 51)')
 
     return (
         <Flex
