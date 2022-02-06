@@ -16,8 +16,8 @@ const MotionBox = motion(Box)
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     console.log(" INFO KEYS:: ", Object.keys(info))
 
-    const modeColorsWin2 = useColorModeValue('rgba(123, 223, 254, 0.8)', 'rgba(31, 45, 63, 0.90)')
-    const modeColorsLose2 = useColorModeValue('rgba(255, 120, 120, 0.8)', 'rgba(70, 26, 26, 0.90)')
+    const modeColorsWin2 = useColorModeValue('rgba(117, 163, 224, 0.88)', 'rgba(31, 45, 63, 0.90)')
+    const modeColorsLose2 = useColorModeValue('rgba(226, 71, 65, 0.85)', 'rgba(70, 26, 26, 0.90)')
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
@@ -129,15 +129,14 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             <MotionBox
             whileHover={{scale: 1.03}}
             className={"matchhistorycard"}
-            mt={"25px"}
-            mb={"10px"}
+            mt={"20 px"}
+            mb={"13px"}
             pl={"5px"}
             pr={"10px"}
             backgroundColor={allyTeamObj.win ? modeColorsWin2 : modeColorsLose2}
-            borderRadius={7}
+            borderRadius={6}
+            display={"flex"}
             >
-                <HStack
-                    >
                     <MatchHistoryTimeMode 
                         gameMode={info}
                         gameEnded={info.gameEndTimestamp}
@@ -152,9 +151,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                         participants={relevantInfo.participants}
                         setSummonerName={setSummonerName}
                         resetComponentStates={resetComponentStates}>
-
                     </MatchHistoryPlayer>
-                </HStack>
             </MotionBox>
         )
     }

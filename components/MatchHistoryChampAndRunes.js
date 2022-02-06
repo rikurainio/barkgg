@@ -28,6 +28,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
     
     return (
         <Box
+            height={"100%"}
             width={"100%"}
             paddingTop={"5px"}
             paddingLeft={"5px"}
@@ -35,6 +36,7 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                 <HStack>
                     <VStack>
 
+                        {/*
                         <HStack paddingRight={"6px"} spacing={"-1px"}>
                             <Image
                                 src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
@@ -47,18 +49,19 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                                 >
                             </Image>
                         </HStack>
+                        */}
 
                         <HStack
                             spacing={"4px"}>
                             <Image
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
-                                boxSize={"27px"}
+                                boxSize={"16px"}
                                 borderRadius={4}>
                                 
                             </Image>
                             <Image
                                 src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
-                                boxSize={"27px"}
+                                boxSize={"16px"}
                                 borderRadius={4}>
                                 
                             </Image>
@@ -68,10 +71,10 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
                             <Image
                                 src={CDN1231_IMG_BY_CHAMP_NAME}
                                 borderRadius={2}
-                                boxSize={"64px"}>
+                                boxSize={"60px"}>
 
                             </Image>
-                            <Heading textAlign={"center"} paddingTop={"2px"} fontWeight={100} fontSize={"15px"}>{relevantInfo.championName}</Heading>
+                            {/*<Heading textAlign={"center"} paddingTop={"2px"} fontWeight={100} fontSize={"15px"}>{relevantInfo.championName}</Heading>*/}
                         </Box>
 
                     </VStack>

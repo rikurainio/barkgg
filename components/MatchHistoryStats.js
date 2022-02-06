@@ -1,4 +1,4 @@
-import {Box, HStack, VStack, Image, Text, Heading } from '@chakra-ui/react'
+import {Box, HStack, Flex, VStack, Image, Text, Heading } from '@chakra-ui/react'
 
 const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
@@ -34,31 +34,37 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
         <Box
             width={"100%"}
             className='matchhistorystats'>
-                <Box alignContent={"flex-start"} display={"flex"}>
+                <Box paddingTop={"2px"} alignContent={"flex-start"} display={"flex"}>
                         <Heading paddingTop={"0px"} paddingRight={"5px"} fontWeight={500} fontSize="16px">{selfObj.kills}</Heading>
                         <Text marginRight={"4px"} fontSize={"14px"} fontWeight={500}>/</Text>
                         <Heading paddingRight={"5px"} fontWeight={500} fontSize="16px">{selfObj.deaths}</Heading>
                         <Text marginRight={"4px"} fontSize={"14px"} fontWeight={500}>/</Text>
                         <Heading  fontWeight={500} fontSize="16px">{selfObj.assists}</Heading>
                 </Box>
+
                 <Box >
-                    <Text fontSize="15px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
+                    <Text fontSize="14px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
                 </Box>
 
-                <HStack>
+                <HStack
+                    fontSize={"14px"}>
                     <Text>Level {selfObj.champLevel}</Text>
                 </HStack>
-                <Box>
-                    <Text>({selfObj.totalMinionsKilled} CS)</Text>
-                </Box>
+
+                <Flex
+                    noOfLines={1}>
+                    <Box>
+                        <Text>({selfObj.totalMinionsKilled} cs)</Text>
+                    </Box>
+                    
+                    <Box>
+                        <Text
+                            fontSize="14px">{
+                            calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)}<strong>%</strong> KP
+                        </Text>
+                    </Box>
+                </Flex>
                 
-                <Box>
-                    <Text
-                        noOfLines={1}
-                        fontSize="16px">{
-                        calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)}<strong>%</strong> KP
-                    </Text>
-                </Box>
         </Box>
     )
 }

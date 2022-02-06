@@ -1,12 +1,6 @@
-import { Flex, Box, Text, Heading } from '@chakra-ui/react'
+import { Flex, Box, Text, Heading, HStack } from '@chakra-ui/react'
 
 const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
-    //console.log("what is time: ", gameEnded)
-
-    /*console.log("gameMode: ", gameMode.gameType, "gameType:", 
-                    gameMode.gameMode, "gameName: ", gameMode.gameName, "mapId",
-                        gameMode.mapId, "queueID: ",gameMode.queueId) */
-
     function getRankedText(gameType, mapId, queueId){
 
         // IS A RANKED SOLO OR FLEX Q
@@ -49,23 +43,16 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
     // AAMUJA SILLE KETÄ NÄKEE TÄN :-----D
     return (
         <Box
+            paddingTop={"5px"}
+            height={"100%"}
+            width={"100%"}
             className='matchhistorytimemode'
             >
             <Heading
-                fontSize={"15px"}>
+                fontSize={"12px"}>
                 {getRankedText(gameMode.gameType, gameMode.mapId, gameMode.queueId)}
             </Heading>
 
-            {/*
-            <Text fontSize={"20px"}> {(new Date(gameEnded)
-                .toLocaleString())
-                .toString()
-                .slice(0, (new Date(gameEnded).toLocaleString())
-                .toString().length - 3)}
-
-            </Text>
-            */}
-            
             {/* DATE REPRESENTATION */}
             <Text>
                 {parseDateString((new Date(gameEnded)
@@ -78,14 +65,13 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
                     .toString(), "LAST")}
             </Text>
 
-              
-       
-
-            <Text>
-            {win ? <Text>Win</Text> : <Text>Loss</Text>}
-            </Text>
-
-            <Text fontSize={"sm"}> {Math.floor(gameDuration / 60)} Minutes </Text>
+            <HStack noOfLines={1}>
+                <Text>
+                {win ? <Text>Win</Text> : <Text>Loss</Text>}
+                </Text>
+                <Text fontSize={"sm"}> {Math.floor(gameDuration / 60)} Minutes </Text>
+            </HStack>
+     
         </Box>
     )
 }

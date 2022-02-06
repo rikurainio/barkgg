@@ -2,19 +2,11 @@
 
 .matchhistorycard {
     max-width: 690px;
-    min-height: 179px;
-    max-height: 100px;
+    min-height: 93px;
+    max-height: 80px;
 }
 
-
-.matchhistorychampandrunes {
-    font-size: 13px;
-}
 
 .matchhistorytimemode {
     padding-left: 1%;
-}
-
-a:hover {
-    color: #7ac6ff;
 }

@@ -11,19 +11,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
     const flex = {}
     const tft = {}
 
-    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .74)', 'rgba(0, 0, 0, .55)')    
-
-    const RankColor = {
-        Challenger: "teal.500",
-        Grandmaster: "red.500",
-        Master: "purple.500",
-        Diamond: "blue.500",
-        Platinum: "turqoise.500",
-        Gold: "gold.500",
-        Silver: "silver.500",
-        Bronze: "bronze.500",
-        Iron: "gray.500",
-    }
+    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .6)', 'rgba(0, 0, 0, .5)')    
 
     try {
         const summonerValues = JSON.parse(summonerData)
@@ -121,7 +109,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 height={"170px"}
                 bgColor={modeColorsShadowBox}
                 borderRadius={"7px"}
-                marginTop={"70px"}
+                marginTop={"20px"}
                 className='summonerinfobox'
             >
 
@@ -129,7 +117,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                     width={"80px"}
                     className='summoner-winrate-container'>
                         <Heading
-                            fontSize={"18px"}
+                            fontSize={"16px"}
                             paddingLeft={"10px"}
                             paddingTop={"140px"}>
                             {solo.tier ? (Math.round((solo.wins/(solo.losses+solo.wins))*100)) + "% wr" : ""}
@@ -138,6 +126,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
 
 
                 <Box
+                    marginLeft={"-100px"}
                     className={"summoner-image-container"}
                     paddingTop={"30px"}
                     >

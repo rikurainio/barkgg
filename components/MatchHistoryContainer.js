@@ -98,19 +98,25 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     return (
     <MotionBox
         className="matchhistorycontainer"
-        marginTop={"70px"}
         flexDirection={"column"}
         >
         
-        <Heading
-            fontSize={"32px"}>
-            Matches
-            <Text
-                paddingLeft={"3px"}
+        <Box
+            marginBottom={"4px"}
+            className='pastmatchesheading'>
+                <Heading
+                fontWeight={100}
+                fontSize={"16px"}>
+                Matches
+                <Text
+                fontWeight={100}
                 fontSize="sm">
-                past (8 Games)
-            </Text>
+                    past (8 Games)
+                </Text>
         </Heading>
+        </Box>
+
+        
 
         <Box>
             <List>

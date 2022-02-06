@@ -35,7 +35,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
     if(participants.length == 10){
         return (
             <Flex
-                paddingLeft={"5px"}
+                paddingLeft={"10px"}
                 paddingTop={1}
                 paddingBottom={3}
                 className="matchhistoryplayer">
@@ -43,8 +43,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                         key={"box-team1"}
                         className="team1">
                         <VStack
-                            spacing={"1px"}>
-                            <Heading  fontSize={"14px"}>Team 1</Heading>
+                            spacing={"-8px"}>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -55,7 +54,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     + (getFixedSummonerName(participants[index].championName))
                                                     + ".png"
                                                 }
-                                            width={"28px"}>
+                                            width={"15px"}>
                                         </Image>
                                         <Box
                                             textAlign={"left"}
@@ -87,11 +86,10 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                     
                     <Box
                         key={"box-team2"}
-                        paddingLeft={"40px"}
+                        paddingLeft={"20px"}
                         className="team2">
                             <VStack
-                                spacing={"1px"}>
-                            <Heading fontSize={"14px"}>Team 2</Heading>
+                                spacing={"-8px"}>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -102,7 +100,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     + (getFixedSummonerName(participants[index+5].championName))
                                                     + ".png"
                                                 }
-                                            boxSize={"28px"}>
+                                            width={"15px"}>
                                         </Image>
                                         <Box
                                             textAlign={"left"}
