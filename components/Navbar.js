@@ -112,19 +112,21 @@ const Navbar = () => {
                         spacing={"20px"}>
                             <Link href="/">
                                 <a>
-                                    <Text fontWeight={100} fontSize={"22px"} className="navbar-link-text">
+                                    <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">
                                         Profile
                                     </Text>
                                 </a>
                             </Link>
+
                             <Link href="/stats">
                                 <a>
-                                    <Text fontWeight={100} fontSize={"22px"} className="navbar-link-text">Summoner Stats</Text>
+                                    <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">Summoner Stats</Text>
                                 </a>
                             </Link>
+
                             <Link href="/livegame">
                                 <a>
-                                    <Text fontWeight={100} fontSize={"22px"} className="navbar-link-text">Live Game</Text>
+                                    <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">Live Game</Text>
                                 </a>
                             </Link>
                     </HStack>

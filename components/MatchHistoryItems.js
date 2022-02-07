@@ -30,7 +30,7 @@ const MatchHistoryItems = ({itemsBuilt}) => {
         <Box
             mr={"10px"}
             paddingRight={"8px"}
-            paddingTop={"10px"}
+            paddingTop={"17px"}
             width={["400px", "500px", "600px"]}
             className='matchhistoryitems'>
 
