@@ -119,7 +119,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
 
         
 
-        <Box>
+        <Box width={"100%"}>
             <List>
                 {Array
                     .from(Array(singleMatchData.length))

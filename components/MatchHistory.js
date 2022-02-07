@@ -127,12 +127,13 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
         return (
             <MotionBox
-            whileHover={{scale: 1.03}}
+            whileHover={{scale: 1.08}}
             className={"matchhistorycard"}
             mt={"10px"}
             mb={"13px"}
             pl={"5px"}
             pr={"10px"}
+            border={"solid 2px black"}
             backgroundColor={allyTeamObj.win ? modeColorsWin2 : modeColorsLose2}
             borderRadius={6}
             display={"flex"}
