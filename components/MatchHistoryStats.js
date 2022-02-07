@@ -21,50 +21,48 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
                 return "100"
             }
             else{
-                return result
+                return result + "% KP"
             }
         }
-
         if(totalKills || participation == 0){
             return "0"
         }
     }
 
+    function calculateStatsString (kills, deaths, assists) {
+        return kills + "/" + deaths + "/" + assists
+    }
+
+    function calculateLevelText (level){
+        return "Level " + level
+    }
+
+    function calculateCsPerMin (minionskilled, neutralminionskilled){
+        return "(" + minionskilled + " cs) "
+    }
+
     return (
         <Box
             width={"100%"}
+            ml={"-125px"}
+            mt={1}
             className='matchhistorystats'>
-                <Box paddingTop={"2px"} alignContent={"flex-start"} display={"flex"}>
-                        <Heading paddingTop={"0px"} paddingRight={"5px"} fontWeight={500} fontSize="16px">{selfObj.kills}</Heading>
-                        <Text marginRight={"4px"} fontSize={"14px"} fontWeight={500}>/</Text>
-                        <Heading paddingRight={"5px"} fontWeight={500} fontSize="16px">{selfObj.deaths}</Heading>
-                        <Text marginRight={"4px"} fontSize={"14px"} fontWeight={500}>/</Text>
-                        <Heading  fontWeight={500} fontSize="16px">{selfObj.assists}</Heading>
-                </Box>
 
-                <Box >
-                    <Text fontSize="14px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
-                </Box>
+            <Box paddingTop={"2px"}>
+                <Text fontWeight={"bold"}>{calculateStatsString(selfObj.kills, selfObj.deaths, selfObj.assists)} </Text>
+                <Text>{calculateLevelText(selfObj.champLevel)}</Text>
+            </Box>
 
-                <HStack
-                    fontSize={"14px"}>
-                    <Text>Level {selfObj.champLevel}</Text>
-                </HStack>
+            <Box>
+                <Text fontWeight={100} fontSize="15px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
+            </Box>
 
-                <Flex
-                    noOfLines={1}>
-                    <Box>
-                        <Text>({selfObj.totalMinionsKilled} cs)</Text>
-                    </Box>
-                    
-                    <Box>
-                        <Text
-                            fontSize="14px">{
-                            calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)}<strong>%</strong> KP
-                        </Text>
-                    </Box>
-                </Flex>
-                
+            <Box width={"120px"}>
+                <Text letterSpacing={"tighter"} lineHeight={"21px"}>{calculateCsPerMin(selfObj.totalMinionsKilled, selfObj.neutralMinionsKilled)}
+                                                {calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)}
+                                                
+                </Text>
+            </Box>
         </Box>
     )
 }

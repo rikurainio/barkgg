@@ -35,15 +35,13 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
     if(participants.length == 10){
         return (
             <Flex
-                paddingLeft={"10px"}
                 paddingTop={1}
-                paddingBottom={3}
                 className="matchhistoryplayer">
                     <Box
                         key={"box-team1"}
                         className="team1">
                         <VStack
-                            spacing={"-8px"}>
+                            spacing={"-7px"}>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -62,7 +60,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                             <Button
                                                 variant='link'
                                                 display={"inline-block"}
-                                                maxW={"120px"}
+                                                maxW={"110px"}
                                                 isTruncated
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
@@ -72,7 +70,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     fontWeight={"thin"}
-                                                    fontSize={[participants[index].summonerName.length > 14 ? "16px" : "17px"]}
+                                                    fontSize={[participants[index].summonerName.length > 14 ? "15px" : "17px"]}
                                                     >
                                                         {participants[index].summonerName}
                                                 </Text>
@@ -89,7 +87,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                         paddingLeft={"20px"}
                         className="team2">
                             <VStack
-                                spacing={"-8px"}>
+                                spacing={"-7px"}>
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
@@ -104,11 +102,11 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                         </Image>
                                         <Box
                                             textAlign={"left"}
-                                            width={"135px"}>
+                                            width={"120px"}>
                                             <Button
                                                 variant='link'
                                                 display={"inline-block"}
-                                                maxW={"115px"}
+                                                maxW={"110px"}
                                                 isTruncated
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
@@ -119,7 +117,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     noOfLines={"1"}
                                                     isTruncated
                                                     fontWeight={"thin"}
-                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "16px" : "17px"]}
+                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "15px" : "17px"]}
                                                     >
                                                         {participants[index+5].summonerName}
                                                 </Text>

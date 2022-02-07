@@ -16,15 +16,15 @@ const MotionBox = motion(Box)
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     console.log(" INFO KEYS:: ", Object.keys(info))
 
-    const modeColorsWin2 = useColorModeValue('rgba(117, 163, 224, 0.88)', 'rgba(31, 45, 63, 0.90)')
-    const modeColorsLose2 = useColorModeValue('rgba(226, 71, 65, 0.85)', 'rgba(70, 26, 26, 0.90)')
+    const modeColorsWin2 = useColorModeValue('rgba(127, 163, 224, 0.88)', 'rgba(31, 45, 63, 0.90)')
+    const modeColorsLose2 = useColorModeValue('rgba(218, 102, 103, 0.85)', 'rgba(70, 26, 26, 0.90)')
+
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
         gameId: info.gameId,
         gameDuration: info.gameDuration,
         gameMode: info.gameMode,
-
         participants: info.participants
     }
     
@@ -129,7 +129,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             <MotionBox
             whileHover={{scale: 1.03}}
             className={"matchhistorycard"}
-            mt={"20 px"}
+            mt={"10px"}
             mb={"13px"}
             pl={"5px"}
             pr={"10px"}

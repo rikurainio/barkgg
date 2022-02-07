@@ -78,7 +78,7 @@ export default function Home() {
       backgroundImage={colorMode === 'light' ? 'backgrounds/anniefaded.png' : 'backgrounds/xinzhaoart.png'}
       backgroundSize={"100%"}
       backgroundRepeat={"no-repeat"}
-      height={"2100px"}
+      height={"1600px"}
       as="div" 
       className="content-container"
       justifyContent={"center"}

@@ -1,6 +1,14 @@
 import {Flex,Text, Box, Center, VStack, HStack,
         useColorModeValue, useColorMode, ListItem,
-         List, Heading, color} from '@chakra-ui/react'
+         List, Heading, Badge, Divider, color,
+        
+         Tag,
+         TagLabel,
+         TagLeftIcon,
+         TagRightIcon,
+         TagCloseButton,
+
+        } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import asd from '../public/ddragon/profileIconData.json'
 import { render } from "react-dom";
@@ -11,7 +19,17 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
     const flex = {}
     const tft = {}
 
+    function getYesNo() {
+        if (Math.floor(Math.random() * 2) == 0){
+            return "Yes :)"
+        }
+        else{
+            return "No."
+        }
+    }
+
     const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .6)', 'rgba(0, 0, 0, .5)')    
+    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(53, 54, 51)')
 
     try {
         const summonerValues = JSON.parse(summonerData)
@@ -105,14 +123,14 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
 
         return (
             <Box
+                position={"static"}
                 display={"flex"}
                 height={"170px"}
                 bgColor={modeColorsShadowBox}
                 borderRadius={"7px"}
-                marginTop={"20px"}
+                marginTop={"12px"}
                 className='summonerinfobox'
             >
-
                 <Box
                     width={"80px"}
                     className='summoner-winrate-container'>
@@ -122,8 +140,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                             paddingTop={"140px"}>
                             {solo.tier ? (Math.round((solo.wins/(solo.losses+solo.wins))*100)) + "% wr" : ""}
                         </Heading>
-                    </Box>
-
+                </Box>
 
                 <Box
                     marginLeft={"-100px"}
@@ -156,15 +173,16 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                             <Box>
                                 <Heading
                                     paddingTop={"20px"}
-                                    fontSize={"45px"}>
+                                    fontSize={"36px"}>
                                     {summonerValues['name']}
                                 </Heading>
+
                             </Box>
                         </ListItem>
                         <ListItem paddingLeft={"2px"}>
                             <Box>
                                 <Text
-                                    fontSize={22}>
+                                    fontSize={16}>
                                     Level {summonerValues['summonerLevel']}
                                 </Text>
                             </Box>
@@ -175,11 +193,16 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                                     {solo.tier ? solo.tier +  " "
                                         + solo.rank + " " : ""}
                                 </Heading>
-                                <Heading
+
+                                <HStack spacing={4}>
+                                </HStack>
+
+                                <Badge
+                                    colorScheme={modeColorsFooterNavbar}
                                     fontWeight={500}
                                     fontSize={"18px"}>
                                     {solo.tier ? solo.leaguePoints + " LP" + " (Solo Queue) " : "Unranked (Solo Queue)"}
-                                </Heading>
+                                </Badge>
                             </Box>
                         </ListItem> 
                     </List>

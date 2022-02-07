@@ -1,12 +1,5 @@
-
-
 .matchhistorycard {
     max-width: 690px;
-    min-height: 93px;
-    max-height: 80px;
-}
-
-
-.matchhistorytimemode {
-    padding-left: 1%;
+    min-height: 105px;
+    max-height: 105px;
 }

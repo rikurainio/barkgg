@@ -14,6 +14,8 @@ const SummonerDetails = ({setSummonerData, summonerData, summonerName, requested
     const BASE_URL_LEAGUE = "https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/"
     //console.log("APIKEY: ", API_KEY)
 
+    
+
     async function axiosTryGet() {
         try {
             setRequested(false)

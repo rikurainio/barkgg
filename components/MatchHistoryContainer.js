@@ -97,8 +97,9 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
 
     return (
     <MotionBox
+        width={"100%"}
+        h={"100%"}
         className="matchhistorycontainer"
-        flexDirection={"column"}
         >
         
         <Box

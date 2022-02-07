@@ -28,8 +28,9 @@ const MatchHistoryItems = ({itemsBuilt}) => {
 
     return (
         <Box
+            mr={"10px"}
+            paddingRight={"8px"}
             paddingTop={"10px"}
-            paddingRight={"30px"}
             width={["400px", "500px", "600px"]}
             className='matchhistoryitems'>
 

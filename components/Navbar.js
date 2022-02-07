@@ -97,7 +97,7 @@ const Navbar = () => {
                     marginLeft={"310px"}
                     justifyContent={"space-between"}>   
                     <Heading
-                        fontSize={40}
+                        fontSize={30}
                         pr={10}>
                         Bark.GG
                     </Heading>

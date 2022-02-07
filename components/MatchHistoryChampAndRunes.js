@@ -1,4 +1,4 @@
-import {Box, VStack, HStack, Image, Heading } from '@chakra-ui/react'
+import {Box, VStack, HStack, Image, Heading, Flex } from '@chakra-ui/react'
 
 const MatchHistoryChampAndRunes = ({selfObj}) => {
 
@@ -27,58 +27,49 @@ const MatchHistoryChampAndRunes = ({selfObj}) => {
     }
     
     return (
-        <Box
-            height={"100%"}
-            width={"100%"}
-            paddingTop={"5px"}
-            paddingLeft={"5px"}
-            className='matchhistorychampandrunes'>
-                <HStack>
-                    <VStack>
+        <Box ml={"-36px"} pt={"10px"} width={"1500px"} display={"flex"}>
+            <Box mt={2}>
+                <Image
+                    src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
+                    width={10}
+                    >
+                </Image>
+                <Image
+                    ml={"8px"}
+                    src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
+                    width={6}
+                    >
+                </Image>
+            </Box>
 
-                        {/*
-                        <HStack paddingRight={"6px"} spacing={"-1px"}>
-                            <Image
-                                src={RUNE_BY_ID + relevantInfo.styles[0].selections[0].perk + ".png"}
-                                boxSize={"36px"}
-                                >
-                            </Image>
-                            <Image
-                                src={RUNE_BY_ID + relevantInfo.styles[1].style + ".png"}
-                                boxSize={"20px"}
-                                >
-                            </Image>
-                        </HStack>
-                        */}
+            <Box height={"100%"} w={"60px"} display={"flex"} flexDirection={"column"}>
+                    <Box display={"flex"} pb={"5px"}>
+                        <Image
+                            ml={"4px"}
+                            objectFit={"contain"}
+                            src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
+                            borderRadius={0}
+                            width={6}
+                            >
+                        </Image>
+                        <Image
+                            ml={"5px"}
+                            objectFit={"contain"}
+                            src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
+                            borderRadius={0}
+                            width={6}
+                            >
+                        </Image>
+                    </Box>
 
-                        <HStack
-                            spacing={"4px"}>
-                            <Image
-                                src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
-                                boxSize={"16px"}
-                                borderRadius={4}>
-                                
-                            </Image>
-                            <Image
-                                src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
-                                boxSize={"16px"}
-                                borderRadius={4}>
-                                
-                            </Image>
-                        </HStack>
-
-                        <Box>
-                            <Image
-                                src={CDN1231_IMG_BY_CHAMP_NAME}
-                                borderRadius={2}
-                                boxSize={"60px"}>
-
-                            </Image>
-                            {/*<Heading textAlign={"center"} paddingTop={"2px"} fontWeight={100} fontSize={"15px"}>{relevantInfo.championName}</Heading>*/}
-                        </Box>
-
-                    </VStack>
-                </HStack>
+                    <Image
+                        objectFit={"contain"}
+                        src={CDN1231_IMG_BY_CHAMP_NAME}
+                        borderRadius={1}
+                        width={"60px"}
+                        >
+                    </Image>
+            </Box>
         </Box>
     )
 }

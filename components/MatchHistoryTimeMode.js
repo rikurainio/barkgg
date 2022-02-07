@@ -48,30 +48,30 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
             width={"100%"}
             className='matchhistorytimemode'
             >
+
             <Heading
-                fontSize={"12px"}>
+                h={"12px"}
+                fontSize={"13px"}>
                 {getRankedText(gameMode.gameType, gameMode.mapId, gameMode.queueId)}
             </Heading>
 
             {/* DATE REPRESENTATION */}
-            <Text>
+            <Text textAlign={"left"} fontSize={"15px"} pt={"2px"} h={"20px"}>
                 {parseDateString((new Date(gameEnded)
                     .toLocaleString())
                     .toString(), "FIRST")}
             </Text>
-            <Text>
+            <Text textAlign={"left"} marginLeft={"-0.4px"} pt={"1px"} h={"20px"}>
                 {parseDateString((new Date(gameEnded)
                     .toLocaleString())
                     .toString(), "LAST")}
             </Text>
 
-            <HStack noOfLines={1}>
-                <Text>
-                {win ? <Text>Win</Text> : <Text>Loss</Text>}
-                </Text>
-                <Text fontSize={"sm"}> {Math.floor(gameDuration / 60)} Minutes </Text>
-            </HStack>
-     
+            <Box textAlign={"left"} h={"10px"} w={"100px"} letterSpacing={"tight"}>
+                {win ? <Text h={"20px"} w={"100%"}> Win </Text> : <Text h={"20px"} w={"100%"}>Loss</Text>}
+                <Text>{Math.floor(gameDuration / 60)} minutes</Text>
+            </Box>
+                    
         </Box>
     )
 }
