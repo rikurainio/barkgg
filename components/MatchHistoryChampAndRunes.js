@@ -3,9 +3,9 @@ import {Box, VStack, HStack, Image, Heading, Flex } from '@chakra-ui/react'
 const MatchHistoryChampAndRunes = ({selfObj}) => {
 
     const SUMMONER_SPELL_BY_ID
-        = "./summonerspells/"
+        = "/summonerspells/"
     const RUNE_BY_ID
-        = "./runes/"
+        = "/runes/"
     const relevantInfo = {
         championId: selfObj.championId,
         championName: selfObj.championName,

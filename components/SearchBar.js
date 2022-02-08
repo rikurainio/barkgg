@@ -6,7 +6,7 @@ import React from 'react'
 import { useState } from "react";
 
 
-const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName, setRequested, setRequested2 }) => {
+const SearchBar = () => {
     const userInput = ""
 
     const modeColorsSearchBar = useColorModeValue('rgb(245, 245, 250)', 'rgb(25, 29, 28)')
@@ -18,33 +18,29 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
 
     function handleSearchUser (event) {
         event.preventDefault
-        setPuuid("")
-        setMatchData({})
-        setSingleMatchData([])
-        setSummonerName(userInput)
-        setRequested(true)
-        setRequested2(true)
-
-        clearFields()
+        //setPuuid("")
+        //setMatchData({})
+        //setSingleMatchData([])
+        //setSummonerName(userInput)
+        //setRequested(true)
+        //setRequested2(true)
+        //clearFields()
+        window.location = "/summoner/" + userInput
     }
 
+    /*
     function clearFields() {
         document.getElementById("userInput").value=""
     }
+    */
 
     return (
         <Flex
             className="searchbar"
             as="div"
-            marginTop={10}>
+            marginTop={0}>
 
             <HStack>
-                <Box marginRight={"20px"}>
-                    <Text fontSize={"25px"} as="em">
-                        Search for summoner
-                    </Text>
-                </Box>
-            
                 <Box>
                     <Stack>
                         <InputGroup
@@ -53,6 +49,7 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                                 backgroundColor={modeColorsSearchBar}
                             >
                             <Input
+                                height={"40px"}
                                 colorScheme={modeColorsSearchBar}
                                 id={"userInput"}
                                 variant='outline'
@@ -61,8 +58,10 @@ const SearchBar = ({ setPuuid, setMatchData, setSingleMatchData, setSummonerName
                             >
                             </Input>
                             <InputRightElement
-                                paddingRight={"4px"}>
+                                paddingBottom={"7px"}
+                                paddingRight={"3px"}>
                                 <Button
+                                    height={"33px"}
                                     type={"Submit"}
                                     onClick={handleSearchUser}
                                 >

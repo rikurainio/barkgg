@@ -1,20 +1,12 @@
-import {Flex,Text, Box, Center, VStack, HStack,
-        useColorModeValue, useColorMode, ListItem,
-         List, Heading, Badge, Divider, color,
-        
-         Tag,
-         TagLabel,
-         TagLeftIcon,
-         TagRightIcon,
-         TagCloseButton,
-
+import {Text, Box, HStack,
+        useColorModeValue, ListItem,
+         List, Heading, Badge,
         } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-import asd from '../public/ddragon/profileIconData.json'
-import { render } from "react-dom";
-import { LayeredImage } from "react-layered-image";
 
 const SummonerInfoBox = ({summonerData, leagueData}) => {
+    console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
+
     const solo = {}
     const flex = {}
     const tft = {}
@@ -34,15 +26,14 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
     try {
         const summonerValues = JSON.parse(summonerData)
         const summonerIconId = summonerValues['profileIconId']
-        const pathToSummonerIcon = "/ddragon/dragontail-9.3.1/9.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         const pathToSummonerIcon2 = "https://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summonerIconId.toString() + ".png"
         //const pathToSummonerIconStatic = "./ddragon/dragontail-12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         //const testPath = "./ddragon/dragontail-12.3.1/12.3.1/img/profileicon" + summonerIconId.toString() + ".png"
         const CDN1231 = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
         //console.log("pathi: ",pathToSummonerIcon)
         const RANKED_WINGS_SRC = ""
-        const NO_SOLO_RANK_WINGS_WHITE = "./wings/wings_white.png"
-        const NO_SOLO_RANK_WINGS_BLACK = "./wings/wings_black.png"
+        const NO_SOLO_RANK_WINGS_WHITE = "/wings/wings_white.png"
+        const NO_SOLO_RANK_WINGS_BLACK = "/wings/wings_black.png"
 
         if(leagueData.length){
             const rankedQueuesFound = leagueData.length
@@ -116,7 +107,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 }
             }
             if(solo.tier){
-                RANKED_WINGS_SRC = "./wings/wings_" + (solo.tier).toLowerCase() + ".png"
+                RANKED_WINGS_SRC = "/wings/wings_" + (solo.tier).toLowerCase() + ".png"
             }
         }
 
@@ -127,8 +118,8 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 display={"flex"}
                 height={"170px"}
                 bgColor={modeColorsShadowBox}
-                borderRadius={"7px"}
-                marginTop={"12px"}
+                borderRadius={"6px"}
+                marginTop={"20px"}
                 className='summonerinfobox'
             >
                 <Box

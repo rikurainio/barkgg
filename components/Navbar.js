@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Switch } from '@chakra-ui/react'
 import axios from 'axios'
 
+import SearchBar from "./SearchBar"
 import Link from 'next/link'
 //import { Image } from 'next/image'
 import React from 'react'
@@ -19,8 +20,6 @@ const Navbar = () => {
     useEffect(() => {
         axiosTryGetServerStatus()
         .then(response => {
-            console.log("response from status api", response['services']['0']['status'])
-
             if(response['services']['0']['status'] == 'online'){
                 setServerStatus('online')
                 return response
@@ -56,12 +55,12 @@ const Navbar = () => {
     return (
         <Box zIndex={100}>
             <Flex
-            paddingBottom={"5px"}
             justifyContent={"left"}
             backgroundColor={modeColorsFooterNavbar}
-            as="nav">
+            >
 
             <Box
+                paddingBottom={"5px"}
                 display={"flex"}
                 className="server-status-container">
 
@@ -73,6 +72,8 @@ const Navbar = () => {
                 >
                 euw server status:
                 </Heading>
+
+               
 
                 <Box
                     >
@@ -87,17 +88,23 @@ const Navbar = () => {
                 </Box>
             </Box>
 
+            <Box marginLeft={"100px"} paddingTop={"20px"}>
+                    <SearchBar>
+                    </SearchBar>
+                </Box>
+
+
             <Flex
+                marginBottom={"5px"}
                 paddingTop={"20px"}
                 marginTop={0}
                 >
 
                 <Box
-                    paddingBottom={"2px"}
-                    marginLeft={"310px"}
+                    marginLeft={"42px"}
                     justifyContent={"space-between"}>   
                     <Heading
-                        fontSize={30}
+                        fontSize={34}
                         pr={10}>
                         Bark.GG
                     </Heading>
@@ -127,12 +134,13 @@ const Navbar = () => {
                 <Box
                     className="color-mode-container"
                     display={"flex"}
-                    marginLeft={"230px"}
+                    marginLeft={"120px"}
                     paddingTop={"8px"}
                     >
-                    <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Colormode</Text>
+                    <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Theme</Text>
                     <Switch size='lg' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
                 </Box>
+                
                 </Flex>
             </Flex>
         </Box>

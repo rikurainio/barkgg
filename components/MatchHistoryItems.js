@@ -42,7 +42,7 @@ const MatchHistoryItems = ({itemsBuilt}) => {
                                     <Image
                                         className="itemimg"
                                         src={source}
-                                        fallbackSrc={"itemFallBackImg1.png"}
+                                        fallbackSrc={"/itemFallBackImg1.png"}
                                         boxSize={8}>
                                     </Image>
                                 )
@@ -56,7 +56,7 @@ const MatchHistoryItems = ({itemsBuilt}) => {
                                     <Image
                                         className="itemimg"
                                         src={source}
-                                        fallbackSrc={"itemFallBackImg1.png"}
+                                        fallbackSrc={"/itemFallBackImg1.png"}
                                         boxSize={8}>
                                     </Image>
                                 )

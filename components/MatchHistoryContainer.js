@@ -24,12 +24,6 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         }
     }, [])
 
-
-    console.log("MATCH HISTORY CONTAINER GETS THESE PROPS: "
-                 +"\n" + "self name: " + selfName
-                 +"\n" + "puuId: " + puuid
-                 +"\n" + "requested " + requested2)
-
     // TEST VAR
     const info = {}
     const metadata = {}
@@ -91,9 +85,10 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         })
     }
 
-    console.log("MATCHES DATA LIST: "
+
+    //   console.log("MATCHES DATA LIST: "
      /*+"\n" + JSON.stringify(singleMatchData, null, 2) */
-    +"\n" + "FOUND DATA CHUNK FOR " + singleMatchData.length + " MATCHES.")
+    //   +"\n" + "FOUND DATA CHUNK FOR " + singleMatchData.length + " MATCHES.")
 
     return (
     <MotionBox
