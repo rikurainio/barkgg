@@ -70,7 +70,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     className={"search-player-name-button-text"}
                                                     noOfLines={"1"}
                                                     fontWeight={"thin"}
-                                                    fontSize={[participants[index].summonerName.length > 14 ? "15px" : "17px"]}
+                                                    fontSize={[participants[index].summonerName.length > 14 ? "17px" : "17px"]}
                                                     >
                                                         {participants[index].summonerName}
                                                 </Text>
@@ -117,7 +117,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                                     noOfLines={"1"}
                                                     isTruncated
                                                     fontWeight={"thin"}
-                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "15px" : "17px"]}
+                                                    fontSize={[participants[index+5].summonerName.length > 14 ? "17px" : "17px"]}
                                                     >
                                                         {participants[index+5].summonerName}
                                                 </Text>
