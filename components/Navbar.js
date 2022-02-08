@@ -90,7 +90,7 @@ const Navbar = () => {
             <Flex
                 paddingTop={"20px"}
                 marginTop={0}
-                as="div">
+                >
 
                 <Box
                     paddingBottom={"2px"}
@@ -111,23 +111,17 @@ const Navbar = () => {
                     <HStack
                         spacing={"20px"}>
                             <Link href="/">
-                                <a>
                                     <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">
                                         Profile
                                     </Text>
-                                </a>
                             </Link>
 
                             <Link href="/stats">
-                                <a>
                                     <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">Summoner Stats</Text>
-                                </a>
                             </Link>
 
                             <Link href="/livegame">
-                                <a>
                                     <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">Live Game</Text>
-                                </a>
                             </Link>
                     </HStack>
                 </Box>
@@ -138,7 +132,7 @@ const Navbar = () => {
                     marginLeft={"230px"}
                     paddingTop={"8px"}
                     >
-                    <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Lights</Text>
+                    <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Colormode</Text>
                     <Switch size='lg' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
                 </Box>
                 </Flex>

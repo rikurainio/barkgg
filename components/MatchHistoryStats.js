@@ -1,6 +1,10 @@
-import {Box, HStack, Flex, VStack, Image, Text, Heading } from '@chakra-ui/react'
+import {Box, HStack, Flex, VStack, Image, Text, Heading, useColorModeValue } from '@chakra-ui/react'
 
 const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
+
+    const modeColorsKDAText = useColorModeValue('black', 'rgba(228, 188, 255, 1)')
+    const modeColorsCSText = useColorModeValue('black', 'rgba(196, 188, 255, 1)')
+    const modeColorsKPText = useColorModeValue('black', 'rgba(255, 221, 238, 1)')
 
     function calculateKDA (kills, deaths, assists) {
         if(deaths == 0){
@@ -38,7 +42,8 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
     }
 
     function calculateCsPerMin (minionskilled, neutralminionskilled){
-        return "(" + minionskilled + " cs) "
+        const totalcs = minionskilled + neutralminionskilled
+        return "(" + totalcs + " cs) "
     }
 
     return (
@@ -54,14 +59,20 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
             </Box>
 
             <Box>
-                <Text fontWeight={100} fontSize="15px">{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
+                <Text fontWeight={100} fontSize="15px" color={modeColorsKDAText}>{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
             </Box>
 
             <Box width={"120px"}>
-                <Text letterSpacing={"tighter"} lineHeight={"21px"}>{calculateCsPerMin(selfObj.totalMinionsKilled, selfObj.neutralMinionsKilled)}
-                                                {calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)}
+                <Box>
+                    <HStack>
+                    <Text letterSpacing={"tighter"} color={modeColorsCSText}>{calculateCsPerMin(selfObj.totalMinionsKilled, selfObj.neutralMinionsKilled)}
+                    </Text>   
+                    <Text fontSize={"15px"} letterSpacing={"tighter"} color={modeColorsKPText}> {calculateKP(allyTeamObj.objectives.champion.kills, selfObj.kills, selfObj.assists)} </Text>
+
+                    </HStack>
                                                 
-                </Text>
+                </Box>
+             
             </Box>
         </Box>
     )

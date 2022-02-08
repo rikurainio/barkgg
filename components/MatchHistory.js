@@ -16,9 +16,9 @@ const MotionBox = motion(Box)
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     console.log(" INFO KEYS:: ", Object.keys(info))
 
-    const modeColorsWin2 = useColorModeValue('rgba(17, 153, 224, 0.88)', 'rgba(31, 45, 63, 0.90)')
-    const modeColorsLose2 = useColorModeValue('rgba(255, 60, 60, 0.85)', 'rgba(70, 26, 26, 0.90)')
-
+    const modeColorsWin2 = useColorModeValue('rgba(202, 249, 255, 0.9)', 'rgba(31, 45, 63, 0.90)')
+    const modeColorsLose2 = useColorModeValue('rgba(255, 202, 202, 0.9)', 'rgba(70, 26, 26, 0.90)')
+    const modeColorsRemake2 = useColorModeValue('rgba(188, 188, 188, 0.9)', 'rgba(54, 54, 54, 0.90)')
 
     // HELPER CONTAINER OBJECTS FOR GETTING WANTED STATISTICS OUT OF THE CHUNK
     const relevantInfo = {
@@ -49,6 +49,17 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         teamTotalKills: team2.objectives.champion.kills,
         teamDragonKills: team2.objectives.dragon.kills
     }
+
+    function checkIfRemake(gameDuration){
+        console.log("gameduration was: ", gameDuration/60 + " minutes")
+        if((gameDuration / 60) < 4.5){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
 
     //ITEMS FOR SELF (ID)
     const itemsBuilt = {}
@@ -133,7 +144,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             mb={"13px"}
             pl={"5px"}
             pr={"10px"}
-            backgroundColor={allyTeamObj.win ? modeColorsWin2 : modeColorsLose2}
+            backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
             borderRadius={6}
             display={"flex"}
             >

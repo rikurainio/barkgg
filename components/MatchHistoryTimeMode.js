@@ -1,6 +1,12 @@
-import { Flex, Box, Text, Heading, HStack } from '@chakra-ui/react'
+import { Flex, Box, Text, Heading, HStack, useColorModeValue } from '@chakra-ui/react'
 
 const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
+
+
+    const modeColorsWinText = useColorModeValue('black', 'rgba(62, 214, 252, 1)')
+    const modeColorsLoseText = useColorModeValue('black', 'rgba(252, 62, 68, 1)')
+    const modeColorsRemakeText= useColorModeValue('black', 'white')
+
     function getRankedText(gameType, mapId, queueId){
 
         // IS A RANKED SOLO OR FLEX Q
@@ -68,7 +74,10 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
             </Text>
 
             <Box textAlign={"left"} h={"10px"} w={"100px"} letterSpacing={"tight"}>
-                {win ? <Text h={"20px"} w={"100%"}> Win </Text> : <Text h={"20px"} w={"100%"}>Loss</Text>}
+                {win ? <Text h={"20px"} w={"100%"} color={modeColorsWinText}> Win </Text>
+                     : (gameDuration / 60 < 4.5) ? 
+                        <Text color={modeColorsRemakeText}> Remake </Text>
+                        : <Text h={"20px"} w={"100%"} color={modeColorsLoseText}>Loss</Text>}
                 <Text>{Math.floor(gameDuration / 60)} minutes</Text>
             </Box>
                     
