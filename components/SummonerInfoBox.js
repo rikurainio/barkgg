@@ -143,9 +143,10 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 </Box>
 
                 <Box
+                    pointerEvents={"none"}
                     marginLeft={"-100px"}
                     className={"summoner-image-container"}
-                    paddingTop={"30px"}
+                    paddingTop={"35px"}
                     >
 
                     <Box

@@ -54,7 +54,7 @@ const Navbar = () => {
     }
 
     return (
-        <Box>
+        <Box zIndex={100}>
             <Flex
             paddingBottom={"5px"}
             justifyContent={"left"}
@@ -111,17 +111,15 @@ const Navbar = () => {
                     <HStack
                         spacing={"20px"}>
                             <Link href="/">
-                                    <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">
-                                        Profile
-                                    </Text>
+                                Profile
                             </Link>
 
                             <Link href="/stats">
-                                    <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">Summoner Stats</Text>
+                                Summoner Stats
                             </Link>
 
                             <Link href="/livegame">
-                                    <Text fontWeight={100} fontSize={"18px"} className="navbar-link-text">Live Game</Text>
+                                Live Game
                             </Link>
                     </HStack>
                 </Box>
