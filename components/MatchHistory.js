@@ -138,7 +138,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
         return (
             <MotionBox
-            whileHover={{scale: 1.08}}
+            whileHover={{scale: 1.04}}
             className={"matchhistorycard"}
             mt={"10px"}
             mb={"13px"}
