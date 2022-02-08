@@ -44,7 +44,7 @@ export default function Home() {
         justifyContent={"center"}
         >
           
-          <Box marginTop={"300px"}>
+          <Box marginTop={"70px"}>
               <Text> Search for Summoner </Text>
               {/* COLLECT USER INPUT FROM UI */}
               <SearchBar>

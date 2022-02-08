@@ -7,7 +7,7 @@ export default function Stats(){
     return (
         <Box>
             <Flex background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                    backgroundImage={colorMode === 'light' ? 'lux.jpg' : 'backgrounds/xinzhaoart.png'}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
                     backgroundSize={"100%"}
                     backgroundRepeat={"no-repeat"}
                     height={"2100px"}
