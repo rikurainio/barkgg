@@ -16,7 +16,7 @@ const MotionBox = motion(Box)
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
     console.log(" INFO KEYS:: ", Object.keys(info))
 
-    const modeColorsWin2 = useColorModeValue('rgba(202, 249, 255, 0.9)', 'rgba(31, 45, 63, 0.90)')
+    const modeColorsWin2 = useColorModeValue('rgba(195, 229, 255, 0.9)', 'rgba(31, 45, 63, 0.90)')
     const modeColorsLose2 = useColorModeValue('rgba(255, 202, 202, 0.9)', 'rgba(70, 26, 26, 0.90)')
     const modeColorsRemake2 = useColorModeValue('rgba(188, 188, 188, 0.9)', 'rgba(54, 54, 54, 0.90)')
 
