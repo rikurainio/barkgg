@@ -10,6 +10,8 @@ import axios from 'axios'
 const Summoner = () => {
     const router = useRouter()
 
+    const [isFetching, setIsFetching] = useState(true)
+
    // CONTAINERS FOR PLAYER VAR
    const [summonerData, setSummonerData] = useState({});
    const [summonerName, setSummonerName] = useState("");
@@ -27,7 +29,7 @@ const Summoner = () => {
 
         // GOT QUERY PARAM
         if(router.isReady){
-            console.log("ready: ", router.query)
+            //console.log("ready: ", router.query)
             // SUMMONER BY NAME
             axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
                     + router.query.summonerName + "?api_key=" + process.env.API_KEY)
@@ -36,7 +38,13 @@ const Summoner = () => {
                         setPuuid(response.data.puuid)
                         setEncryptedSummonerId(response.data.id)
                         setSummonerIconId(response.data.summonerIconId)
-                        setSummonerName(response.data.name)
+
+                        const formatName = response.data.name
+                                                .toUpperCase()
+                                                .trim()
+                                                .replace(/\s/g, "")
+                        
+                        setSummonerName(formatName)
                         setSummonerData(JSON.stringify(response.data))
 
                         axios.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" 
@@ -44,6 +52,7 @@ const Summoner = () => {
 
                             .then(response => {
                                 setLeagueData(response.data)
+                                setIsFetching(false)
                                 return response
                             })
                             .catch(error => {
@@ -79,40 +88,65 @@ const Summoner = () => {
         setRequested(true)
     }
 
-    return (
-        <Flex
-            background={colorMode === 'light' ? "#F8F8F8" : "black"}
-            backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
-            backgroundSize={"100%"}
-            backgroundRepeat={"no-repeat"}
-            height={"1600px"}
-            as="div" 
-            className="content-container"
-            justifyContent={"center"}
-            >
-            <Box
+    if(isFetching){
+        return(
+            <Flex
+                background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                backgroundSize={"100%"}
+                backgroundRepeat={"no-repeat"}
+                height={"1600px"}
+                as="div" 
+                className="content-container"
+                justifyContent={"center"}
                 >
+                    <Box marginTop={"100px"}>
+                        <Spinner    thickness='20px'
+                                    speed='0.4s'
+                                    emptyColor='gray.200'
+                                    color='blue.500'
+                                    boxSize={"150px"}
+                                    />
+                    </Box>
+                </Flex>
+        )
+    }
+    else{
+        return (
+            <Flex
+                background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                backgroundSize={"100%"}
+                backgroundRepeat={"no-repeat"}
+                height={"1600px"}
+                as="div" 
+                className="content-container"
+                justifyContent={"center"}
+                >
+                <Box
+                    >
 
-                {/* SHOW SUMMONER PROFILE DATA */}
-                <SummonerInfoBox
-                    summonerData={summonerData}
-                    leagueData={leagueData}>
-                </SummonerInfoBox>
+                    {/* SHOW SUMMONER PROFILE DATA */}
+                    <SummonerInfoBox
+                        summonerData={summonerData}
+                        leagueData={leagueData}>
+                    </SummonerInfoBox>
 
-                {/* MATCH HISTORY RELATED COMPONENTS INSIDE*/}
-                {/* AXIOS GET MATCH HISTORY DATA */}
-                {/* SHOW MATCH HISTORY DATA */}
-                { puuid != "" && (
-                    <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
-                                            setSingleMatchData={setSingleMatchData} requested2={requested2}
-                                            setRequested2={setRequested2} selfName={summonerName}
-                                            setSummonerName={setSummonerName} resetComponentStates={resetComponentStates}>
-                    </MatchHistoryContainer>
-                )
-                }
-            </Box>
-        </Flex>
-    )
+                    {/* MATCH HISTORY RELATED COMPONENTS INSIDE*/}
+                    {/* AXIOS GET MATCH HISTORY DATA */}
+                    {/* SHOW MATCH HISTORY DATA */}
+                    { puuid != "" && (
+                        <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
+                                                setSingleMatchData={setSingleMatchData} requested2={requested2}
+                                                setRequested2={setRequested2} selfName={summonerName}
+                                                setSummonerName={setSummonerName} resetComponentStates={resetComponentStates}>
+                        </MatchHistoryContainer>
+                    )
+                    }
+                </Box>
+            </Flex>
+        )
+    }
 }
 
 export default Summoner

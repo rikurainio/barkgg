@@ -28,7 +28,6 @@ const Navbar = () => {
                 setServerStatus('offline')
                 return response
             }
-            return response
         })
     }, [])
 
@@ -58,7 +57,6 @@ const Navbar = () => {
             justifyContent={"left"}
             backgroundColor={modeColorsFooterNavbar}
             >
-
             <Box
                 paddingBottom={"5px"}
                 display={"flex"}
@@ -72,9 +70,6 @@ const Navbar = () => {
                 >
                 euw server status:
                 </Heading>
-
-               
-
                 <Box
                     >
                     <Heading
@@ -118,7 +113,7 @@ const Navbar = () => {
                     <HStack
                         spacing={"20px"}>
                             <Link href="/">
-                                Profile
+                                Home
                             </Link>
 
                             <Link href="/stats">

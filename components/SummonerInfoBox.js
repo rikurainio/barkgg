@@ -5,7 +5,7 @@ import {Text, Box, HStack,
 import { Image } from '@chakra-ui/react'
 
 const SummonerInfoBox = ({summonerData, leagueData}) => {
-    console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
+    //console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
 
     const solo = {}
     const flex = {}
