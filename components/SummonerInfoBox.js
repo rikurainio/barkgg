@@ -119,7 +119,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 height={"170px"}
                 bgColor={modeColorsShadowBox}
                 borderRadius={"6px"}
-                marginTop={"20px"}
+                marginTop={"45px"}
                 className='summonerinfobox'
             >
                 <Box
