@@ -93,6 +93,10 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
 
     return (
     <MotionBox
+        initial={{opacity:0,  x:200}}
+        animate={{opacity:100, x:0}}
+        transition={{delay: 1}}
+        dur
         width={"100%"}
         h={"100%"}
         className="matchhistorycontainer"

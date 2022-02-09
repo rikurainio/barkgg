@@ -1,15 +1,14 @@
 import { useRouter } from 'next/router'
 import { Flex, Box, useColorMode, Text, Spinner } from '@chakra-ui/react'
-import SearchBar from '../../components/SearchBar'
 import SummonerInfoBox from '../../components/SummonerInfoBox'
-import SummonerDetails from '../../components/SummonerDetails'
-import { useState, useEffect, createContext, useContext, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import MatchHistoryContainer from '../../components/MatchHistoryContainer'
 import axios from 'axios'
+import { useAppContext } from '../../context/state'
+
 
 const Summoner = () => {
     const router = useRouter()
-
     const [isFetching, setIsFetching] = useState(true)
 
    // CONTAINERS FOR PLAYER VAR
@@ -57,12 +56,14 @@ const Summoner = () => {
                             })
                             .catch(error => {
                                 console.log(error)
+                                setIsFetching(false)
                                 return error
                             })
                         return response
                     }))
                     .catch(error => {
                         console.log(error)
+                        setIsFetching(false)
                         return error
                     })
         }

@@ -1,6 +1,12 @@
 import { Flex, Heading, Text, HStack, Box, Image, useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
-import { Switch } from '@chakra-ui/react'
+import { Switch,  Modal,
+            ModalOverlay,
+            ModalContent,
+            ModalHeader,
+            ModalFooter,
+            ModalBody,
+            ModalCloseButton, } from '@chakra-ui/react'
 import axios from 'axios'
 
 import SearchBar from "./SearchBar"
@@ -50,6 +56,9 @@ const Navbar = () => {
             return false
         }
     }
+
+    const summonerName = "rhan"
+    const path = "/summoner/" + summonerName + "/livegame"
 
     return (
         <Box zIndex={100}>
@@ -120,7 +129,7 @@ const Navbar = () => {
                                 Summoner Stats
                             </Link>
 
-                            <Link href="/livegame">
+                            <Link href={path}>
                                 Live Game
                             </Link>
                     </HStack>
