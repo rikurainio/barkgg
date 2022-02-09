@@ -1,4 +1,4 @@
-import {Box, HStack, useDisclosure } from '@chakra-ui/react'
+import {Box, Flex, HStack, useDisclosure } from '@chakra-ui/react'
 import MatchHistoryChampAndRunes from './MatchHistoryChampAndRunes'
 import MatchHistoryItems from './MatchHistoryItems'
 import MatchHistoryPlayer from './MatchHistoryPlayer'
@@ -135,33 +135,34 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             && allyTeamObj && Object.keys(allyTeamObj).length > 0){
 
         return (
-            <MotionBox
-            whileHover={{scale: 1.04}}
-            className={"matchhistorycard"}
-            mt={"10px"}
-            mb={"13px"}
-            pl={"5px"}
-            pr={"10px"}
-            backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
-            borderRadius={6}
-            display={"flex"}
-            >
-                    <MatchHistoryTimeMode 
-                        gameMode={info}
-                        gameEnded={info.gameEndTimestamp}
-                        win={allyTeamObj.win}
-                        gameDuration={info.gameDuration}>
-                        
-                    </MatchHistoryTimeMode>
-                    <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
-                    <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
-                    <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
-                    <MatchHistoryPlayer
-                        participants={relevantInfo.participants}
-                        setSummonerName={setSummonerName}
-                        resetComponentStates={resetComponentStates}>
-                    </MatchHistoryPlayer>
-            </MotionBox>
+                <MotionBox
+                whileHover={{scale: 1.04}}
+                className={"matchhistorycard"}
+                mt={"10px"}
+                mb={"13px"}
+                pl={"5px"}
+                pr={"10px"}
+                justifyContent={"center"}
+                backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
+                borderRadius={6}
+                display={"flex"}
+                >
+                        <MatchHistoryTimeMode 
+                            gameMode={info}
+                            gameEnded={info.gameEndTimestamp}
+                            win={allyTeamObj.win}
+                            gameDuration={info.gameDuration}>
+                            
+                        </MatchHistoryTimeMode>
+                        <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
+                        <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
+                        <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
+                        <MatchHistoryPlayer
+                            participants={relevantInfo.participants}
+                            setSummonerName={setSummonerName}
+                            resetComponentStates={resetComponentStates}>
+                        </MatchHistoryPlayer>
+                </MotionBox>
         )
     }
     else{

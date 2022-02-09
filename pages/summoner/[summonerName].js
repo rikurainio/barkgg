@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Flex, Box, useColorMode, Text, Spinner } from '@chakra-ui/react'
+import { Flex, Box, useColorMode, Text, Spinner, useColorModeValue } from '@chakra-ui/react'
 import SummonerInfoBox from '../../components/SummonerInfoBox'
 import { useState, useEffect } from 'react'
 import MatchHistoryContainer from '../../components/MatchHistoryContainer'
@@ -22,6 +22,9 @@ const Summoner = () => {
    const [matchData, setMatchData] = useState({})
    const [singleMatchData, setSingleMatchData] = useState([])
    const [leagueData, setLeagueData] = useState([])
+
+
+   const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .1)', 'rgba(0, 0, 0, .1)')   
 
     useEffect(() => {
         setRequested(false)
@@ -115,6 +118,7 @@ const Summoner = () => {
     else{
         return (
             <Flex
+                flexDir={"row"}
                 background={colorMode === 'light' ? "#F8F8F8" : "black"}
                 backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
                 backgroundSize={"100%"}
@@ -124,6 +128,13 @@ const Summoner = () => {
                 className="content-container"
                 justifyContent={"center"}
                 >
+
+                <Box width={"100%"}
+                        bgColor={modeColorsShadowBox}
+                >
+                    asd
+                </Box>
+
                 <Box
                     >
 
@@ -133,9 +144,6 @@ const Summoner = () => {
                         leagueData={leagueData}>
                     </SummonerInfoBox>
 
-                    {/* MATCH HISTORY RELATED COMPONENTS INSIDE*/}
-                    {/* AXIOS GET MATCH HISTORY DATA */}
-                    {/* SHOW MATCH HISTORY DATA */}
                     { puuid != "" && (
                         <MatchHistoryContainer puuid={puuid} setMatchData={setMatchData} singleMatchData={singleMatchData}
                                                 setSingleMatchData={setSingleMatchData} requested2={requested2}
@@ -144,6 +152,12 @@ const Summoner = () => {
                         </MatchHistoryContainer>
                     )
                     }
+                </Box>
+
+                <Box width="100%"
+                        bgColor={modeColorsShadowBox}
+                >
+                    asd
                 </Box>
             </Flex>
         )
