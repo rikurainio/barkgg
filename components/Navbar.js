@@ -119,7 +119,8 @@ const Navbar = () => {
                     >
                     <HStack
                         spacing={"20px"}>
-                            <Link href="/">
+                            <Link href="/"
+                                >
                                 Home
                             </Link>
 

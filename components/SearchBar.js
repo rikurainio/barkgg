@@ -49,7 +49,7 @@ const SearchBar = () => {
                                 backgroundColor={modeColorsSearchBar}
                             >
                             <Input
-                                height={"40px"}
+                                height={"38px"}
                                 colorScheme={modeColorsSearchBar}
                                 id={"userInput"}
                                 variant='outline'
@@ -58,10 +58,10 @@ const SearchBar = () => {
                             >
                             </Input>
                             <InputRightElement
-                                paddingBottom={"7px"}
+                                paddingBottom={"8px"}
                                 paddingRight={"3px"}>
                                 <Button
-                                    height={"33px"}
+                                    height={"31px"}
                                     type={"Submit"}
                                     onClick={handleSearchUser}
                                 >
