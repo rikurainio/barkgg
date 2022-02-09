@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Heading, HStack, useColorModeValue } from '@chakra-ui/react'
+import { TimeIcon } from '@chakra-ui/icons'
 
 const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
 
@@ -67,7 +68,9 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
                     .toLocaleString())
                     .toString(), "FIRST")}
             </Text>
+
             <Text textAlign={"left"} marginLeft={"-0.4px"} pt={"1px"} h={"20px"}>
+                <TimeIcon marginBottom={"2px"} marginRight={"5px"}></TimeIcon>
                 {parseDateString((new Date(gameEnded)
                     .toLocaleString())
                     .toString(), "LAST")}
