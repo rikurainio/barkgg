@@ -92,23 +92,21 @@ const Navbar = () => {
                 </Box>
             </Box>
 
-            <Box marginLeft={"100px"} paddingTop={"20px"}>
-                    <SearchBar>
-                    </SearchBar>
-                </Box>
+            
 
 
             <Flex
+                alignItems={"flex-end"}
                 marginBottom={"5px"}
-                paddingTop={"20px"}
+                paddingTop={"0px"}
                 marginTop={0}
                 >
 
                 <Box
-                    marginLeft={"42px"}
+                    marginLeft={"410px"}
                     justifyContent={"space-between"}>   
                     <Heading
-                        fontSize={34}
+                        fontSize={26}
                         pr={10}>
                         Bark.GG
                     </Heading>
@@ -135,16 +133,23 @@ const Navbar = () => {
                     </HStack>
                 </Box>
 
+                
+                
+                <Box marginLeft={"10px"} paddingTop={"20px"}>
+                    <SearchBar>
+                    </SearchBar>
+                </Box>
+
                 <Box
                     className="color-mode-container"
                     display={"flex"}
-                    marginLeft={"120px"}
+                    marginLeft={"420px"}
                     paddingTop={"8px"}
                     >
                     <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Theme</Text>
                     <Switch size='lg' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
                 </Box>
-                
+
                 </Flex>
             </Flex>
         </Box>

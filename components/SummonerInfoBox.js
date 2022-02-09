@@ -4,6 +4,9 @@ import {Text, Box, HStack,
         } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 
+import { motion } from 'framer-motion'
+const MotionBox = motion(Box)
+
 const SummonerInfoBox = ({summonerData, leagueData}) => {
     //console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
 
@@ -113,7 +116,11 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
 
 
         return (
-            <Box
+            <MotionBox
+                initial={{opacity:0,  x:10}}
+                animate={{opacity:100, x:0}}
+                transition={{delay: 1}}
+
                 position={"static"}
                 display={"flex"}
                 height={"170px"}
@@ -201,7 +208,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                 </Box>
 
                 
-            </Box>
+            </MotionBox>
         )
     }
     catch (err) {

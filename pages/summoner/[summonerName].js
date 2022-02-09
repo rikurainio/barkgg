@@ -24,7 +24,7 @@ const Summoner = () => {
    const [leagueData, setLeagueData] = useState([])
 
 
-   const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .1)', 'rgba(0, 0, 0, .1)')   
+   const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, 0)', 'rgba(0, 0, 0, 0)')   
 
     useEffect(() => {
         setRequested(false)
@@ -129,10 +129,11 @@ const Summoner = () => {
                 justifyContent={"center"}
                 >
 
-                <Box width={"100%"}
-                        bgColor={modeColorsShadowBox}
+                <Box
+                    className={"sidePanelLeft"}
+                    width={"100%"}
+                    bgColor={modeColorsShadowBox}
                 >
-                    asd
                 </Box>
 
                 <Box
@@ -154,10 +155,11 @@ const Summoner = () => {
                     }
                 </Box>
 
-                <Box width="100%"
-                        bgColor={modeColorsShadowBox}
+                <Box
+                    className={"sidePanelRight"}
+                    width="100%"
+                    bgColor={modeColorsShadowBox}
                 >
-                    asd
                 </Box>
             </Flex>
         )
