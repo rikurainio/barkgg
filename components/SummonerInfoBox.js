@@ -23,6 +23,16 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
         }
     }
 
+    function amITakis(summonerName) {
+        if(summonerName.toLowerCase == "shadow takis" || "takis"){
+            return true
+        }
+        if(summonerName == "Takis" || summonerName == "takis" || summonerName == "shadow takis"){
+            return true
+        }
+        return false
+    }
+
     const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .6)', 'rgba(0, 0, 0, .5)')    
     const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(53, 54, 51)')
 
@@ -37,6 +47,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
         const RANKED_WINGS_SRC = ""
         const NO_SOLO_RANK_WINGS_WHITE = "/wings/wings_white.png"
         const NO_SOLO_RANK_WINGS_BLACK = "/wings/wings_black.png"
+        const TAKIS_IMG = "/eastereggs/takis.jpg"
 
         if(leagueData.length){
             const rankedQueuesFound = leagueData.length
@@ -119,7 +130,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
             <MotionBox
                 initial={{opacity:0,  x:10}}
                 animate={{opacity:100, x:0}}
-                transition={{delay: 1}}
+                transition={{delay: 0.8}}
 
                 position={"static"}
                 display={"flex"}
@@ -151,7 +162,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                         paddingLeft={"95px"}>
                         <Image
                             borderRadius='full'
-                            src={CDN1231}
+                            src={amITakis(summonerValues['name']) ? TAKIS_IMG : CDN1231}
                             width={100}>
                         </Image>
                     </Box>

@@ -71,24 +71,24 @@ const Navbar = () => {
                 display={"flex"}
                 className="server-status-container">
 
-                <Heading
+                <Text
                 paddingTop={"40px"}
-                fontWeight={100}
+                fontWeight={500}
                 fontSize={"18px"}
                 paddingLeft={"10px"}
                 >
                 euw server status:
-                </Heading>
+                </Text>
                 <Box
                     >
-                    <Heading
+                    <Text
                         paddingLeft={"2px"}
                         paddingTop={"38.4px"}
-                        fontWeight={100}
+                        fontWeight={500}
                         fontSize={"19px"}
                         style={isServerOnline() ? {color: "green"} : {color: "red"}}>
                             {isServerOnline() ? "online" : "down"}
-                    </Heading>
+                    </Text>
                 </Box>
             </Box>
 
@@ -103,7 +103,7 @@ const Navbar = () => {
                 >
 
                 <Box
-                    marginLeft={"410px"}
+                    marginLeft={"395px"}
                     justifyContent={"space-between"}>   
                     <Heading
                         fontSize={26}
@@ -147,8 +147,8 @@ const Navbar = () => {
                     marginLeft={"420px"}
                     paddingTop={"8px"}
                     >
-                    <Text fontWeight={100} fontSize={"22px"} paddingRight={"13px"}>Theme</Text>
-                    <Switch size='lg' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
+                    <Text fontWeight={100} fontSize={"18px"} paddingRight={"13px"}>Theme</Text>
+                    <Switch size='md' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
                 </Box>
 
                 </Flex>

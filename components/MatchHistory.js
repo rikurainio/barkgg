@@ -1,4 +1,4 @@
-import {Box, Flex, HStack, useDisclosure } from '@chakra-ui/react'
+import {Box, Flex, HStack, useDisclosure, Collapse } from '@chakra-ui/react'
 import MatchHistoryChampAndRunes from './MatchHistoryChampAndRunes'
 import MatchHistoryItems from './MatchHistoryItems'
 import MatchHistoryPlayer from './MatchHistoryPlayer'
@@ -8,6 +8,7 @@ import { Fade, ScaleFade, Slide, SlideFade, useColorModeValue, useColorMode } fr
 
 // FRAMER MOTION
 import { motion } from 'framer-motion'
+import MatchTags from './MatchTags'
 const MotionBox = motion(Box)
 
 
@@ -135,6 +136,10 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             && allyTeamObj && Object.keys(allyTeamObj).length > 0){
 
         return (
+                <Flex flexDir={"row"}>
+                <MatchTags>
+
+                </MatchTags>
                 <MotionBox
                 whileHover={{scale: 1.04}}
                 className={"matchhistorycard"}
@@ -163,6 +168,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                             resetComponentStates={resetComponentStates}>
                         </MatchHistoryPlayer>
                 </MotionBox>
+                </Flex>
         )
     }
     else{

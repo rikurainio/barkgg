@@ -18,6 +18,8 @@ const SearchBar = () => {
 
     function handleSearchUser (event) {
         event.preventDefault
+
+
         //setPuuid("")
         //setMatchData({})
         //setSingleMatchData([])
@@ -49,6 +51,7 @@ const SearchBar = () => {
                                 backgroundColor={modeColorsSearchBar}
                             >
                             <Input
+                                className={"searchInput"}
                                 height={"38px"}
                                 colorScheme={modeColorsSearchBar}
                                 id={"userInput"}
@@ -61,6 +64,7 @@ const SearchBar = () => {
                                 paddingBottom={"8px"}
                                 paddingRight={"3px"}>
                                 <Button
+                                    className={"searchButton"}
                                     height={"31px"}
                                     type={"Submit"}
                                     onClick={handleSearchUser}
