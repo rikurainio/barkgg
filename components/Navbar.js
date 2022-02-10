@@ -26,11 +26,18 @@ const Navbar = () => {
     useEffect(() => {
         axiosTryGetServerStatus()
         .then(response => {
-            if(response['services']['0']['status'] == 'online'){
-                setServerStatus('online')
-                return response
+            try{
+                if(response['services']['0']['status'] == 'online'){
+                    setServerStatus('online')
+                    return response
+                }
+                else{
+                    setServerStatus('offline')
+                    return response
+                }
             }
-            else{
+            catch{
+                console.log("riot api is having difficulties")
                 setServerStatus('offline')
                 return response
             }
@@ -124,8 +131,8 @@ const Navbar = () => {
                                 Home
                             </Link>
 
-                            <Link href="/stats">
-                                Summoner Stats
+                            <Link href="/multiquery">
+                                Multiquery
                             </Link>
 
                             <Link href={path}>

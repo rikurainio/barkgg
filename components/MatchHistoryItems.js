@@ -37,9 +37,10 @@ const MatchHistoryItems = ({itemsBuilt}) => {
                 <VStack>
                     <HStack spacing="0.5">
                         {
-                            (IMG_SOURCES.slice(1, (IMG_SOURCES.length / 2))).map(source => {
+                            (IMG_SOURCES.slice(1, (IMG_SOURCES.length / 2))).map((source, idx) => {
                                 return(
                                     <Image
+                                        key={"item-img-" + idx}
                                         className="itemimg"
                                         src={source}
                                         fallbackSrc={"/itemFallBackImg1.png"}
@@ -51,9 +52,10 @@ const MatchHistoryItems = ({itemsBuilt}) => {
                     </HStack>
                     <HStack spacing="0.5">
                     {
-                            (IMG_SOURCES.slice(IMG_SOURCES.length / 2, -1)).map(source => {
+                            (IMG_SOURCES.slice(IMG_SOURCES.length / 2, -1)).map((source, idx) => {
                                 return(
                                     <Image
+                                        key={"item-img-2" + idx}
                                         className="itemimg"
                                         src={source}
                                         fallbackSrc={"/itemFallBackImg1.png"}

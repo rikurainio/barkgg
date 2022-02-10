@@ -49,7 +49,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
-                                <Box >
+                                <Box key={"team-1-" + index}>
                                     <HStack > 
                                         <Image 
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2
@@ -95,7 +95,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                             {Array
                             .from(Array(participants.length - 5))
                             .map((participant, index) => 
-                                 <Box>
+                                 <Box key={"team-2-" + index}>
                                     <HStack >
                                         <Image 
                                             src={CDN1231_IMG_BY_CHAMP_NAME_2

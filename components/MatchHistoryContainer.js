@@ -126,7 +126,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
                 {Array
                     .from(Array(singleMatchData.length))
                     .map((x, index) =>
-                        <ListItem>
+                        <ListItem key={"match-history-item-" + index}>
                             <MatchHistory
                                 selfName={selfName}
                                 info={singleMatchData[index]['info']}
