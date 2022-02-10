@@ -24,10 +24,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
     }
 
     function amITakis(summonerName) {
-        if(summonerName.toLowerCase == "shadow takis" || "takis"){
-            return true
-        }
-        if(summonerName == "Takis" || summonerName == "takis" || summonerName == "shadow takis"){
+        if(summonerName.toLowerCase() == "shadow takis" || summonerName.toLowerCase() == "takis"){
             return true
         }
         return false
