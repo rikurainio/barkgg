@@ -147,8 +147,8 @@ const Navbar = () => {
                     marginLeft={"420px"}
                     paddingTop={"8px"}
                     >
-                    <Text fontWeight={100} fontSize={"18px"} paddingRight={"13px"}>Theme</Text>
-                    <Switch size='md' defaultChecked={true} marginTop={"3px"} onChange={toggleColorMode}/>
+                    <Text fontWeight={100} fontSize={"20px"} paddingRight={"13px"}>Theme</Text>
+                    <Switch size='md' defaultChecked={true} marginTop={"7px"} onChange={toggleColorMode}/>
                 </Box>
 
                 </Flex>

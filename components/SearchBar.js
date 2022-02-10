@@ -51,6 +51,12 @@ const SearchBar = () => {
                                 backgroundColor={modeColorsSearchBar}
                             >
                             <Input
+                                onKeyPress={(e) => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault
+                                        window.location = "/summoner/" + event.target.value
+                                    }
+                                }}
                                 className={"searchInput"}
                                 height={"38px"}
                                 colorScheme={modeColorsSearchBar}
