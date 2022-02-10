@@ -1,7 +1,7 @@
 import { Flex, Text, useColorModeValue, HStack,
             Tag, TagLeftIcon, TagLabel, Box } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
-import { GiQueenCrown } from 'react-icons/gi';
+import { GiQueenCrown, GiPointyHat, GiHeartWings, GiCrossedSwords } from 'react-icons/gi';
 import { FaCrown } from 'react-icons/fa'
 
 const MatchTags = () => {
@@ -10,34 +10,63 @@ const MatchTags = () => {
 
     return (
         <Flex
-            width={"70px"}
+            height={"100px"}
+            width={"45px"}
             borderRadius={5}
             marginRight={"5px"}
-            marginLeft={"1px"}
-            marginTop={"20px"}
-            marginBottom={"20px"} 
+            marginTop={"14px"}
             bgColor={modeColorsBg}
             >
 
             <Flex flexDir={"column"}>
-                    <Tag justifyContent={"center"} height={"20px"} width={"70px"} variant='subtle' colorScheme='cyan'>
-                        <FaCrown size={"10px"}></FaCrown>
-                        <TagLabel fontSize={"12px"}>MVP</TagLabel>
-                    </Tag> 
+                    <Tag
+                        marginTop={"3px"}
+                        marginLeft={"2px"}
+                        justifyContent={"center"}
+                        minHeight={"22px"}
+                        width={"41px"}
+                        variant='subtle' 
+                        colorScheme='yellow'>
 
-                    <Tag justifyContent={"center"} height={"20px"} width={"70px"} variant='subtle' colorScheme='yellow'>
-                        <FaCrown size={"10px"}></FaCrown>
-                        <TagLabel fontSize={"12px"}>farmer</TagLabel>
-                    </Tag> 
 
-                    <Tag justifyContent={"center"} height={"20px"} width={"70px"} variant='subtle' colorScheme='orange'>
-                        <FaCrown size={"10px"}></FaCrown>
-                        <TagLabel fontSize={"12px"}>deathless</TagLabel>
-                    </Tag> 
+                        <TagLabel fontSize={"10px"}>MVP</TagLabel>
+                    </Tag>
 
-                    <Tag justifyContent={"center"} height={"20px"} width={"70px"} variant='subtle' colorScheme='green'>
-                        <FaCrown size={"10px"}></FaCrown>
-                        <TagLabel fontSize={"12px"}>fast game</TagLabel>
+                    <Tag
+                        marginTop={"2px"}
+                        marginLeft={"2px"}
+                        justifyContent={"center"}
+                        minHeight={"22px"}
+                        width={"41px"}
+                        variant='subtle' 
+                        colorScheme='purple'>
+
+
+                        <TagLabel fontSize={"10px"}>MVP</TagLabel>
+                    </Tag> 
+                    <Tag
+                        marginTop={"2px"}
+                        marginLeft={"2px"}
+                        justifyContent={"center"}
+                        minHeight={"22px"}
+                        width={"41px"}
+                        variant='subtle' 
+                        colorScheme='green'>
+
+
+                        <TagLabel fontSize={"10px"}>MVP</TagLabel>
+                    </Tag>
+                    <Tag
+                        marginTop={"2px"}
+                        marginLeft={"2px"}
+                        justifyContent={"center"}
+                        minHeight={"22px"}
+                        width={"41px"}
+                        variant='subtle' 
+                        colorScheme='red'>
+
+
+                        <TagLabel fontSize={"10px"}>MVP</TagLabel>
                     </Tag> 
             </Flex>
                 
