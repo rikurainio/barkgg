@@ -8,7 +8,6 @@ import axios from 'axios'
 export default function Stats(){
     const router = useRouter()
     const { colorMode, toggleColorMode } = useColorMode()
-    const [isFetching, setIsFetching] = useState(true)
     const [requested, setRequested] = useState(false)
 
     //SUMMONER
@@ -21,54 +20,44 @@ export default function Stats(){
 
 
     useEffect(() => {
+
         if(router.isReady){
-            console.log("router query: ", router.query)
             const multiQuerySplit = router.query.summonerNames.split(" ")
 
-            multiQuerySplit.forEach(queryName => {
-                axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
-                    + queryName + "?api_key=" + process.env.API_KEY)
-                    .then((response => {
-                        //VER 1.0
-                        setPuuids(puuids => [...puuids, response.data.puuid])
-                        setEncryptedSummonerIds(encryptedSummonerIds => [...encryptedSummonerIds, response.data.id])
-                        setSummonerIconIds(summonerIconIds => [...summonerIconIds, response.data.summonerIconId])
+            // MAX 5 USER FETCH QUERY
+            multiQuerySplit.slice(0,5).forEach(queryName => {
+                    axios
+                        .get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
+                            + queryName + "?api_key=" + process.env.API_KEY)
+                        .then((response => {
+                            setPuuids(puuids => [...puuids, response.data.puuid])
+                            setEncryptedSummonerIds(encryptedSummonerIds => [...encryptedSummonerIds, response.data.id])
+                            setSummonerIconIds(summonerIconIds => [...summonerIconIds, response.data.summonerIconId])
+                            setSummonerDatas(summonerDatas => [...summonerDatas, JSON.stringify(response.data)])
 
-                        const formatName = response.data.name
-                                                .toUpperCase()
-                                                .trim()
-                                                .replace(/\s/g, "")
-                        
-                        setSummonerDatas(summonerDatas => [...summonerDatas, JSON.stringify(response.data)])
-
-                        axios.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" 
-                                + response.data.id + "?api_key=" + process.env.API_KEY)
-
-                            .then(response => {
-                                setLeagueDatas(leagueDatas => [...leagueDatas, response.data])
-                                setIsFetching(false)
-                                return response
-                            })
-                            .catch(error => {
-                                console.log(error)
-                                setIsFetching(false)
-                                return error
-                            })
-                        return response
-                    }))
-                    .catch(error => {
-                        console.log(error)
-                        setIsFetching(false)
-                        return error
-                    })
+                                axios
+                                    .get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" 
+                                            + response.data.id + "?api_key=" + process.env.API_KEY)
+                                    .then(response => {
+                                        setLeagueDatas(leagueDatas => [...leagueDatas, response.data])
+                                        return response
+                                    })
+                                .catch(error => {
+                                    console.log(error)
+                                    return error
+                                })
+                            return response
+                        }))
+                        .catch(error => {
+                            console.log(error)
+                            return error
+                        })
             })
         }
         else{
             console.log("Could not perform a multiquery. Please try again")
         }
     }, [router.isReady])
-
-    console.log("summonerDatas: ", summonerDatas)
 
     return (
         <Flex
