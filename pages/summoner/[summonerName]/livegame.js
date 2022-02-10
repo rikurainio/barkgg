@@ -67,7 +67,7 @@ const LiveGame = () => {
         backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
         backgroundSize={"100%"}
         backgroundRepeat={"no-repeat"}
-        height={"1600px"}
+        height={"2000px"}
         as="div" 
         className="content-container"
         justifyContent={"center"}

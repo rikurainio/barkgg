@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Flex, Box, useColorMode, Text, Spinner, useColorModeValue } from '@chakra-ui/react'
+import { Flex, Box, useColorMode, Text, Spinner, useColorModeValue, color } from '@chakra-ui/react'
 import SummonerInfoBox from '../../components/SummonerInfoBox'
 import { useState, useEffect } from 'react'
 import MatchHistoryContainer from '../../components/MatchHistoryContainer'

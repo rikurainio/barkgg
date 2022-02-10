@@ -97,7 +97,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         animate={{opacity:100, x:0}}
         transition={{delay: 0.8}}
         width={"100%"}
-        h={"100%"}
+        h={"1000px"}
         className="matchhistorycontainer"
         >
         
