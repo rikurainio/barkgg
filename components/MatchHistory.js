@@ -37,6 +37,7 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
     const blueTeam = {}
     const redTeam = {}
     const allyTeamObj = {}
+    const teamParticipants = []
 
     const releveantTeam1Data = {
         win: team1.win,
@@ -59,7 +60,6 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
             return false
         }
     }
-
 
     //ITEMS FOR SELF (ID)
     const itemsBuilt = {}
@@ -112,9 +112,20 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         
         if(selfTeam == blueTeam.teamId){
             allyTeamObj = blueTeam
+
+            info.participants.forEach(player => {
+                if(player.teamId == 100)
+                teamParticipants.push(player)
+            })
+            
         }
         if(selfTeam == redTeam.teamId){
             allyTeamObj = redTeam
+
+            info.participants.forEach(player => {
+                if(player.teamId == 200)
+                teamParticipants.push(player)
+            })
         }
     }
 
@@ -137,14 +148,11 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
 
         return (
                 <Flex flexDir={"row"}>
-                <MatchTags>
-
-                </MatchTags>
                 <MotionBox
                 whileHover={{scale: 1.04}}
                 className={"matchhistorycard"}
                 mt={"10px"}
-                mb={"13px"}
+                mb={"0px"}
                 pl={"5px"}
                 pr={"10px"}
                 justifyContent={"center"}
