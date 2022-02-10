@@ -71,7 +71,7 @@ const Summoner = () => {
                     })
         }
         else{
-            setSummonerName("Could not find summoner name... Try again")
+            console.log("Could not find summoner name... Try again")
         }
     }, [router.isReady])
     const { colorMode, toggleColorMode } = useColorMode()
