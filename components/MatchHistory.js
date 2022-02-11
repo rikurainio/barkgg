@@ -8,7 +8,6 @@ import { Fade, ScaleFade, Slide, SlideFade, useColorModeValue, useColorMode } fr
 
 // FRAMER MOTION
 import { motion } from 'framer-motion'
-import MatchTags from './MatchTags'
 const MotionBox = motion(Box)
 
 

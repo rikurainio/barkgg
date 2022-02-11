@@ -74,6 +74,7 @@ const Summoner = () => {
             console.log("Could not find summoner name... Try again")
         }
     }, [router.isReady])
+    
     const { colorMode, toggleColorMode } = useColorMode()
 
     // RESET ALL USESTATES
