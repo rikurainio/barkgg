@@ -8,7 +8,6 @@ import axios from 'axios'
 export default function Stats(){
     const router = useRouter()
     const { colorMode, toggleColorMode } = useColorMode()
-    const [requested, setRequested] = useState(false)
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -66,27 +65,20 @@ export default function Stats(){
         backgroundSize={"100%"}
         backgroundRepeat={"no-repeat"}
         height={"1600px"}
-        as="div" 
+        flexDir={"row"}
         className="content-container"
         justifyContent={"center"}
         >
           
-            <Box marginTop={"70px"}>
-                <Text> Results: </Text>
-
-                <List>
                     {Array
                         .from(Array(leagueDatas.length))
                         .map((x, index) =>
-                            <ListItem key={"summoner-info-item" + index}>
-                                <SummonerInfoBoxMultiQuery
+                                <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
                                     summonerData={summonerDatas[index]}
                                     leagueData={leagueDatas[index]}>
                                 </SummonerInfoBoxMultiQuery>
-                            </ListItem>)
+                            )
                     }
-                </List>
-            </Box>
       </Flex>
     )
 }

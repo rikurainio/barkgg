@@ -23,6 +23,7 @@ export default function Stats(){
             <Box marginTop={"70px"}>
                 <Text fontWeight={500} fontSize={"20px"}> Search for multiple Summoners </Text>
                 <Text fontWeight={500} fontSize={"16px"}> (seperate names with a comma) (Max 5 Summoners!) </Text>
+                
                 <SearchBarMultiQuery>
                 </SearchBarMultiQuery>
             </Box>

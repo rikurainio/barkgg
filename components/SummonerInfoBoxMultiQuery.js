@@ -30,7 +30,7 @@ function amITakis(summonerName) {
     return false
 }
 
-const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .6)', 'rgba(0, 0, 0, .5)')    
+const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .9)', 'rgba(0, 0, 0, .7)')    
 const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(53, 54, 51)')
 
 try {
@@ -129,93 +129,80 @@ try {
             animate={{opacity:100, x:0}}
             transition={{delay: 0.8}}
 
-            position={"static"}
+            width={"300px"}
             display={"flex"}
-            height={"170px"}
+            height={"100px"}
             bgColor={modeColorsShadowBox}
-            borderRadius={"6px"}
-            marginTop={"55px"}
+            borderRadius={"10px"}
+
+            marginRight={"5px"}
+            marginLeft={"5px"}
+
+            marginTop={"30px"}
             className='summonerinfobox'
         >
-            <Box
-                width={"80px"}
-                className='summoner-winrate-container'>
+                    
                     <Heading
-                        fontSize={"16px"}
-                        paddingLeft={"10px"}
-                        paddingTop={"140px"}>
+                        noOfLines={1}
+                        width={"80px"}
+                        paddingLeft={"4px"}
+                        paddingTop={"80px"}
+                        fontSize={"14px"}>
                         {solo.tier ? (Math.round((solo.wins/(solo.losses+solo.wins))*100)) + "% wr" : ""}
                     </Heading>
-            </Box>
-
-            <Box
-                pointerEvents={"none"}
-                marginLeft={"-100px"}
-                className={"summoner-image-container"}
-                paddingTop={"35px"}
-                >
-
-                <Box
-                    paddingLeft={"95px"}>
-                    <Image
-                        borderRadius='full'
-                        src={amITakis(summonerValues['name']) ? TAKIS_IMG : CDN1231}
-                        width={100}>
-                    </Image>
-                </Box>
-                <Box
-                    marginTop={-274}>
-                    <Image  
+                        <Image
+                            marginTop={"18px"}
+                            marginRight={"21px"}
+                            width={"64px"}
+                            height={"64px"}
+                            borderRadius='full'
+                            src={ /*amITakis(summonerValues['name']) ? TAKIS_IMG : */CDN1231}
+                        >
+                        </Image>
+                       
+                        <Image
+                            marginTop={"-95px"}
+                            marginLeft={"-145px"}
+                            width={"240px"}
+                            height={"240px"}
                             src={solo.tier ? RANKED_WINGS_SRC : NO_SOLO_RANK_WINGS_BLACK}
-                            width={290}>
-                    </Image>
-                </Box>
-            </Box>
+                        >
+                        </Image>
+                    
+                    <Box
+                        paddingTop={"8px"}
+                        width={"200px"}
+                        marginLeft={"-10px"}
+                        >
+
+
+                  
+                        <Heading
+                            paddingTop={"0px"}
+                            fontSize={"24px"}>
+                            {summonerValues['name']}
+                        </Heading>
             
+                        <Text
+                            fontSize={"12px"}>
+                            Level {summonerValues['summonerLevel']}
+                        </Text>
 
-            <Box
-                className="summoner-name-rank-container">
-                <List>
-                    <ListItem>
-                        <Box>
-                            <Heading
-                                paddingTop={"20px"}
-                                fontSize={"36px"}>
-                                {summonerValues['name']}
-                            </Heading>
+                        <Heading
+                            fontWeight={200}
+                            fontSize={"18px"}>
+                            {solo.tier ? solo.tier +  " "
+                                + solo.rank + " " : ""}
+                        </Heading>
 
-                        </Box>
-                    </ListItem>
-                    <ListItem paddingLeft={"2px"}>
-                        <Box>
-                            <Text
-                                fontSize={16}>
-                                Level {summonerValues['summonerLevel']}
-                            </Text>
-                        </Box>
-                        <Box>
-                            <Heading
-                                fontWeight={200}
-                                fontSize={"18px"}>
-                                {solo.tier ? solo.tier +  " "
-                                    + solo.rank + " " : ""}
-                            </Heading>
+                        <Heading
+                            colorScheme={modeColorsFooterNavbar}
+                            fontSize={"12px"}>
+                            {solo.tier ? solo.leaguePoints + " LP" + " (Solo Queue) " : "Unranked (Solo Queue)"}
+                        </Heading>
+                    </Box>
 
-                            <HStack spacing={4}>
-                            </HStack>
-
-                            <Badge
-                                colorScheme={modeColorsFooterNavbar}
-                                fontWeight={500}
-                                fontSize={"18px"}>
-                                {solo.tier ? solo.leaguePoints + " LP" + " (Solo Queue) " : "Unranked (Solo Queue)"}
-                            </Badge>
-                        </Box>
-                    </ListItem> 
-                </List>
-            </Box>
-
-            
+                    
         </MotionBox>
     )
 }
