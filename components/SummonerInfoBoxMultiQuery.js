@@ -138,7 +138,7 @@ try {
             marginRight={"5px"}
             marginLeft={"5px"}
 
-            marginTop={"30px"}
+            marginTop={"75px"}
             className='summonerinfobox'
         >
                     
@@ -170,7 +170,7 @@ try {
                         </Image>
                     
                     <Box
-                        paddingTop={"8px"}
+                        paddingTop={"16px"}
                         width={"200px"}
                         marginLeft={"-10px"}
                         >
@@ -179,7 +179,7 @@ try {
                   
                         <Heading
                             paddingTop={"0px"}
-                            fontSize={"24px"}>
+                            fontSize={"16px"}>
                             {summonerValues['name']}
                         </Heading>
             
@@ -190,7 +190,7 @@ try {
 
                         <Heading
                             fontWeight={200}
-                            fontSize={"18px"}>
+                            fontSize={"14px"}>
                             {solo.tier ? solo.tier +  " "
                                 + solo.rank + " " : ""}
                         </Heading>
