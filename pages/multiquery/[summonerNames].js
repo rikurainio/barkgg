@@ -1,4 +1,4 @@
-import { Box, Flex, Text, useColorMode, useColorModeValue, List, ListItem, Spinner} from '@chakra-ui/react'
+import { Box, Flex, Text, useColorMode, useColorModeValue, List, ListItem, Spinner, toast} from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import SummonerInfoBoxMultiQuery from '../../components/SummonerInfoBoxMultiQuery'
@@ -12,6 +12,10 @@ export default function Stats(){
     const router = useRouter()
     const { colorMode, toggleColorMode } = useColorMode()
     const [isFetching, setIsFetching] = useState(true)
+    const [requested, setRequested] = useState(false)
+
+    //CONFIG
+    const MATCH_COUNT = 1
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -20,112 +24,168 @@ export default function Stats(){
     const [summonerNames, setSummonerNames] = useState([])
     const [summonerDatas, setSummonerDatas] = useState([])
     const [leagueDatas, setLeagueDatas] = useState([])
+    const [wantToGetMatchData, setWantToGetMatchData] = useState(false)
+
+    // STRORE ALL MATCHES DATA FOR ALL (1-5) PLAYERS
+    const [matchesAllPlayers, setMatchesAllPlayers] = useState([])
+    const [multiQueryPlayerAmount, setMultiQueryPlayerAmount] = useState(0)
 
     const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, 1)', 'rgba(0, 0, 0, .7)')  
 
     useEffect(() => {
+        let summonerInfos = []
+        let summonerLeagueInfos = []
 
         if(router.isReady){
             const multiQuerySplit = router.query.summonerNames.split(" ")
+            const loopMaxIdx = multiQuerySplit.length
+            setMultiQueryPlayerAmount(loopMaxIdx)
 
-            // MAX 5 USER FETCH QUERY
-            multiQuerySplit.slice(0,5).forEach(queryName => {
-                    axios
-                        .get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
-                            + queryName + "?api_key=" + process.env.API_KEY)
-                        .then((response => {
-                            setPuuids(puuids => [...puuids, response.data.puuid])
-                            setEncryptedSummonerIds(encryptedSummonerIds => [...encryptedSummonerIds, response.data.id])
-                            setSummonerIconIds(summonerIconIds => [...summonerIconIds, response.data.summonerIconId])
-                            setSummonerDatas(summonerDatas => [...summonerDatas, JSON.stringify(response.data)])
+            for(let i=0; i < loopMaxIdx; i++){
+                summonerInfos.push(axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ multiQuerySplit[i] + "?api_key=" + process.env.API_KEY))
+            }
 
-                                axios
-                                    .get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" 
-                                            + response.data.id + "?api_key=" + process.env.API_KEY)
-                                    .then(response => {
-                                        setLeagueDatas(leagueDatas => [...leagueDatas, response.data])
-                                        setIsFetching(false)
-                                        return response
-                                    })
-                                .catch(error => {
-                                    console.log(error)
-                                    setIsFetching(false)
-                                    return error
-                                })
-                            return response
-                        }))
-                        .catch(error => {
-                            console.log(error)
-                            setIsFetching(false)
-                            return error
-                        })
+            Promise.all(summonerInfos).then(function (results){
+                const loopMaxIdx = results.length
+                for(let i=0; i< loopMaxIdx; i++){
+                    summonerLeagueInfos.push(axios.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + results[i].data.id + "?api_key=" + process.env.API_KEY))
+                }
+
+                Promise.all([summonerInfos, summonerLeagueInfos]).then(function (results){
+                    const maxIdx = results.at(0).length
+
+                    if(summonerInfos && summonerLeagueInfos && summonerInfos.length && summonerLeagueInfos.length){
+                        for(let i=0; i<maxIdx; i++){
+                            results[0][i].then(res => {
+                                const data = res.data
+                                setPuuids(puuids => [...puuids, data.puuid])
+                                setSummonerDatas(summonerDatas => [...summonerDatas, JSON.stringify(data)])
+                            })
+                            results[1][i].then(res => {
+                                const data = res.data
+                                setLeagueDatas(leagueDatas => [...leagueDatas, data])
+                            })
+                        }
+                        setIsFetching(false)
+                        setWantToGetMatchData(true)
+                        return results
+                    }
+                    else return results
+                })
             })
         }
         else{
         }
     }, [router.isReady])
 
-        if(isFetching){
-            return(
-                <Flex
-                    background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
-                    backgroundSize={"100%"}
-                    backgroundRepeat={"no-repeat"}
-                    height={"1600px"}
-                    as="div" 
-                    className="content-container"
-                    justifyContent={"center"}
-                    >
-                        <Box marginTop={"100px"}>
-                            <Text paddingLeft={"5px"} paddingBottom={"10px"} fontWeight={500} textAlign={"center"}> Loading ... </Text>
-                            <Spinner    thickness='18px'
-                                        speed='0.4s'
-                                        emptyColor={colorMode == 'light' ? "#f5f5fa" : "#0E0E0E"}
-                                        color={colorMode == 'light' ? "#3182CE" : "#CE3636"}
-                                        boxSize={"150px"}
-                                        />
-                        </Box>
-                    </Flex>
-            )
-        }
-        else{
-            //console.log("puuids are: ", puuids)
+    useEffect(() => {
+        if(puuids && puuids.length){
 
-            return (
-                <Flex
-                    background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
-                    backgroundSize={"100%"}
-                    backgroundRepeat={"no-repeat"}
-                    height={"1600px"}
-                    flexDir={"row"}
-                    className="content-container"
-                    justifyContent={"center"}
-                    >
-          
-                    {Array
-                        .from(Array(leagueDatas.length))
-                        .map((x, index) =>
-                                <Flex key={"flex-"+index} flexDirection={"column"}>
-                                <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
-                                    summonerData={summonerDatas[index]}
-                                    leagueData={leagueDatas[index]}>
-                                </SummonerInfoBoxMultiQuery>
+        // PROMISES
+        let matchIds = []
+        let matches = []
+        let all5playersMatches = []
 
-                                <MotionBox
-                                    marginTop={"15px"}
-                                    borderRadius={"10px"}
-                                    backgroundColor={modeColorsShadowBox}
-                                    initial={{opacity:0,  x:10}}
-                                    animate={{opacity:100, x:0}}
-                                    transition={{delay: 0.8}}
-                                >
-                                </MotionBox>
-                                </Flex>
-                            )
+        if(wantToGetMatchData && puuids.length == multiQueryPlayerAmount){
+            for(let i=0; i < multiQueryPlayerAmount; i++){
+                matchIds.push(axios.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
+                    puuids[i] + "/ids?start=0&count=" + MATCH_COUNT + "&api_key=" + process.env.API_KEY))
+            }
+            Promise.all(matchIds).then(function(results){
+                try{
+                    const matchIdsLen = matchIds.length
+                    for(let i=0; i < matchIdsLen; i++){   
+                        results[i].data.forEach(match => {
+                            all5playersMatches.push(axios.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + match +"?api_key=" + process.env.API_KEY))
+                        })
                     }
-                 </Flex>
-            )
+
+                    Promise.all([all5playersMatches]).then(function(results){
+                        const resultsLen = results.length
+                        //console.log("match promises all: ", results)
+                        //console.log("yolo:",results.at(0))
+                        
+                        if(all5playersMatches && all5playersMatches.length){
+                            all5playersMatches.forEach(matchPromise => {
+                                //console.log("matchpromise: ", matchPromise)
+                                matchPromise.then(res => {
+                                    //console.log("matchdata: ", res)
+                                    setMatchesAllPlayers(matchesAllPlayers => [...matchesAllPlayers, res.data])
+                                })
+                            })
+                        }
+                    })
+                } 
+                catch(err){
+                    console.log(err, "probably too many requests or another error...")
+                }
+            })
         }
+    }
+    }, [puuids])
+
+    console.log("ALL MATCHES DATA: ", matchesAllPlayers)
+    console.log("MULTIQUERY HAD ", multiQueryPlayerAmount, "PLAYERS.")
+
+    if(isFetching){
+        return(
+            <Flex
+                background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                backgroundSize={"100%"}
+                backgroundRepeat={"no-repeat"}
+                height={"1600px"}
+                as="div" 
+                className="content-container"
+                justifyContent={"center"}
+                >
+                    <Box marginTop={"100px"}>
+                        <Text paddingLeft={"5px"} paddingBottom={"10px"} fontWeight={500} textAlign={"center"}> Loading ... </Text>
+                        <Spinner    thickness='18px'
+                                    speed='0.4s'
+                                    emptyColor={colorMode == 'light' ? "#f5f5fa" : "#0E0E0E"}
+                                    color={colorMode == 'light' ? "#3182CE" : "#CE3636"}
+                                    boxSize={"150px"}
+                                    />
+                    </Box>
+                </Flex>
+        )
+    }
+    else{
+        return (
+            <Flex
+                background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                backgroundSize={"100%"}
+                backgroundRepeat={"no-repeat"}
+                height={"1600px"}
+                flexDir={"row"}
+                className="content-container"
+                justifyContent={"center"}
+                >
+        
+                {Array
+                    .from(Array(leagueDatas.length))
+                    .map((x, index) =>
+                            <Flex key={"flex-"+index} flexDirection={"column"}>
+                            <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
+                                summonerData={summonerDatas[index]}
+                                leagueData={leagueDatas[index]}>
+                            </SummonerInfoBoxMultiQuery>
+
+                            <MotionBox
+                                marginTop={"15px"}
+                                borderRadius={"10px"}
+                                backgroundColor={modeColorsShadowBox}
+                                initial={{opacity:0,  x:10}}
+                                animate={{opacity:100, x:0}}
+                                transition={{delay: 0.8}}
+                            >
+                            </MotionBox>
+                            </Flex>
+                        )
+                }
+                </Flex>
+        )
+    }
 }

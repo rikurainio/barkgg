@@ -138,6 +138,10 @@ const Navbar = () => {
                             <Link href={path}>
                                 Live Game
                             </Link>
+
+                            <Link href={path}>
+                                Draft Tool
+                            </Link>
                     </HStack>
                 </Box>
 

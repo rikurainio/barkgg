@@ -71,7 +71,6 @@ const Summoner = () => {
                     })
         }
         else{
-            console.log("Could not find summoner name... Try again")
         }
     }, [router.isReady])
     

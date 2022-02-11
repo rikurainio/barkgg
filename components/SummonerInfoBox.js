@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
 const SummonerInfoBox = ({summonerData, leagueData}) => {
-    //console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
+    console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
 
     const solo = {}
     const flex = {}
