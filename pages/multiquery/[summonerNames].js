@@ -1,4 +1,4 @@
-import { Box, Flex, Text, useColorMode, useColorModeValue, List, ListItem } from '@chakra-ui/react'
+import { Box, Flex, Text, useColorMode, useColorModeValue, List, ListItem, Spinner} from '@chakra-ui/react'
 import SearchBarMultiQuery from '../../components/SearchBarMultiQuery'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -8,6 +8,7 @@ import axios from 'axios'
 export default function Stats(){
     const router = useRouter()
     const { colorMode, toggleColorMode } = useColorMode()
+    const [isFetching, setIsFetching] = useState(true)
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -58,17 +59,42 @@ export default function Stats(){
         }
     }, [router.isReady])
 
-    return (
-        <Flex
-        background={colorMode === 'light' ? "#F8F8F8" : "black"}
-        backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
-        backgroundSize={"100%"}
-        backgroundRepeat={"no-repeat"}
-        height={"1600px"}
-        flexDir={"row"}
-        className="content-container"
-        justifyContent={"center"}
-        >
+        if(isFetching){
+            return(
+                <Flex
+                    background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                    backgroundSize={"100%"}
+                    backgroundRepeat={"no-repeat"}
+                    height={"1600px"}
+                    as="div" 
+                    className="content-container"
+                    justifyContent={"center"}
+                    >
+                        <Box marginTop={"100px"}>
+                            <Text paddingLeft={"5px"} paddingBottom={"10px"} fontWeight={500} textAlign={"center"}> Loading ... </Text>
+                            <Spinner    thickness='18px'
+                                        speed='0.4s'
+                                        emptyColor={colorMode == 'light' ? "#f5f5fa" : "#0E0E0E"}
+                                        color={colorMode == 'light' ? "#3182CE" : "#CE3636"}
+                                        boxSize={"150px"}
+                                        />
+                        </Box>
+                    </Flex>
+            )
+        }
+        else{
+            return (
+                <Flex
+                    background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                    backgroundSize={"100%"}
+                    backgroundRepeat={"no-repeat"}
+                    height={"1600px"}
+                    flexDir={"row"}
+                    className="content-container"
+                    justifyContent={"center"}
+                    >
           
                     {Array
                         .from(Array(leagueDatas.length))
@@ -79,6 +105,7 @@ export default function Stats(){
                                 </SummonerInfoBoxMultiQuery>
                             )
                     }
-      </Flex>
-    )
+                 </Flex>
+            )
+        }
 }
