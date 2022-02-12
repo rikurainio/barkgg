@@ -3,10 +3,14 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import SummonerInfoBoxMultiQuery from '../../components/SummonerInfoBoxMultiQuery'
 import axios from 'axios'
+import rateLimit from 'axios-rate-limit'
 
 // FRAMER MOTION
 import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
+
+// LIMITER
+const http = rateLimit(axios.create(), { maxRequests: 20, perMilliseconds: 1200, maxRPS: 20})
 
 export default function Stats(){
     const router = useRouter()
@@ -15,7 +19,7 @@ export default function Stats(){
     const [requested, setRequested] = useState(false)
 
     //CONFIG
-    const MATCH_COUNT = 1
+    const MATCH_COUNT = 8
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -42,13 +46,13 @@ export default function Stats(){
             setMultiQueryPlayerAmount(loopMaxIdx)
 
             for(let i=0; i < loopMaxIdx; i++){
-                summonerInfos.push(axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ multiQuerySplit[i] + "?api_key=" + process.env.API_KEY))
+                summonerInfos.push(http.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ multiQuerySplit[i] + "?api_key=" + process.env.API_KEY))
             }
 
             Promise.all(summonerInfos).then(function (results){
                 const loopMaxIdx = results.length
                 for(let i=0; i< loopMaxIdx; i++){
-                    summonerLeagueInfos.push(axios.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + results[i].data.id + "?api_key=" + process.env.API_KEY))
+                    summonerLeagueInfos.push(http.get("https://euw1.api.riotgames.com/lol/league/v4/entries/by-summoner/" + results[i].data.id + "?api_key=" + process.env.API_KEY))
                 }
 
                 Promise.all([summonerInfos, summonerLeagueInfos]).then(function (results){
@@ -86,17 +90,32 @@ export default function Stats(){
         let matches = []
         let all5playersMatches = []
 
-        if(wantToGetMatchData && puuids.length == multiQueryPlayerAmount){
+        if(wantToGetMatchData && puuids.length == multiQueryPlayerAmount){            
             for(let i=0; i < multiQueryPlayerAmount; i++){
-                matchIds.push(axios.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
+                matchIds.push(http.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
                     puuids[i] + "/ids?start=0&count=" + MATCH_COUNT + "&api_key=" + process.env.API_KEY))
             }
+
+            // SHOULD BE 15 REQUESTS AT THIS POINT IF 5 SUMMONER MULTI
+            // 5X2 FOR SUMMONERDATA AND 5X1 FOR SUMMONER MATCHLISTS
+            // RATE LIMIT IS 20REQ/S    AND 100REQ/2MIN I.E 100REQ/120S
+
+            // WAIT 2 SECONDS BEFORE FETCHING MATCHDATAS
+            setTimeout(() => {
+            }, 2000)
+
             Promise.all(matchIds).then(function(results){
                 try{
+                    const requestCounter = 0
                     const matchIdsLen = matchIds.length
                     for(let i=0; i < matchIdsLen; i++){   
                         results[i].data.forEach(match => {
-                            all5playersMatches.push(axios.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + match +"?api_key=" + process.env.API_KEY))
+                            if(requestCounter == 10){
+                                setTimeout(() => {
+                                }, 2000)
+                            }
+                            all5playersMatches.push(http.get("https://europe.api.riotgames.com/lol/match/v5/matches/" + match +"?api_key=" + process.env.API_KEY))
+                            requestCounter += 1
                         })
                     }
 
@@ -109,6 +128,7 @@ export default function Stats(){
                             all5playersMatches.forEach(matchPromise => {
                                 //console.log("matchpromise: ", matchPromise)
                                 matchPromise.then(res => {
+                                    console.log("res", res)
                                     //console.log("matchdata: ", res)
                                     setMatchesAllPlayers(matchesAllPlayers => [...matchesAllPlayers, res.data])
                                 })
