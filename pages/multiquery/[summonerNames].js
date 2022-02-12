@@ -2,6 +2,7 @@ import { Box, Flex, Text, useColorMode, useColorModeValue, List, ListItem, Spinn
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import SummonerInfoBoxMultiQuery from '../../components/SummonerInfoBoxMultiQuery'
+import MatchHistoryContainerMultiQuery from '../../components/MatchHistoryContainerMultiQuery'
 import axios from 'axios'
 import rateLimit from 'axios-rate-limit'
 
@@ -44,6 +45,7 @@ export default function Stats(){
             const multiQuerySplit = router.query.summonerNames.split(" ")
             const loopMaxIdx = multiQuerySplit.length
             setMultiQueryPlayerAmount(loopMaxIdx)
+            setSummonerNames(summonerNames => [...summonerNames, multiQuerySplit])
 
             for(let i=0; i < loopMaxIdx; i++){
                 summonerInfos.push(http.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"+ multiQuerySplit[i] + "?api_key=" + process.env.API_KEY))
@@ -128,7 +130,7 @@ export default function Stats(){
                             all5playersMatches.forEach(matchPromise => {
                                 //console.log("matchpromise: ", matchPromise)
                                 matchPromise.then(res => {
-                                    console.log("res", res)
+                                    //console.log("res", res)
                                     //console.log("matchdata: ", res)
                                     setMatchesAllPlayers(matchesAllPlayers => [...matchesAllPlayers, res.data])
                                 })
@@ -144,8 +146,21 @@ export default function Stats(){
     }
     }, [puuids])
 
-    console.log("ALL MATCHES DATA: ", matchesAllPlayers)
-    console.log("MULTIQUERY HAD ", multiQueryPlayerAmount, "PLAYERS.")
+    //console.log("ALL MATCHES DATA: ", matchesAllPlayers)
+    //console.log("MULTIQUERY HAD ", multiQueryPlayerAmount, "PLAYERS.")
+
+    function sliceIntoChunks(arr, chunkSize){
+        const res = []
+        for(let i=0; i < arr.length; i += chunkSize){
+            const chunk = arr.slice(i, i + chunkSize)
+            res.push(chunk)
+        }
+        return res
+    }
+
+    const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
+    //console.log("chunked array: ", chunkedMatches)
+    console.log("summonernames to props are", summonerNames)
 
     if(isFetching){
         return(
@@ -201,6 +216,13 @@ export default function Stats(){
                                 animate={{opacity:100, x:0}}
                                 transition={{delay: 0.8}}
                             >
+                                {chunkedMatches.map((chunk, index) =>
+                                    <MatchHistoryContainerMultiQuery
+                                        matchDatas={chunk}
+                                        selfName={summonerNames[0][index]}
+                                    >
+                                    </MatchHistoryContainerMultiQuery>
+                                )}
                             </MotionBox>
                             </Flex>
                         )

@@ -135,12 +135,16 @@ const Navbar = () => {
                                 Multiquery
                             </Link>
 
-                            <Link href={path}>
+                            <Link href={"/livegame"}>
                                 Live Game
                             </Link>
 
-                            <Link href={path}>
+                            <Link href={"/draft"}>
                                 Draft Tool
+                            </Link>
+
+                            <Link href={"/coinflip"}>
+                                Coinflip
                             </Link>
                     </HStack>
                 </Box>
