@@ -1,5 +1,5 @@
 import { Box, Text, List, ListItem, Heading, useColorModeValue } from '@chakra-ui/react'
-import MatchHistory from './MatchHistory'
+import MatchHistoryMultiQuery from './MatchHistoryMultiQuery'
 import { useEffect } from 'react'
 import axios from 'axios'
 
@@ -8,28 +8,28 @@ const MotionBox = motion(Box)
 
 const MatchHistoryContainerMultiQuery = ({matchDatas, selfName}) => {
     const modeColorsPastGames = ('white', 'white')
-    console.log("INFO", matchDatas[0].info)
-    console.log("I AM ", selfName)
+    console.log("MATCH CHUNKS FOR PLAYER", selfName, matchDatas)
+    //console.log("I AM ", selfName)
+    //console.log("PRMS:", selfName, matchDatas[0]['info'])
 
     return (
     <MotionBox
         initial={{opacity:0,  x:10}}
         animate={{opacity:100, x:0}}
         transition={{delay: 0.8}}
-        width={"100%"}
         h={"300px"}
         className="matchhistorycontainer"
         >
-        <Box width={"100%"}>
+        <Box>
             <List>
                 {matchDatas.map((match, index) => {
-                    <ListItem>
-                        <MatchHistory
+                    <ListItem key={"history-container-"+index}>
+                        <MatchHistoryMultiQuery
                             selfName={selfName}
-                            info={match['info']}
-                            metadata={match['metadata']}
+                            info={match.info}
+                            metadata={match.metadata}
                         >
-                        </MatchHistory>    
+                        </MatchHistoryMultiQuery>    
                     </ListItem>
                 })}
             </List>

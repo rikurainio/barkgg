@@ -13,8 +13,9 @@ const MotionBox = motion(Box)
 
 // COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD
 // info PROP CONTAINS DATA FOR A SINGULAR MATCH
-const MatchHistoryMultiQuery = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
+const MatchHistoryMultiQuery = ({info, metadata, selfName}) => {
     //console.log(" INFO KEYS:: ", Object.keys(info))
+    console.log("MQ_MQ_props: ", info, metadata, selfName)
 
     const modeColorsWin2 = useColorModeValue('rgba(195, 229, 255, 0.9)', 'rgba(31, 45, 63, 0.90)')
     const modeColorsLose2 = useColorModeValue('rgba(255, 202, 202, 0.9)', 'rgba(70, 26, 26, 0.90)')
@@ -44,6 +45,7 @@ const MatchHistoryMultiQuery = ({info, metadata, selfName, setSummonerName, rese
         teamTotalKills: team1.objectives.champion.kills,
         teamDragonKills: team1.objectives.dragon.kills
     }
+
     const releveantTeam2Data = {
         win: team2.win,
         firstBlood: team2.objectives.champion.first,
@@ -146,36 +148,26 @@ const MatchHistoryMultiQuery = ({info, metadata, selfName, setSummonerName, rese
             && allyTeamObj && Object.keys(allyTeamObj).length > 0){
 
         return (
-                <Flex flexDir={"row"}>
-                <MotionBox
-                whileHover={{scale: 1.04}}
-                className={"matchhistorycard"}
-                mt={"10px"}
-                mb={"0px"}
-                pl={"5px"}
-                pr={"10px"}
-                justifyContent={"center"}
-                backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
-                borderRadius={6}
-                display={"flex"}
-                >
-                        <MatchHistoryTimeMode 
-                            gameMode={info}
-                            gameEnded={info.gameEndTimestamp}
-                            win={allyTeamObj.win}
-                            gameDuration={info.gameDuration}>
-                            
-                        </MatchHistoryTimeMode>
-                        <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
-                        <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
-                        <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
-                        <MatchHistoryPlayer
-                            participants={relevantInfo.participants}
-                            setSummonerName={setSummonerName}
-                            resetComponentStates={resetComponentStates}>
-                        </MatchHistoryPlayer>
-                </MotionBox>
-                </Flex>
+            <Flex flexDir={"row"}>
+            <MotionBox
+            whileHover={{scale: 1.04}}
+            className={"matchhistorycard"}
+            justifyContent={"center"}
+            backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
+            borderRadius={6}
+            display={"flex"}
+            >
+                    <MatchHistoryTimeMode
+                        gameMode={info}
+                        gameEnded={info.gameEndTimestamp}
+                        win={allyTeamObj.win}
+                        gameDuration={info.gameDuration}>
+                    </MatchHistoryTimeMode>
+                    <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
+                    <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
+                    <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
+            </MotionBox>
+            </Flex>
         )
     }
     else{

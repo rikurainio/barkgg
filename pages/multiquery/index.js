@@ -19,7 +19,6 @@ export default function Stats(){
         className="content-container"
         justifyContent={"center"}
         >
-          
             <Box marginTop={"70px"}>
                 <Text fontWeight={500} fontSize={"20px"}> Search for multiple Summoners </Text>
                 <Text fontWeight={500} fontSize={"16px"}> (seperate names with a comma) (Max 5 Summoners!) </Text>

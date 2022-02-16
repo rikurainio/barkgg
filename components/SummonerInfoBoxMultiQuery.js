@@ -128,14 +128,14 @@ try {
             animate={{opacity:100, x:0}}
             transition={{delay: 0.8}}
 
+            marginLeft={"5px"}
+            marginRight={"5px"}
+
             width={"300px"}
             display={"flex"}
             height={"100px"}
             bgColor={modeColorsShadowBox}
             borderRadius={"10px"}
-
-            marginRight={"5px"}
-            marginLeft={"5px"}
 
             marginTop={"75px"}
             className='summonerinfobox'

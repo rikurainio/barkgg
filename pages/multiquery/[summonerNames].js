@@ -20,7 +20,7 @@ export default function Stats(){
     const [requested, setRequested] = useState(false)
 
     //CONFIG
-    const MATCH_COUNT = 8
+    const MATCH_COUNT = 2
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -160,7 +160,7 @@ export default function Stats(){
 
     const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
     //console.log("chunked array: ", chunkedMatches)
-    console.log("summonernames to props are", summonerNames)
+    //onsole.log("summonernames to props are", summonerNames)
 
     if(isFetching){
         return(
@@ -181,7 +181,7 @@ export default function Stats(){
                                     emptyColor={colorMode == 'light' ? "#f5f5fa" : "#0E0E0E"}
                                     color={colorMode == 'light' ? "#3182CE" : "#CE3636"}
                                     boxSize={"150px"}
-                                    />
+                        />
                     </Box>
                 </Flex>
         )
@@ -203,27 +203,32 @@ export default function Stats(){
                     .from(Array(leagueDatas.length))
                     .map((x, index) =>
                             <Flex key={"flex-"+index} flexDirection={"column"}>
-                            <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
-                                summonerData={summonerDatas[index]}
-                                leagueData={leagueDatas[index]}>
-                            </SummonerInfoBoxMultiQuery>
 
-                            <MotionBox
-                                marginTop={"15px"}
-                                borderRadius={"10px"}
-                                backgroundColor={modeColorsShadowBox}
-                                initial={{opacity:0,  x:10}}
-                                animate={{opacity:100, x:0}}
-                                transition={{delay: 0.8}}
-                            >
-                                {chunkedMatches.map((chunk, index) =>
-                                    <MatchHistoryContainerMultiQuery
-                                        matchDatas={chunk}
-                                        selfName={summonerNames[0][index]}
-                                    >
-                                    </MatchHistoryContainerMultiQuery>
-                                )}
-                            </MotionBox>
+                                <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
+                                    summonerData={summonerDatas[index]}
+                                    leagueData={leagueDatas[index]}>
+                                </SummonerInfoBoxMultiQuery>
+
+                                <MotionBox
+                                    marginTop={"20px"}
+                                    borderRadius={"10px"}
+                                    marginLeft={"5px"}
+                                    marginRight={"5px"}
+                                    backgroundColor={modeColorsShadowBox}
+                                    initial={{opacity:0,  x:10}}
+                                    animate={{opacity:100, x:0}}
+                                    transition={{delay: 0.8}}
+                                >
+                                    {chunkedMatches.map((chunk, index) =>
+                                        <MatchHistoryContainerMultiQuery
+                                            key={"mq-history-container-"+index}
+                                            matchDatas={chunk}
+                                            selfName={summonerNames[0][index]}
+                                        >
+                                        </MatchHistoryContainerMultiQuery>
+                                    )}
+                                </MotionBox>
+
                             </Flex>
                         )
                 }

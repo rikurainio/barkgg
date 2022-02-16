@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, HStack, Box, Image, useColorMode, useColorModeValue } from "@chakra-ui/react"
+import { Flex, Heading, Text, HStack, Box, Badge, useColorMode, useColorModeValue } from "@chakra-ui/react"
 import { useEffect, useState } from 'react'
 import { Switch,  Modal,
             ModalOverlay,
@@ -70,38 +70,8 @@ const Navbar = () => {
     return (
         <Box zIndex={100}>
             <Flex
-            justifyContent={"left"}
             backgroundColor={modeColorsFooterNavbar}
             >
-            <Box
-                paddingBottom={"5px"}
-                display={"flex"}
-                className="server-status-container">
-
-                <Text
-                paddingTop={"40px"}
-                fontWeight={500}
-                fontSize={"18px"}
-                paddingLeft={"10px"}
-                >
-                euw server status:
-                </Text>
-                <Box
-                    >
-                    <Text
-                        paddingLeft={"2px"}
-                        paddingTop={"38.4px"}
-                        fontWeight={500}
-                        fontSize={"19px"}
-                        style={isServerOnline() ? {color: "green"} : {color: "red"}}>
-                            {isServerOnline() ? "online" : "down"}
-                    </Text>
-                </Box>
-            </Box>
-
-            
-
-
             <Flex
                 alignItems={"flex-end"}
                 marginBottom={"5px"}
@@ -110,7 +80,28 @@ const Navbar = () => {
                 >
 
                 <Box
-                    marginLeft={"395px"}
+                display={"flex"}
+                className="server-status-container">
+
+                    <Text
+                    paddingLeft={"10px"}
+                    >
+                    euw server status:
+                    </Text>
+                    <Box
+                        paddingLeft={"10px"}
+                        >
+                        <Badge
+                            fontSize={"12px"}
+                            style={isServerOnline() ? {color: "#003d06", backgroundColor: "#1fed4f"}
+                                                         : {color: "red", backgroundColor: "#ffbdbd"}}>
+                                {isServerOnline() ? "online" : "down"}
+                        </Badge>
+                    </Box>
+                </Box>
+
+                <Box
+                    marginLeft={"400px"}
                     justifyContent={"space-between"}>   
                     <Heading
                         fontSize={26}
@@ -125,7 +116,7 @@ const Navbar = () => {
                     display={"flex"}
                     >
                     <HStack
-                        spacing={"20px"}>
+                        spacing={"10px"}>
                             <Link href="/"
                                 >
                                 Home
@@ -151,7 +142,7 @@ const Navbar = () => {
 
                 
                 
-                <Box marginLeft={"10px"} paddingTop={"20px"}>
+                <Box paddingLeft={"10px"} paddingTop={"20px"}>
                     <SearchBar>
                     </SearchBar>
                 </Box>
@@ -159,7 +150,7 @@ const Navbar = () => {
                 <Box
                     className="color-mode-container"
                     display={"flex"}
-                    marginLeft={"420px"}
+                    paddingLeft={"420px"}
                     paddingTop={"8px"}
                     >
                     <Text fontWeight={100} fontSize={"20px"} paddingRight={"13px"}>Theme</Text>
