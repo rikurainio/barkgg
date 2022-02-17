@@ -20,7 +20,7 @@ export default function Stats(){
     const [requested, setRequested] = useState(false)
 
     //CONFIG
-    const MATCH_COUNT = 2
+    const MATCH_COUNT = 1
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
