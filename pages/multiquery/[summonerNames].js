@@ -20,7 +20,7 @@ export default function Stats(){
     const [requested, setRequested] = useState(false)
 
     //CONFIG
-    const MATCH_COUNT = 1
+    const MATCH_COUNT = 2
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -81,6 +81,7 @@ export default function Stats(){
             })
         }
         else{
+            router.isReady = false;
         }
     }, [router.isReady])
 
@@ -187,6 +188,8 @@ export default function Stats(){
         )
     }
     else{
+        console.log("leaguDatas length: ",leagueDatas.length)
+
         return (
             <Flex
                 background={colorMode === 'light' ? "#F8F8F8" : "black"}

@@ -12,17 +12,29 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName}) => {
     //console.log("I AM ", selfName)
     //console.log("PRMS:", selfName, matchDatas[0]['info'])
 
-    console.log("matchdatas length", matchDatas, "selfname: ", selfName)
+    console.log("matchdatas length", matchDatas.length, "selfname: ", selfName)
 
     return (
-        <MotionBox
-            initial={{opacity:0,  x:10}}
-            animate={{opacity:100, x:0}}
-            transition={{delay: 0.8}}
-            className="matchhistorycontainer"
+            <MotionBox
+                initial={{opacity:0,  x:10}}
+                animate={{opacity:100, x:0}}
+                transition={{delay: 0.8}}
+                className="matchhistorycontainer"
+                width={"100%"}
             >
-                <Text> LOL </Text>
-        </MotionBox>
+                <List>
+                    {Array
+                        .from(Array(matchDatas.length))
+                        .map((x, index) =>
+                            <ListItem key={"match-histories-item-" + index}>
+                                <MatchHistoryMultiQuery
+                                    match={matchDatas[index]}
+                                >
+                                </MatchHistoryMultiQuery>
+                            </ListItem>
+                        )}
+                </List>
+            </MotionBox>
     )
 }
 
