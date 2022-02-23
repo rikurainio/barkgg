@@ -6,13 +6,10 @@ import axios from 'axios'
 import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
-const MatchHistoryContainerMultiQuery = ({matchDatas, selfName}) => {
+const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount}) => {
     const modeColorsPastGames = ('white', 'white')
-    //console.log("MATCH CHUNKS FOR PLAYER", selfName, matchDatas)
-    //console.log("I AM ", selfName)
-    //console.log("PRMS:", selfName, matchDatas[0]['info'])
-
-    console.log("matchdatas length", matchDatas.length, "selfname: ", selfName)
+    console.log("chunks for + " + selfName, matchDatas)
+    console.log("data type is: ", typeof(matchDatas), " Is array?: ", Array.isArray(matchDatas))
 
     return (
             <MotionBox
@@ -22,20 +19,8 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName}) => {
                 className="matchhistorycontainer"
                 width={"100%"}
             >
-                <List>
-                    {Array
-                        .from(Array(matchDatas.length))
-                        .map((x, index) =>
-                            <ListItem key={"match-histories-item-" + index}>
-                                <MatchHistoryMultiQuery
-                                    match={matchDatas[index]}
-                                >
-                                </MatchHistoryMultiQuery>
-                            </ListItem>
-                        )}
-                </List>
             </MotionBox>
     )
 }
 
-export default MatchHistoryContainerMultiQuery
+export default MatchHistoryContainerMultiQuery 

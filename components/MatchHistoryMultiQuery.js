@@ -12,10 +12,8 @@ const MotionBox = motion(Box)
 
 // COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD
 // info PROP CONTAINS DATA FOR A SINGULAR MATCH
-const MatchHistoryMultiQuery = ({info, metadata, selfName, match}) => {
-    const props = {info, metadata, selfName}
-
-    console.log("single summoner data: ", info, metadata, selfName)
+const MatchHistoryMultiQuery = ({match}) => {
+    console.log("single summoner data: ", match)
 
     return (
         <Box backgroundColor={"gray"}>

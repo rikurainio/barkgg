@@ -189,6 +189,7 @@ export default function Stats(){
     }
     else{
         console.log("leaguDatas length: ",leagueDatas.length)
+        console.log("chunked matches: ", chunkedMatches)
 
         return (
             <Flex
@@ -222,14 +223,13 @@ export default function Stats(){
                                     animate={{opacity:100, x:0}}
                                     transition={{delay: 0.8}}
                                 >
-                                    {chunkedMatches.map((chunk, index) =>
-                                        <MatchHistoryContainerMultiQuery
-                                            key={"mq-history-container-"+index}
-                                            matchDatas={chunk}
-                                            selfName={summonerNames[0][index]}
-                                        >
-                                        </MatchHistoryContainerMultiQuery>
-                                    )}
+                                <MatchHistoryContainerMultiQuery
+                                    key={"mq-history-container-"+index}
+                                    matchDatas={chunkedMatches[index]}
+                                    matchCount={MATCH_COUNT}
+                                    selfName={summonerNames[0][index]}
+                                >
+                                </MatchHistoryContainerMultiQuery>
                                 </MotionBox>
 
                             </Flex>
