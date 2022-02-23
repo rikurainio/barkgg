@@ -33,6 +33,7 @@ export default function Stats(){
 
     // STRORE ALL MATCHES DATA FOR ALL (1-5) PLAYERS
     const [matchesAllPlayers, setMatchesAllPlayers] = useState([])
+    //const [chunkedMatches, setChunkedMatches] = useState([])
     const [multiQueryPlayerAmount, setMultiQueryPlayerAmount] = useState(0)
 
     const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, 1)', 'rgba(0, 0, 0, .7)')  
@@ -159,7 +160,6 @@ export default function Stats(){
         return res
     }
 
-    const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
     //console.log("chunked array: ", chunkedMatches)
     //onsole.log("summonernames to props are", summonerNames)
 
@@ -191,6 +191,7 @@ export default function Stats(){
         console.log("leaguDatas length: ",leagueDatas.length)
         console.log("chunked matches: ", chunkedMatches)
 
+        const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
         return (
             <Flex
                 background={colorMode === 'light' ? "#F8F8F8" : "black"}
@@ -228,6 +229,7 @@ export default function Stats(){
                                     matchDatas={chunkedMatches[index]}
                                     matchCount={MATCH_COUNT}
                                     selfName={summonerNames[0][index]}
+                                    isFetching={isFetching}
                                 >
                                 </MatchHistoryContainerMultiQuery>
                                 </MotionBox>
