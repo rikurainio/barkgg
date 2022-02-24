@@ -160,6 +160,14 @@ export default function Stats(){
         return res
     }
 
+    function getSelfName(index){
+        if(summonerDatas[index]){
+            const data = JSON.parse(summonerDatas[index])
+            return data.name
+        }
+        else return ""
+    }
+
     //console.log("chunked array: ", chunkedMatches)
     //onsole.log("summonernames to props are", summonerNames)
 
@@ -188,9 +196,6 @@ export default function Stats(){
         )
     }
     else{
-        console.log("leaguDatas length: ",leagueDatas.length)
-        console.log("chunked matches: ", chunkedMatches)
-
         const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
         return (
             <Flex
@@ -228,7 +233,7 @@ export default function Stats(){
                                     key={"mq-history-container-"+index}
                                     matchDatas={chunkedMatches[index]}
                                     matchCount={MATCH_COUNT}
-                                    selfName={summonerNames[0][index]}
+                                    selfName={getSelfName(index)}
                                     isFetching={isFetching}
                                 >
                                 </MatchHistoryContainerMultiQuery>
@@ -237,6 +242,7 @@ export default function Stats(){
                             </Flex>
                         )
                 }
+
                 </Flex>
         )
     }

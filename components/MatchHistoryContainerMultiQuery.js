@@ -1,7 +1,7 @@
 import { Box, Text, Flex, List, ListItem, Heading, useColorModeValue, Spinner, useColorMode, colorMode } from '@chakra-ui/react'
 import MatchHistoryMultiQuery from './MatchHistoryMultiQuery'
-import { useEffect } from 'react'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
@@ -9,6 +9,11 @@ const MotionBox = motion(Box)
 const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFetching}) => {
     const modeColorsPastGames = ('white', 'white')
     const { colorMode, toggleColorMode } = useColorMode()
+    const [name, setName] = useState("")
+
+    useEffect(() => {
+        setName(selfName)
+    }, [])
 
     if(isFetching){
         return(
@@ -34,8 +39,7 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
                     </Flex>
         )
     }
-    else if(matchDatas){
-        console.log("have matchdatas", matchDatas)
+    else if(matchDatas && matchDatas.length && selfName && selfName.length){
         return (
             <MotionBox
                 initial={{opacity:0,  x:10}}
@@ -46,14 +50,14 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
             > 
                 <List>
                 {
-                    matchDatas.map(function(match){
+                    matchDatas.map(function(match, index){
                         return (
-                            <ListItem key={match.matchId}>
-                                <MatchHistoryMultiQuery match={match}>
+                            <ListItem key={index}>
+                                <MatchHistoryMultiQuery key={"mhmq-" + match.matchId} match={match} name={name}>
                                 </MatchHistoryMultiQuery>
                             </ListItem>
                         )
-                    })
+                    }, this)
                 }
                 </List>
             </MotionBox>
