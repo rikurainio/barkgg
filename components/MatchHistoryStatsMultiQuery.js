@@ -39,7 +39,7 @@ const MatchHistoryStatsMultiQuery = ({allyTeamObj, selfObj}) => {
 
     return (
         <Box
-            width={"80px"}
+            width={"90px"}
             className='matchhistorystats'>
 
             <Box>
@@ -47,7 +47,7 @@ const MatchHistoryStatsMultiQuery = ({allyTeamObj, selfObj}) => {
             </Box>
 
             <Box>
-                <Text fontWeight={100} fontSize="15px" color={modeColorsKDAText}>{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
+                <Text isTruncated fontWeight={100} fontSize="15px" color={modeColorsKDAText}>{calculateKDA(selfObj.kills, selfObj.deaths, selfObj.assists)} KDA</Text>
             </Box>
         </Box>
     )

@@ -71,7 +71,6 @@ const MatchHistoryMultiQuery = ({match, name}) => {
     
     // FIND SELF FROM ALL THE PARTICIPANTS
     if(selfName.length){
-        console.log("selfname in parser: ", selfName)
         const self = info.participants.filter(participant => {
 
             // TRIM RIOT SUMMONER NAME & REMOVE WHITESPACE
@@ -133,14 +132,6 @@ const MatchHistoryMultiQuery = ({match, name}) => {
             })
         }
     }
-
-    //console.log("relevant info: ", relevantInfo)
-    //console.log("metadata", relevantMetaData)
-    //console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
-    //console.log("I am: ", selfObj)
-    //console.log("my team object is: ", selfObj.teamId)
-    //console.log("my team object is : ", allyTeamObj)
-    //console.log("teams: ", team1, team2)
 
     // GIGA CHECKER
     if(info && metadata

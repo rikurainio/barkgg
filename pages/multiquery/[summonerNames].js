@@ -20,7 +20,7 @@ export default function Stats(){
     const [requested, setRequested] = useState(false)
 
     //CONFIG
-    const MATCH_COUNT = 2
+    const MATCH_COUNT = 3
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -33,9 +33,7 @@ export default function Stats(){
 
     // STRORE ALL MATCHES DATA FOR ALL (1-5) PLAYERS
     const [matchesAllPlayers, setMatchesAllPlayers] = useState([])
-    //const [chunkedMatches, setChunkedMatches] = useState([])
     const [multiQueryPlayerAmount, setMultiQueryPlayerAmount] = useState(0)
-
     const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, 1)', 'rgba(0, 0, 0, .7)')  
 
     useEffect(() => {
@@ -125,15 +123,10 @@ export default function Stats(){
 
                     Promise.all([all5playersMatches]).then(function(results){
                         const resultsLen = results.length
-                        //console.log("match promises all: ", results)
-                        //console.log("yolo:",results.at(0))
                         
                         if(all5playersMatches && all5playersMatches.length){
                             all5playersMatches.forEach(matchPromise => {
-                                //console.log("matchpromise: ", matchPromise)
                                 matchPromise.then(res => {
-                                    //console.log("res", res)
-                                    //console.log("matchdata: ", res)
                                     setMatchesAllPlayers(matchesAllPlayers => [...matchesAllPlayers, res.data])
                                 })
                             })
@@ -147,9 +140,6 @@ export default function Stats(){
         }
     }
     }, [puuids])
-
-    //console.log("ALL MATCHES DATA: ", matchesAllPlayers)
-    //console.log("MULTIQUERY HAD ", multiQueryPlayerAmount, "PLAYERS.")
 
     function sliceIntoChunks(arr, chunkSize){
         const res = []
@@ -167,6 +157,21 @@ export default function Stats(){
         }
         else return ""
     }
+
+    function checkFetchSuccess(chunkedMatches){
+        const counter = 0
+        const chunksAmount = chunkedMatches.length
+        for(let i = 0; i <chunksAmount; i++){
+            counter += chunkedMatches[i].length
+        }
+        if(counter == MATCH_COUNT * chunksAmount){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+
     if(isFetching){
         return(
             <Flex
@@ -188,45 +193,58 @@ export default function Stats(){
                                     boxSize={"150px"}
                         />
                     </Box>
-                </Flex>
+            </Flex>
         )
     }
     else{
         const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
-        return (
-            <Flex
-                background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
-                backgroundSize={"100%"}
-                backgroundRepeat={"no-repeat"}
-                height={"1600px"}
-                flexDir={"row"}
-                className="content-container"
-                justifyContent={"center"}
-                >
-        
-                {Array
-                    .from(Array(leagueDatas.length))
-                    .map((x, index) =>
-                            <Flex key={"flex-"+index} flexDirection={"column"}>
+        if(checkFetchSuccess(chunkedMatches)){
+            return (
+                <Flex
+                    background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
+                    backgroundSize={"100%"}
+                    backgroundRepeat={"no-repeat"}
+                    height={"1600px"}
+                    flexDir={"row"}
+                    className="content-container"
+                    justifyContent={"center"}
+                    >
+            
+                    {Array
+                        .from(Array(leagueDatas.length))
+                        .map((x, index) =>
+                                <Flex key={"flex-"+index} flexDirection={"column"}>
 
-                                <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
-                                    summonerData={summonerDatas[index]}
-                                    leagueData={leagueDatas[index]}>
-                                </SummonerInfoBoxMultiQuery>
-                                <MatchHistoryContainerMultiQuery
-                                    key={"mq-history-container-"+index}
-                                    matchDatas={chunkedMatches[index]}
-                                    matchCount={MATCH_COUNT}
-                                    selfName={getSelfName(index)}
-                                    isFetching={isFetching}
-                                >
-                                </MatchHistoryContainerMultiQuery>
-                            </Flex>
-                        )
-                }
+                                    <SummonerInfoBoxMultiQuery key={"summoner-info-box-mq-" + index}
+                                        summonerData={summonerDatas[index]}
+                                        leagueData={leagueDatas[index]}>
+                                    </SummonerInfoBoxMultiQuery>
+                                    <MatchHistoryContainerMultiQuery
+                                        key={"mq-history-container-"+index}
+                                        matchDatas={chunkedMatches[index]}
+                                        matchCount={MATCH_COUNT}
+                                        selfName={getSelfName(index)}
+                                        isFetching={isFetching}
+                                    >
+                                    </MatchHistoryContainerMultiQuery>
+                                </Flex>
+                            )
+                    }
 
-                </Flex>
-        )
+                    </Flex>
+            )
+        }
+        return (<Flex
+            background={colorMode === 'light' ? "#F8F8F8" : "black"}
+            backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
+            backgroundSize={"100%"}
+            backgroundRepeat={"no-repeat"}
+            height={"1600px"}
+            as="div" 
+            className="content-container"
+            justifyContent={"center"}
+            >
+        </Flex>)
     }
 }
