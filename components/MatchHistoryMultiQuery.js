@@ -160,10 +160,8 @@ const MatchHistoryMultiQuery = ({match, name}) => {
                         ml={"5px"}
                         mr={"5px"}
                         pl={"5px"}
-                        mt={"7px"}
-                        pt={"5px"}
-                        pr={"10px"}
-                        justifyContent={"center"}
+                        pb={"5px"}
+                        mt={"10px"}
                         backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
                         borderRadius={6}
                         display={"flex"}
@@ -175,8 +173,8 @@ const MatchHistoryMultiQuery = ({match, name}) => {
                                 gameDuration={info.gameDuration}>
                                 
                             </MatchHistoryTimeModeMultiQuery>
-                            <MatchHistoryChampMultiQuery selfObj={selfObj}></MatchHistoryChampMultiQuery>
                             <MatchHistoryStatsMultiQuery allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStatsMultiQuery>
+                            <MatchHistoryChampMultiQuery selfObj={selfObj}></MatchHistoryChampMultiQuery>
                     </MotionBox>
                 </Flex>
         )

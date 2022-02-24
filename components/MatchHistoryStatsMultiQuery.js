@@ -2,7 +2,7 @@ import {Box, HStack, Flex, VStack, Image, Text, Heading, useColorModeValue } fro
 
 const MatchHistoryStatsMultiQuery = ({allyTeamObj, selfObj}) => {
 
-    const modeColorsKDAText = useColorModeValue('black', 'rgba(228, 188, 255, 1)')
+    const modeColorsKDAText = useColorModeValue('black', '#F3F3F3')
     const modeColorsCSText = useColorModeValue('black', 'rgba(196, 188, 255, 1)')
     const modeColorsKPText = useColorModeValue('black', 'rgba(255, 221, 238, 1)')
 
@@ -39,12 +39,10 @@ const MatchHistoryStatsMultiQuery = ({allyTeamObj, selfObj}) => {
 
     return (
         <Box
-            width={"100%"}
-            ml={"-125px"}
-            mt={1}
+            width={"80px"}
             className='matchhistorystats'>
 
-            <Box paddingTop={"2px"}>
+            <Box>
                 <Text fontWeight={"bold"}>{calculateStatsString(selfObj.kills, selfObj.deaths, selfObj.assists)} </Text>
             </Box>
 

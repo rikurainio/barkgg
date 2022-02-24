@@ -27,36 +27,15 @@ const MatchHistoryChampMultiQuery = ({selfObj}) => {
     }
     
     return (
-        <Box>
-            <Box height={"100%"} w={"60px"} display={"flex"} flexDirection={"column"}>
-                    <Box display={"flex"} pb={"5px"}>
-                        <Image
-                            ml={"4px"}
-                            objectFit={"contain"}
-                            src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner1Id + ".png"}
-                            borderRadius={0}
-                            width={6}
-                            >
-                        </Image>
-                        <Image
-                            ml={"5px"}
-                            objectFit={"contain"}
-                            src={SUMMONER_SPELL_BY_ID + relevantInfo.summoner2Id + ".png"}
-                            borderRadius={0}
-                            width={6}
-                            >
-                        </Image>
-                    </Box>
-
+            <Box paddingLeft={"20px"} paddingTop={"5px"}>
                     <Image
                         objectFit={"contain"}
                         src={CDN1231_IMG_BY_CHAMP_NAME}
                         borderRadius={1}
-                        width={"60px"}
+                        width={"42px"}
                         >
                     </Image>
             </Box>
-        </Box>
     )
 }
 

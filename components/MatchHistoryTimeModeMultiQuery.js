@@ -12,10 +12,10 @@ const MatchHistoryTimeModeMultiQuery = ({gameMode, gameEnded, win, gameDuration}
 
         // IS A RANKED SOLO OR FLEX Q
         if(mapId == 11 && queueId == 420){
-            return "Solo Queue"
+            return "Solo"
         }
         if(mapId == 11 && queueId == 440){
-            return "Flex Queue"
+            return "Flex"
         }
         // NORMAL TYPE
         if(gameMode.gameMode == "URF"){
@@ -76,9 +76,8 @@ const MatchHistoryTimeModeMultiQuery = ({gameMode, gameEnded, win, gameDuration}
     // AAMUJA SILLE KETÄ NÄKEE TÄN :-----D
     return (
         <Box
+            width={"130px"}
             paddingTop={"5px"}
-            height={"100%"}
-            width={"100%"}
             className='matchhistorytimemode'
             >
 
@@ -86,6 +85,7 @@ const MatchHistoryTimeModeMultiQuery = ({gameMode, gameEnded, win, gameDuration}
                 h={"12px"}
                 fontSize={"13px"}>
                 {getRankedText(gameMode.gameType, gameMode.mapId, gameMode.queueId)}
+                
             </Heading>
 
             {/* DATE REPRESENTATION */}
@@ -93,20 +93,7 @@ const MatchHistoryTimeModeMultiQuery = ({gameMode, gameEnded, win, gameDuration}
                 <TimeIcon marginBottom={"2px"} marginRight={"5px"}></TimeIcon> {getTimeAgo((new Date(gameEnded)))}
             </Text>
 
-            <Box
-                textAlign={"left"}
-                h={"10px"}
-                w={"100px"}
-                letterSpacing={"tight"}
-            >
-                {win ? <Text h={"20px"} w={"100%"} color={modeColorsWinText}> Win </Text>
-                     : (gameDuration / 60 < 4.5) ? 
-                        <Text
-                            color={modeColorsRemakeText}
-                        >
-                            Remake</Text>
-                    :   <Text h={"20px"} w={"100%"} color={modeColorsLoseText}>Loss</Text>}
-            </Box>
+            
                     
         </Box>
     )
