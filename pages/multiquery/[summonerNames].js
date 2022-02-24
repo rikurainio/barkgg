@@ -167,10 +167,6 @@ export default function Stats(){
         }
         else return ""
     }
-
-    //console.log("chunked array: ", chunkedMatches)
-    //onsole.log("summonernames to props are", summonerNames)
-
     if(isFetching){
         return(
             <Flex
@@ -218,17 +214,6 @@ export default function Stats(){
                                     summonerData={summonerDatas[index]}
                                     leagueData={leagueDatas[index]}>
                                 </SummonerInfoBoxMultiQuery>
-
-                                <MotionBox
-                                    marginTop={"20px"}
-                                    borderRadius={"10px"}
-                                    marginLeft={"5px"}
-                                    marginRight={"5px"}
-                                    backgroundColor={modeColorsShadowBox}
-                                    initial={{opacity:0,  x:10}}
-                                    animate={{opacity:100, x:0}}
-                                    transition={{delay: 0.8}}
-                                >
                                 <MatchHistoryContainerMultiQuery
                                     key={"mq-history-container-"+index}
                                     matchDatas={chunkedMatches[index]}
@@ -237,8 +222,6 @@ export default function Stats(){
                                     isFetching={isFetching}
                                 >
                                 </MatchHistoryContainerMultiQuery>
-                                </MotionBox>
-
                             </Flex>
                         )
                 }

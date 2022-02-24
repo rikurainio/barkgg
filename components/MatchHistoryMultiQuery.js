@@ -1,5 +1,8 @@
 import {Box, Flex, HStack, useDisclosure, Collapse, Text } from '@chakra-ui/react'
 import { useState } from 'react'
+import MatchHistoryChampMultiQuery from './MatchHistoryChampMultiQuery'
+import MatchHistoryStatsMultiQuery from './MatchHistoryStatsMultiQuery'
+import MatchHistoryTimeModeMultiQuery from './MatchHistoryTimeModeMultiQuery'
 import MatchHistoryChampAndRunes from './MatchHistoryChampAndRunes'
 import MatchHistoryItems from './MatchHistoryItems'
 import MatchHistoryPlayer from './MatchHistoryPlayer'
@@ -13,12 +16,11 @@ const MotionBox = motion(Box)
 
 // COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD
 // info PROP CONTAINS DATA FOR A SINGULAR MATCH
-const MatchHistoryMultiQuery = (match, name) => {
-    console.log("selfname is:", name)
+const MatchHistoryMultiQuery = ({match, name}) => {
 
     const selfName = name
-    const info = match.match.info
-    const metadata = match.match.metadata
+    const info = match.info
+    const metadata = match.metadata
 
     const modeColorsWin2 = useColorModeValue('rgba(195, 229, 255, 0.9)', 'rgba(31, 45, 63, 0.90)')
     const modeColorsLose2 = useColorModeValue('rgba(255, 202, 202, 0.9)', 'rgba(70, 26, 26, 0.90)')
@@ -151,34 +153,31 @@ const MatchHistoryMultiQuery = (match, name) => {
 
         return (
                 <Flex flexDir={"row"}>
-                <MotionBox
-                whileHover={{scale: 1.04}}
-                className={"matchhistorycard"}
-                mt={"10px"}
-                mb={"0px"}
-                pl={"5px"}
-                pr={"10px"}
-                justifyContent={"center"}
-                backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
-                borderRadius={6}
-                display={"flex"}
-                >
-                        <MatchHistoryTimeMode 
-                            gameMode={info}
-                            gameEnded={info.gameEndTimestamp}
-                            win={allyTeamObj.win}
-                            gameDuration={info.gameDuration}>
-                            
-                        </MatchHistoryTimeMode>
-                        <MatchHistoryChampAndRunes selfObj={selfObj}></MatchHistoryChampAndRunes>
-                        <MatchHistoryStats allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStats>
-                        <MatchHistoryItems itemsBuilt={itemsBuilt}></MatchHistoryItems>
-                        <MatchHistoryPlayer
-                            participants={relevantInfo.participants}
-                            setSummonerName={setSummonerName}
-                            resetComponentStates={resetComponentStates}>
-                        </MatchHistoryPlayer>
-                </MotionBox>
+                    <MotionBox
+                        width={"100%"}
+                        whileHover={{scale: 1.01}}
+                        className={"matchhistorycardmq"}
+                        ml={"5px"}
+                        mr={"5px"}
+                        pl={"5px"}
+                        mt={"7px"}
+                        pt={"5px"}
+                        pr={"10px"}
+                        justifyContent={"center"}
+                        backgroundColor={allyTeamObj.win ? modeColorsWin2 : checkIfRemake(relevantInfo.gameDuration) ? modeColorsRemake2 : modeColorsLose2}
+                        borderRadius={6}
+                        display={"flex"}
+                    >
+                            <MatchHistoryTimeModeMultiQuery 
+                                gameMode={info}
+                                gameEnded={info.gameEndTimestamp}
+                                win={allyTeamObj.win}
+                                gameDuration={info.gameDuration}>
+                                
+                            </MatchHistoryTimeModeMultiQuery>
+                            <MatchHistoryChampMultiQuery selfObj={selfObj}></MatchHistoryChampMultiQuery>
+                            <MatchHistoryStatsMultiQuery allyTeamObj={allyTeamObj} selfObj={selfObj}></MatchHistoryStatsMultiQuery>
+                    </MotionBox>
                 </Flex>
         )
     }

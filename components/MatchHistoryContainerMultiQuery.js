@@ -19,7 +19,6 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
         return(
             <Flex
                     background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
                     backgroundSize={"100%"}
                     backgroundRepeat={"no-repeat"}
                     height={"1600px"}
@@ -46,7 +45,6 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
                 animate={{opacity:100, x:0}}
                 transition={{delay: 0.8}}
                 className="matchhistorycontainer"
-                width={"100%"}
             > 
                 <List>
                 {
@@ -64,28 +62,7 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
     )
     }
     else{
-        return (
-            <Flex
-                background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
-                backgroundSize={"100%"}
-                backgroundRepeat={"no-repeat"}
-                height={"1600px"}
-                as="div" 
-                className="content-container"
-                justifyContent={"center"}
-            >
-                <Box marginTop={"100px"}>
-                    <Text paddingLeft={"5px"} paddingBottom={"10px"} fontWeight={500} textAlign={"center"}> Loading ... </Text>
-                    <Spinner    thickness='18px'
-                                speed='0.4s'
-                                emptyColor={colorMode == 'light' ? "#f5f5fa" : "#0E0E0E"}
-                                color={colorMode == 'light' ? "#3182CE" : "#CE3636"}
-                                boxSize={"150px"}
-                                />
-                </Box>
-            </Flex>
-        )
+        return (null)
     }
 }
 
