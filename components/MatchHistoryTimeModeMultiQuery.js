@@ -83,14 +83,15 @@ const MatchHistoryTimeModeMultiQuery = ({gameMode, gameEnded, win, gameDuration}
 
             <Heading
                 h={"12px"}
-                fontSize={"13px"}>
+                fontSize={"13px"}
+                marginBottom={"3px"}
+            >
                 {getRankedText(gameMode.gameType, gameMode.mapId, gameMode.queueId)}
-                
             </Heading>
 
             {/* DATE REPRESENTATION */}
             <Text textAlign={"left"} marginLeft={"-0.4px"} pt={"1px"} h={"20px"}>
-                <TimeIcon marginBottom={"2px"} marginRight={"5px"}></TimeIcon> {getTimeAgo((new Date(gameEnded)))}
+                <TimeIcon width={"13px"} mt={"-3px"}></TimeIcon> {getTimeAgo((new Date(gameEnded)))}
             </Text>
 
             
