@@ -11,7 +11,6 @@ import axios from 'axios'
 
 import SearchBar from "./SearchBar"
 import Link from 'next/link'
-//import { Image } from 'next/image'
 import React from 'react'
 
 const Navbar = () => {

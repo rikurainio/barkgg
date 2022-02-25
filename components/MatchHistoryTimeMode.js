@@ -1,4 +1,4 @@
-import { Flex, Box, Text, Heading, HStack, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text, Heading, useColorModeValue } from '@chakra-ui/react'
 import { TimeIcon } from '@chakra-ui/icons'
 
 const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {

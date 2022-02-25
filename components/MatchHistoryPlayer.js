@@ -1,27 +1,20 @@
-import {Box, VStack, Text, Heading, Spacer, Flex, Image, HStack,
-            Button, ButtonGroup, useColorModeValue, useColorMode } from '@chakra-ui/react'
-//import { Link } from '@chakra-ui/react'
-import { Link } from 'next/link'
+import {Box, VStack, Text, Flex, Image, HStack,
+            Button, useColorModeValue } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
 const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates}) => {
-    const router = useRouter()
-    //console.log("participants | ", participants)
     const CDN1231_IMG_BY_CHAMP_NAME_2
             = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/champion/"
     
     const modeColorsText = useColorModeValue('black', '#f5efed')
 
     function handleSearchPlayerViaMatchHistory(event){
-        //console.log("clicked: " + event.target.innerText)
-
         if(event.target.innerText){
             event.preventDefault
             const summonerNameToSearch = event.target.innerText
             if(summonerNameToSearch){
                 resetComponentStates()
                 window.location = "/summoner/" + summonerNameToSearch
-                //router.push("/summoner/" + summonerNameToSearch  ,undefined, { shallow: true })
             }
         }
     }

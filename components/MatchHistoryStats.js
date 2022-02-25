@@ -1,4 +1,4 @@
-import {Box, HStack, Flex, VStack, Image, Text, Heading, useColorModeValue } from '@chakra-ui/react'
+import {Box, HStack, Text, useColorModeValue } from '@chakra-ui/react'
 
 const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
@@ -19,8 +19,6 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
         if(totalKills && participation > 0){
             const result = (participation / totalKills * 100).toPrecision(2).toString()
-            //console.log("KP calced: ", participation, "/", totalKills, "* 100",result)
-
             if(result == 100){
                 return "100"
             }

@@ -4,15 +4,7 @@ import {Box, HStack, VStack, Image } from '@chakra-ui/react'
 const MatchHistoryItems = ({itemsBuilt}) => {
 
     //SERVE ITEM IMG FROM CDN BY ITEM ID
-    /*
-    const CDN1231_IMG_BY_ITEM_ID
-        = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/item/1001" + itemId + ".png"
-    */
-
-    // HAS 7 ITEMS BUILD FROM 0 to IDX 6????????????????????????? trinket?
     const IMG_SOURCES = [""]
-    //console.log("ib" , itemsBuilt)
-
     if(itemsBuilt){
         for(let i=0; i < Object.keys(itemsBuilt).length; i++){
             if(itemsBuilt['item' + i] == 0){
@@ -23,8 +15,6 @@ const MatchHistoryItems = ({itemsBuilt}) => {
             }
         }
     }
-
-    //console.log("CDN addresses for built items: ", IMG_SOURCES)
 
     return (
         <Box

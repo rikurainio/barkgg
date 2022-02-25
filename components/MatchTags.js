@@ -1,16 +1,8 @@
-import { Flex, Text, useColorModeValue, HStack,
-            Tag, TagLeftIcon, TagLabel, Box } from '@chakra-ui/react'
-import { AddIcon } from '@chakra-ui/icons'
-import { GiQueenCrown, GiPointyHat, GiHeartWings, GiCrossedSwords, GiCeilingBarnacle } from 'react-icons/gi';
-import { FaCrown } from 'react-icons/fa'
-import { useState, useEffect } from 'react'
+import { Flex, useColorModeValue,
+            Tag, TagLabel} from '@chakra-ui/react'
 
 const MatchTags = (teamParticipants) => {
     const modeColorsBg = useColorModeValue('rgba(255, 255, 255, 0.0)', 'rgba(0, 0, 0, 0.0)')
-
-    useEffect(() => {
-        
-    }, [])
 
     return (
         <Flex

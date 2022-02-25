@@ -1,8 +1,8 @@
 import { Box, Flex, Text, useColorMode, useColorModeValue, List, ListItem, Spinner, toast} from '@chakra-ui/react'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import SummonerInfoBoxMultiQuery from '../../components/SummonerInfoBoxMultiQuery'
-import MatchHistoryContainerMultiQuery from '../../components/MatchHistoryContainerMultiQuery'
+import SummonerInfoBoxMultiQuery from '../../components/multiquery/SummonerInfoBoxMultiQuery'
+import MatchHistoryContainerMultiQuery from '../../components/multiquery/MatchHistoryContainerMultiQuery'
 import axios from 'axios'
 import rateLimit from 'axios-rate-limit'
 
@@ -98,14 +98,6 @@ export default function Stats(){
                 matchIds.push(http.get("https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/" +
                     puuids[i] + "/ids?start=0&count=" + MATCH_COUNT + "&api_key=" + process.env.API_KEY))
             }
-
-            // SHOULD BE 15 REQUESTS AT THIS POINT IF 5 SUMMONER MULTI
-            // 5X2 FOR SUMMONERDATA AND 5X1 FOR SUMMONER MATCHLISTS
-            // RATE LIMIT IS 20REQ/S    AND 100REQ/2MIN I.E 100REQ/120S
-
-            // WAIT 2 SECONDS BEFORE FETCHING MATCHDATAS
-            setTimeout(() => {
-            }, 2000)
 
             Promise.all(matchIds).then(function(results){
                 try{

@@ -1,5 +1,5 @@
 import { Box, Flex, Text, useColorMode, useColorModeValue } from '@chakra-ui/react'
-import SearchBarMultiQuery from '../../components/SearchBarMultiQuery'
+import SearchBarMultiQuery from '../../components/multiquery/SearchBarMultiQuery'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 

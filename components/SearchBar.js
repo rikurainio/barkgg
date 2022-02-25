@@ -1,9 +1,8 @@
 import { Input, Flex, Box, Text, Stack, HStack, InputGroup, InputLeftElement,
             InputRightElement, Button, Form, useColorMode, useColorModeValue } from '@chakra-ui/react'
 
-import { ViewIcon, Search2Icon } from '@chakra-ui/icons'
+import { Search2Icon } from '@chakra-ui/icons'
 import React from 'react'
-import { useState } from "react";
 
 
 const SearchBar = () => {
@@ -18,23 +17,8 @@ const SearchBar = () => {
 
     function handleSearchUser (event) {
         event.preventDefault
-
-
-        //setPuuid("")
-        //setMatchData({})
-        //setSingleMatchData([])
-        //setSummonerName(userInput)
-        //setRequested(true)
-        //setRequested2(true)
-        //clearFields()
         window.location = "/summoner/" + userInput
     }
-
-    /*
-    function clearFields() {
-        document.getElementById("userInput").value=""
-    }
-    */
 
     return (
         <Flex
