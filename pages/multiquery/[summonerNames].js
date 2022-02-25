@@ -11,16 +11,16 @@ import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
 // LIMITER
-const http = rateLimit(axios.create(), { maxRequests: 20, perMilliseconds: 1200, maxRPS: 20})
+const http = rateLimit(axios.create(), { maxRequests: 3, perMilliseconds: 2000, maxRPS: 5})
 
 export default function Stats(){
     const router = useRouter()
     const { colorMode, toggleColorMode } = useColorMode()
     const [isFetching, setIsFetching] = useState(true)
     const [requested, setRequested] = useState(false)
-
+    const [queryLength, setQueryLength] = useState(0)
     //CONFIG
-    const MATCH_COUNT = 3
+    const MATCH_COUNT = 7
 
     //SUMMONER
     const [puuids, setPuuids] = useState([])
@@ -43,6 +43,7 @@ export default function Stats(){
         if(router.isReady){
             const multiQuerySplit = router.query.summonerNames.split(" ")
             const loopMaxIdx = multiQuerySplit.length
+            setQueryLength(loopMaxIdx)
             setMultiQueryPlayerAmount(loopMaxIdx)
             setSummonerNames(summonerNames => [...summonerNames, multiQuerySplit])
 
@@ -159,17 +160,24 @@ export default function Stats(){
     }
 
     function checkFetchSuccess(chunkedMatches){
-        const counter = 0
-        const chunksAmount = chunkedMatches.length
-        for(let i = 0; i <chunksAmount; i++){
-            counter += chunkedMatches[i].length
+        if(chunkedMatches){
+            const counter = 0
+            const chunksAmount = chunkedMatches.length
+            for(let i = 0; i <chunksAmount; i++){
+                for(let j = 0; j < chunkedMatches[i].length; j++){
+                    if(Object.keys(chunkedMatches[i][j]).length){
+                        counter += 1
+                    }
+                }
+            }
+            if(counter == MATCH_COUNT * chunksAmount){
+                return true
+            }
+            else{
+                return false
+            }
         }
-        if(counter == MATCH_COUNT * chunksAmount){
-            return true
-        }
-        else{
-            return false
-        }
+        return false
     }
 
     if(isFetching){
@@ -198,7 +206,8 @@ export default function Stats(){
     }
     else{
         const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
-        if(checkFetchSuccess(chunkedMatches)){
+        if(checkFetchSuccess(chunkedMatches) && chunkedMatches.length == queryLength){
+            console.log("chunked matches fetch complete: ", chunkedMatches)
             return (
                 <Flex
                     background={colorMode === 'light' ? "#F8F8F8" : "black"}

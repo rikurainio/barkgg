@@ -38,7 +38,7 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
                     </Flex>
         )
     }
-    else if(matchDatas && matchDatas.length && selfName && selfName.length){
+    else if(matchDatas && matchDatas.length == matchCount && selfName && selfName.length){
         return (
             <MotionBox
                 initial={{opacity:0,  x:10}}
@@ -55,7 +55,7 @@ const MatchHistoryContainerMultiQuery = ({matchDatas, selfName, matchCount, isFe
                                 </MatchHistoryMultiQuery>
                             </ListItem>
                         )
-                    }, this)
+                    })
                 }
                 </List>
             </MotionBox>
