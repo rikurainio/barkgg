@@ -64,7 +64,7 @@ const LiveGame = () => {
     return (
         <Flex
         background={colorMode === 'light' ? "#F8F8F8" : "black"}
-        backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+        backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.pngblur' : '/backgrounds/xinzhaoarblur.png'}
         backgroundSize={"100%"}
         backgroundRepeat={"no-repeat"}
         height={"2000px"}

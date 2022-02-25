@@ -7,7 +7,7 @@ export default function Coinflip(){
     return (
         <Box>
             <Flex background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
                     backgroundSize={"100%"}
                     backgroundRepeat={"no-repeat"}
                     height={"2100px"}

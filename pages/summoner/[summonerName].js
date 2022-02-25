@@ -96,7 +96,7 @@ const Summoner = () => {
         return(
             <Flex
                     background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
                     backgroundSize={"100%"}
                     backgroundRepeat={"no-repeat"}
                     height={"1600px"}
@@ -121,7 +121,7 @@ const Summoner = () => {
             <Flex
                 flexDir={"row"}
                 background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefaded.png' : '/backgrounds/xinzhaoart.png'}
+                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
                 backgroundSize={"100%"}
                 backgroundRepeat={"no-repeat"}
                 height={"1600px"}
