@@ -1,17 +1,11 @@
-import {Box, Flex, HStack, useDisclosure, Collapse, Text } from '@chakra-ui/react'
-import { useState } from 'react'
+import {Box, Flex } from '@chakra-ui/react'
 import MatchHistoryChampMultiQuery from './MatchHistoryChampMultiQuery'
 import MatchHistoryStatsMultiQuery from './MatchHistoryStatsMultiQuery'
 import MatchHistoryTimeModeMultiQuery from './MatchHistoryTimeModeMultiQuery'
-import MatchHistoryChampAndRunes from '../MatchHistoryChampAndRunes'
-import MatchHistoryItems from '../MatchHistoryItems'
-import MatchHistoryPlayer from '../MatchHistoryPlayer'
-import MatchHistoryStats from '../MatchHistoryStats'
-import MatchHistoryTimeMode from '../MatchHistoryTimeMode'
-import { Fade, ScaleFade, Slide, SlideFade, useColorModeValue, useColorMode } from '@chakra-ui/react'
+import { useColorModeValue } from '@chakra-ui/react'
 
 // FRAMER MOTION
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion'  
 const MotionBox = motion(Box)
 
 // COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD

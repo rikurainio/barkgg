@@ -16,7 +16,7 @@ import React from 'react'
 const Navbar = () => {
 
     const { colorMode, toggleColorMode } = useColorMode()
-    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(53, 54, 51)')
+    const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(40, 43, 44)')
 
     const [serverStatus, setServerStatus] = useState("online")
     const GET_STATUS_URL = "https://euw1.api.riotgames.com/lol/status/v3/shard-data"

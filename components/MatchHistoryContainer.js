@@ -1,4 +1,4 @@
-import { Box, Text, List, ListItem, Heading, useColorModeValue } from '@chakra-ui/react'
+import { Box, Text, List, ListItem, Heading, ColorMode, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import MatchHistory from './MatchHistory'
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -28,6 +28,7 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
     const info = {}
     const metadata = {}
     const modeColorsPastGames = ('white', 'white')
+    const { colorMode, toggleColorMode } = useColorMode()
 
     // SETTINGS FOR API REQUEST
     const API_KEY = process.env.API_KEY
@@ -102,21 +103,20 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         >
         
         <Box
-            marginBottom={"4px"}
+            marginTop={"10px"}
+            background={colorMode === 'light' ? 'rgba(245, 245, 250, .65)' : 'rgba(40, 43, 44, .55)'}
             className='pastmatchesheading'>
-                <Heading
+                <Text
+                paddingTop={"5px"}
                 color={modeColorsPastGames}
-                fontWeight={500}
+                fontWeight={100}
                 fontSize={"16px"}>
-                Matches
                 <Text
                 fontWeight={100}
-                fontSize="sm"
                 color={modeColorsPastGames}
                 >
-                    past (8 Games)
                 </Text>
-        </Heading>
+        </Text>
         </Box>
 
         

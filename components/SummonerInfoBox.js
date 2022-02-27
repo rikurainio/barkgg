@@ -30,7 +30,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
         return false
     }
 
-    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .6)', 'rgba(0, 0, 0, .5)')    
+    const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, .6)', 'rgba(40, 43, 44, .55)')    
     const modeColorsFooterNavbar = useColorModeValue('rgb(245, 245, 250)', 'rgb(53, 54, 51)')
 
     try {
@@ -131,56 +131,50 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
 
                 position={"static"}
                 display={"flex"}
-                height={"170px"}
+                height={"140px"}
                 bgColor={modeColorsShadowBox}
                 borderRadius={"6px"}
-                marginTop={"55px"}
+                marginTop={"60px"}
                 className='summonerinfobox'
             >
                 <Box
-                    width={"80px"}
-                    className='summoner-winrate-container'>
-                        <Heading
-                            fontSize={"16px"}
-                            paddingLeft={"10px"}
-                            paddingTop={"140px"}>
-                            {solo.tier ? (Math.round((solo.wins/(solo.losses+solo.wins))*100)) + "% wr" : ""}
-                        </Heading>
-                </Box>
-
-                <Box
                     pointerEvents={"none"}
-                    marginLeft={"-100px"}
+                    marginLeft={"0px"}
                     className={"summoner-image-container"}
-                    paddingTop={"35px"}
+                    paddingTop={"30px"}
                     >
 
                     <Box
-                        paddingLeft={"95px"}>
-                        <Image
-                            borderRadius='full'
-                            src={amITakis(summonerValues['name']) ? TAKIS_IMG : CDN1231}
-                            width={100}>
-                        </Image>
+                        paddingLeft={"65px"}>
+                        <Box
+                        >
+                            <Image
+                                marginLeft={"8px"}
+                                borderRadius='full'
+                                src={amITakis(summonerValues['name']) ? TAKIS_IMG : CDN1231}
+                                width={"75px"}>
+                            </Image>
+                        </Box>
                     </Box>
                     <Box
-                        marginTop={-274}>
+                        marginTop={-204}>
                         <Image  
                                 src={solo.tier ? RANKED_WINGS_SRC : NO_SOLO_RANK_WINGS_BLACK}
-                                width={290}>
+                                width={220}>
                         </Image>
                     </Box>
                 </Box>
                 
 
                 <Box
+                    paddingLeft={"20px"}
                     className="summoner-name-rank-container">
                     <List>
                         <ListItem>
                             <Box>
                                 <Heading
                                     paddingTop={"20px"}
-                                    fontSize={"36px"}>
+                                    fontSize={"30px"}>
                                     {summonerValues['name']}
                                 </Heading>
 
@@ -196,20 +190,21 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                             <Box>
                                 <Heading
                                     fontWeight={200}
-                                    fontSize={"18px"}>
+                                    fontSize={"16px"}>
                                     {solo.tier ? solo.tier +  " "
                                         + solo.rank + " " : ""}
+                                    {solo.tier ? (Math.round((solo.wins/(solo.losses+solo.wins))*100)) + "% wr" : ""}
                                 </Heading>
 
                                 <HStack spacing={4}>
                                 </HStack>
 
-                                <Badge
+                                <Text
                                     colorScheme={modeColorsFooterNavbar}
                                     fontWeight={500}
-                                    fontSize={"18px"}>
+                                    fontSize={"16px"}>
                                     {solo.tier ? solo.leaguePoints + " LP" + " (Solo Queue) " : "Unranked (Solo Queue)"}
-                                </Badge>
+                                </Text>
                             </Box>
                         </ListItem> 
                     </List>
