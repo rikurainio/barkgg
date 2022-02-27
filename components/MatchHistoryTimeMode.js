@@ -52,7 +52,7 @@ const MatchHistoryTimeMode = ({gameMode, gameEnded, win, gameDuration}) => {
         <Box
             paddingTop={"5px"}
             height={"100%"}
-            width={"100%"}
+            width={"100px"}
             className='matchhistorytimemode'
             >
 

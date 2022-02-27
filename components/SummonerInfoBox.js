@@ -122,7 +122,6 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
             }
         }
 
-
         return (
             <MotionBox
                 initial={{opacity:0,  x:10}}

@@ -32,6 +32,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
     if(participants.length == 10){
         return (
             <Flex
+                maxW={"260px"}
                 paddingTop={1}
                 className="matchhistoryplayer">
                     <Box
@@ -57,7 +58,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                             <Button
                                                 variant='link'
                                                 display={"inline-block"}
-                                                maxW={"110px"}
+                                                maxW={"120px"}
                                                 isTruncated
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"
@@ -103,7 +104,7 @@ const MatchHistoryPlayer = ({participants, setSummonerName, resetComponentStates
                                             <Button
                                                 variant='link'
                                                 display={"inline-block"}
-                                                maxW={"110px"}
+                                                maxW={"90px"}
                                                 isTruncated
                                                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
                                                 className="search-player-name-button"

@@ -46,8 +46,8 @@ const MatchHistoryStats = ({allyTeamObj, selfObj}) => {
 
     return (
         <Box
-            width={"100%"}
-            ml={"-125px"}
+            width={"120px"}
+            ml={"-110px"}
             mt={1}
             className='matchhistorystats'>
 
