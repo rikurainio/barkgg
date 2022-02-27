@@ -145,7 +145,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                     >
 
                     <Box
-                        paddingLeft={"65px"}>
+                        paddingLeft={"64px"}>
                         <Box
                         >
                             <Image
@@ -157,7 +157,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
                         </Box>
                     </Box>
                     <Box
-                        marginTop={-204}>
+                        marginTop={-208}>
                         <Image  
                                 src={solo.tier ? RANKED_WINGS_SRC : NO_SOLO_RANK_WINGS_BLACK}
                                 width={220}>
