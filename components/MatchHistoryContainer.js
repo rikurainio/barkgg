@@ -101,25 +101,6 @@ const MatchHistoryContainer = ({selfName, puuid, setMatchData, singleMatchData,
         h={"1000px"}
         className="matchhistorycontainer"
         >
-        
-        <Box
-            marginTop={"10px"}
-            background={colorMode === 'light' ? 'rgba(245, 245, 250, .65)' : 'rgba(40, 43, 44, .55)'}
-            className='pastmatchesheading'>
-                <Text
-                paddingTop={"5px"}
-                color={modeColorsPastGames}
-                fontWeight={100}
-                fontSize={"16px"}>
-                <Text
-                fontWeight={100}
-                color={modeColorsPastGames}
-                >
-                </Text>
-        </Text>
-        </Box>
-
-        
 
         <Box width={"100%"}>
             <List>
