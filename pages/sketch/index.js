@@ -1,5 +1,5 @@
 import { Box, Flex, Image, useColorMode, Button, useColorModeValue,
-         Slider, SliderMark, SliderThumb, SliderTrack, SliderFilledTrack } from '@chakra-ui/react'
+         Slider, SliderMark, SliderThumb, SliderTrack, SliderFilledTrack, HStack } from '@chakra-ui/react'
 import { React, useState, useEffect, useRef, createRef } from 'react';
 import { FaPen } from 'react-icons/fa';
 
@@ -21,11 +21,28 @@ export default function Draft(){
     const [sliderValue, setSliderValue] = useState(50)
     const [penColor, setPenColor] = useState("#00adef")
     const { colorMode, toggleColorMode } = useColorMode()
-    const canvas = useRef()
     
 
     //REFS
     const wardRef = useRef()
+    const controlWardRef = useRef()
+
+    const bef1 = useRef()
+    const bef2 = useRef()
+    const bef3 = useRef()
+    const bef4 = useRef()
+    const bef5 = useRef()
+
+    const ref1 = useRef()
+    const ref2 = useRef()
+    const ref3 = useRef()
+    const ref4 = useRef()
+    const ref5 = useRef()
+
+    const canvas = useRef()
+
+    const refList = []
+    refList.push(bef1, bef2, bef3, bef4, bef5, ref1, ref2, ref3, ref4, ref5)
 
     // STYLES FOR SUMMONERS RIFT CANVAS
     const styles = {
@@ -49,6 +66,10 @@ export default function Draft(){
         if(wardType == "control"){
 
         }
+    }
+
+    function handleWantReset(){
+        setWantReset(true)
     }
 
     return (
@@ -116,7 +137,7 @@ export default function Draft(){
                         </Flex>
                     
                
-                        <Box placeItems={"center"}>
+                        <Box className='test' placeItems={"center"}>
                             <Box>
                                 <ReactSketchCanvas className={'sketch-canvas-' + className}
                                     ref={canvas}
@@ -124,7 +145,7 @@ export default function Draft(){
                                     width="1100px"
                                     height="810px"
                                     backgroundImage='/backgrounds/summonersrift.png'
-                                    strokeWidth={sliderValue/3}
+                                    strokeWidth={sliderValue/4.2}
                                     eraserWidth={sliderValue}
                                     strokeColor={penColor}
                                 />
@@ -135,47 +156,62 @@ export default function Draft(){
                                 position={"absolute"}
                                 width="1100px"
                                 height="810px"
-                            >
+                                bgColor={"rgba(0,0,0,.0)"}
+                            >   
                                 <Box
                                     marginTop={"-10px"}
-                                    backgroundColor={"rgba(0,0,0,.4)"}
-                                    width={"1100px"}
-                                    height={"51px"}
+                                        paddingTop={"5px"}
+                                        backgroundColor={"rgba(0,0,0,.4)"}
+                                        width={"1100px"}
+                                        height={"70px"}
                                 >
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"10px"} marginTop={"10px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}><Ward wardType={"normal"}></Ward></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"80px"} marginTop={"-24px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"T"} side={"b"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"117px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"JG"} side={"b"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"154px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"M"} side={"b"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"191px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"AD"} side={"b"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"228px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"S"} side={"b"}></Laner></Box>
-                                    </Draggable>
+                                    <HStack paddingTop={"10px"}>
 
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"280px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"T"} side={"r"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"317px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"JG"} side={"r"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"354px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"M"} side={"r"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"391px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"AD"} side={"r"}></Laner></Box>
-                                    </Draggable>
-                                    <Draggable nodeRef={wardRef}>
-                                        <Box marginLeft={"428px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}> <Laner letter={"S"} side={"r"}></Laner></Box>
-                                    </Draggable>
+                                        <HStack paddingLeft={"5px"}>
+                                            <Draggable key={"w1"} nodeRef={wardRef}>
+                                                <Box marginLeft={"10px"} marginTop={"0px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}><Ward wardType={"normal"}></Ward></Box>
+                                            </Draggable>
+                                            <Draggable key={"c1"} nodeRef={controlWardRef}>
+                                                <Box marginTop={"10px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={controlWardRef}><Ward wardType={"control"}></Ward></Box>
+                                            </Draggable>
+                                        </HStack>
+
+                                        <HStack paddingLeft={"20px"} paddingRight={"40px"} spacing={"34px"}>
+                                            <Draggable key={"r1"} nodeRef={bef1}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' key={"asd"} ref={bef1}> <Laner letter={"T"} side={"b"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"r2"} nodeRef={bef2}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' ref={bef2}> <Laner letter={"JG"} side={"b"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"r3"} nodeRef={bef3}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' ref={bef3}> <Laner letter={"M"} side={"b"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"r4"} nodeRef={bef4}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' ref={bef4}> <Laner letter={"AD"} side={"b"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"r5"} nodeRef={bef5}>
+                                                <Box  maxW={"52px"} borderRadius={"full"} className='ward' ref={bef5}> <Laner letter={"S"} side={"b"}></Laner></Box>
+                                            </Draggable>
+                                        </HStack>
+                                        <HStack spacing={"34px"}>
+                                            <Draggable key={"b1"} nodeRef={ref1}>
+                                                <Box  maxW={"52px"} borderRadius={"full"} className='ward' ref={ref1}> <Laner letter={"T"} side={"r"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"b2"} nodeRef={ref2}>
+                                                <Box  maxW={"52px"} borderRadius={"full"} className='ward' ref={ref2}> <Laner letter={"JG"} side={"r"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"b3"} nodeRef={ref3}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' ref={ref3}> <Laner letter={"M"} side={"r"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"b4"} nodeRef={ref4}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' ref={ref4}> <Laner letter={"AD"} side={"r"}></Laner></Box>
+                                            </Draggable>
+                                            <Draggable key={"b5"} nodeRef={ref5}>
+                                                <Box maxW={"52px"} borderRadius={"full"} className='ward' ref={ref5}> <Laner letter={"S"} side={"r"}></Laner></Box>
+                                            </Draggable>
+                                        </HStack>
+                                        
+                                    </HStack>
                                 </Box>
                                
                             </Box>

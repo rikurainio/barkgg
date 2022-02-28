@@ -129,8 +129,8 @@ const Navbar = () => {
                                 Live Game
                             </Link>
 
-                            <Link href={"/draft"}>
-                                Draft Tool
+                            <Link href={"/sketch"}>
+                                Sketch tool
                             </Link>
 
                             <Link href={"/coinflip"}>
