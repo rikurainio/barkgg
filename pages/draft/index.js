@@ -1,8 +1,17 @@
-import { Box, Flex, Image, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, Image, useColorMode, Button, useColorModeValue } from '@chakra-ui/react'
+import { React, useState, useEffect, useRef, createRef } from 'react';
+import { ReactSketchCanvas } from 'react-sketch-canvas';
 
 export default function Draft(){
-
+    const [penColor, setPenColor] = useState("cyan")
     const { colorMode, toggleColorMode } = useColorMode()
+    const canvas = useRef()
+
+    // STYLES FOR SUMMONERS RIFT CANVAS
+    const styles = {
+        border: "0",
+        borderRadius: '0',
+    }
 
     return (
         <Box>
@@ -15,17 +24,32 @@ export default function Draft(){
                     className="content-container"
                     justifyContent={"center"}>
 
-                    <Box
+                    <Flex
                         paddingTop={"20px"}
                     >
-                        <Image
-                            borderRadius={"6px"}
-                            width={"1200px"}
-                            height={"800px"}
-                            src={"/backgrounds/summonersrift.png"}
-                        >
-                        </Image>
-                    </Box>
+                        <Flex flexDir={"column"}>
+                            <Button onClick={() => {canvas.current.clearCanvas()}}>
+                                Clear
+                            </Button>
+                            <Button>
+                                Size
+                            </Button>
+                            <Button>
+                                Color
+                            </Button>
+                        </Flex>
+                        
+
+                        <ReactSketchCanvas
+                            ref={canvas}
+                            style={styles}
+                            width="1100px"
+                            height="810px"
+                            backgroundImage='/backgrounds/summonersrift.png'
+                            strokeWidth={10}
+                            strokeColor={penColor}
+                        />
+                    </Flex>
             </Flex>
         </Box>
     )
