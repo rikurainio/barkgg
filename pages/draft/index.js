@@ -1,6 +1,7 @@
 import { Box, Flex, Image, useColorMode, Button, useColorModeValue } from '@chakra-ui/react'
 import { React, useState, useEffect, useRef, createRef } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas';
+import ColorSelect from '../../components/colorpicker/ColorSelect';
 
 export default function Draft(){
     const [penColor, setPenColor] = useState("cyan")
@@ -27,16 +28,14 @@ export default function Draft(){
                     <Flex
                         paddingTop={"20px"}
                     >
-                        <Flex flexDir={"column"}>
-                            <Button onClick={() => {canvas.current.clearCanvas()}}>
+                        <Flex paddingRight={"15px"} flexDir={"column"}>
+                            <Button marginBottom={"5px"} onClick={() => {canvas.current.clearCanvas()}}>
                                 Clear
                             </Button>
-                            <Button>
+                            <Button marginBottom={"5px"}>
                                 Size
                             </Button>
-                            <Button>
-                                Color
-                            </Button>
+                            <ColorSelect setPenColor={setPenColor}></ColorSelect>
                         </Flex>
                         
 
@@ -49,6 +48,7 @@ export default function Draft(){
                             strokeWidth={10}
                             strokeColor={penColor}
                         />
+                        
                     </Flex>
             </Flex>
         </Box>
