@@ -95,7 +95,7 @@ export default function Draft(){
                                 Eraser
                             </Button>
                             <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.clearCanvas()}}>
-                                Clear
+                                Clear drawings
                             </Button>
                             
                             <Flex>

@@ -5,7 +5,7 @@
 }
 
 .sketch-canvas-pen {
-    cursor: url(/cursors/pencil.svg) 0 35, auto;
+    cursor: url(/cursors/pencil.svg) 0 33, auto;
     pointer-events: all;
 }
 
