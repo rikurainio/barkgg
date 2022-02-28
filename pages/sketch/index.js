@@ -1,5 +1,5 @@
 import { Box, Flex, Image, useColorMode, Button, useColorModeValue,
-         Slider, SliderMark, SliderThumb, SliderTrack, SliderFilledTrack, HStack } from '@chakra-ui/react'
+         Slider, SliderMark, SliderThumb, SliderTrack, SliderFilledTrack, HStack, List, ListItem } from '@chakra-ui/react'
 import { React, useState, useEffect, useRef, createRef } from 'react';
 import { FaPen } from 'react-icons/fa';
 
@@ -14,6 +14,8 @@ export default function Draft(){
     //WARD & LANER COMPONENTS
     const [wardComponents, setWardComponents] = useState([])
     const [lanerComponents, setLanerComponents] = useState([])
+    const [wardCount, setWardCount] = useState(1)
+    const [controlWardCount, setControlWardCount] = useState(1)
 
     // OTHER STATES
     const [cursor, setCursor] = useState('crosshair');
@@ -21,7 +23,6 @@ export default function Draft(){
     const [sliderValue, setSliderValue] = useState(50)
     const [penColor, setPenColor] = useState("#00adef")
     const { colorMode, toggleColorMode } = useColorMode()
-    
 
     //REFS
     const wardRef = useRef()
@@ -61,16 +62,18 @@ export default function Draft(){
 
     function addWard(wardType){
         if(wardType == "normal"){
-
+            setWardCount(wardCount + 1)
         }
         if(wardType == "control"){
-
+            setControlWardCount(controlWardCount + 1)
         }
     }
 
     function handleWantReset(){
         setWantReset(true)
     }
+
+    console.log("wardcount: ", wardCount, "controlcount: ", controlWardCount)
 
     return (
         <Box>
@@ -118,7 +121,6 @@ export default function Draft(){
                             <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.clearCanvas()}}>
                                 Clear drawings
                             </Button>
-                            
                             <Flex>
                                 <Button width={"80px"} marginRight={"10px"} marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.undo()}}>
                                     Undo
@@ -128,10 +130,10 @@ export default function Draft(){
                                 </Button>
                             </Flex>
                            
-                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={addWard("normal")}>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {addWard("normal")}}>
                                 Ward
                             </Button>
-                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={addWard("control")}>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {addWard("control")}}>
                                 Control Ward
                             </Button>
                         </Flex>
@@ -159,23 +161,57 @@ export default function Draft(){
                                 bgColor={"rgba(0,0,0,.0)"}
                             >   
                                 <Box
-                                    marginTop={"-10px"}
-                                        paddingTop={"5px"}
-                                        backgroundColor={"rgba(0,0,0,.4)"}
+                                    paddingTop={"5px"}
+                                        backgroundColor={"rgba(40, 43, 44,1)"}
                                         width={"1100px"}
-                                        height={"70px"}
+                                        height={"60px"}
                                 >
-                                    <HStack paddingTop={"10px"}>
+                                    <HStack paddingLeft={"10px"} spacing={"55px"}>
+                                        <List>
+                                            {Array(wardCount).fill(1).map((elem, idx) => {
+                                                return(
+                                                <Box as="div">
+                                                    <Draggable key={"r1"} nodeRef={bef1}>
+                                                        <Box
+                                                            pos={"absolute"}
+                                                            maxW={"52px"} 
+                                                            borderRadius={"full"} 
+                                                            className='ward' key={"asd"} 
+                                                            ref={bef1}> 
+                                                            <Ward
+                                                                wardType={"normal"} 
+                                                            >
+                                                            </Ward>
+                                                        </Box>
+                                                    </Draggable>
+                                                </Box>
+                                                )
+                                            })}
+                                        </List>
+                                        <List>
+                                            {Array(controlWardCount).fill(1).map((elem, idx) => {
+                                                return(
+                                                <Box as="div">
+                                                    <Draggable key={"r1"} nodeRef={bef1}>
+                                                        <Box
+                                                            pos={"absolute"}
+                                                            maxW={"52px"} 
+                                                            borderRadius={"full"} 
+                                                            className='ward' key={"asd"} 
+                                                            ref={bef1}> 
+                                                            <Ward
+                                                                wardType={"control"} 
+                                                            >
+                                                            </Ward>
+                                                        </Box>
+                                                    </Draggable>
+                                                </Box>
+                                                )
+                                            })}
+                                        </List>
+                                    </HStack>   
 
-                                        <HStack paddingLeft={"5px"}>
-                                            <Draggable key={"w1"} nodeRef={wardRef}>
-                                                <Box marginLeft={"10px"} marginTop={"0px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={wardRef}><Ward wardType={"normal"}></Ward></Box>
-                                            </Draggable>
-                                            <Draggable key={"c1"} nodeRef={controlWardRef}>
-                                                <Box marginTop={"10px"} maxW={"52px"} borderRadius={"full"} className='ward' ref={controlWardRef}><Ward wardType={"control"}></Ward></Box>
-                                            </Draggable>
-                                        </HStack>
-
+                                    <HStack paddingLeft={"130px"} paddingTop={"25px"}>
                                         <HStack paddingLeft={"20px"} paddingRight={"40px"} spacing={"34px"}>
                                             <Draggable key={"r1"} nodeRef={bef1}>
                                                 <Box maxW={"52px"} borderRadius={"full"} className='ward' key={"asd"} ref={bef1}> <Laner letter={"T"} side={"b"}></Laner></Box>
