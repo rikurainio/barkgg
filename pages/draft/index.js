@@ -6,6 +6,8 @@ import { ReactSketchCanvas } from 'react-sketch-canvas';
 import ColorSelect from '../../components/colorpicker/ColorSelect';
 
 export default function Draft(){
+    const [cursor, setCursor] = useState('crosshair');
+    const [className, setClassName] = useState('pen')
     const [sliderValue, setSliderValue] = useState(50)
     const [penColor, setPenColor] = useState("#00adef")
     const { colorMode, toggleColorMode } = useColorMode()
@@ -66,7 +68,7 @@ export default function Draft(){
                             <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(false)}}>
                                 Pen
                             </Button>
-                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(true)}}>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(true); setClassName('eraser')}}>
                                 Eraser
                             </Button>
                             <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.clearCanvas()}}>
@@ -77,7 +79,7 @@ export default function Draft(){
                         </Flex>
                         
 
-                        <ReactSketchCanvas
+                        <ReactSketchCanvas className={'sketch-canvas-' + className}
                             ref={canvas}
                             style={styles}
                             width="1100px"
