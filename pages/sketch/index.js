@@ -73,8 +73,6 @@ export default function Draft(){
         setWantReset(true)
     }
 
-    console.log("wardcount: ", wardCount, "controlcount: ", controlWardCount)
-
     return (
         <Box>
             <Flex   background={colorMode === 'light' ? "#F8F8F8" : "black"}
@@ -140,7 +138,7 @@ export default function Draft(){
                     
                
                         <Box className='test' placeItems={"center"}>
-                            <Box>
+                            <Box borderRadius={"10px"}>
                                 <ReactSketchCanvas className={'sketch-canvas-' + className}
                                     ref={canvas}
                                     style={styles}
@@ -170,7 +168,7 @@ export default function Draft(){
                                         <List>
                                             {Array(wardCount).fill(1).map((elem, idx) => {
                                                 return(
-                                                <Box as="div">
+                                                <Box key={"ward-"+idx} as="div">
                                                     <Draggable key={"r1"} nodeRef={bef1}>
                                                         <Box
                                                             pos={"absolute"}
@@ -191,7 +189,7 @@ export default function Draft(){
                                         <List>
                                             {Array(controlWardCount).fill(1).map((elem, idx) => {
                                                 return(
-                                                <Box as="div">
+                                                <Box key={"controlWard-"+idx} as="div">
                                                     <Draggable key={"r1"} nodeRef={bef1}>
                                                         <Box
                                                             pos={"absolute"}

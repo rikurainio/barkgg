@@ -27,14 +27,17 @@ const SearchBar = () => {
             marginTop={0}>
 
             <HStack>
-                <Box>
+                <Box
+                >
                     <Stack>
                         <InputGroup
-                                size={"lg"}
+                                borderRadius={"10px"}
+                                size={"sm"}
                                 onSubmit={handleSearchUser}
                                 backgroundColor={modeColorsSearchBar}
                             >
                             <Input
+                                borderRadius={"10px"}
                                 onKeyPress={(e) => {
                                     if (e.key === "Enter") {
                                         e.preventDefault
@@ -51,9 +54,10 @@ const SearchBar = () => {
                             >
                             </Input>
                             <InputRightElement
-                                paddingBottom={"8px"}
-                                paddingRight={"3px"}>
+                            >
                                 <Button
+                                    marginTop={"5.9px"}
+                                    marginRight={"15px"}
                                     className={"searchButton"}
                                     height={"31px"}
                                     type={"Submit"}

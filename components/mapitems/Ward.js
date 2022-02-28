@@ -7,8 +7,8 @@ const Ward = ({wardType}) => {
                 <Box
                     backgroundColor={"rgba(10, 255, 136,0.25)"}
                     borderRadius={"full"}
-                    width={"49px"}
-                    height={"49px"}
+                    width={"53px"}
+                    height={"53px"}
                     textAlign={"center"}
                 >
                 </Box>
@@ -32,8 +32,8 @@ const Ward = ({wardType}) => {
                 <Box
                     backgroundColor={"rgba(255, 11, 136,0.25)"}
                     borderRadius={"full"}
-                    width={"49px"}
-                    height={"49px"}
+                    width={"53px"}
+                    height={"53px"}
                     textAlign={"center"}
                 >
                 </Box>

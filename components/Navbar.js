@@ -67,12 +67,16 @@ const Navbar = () => {
     const path = "/summoner/" + summonerName + "/livegame"
 
     return (
-        <Box zIndex={100}>
+        <Box zIndex={100}
+            backgroundColor={modeColorsFooterNavbar}
+            height={"60px"}
+        >
             <Flex
+            paddingTop={"20px"}
             backgroundColor={modeColorsFooterNavbar}
             >
             <Flex
-                alignItems={"flex-end"}
+                alignItems={"center "}
                 marginBottom={"5px"}
                 paddingTop={"0px"}
                 marginTop={0}
@@ -83,10 +87,11 @@ const Navbar = () => {
                 className="server-status-container">
 
                     <Text
-                    paddingLeft={"10px"}
+                        paddingLeft={"10px"}
                     >
-                    euw server status:
+                        euw server status:
                     </Text>
+                    
                     <Box
                         paddingLeft={"10px"}
                         >
@@ -100,7 +105,7 @@ const Navbar = () => {
                 </Box>
 
                 <Box
-                    marginLeft={"400px"}
+                    marginLeft={"360px"}
                     justifyContent={"space-between"}>   
                     <Heading
                         fontSize={26}
@@ -115,45 +120,52 @@ const Navbar = () => {
                     display={"flex"}
                     >
                     <HStack
-                        spacing={"10px"}>
-                            <Link href="/"
+                        spacing={"9px"}>
+                            <Text width={"65px"} fontSize={"16px"}>
+                                <Link href="/"
                                 >
-                                Home
-                            </Link>
+                                    Home
+                                </Link>
+                            </Text>
 
-                            <Link href="/multiquery">
-                                Multiquery
-                            </Link>
+                            <Text width={"110px"} fontSize={"16px"}>
+                                <Link href="/multiquery">
+                                    Multiquery
+                                </Link>
+                            </Text>
 
-                            <Link href={"/livegame"}>
-                                Live Game
-                            </Link>
+                            <Text width={"110px"} fontSize={"16px"}>
+                                <Link href={"/livegame"}>
+                                    Live Game
+                                </Link>
+                            </Text>
+                            
+                            <Text width={"110px"} fontSize={"16px"}>
+                                <Link href={"/sketch"}>
+                                    Sketch tool
+                                </Link>
+                            </Text>
 
-                            <Link href={"/sketch"}>
-                                Sketch tool
-                            </Link>
-
-                            <Link href={"/coinflip"}>
-                                Coinflip
-                            </Link>
+                            <Text width={"110px"} fontSize={"16px"}>
+                                <Link href={"/coinflip"}>
+                                    Coinflip
+                                </Link>
+                            </Text>
+                            <Box>
+                                <SearchBar>
+                                </SearchBar>
+                            </Box>   
+                            
                     </HStack>
                 </Box>
-
-                
-                
-                <Box paddingLeft={"10px"} paddingTop={"20px"}>
-                    <SearchBar>
-                    </SearchBar>
-                </Box>
-
+            
                 <Box
                     className="color-mode-container"
                     display={"flex"}
-                    paddingLeft={"420px"}
-                    paddingTop={"8px"}
+                    paddingLeft={"30px"}
                     >
-                    <Text fontWeight={100} fontSize={"20px"} paddingRight={"13px"}>Theme</Text>
-                    <Switch size='md' defaultChecked={true} marginTop={"7px"} onChange={toggleColorMode}/>
+                    <Text fontSize={"16px"} marginTop={"3px"} paddingRight={"10px"}>Theme</Text>
+                    <Switch size='md' defaultChecked={true} paddingTop={"5px"} onChange={toggleColorMode}/>
                 </Box>
 
                 </Flex>
