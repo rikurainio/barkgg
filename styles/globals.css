@@ -3,3 +3,18 @@
     min-height: 105px;
     max-height: 105px;
 }
+
+.sketch-canvas-pen {
+    cursor: url(/cursors/pencil.svg) 0 35, auto;
+    pointer-events: all;
+}
+
+.sketch-canvas-eraser {
+    cursor: url(/cursors/eraser.svg) 0 35, auto;
+    pointer-events: all;
+}
+
+.sketch-canvas-toggled {
+    cursor: url(/cursors/eraser.svg), auto;
+    pointer-events: none;
+}

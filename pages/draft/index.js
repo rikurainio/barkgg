@@ -27,7 +27,7 @@ export default function Draft(){
             return 'black'
         }
     }
-
+    console.log("cnv: ", canvas.current)
     return (
         <Box>
             <Flex background={colorMode === 'light' ? "#F8F8F8" : "black"}
@@ -65,7 +65,10 @@ export default function Draft(){
                             </Slider>
                             <ColorSelect setPenColor={setPenColor}></ColorSelect>
 
-                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(false)}}>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(false); setClassName('toggled')}}>
+                                Hand
+                            </Button>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(false); setClassName('pen')}}>
                                 Pen
                             </Button>
                             <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(true); setClassName('eraser')}}>
@@ -75,13 +78,27 @@ export default function Draft(){
                                 Clear
                             </Button>
                             
-                            
+                            <Flex>
+                                <Button width={"80px"} marginRight={"10px"} marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.undo()}}>
+                                    Undo
+                                </Button>
+                                <Button width={"80px"} marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.redo()}}>
+                                    Redo
+                                </Button>
+                            </Flex>
+                           
+                            <Button marginTop={"10px"} marginBottom={"1px"}>
+                                Ward
+                            </Button>
+                            <Button marginTop={"10px"} marginBottom={"1px"}>
+                                Control Ward
+                            </Button>
                         </Flex>
-                        
 
                         <ReactSketchCanvas className={'sketch-canvas-' + className}
                             ref={canvas}
                             style={styles}
+
                             width="1100px"
                             height="810px"
                             backgroundImage='/backgrounds/summonersrift.png'
@@ -89,7 +106,6 @@ export default function Draft(){
                             eraserWidth={sliderValue}
                             strokeColor={penColor}
                         />
-                        
                     </Flex>
             </Flex>
         </Box>
