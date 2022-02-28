@@ -18,3 +18,12 @@
     cursor: url(/cursors/eraser.svg), auto;
     pointer-events: none;
 }
+
+.ward {
+    cursor: move;
+    pointer-events: all;
+}
+
+.sketch-overlay-box {
+    pointer-events: none;
+}
