@@ -17,6 +17,15 @@ export default function Draft(){
         borderRadius: '0',
     }
 
+    function returnColor(penColor){
+        if(penColor == 'black' || penColor == "#000000"){
+            return 'white'
+        }
+        else{
+            return 'black'
+        }
+    }
+
     return (
         <Box>
             <Flex background={colorMode === 'light' ? "#F8F8F8" : "black"}
@@ -32,13 +41,13 @@ export default function Draft(){
                         paddingTop={"25px"}
                     >
                         <Flex flexDir={"column"} marginRight={"30px"} marginTop={"35px"}>
-                            <Slider marginBottom={"10px"} onChange={(val) => setSliderValue(val)}>
+                            <Slider backgroundColor={'rgba(226, 232, 240,.0)'} borderRadius={"6px"} size={"lg"} marginBottom={"10px"} onChange={(val) => setSliderValue(val)}>
                                 <SliderMark
                                     value={sliderValue}
                                     textAlign='center'
-                                    bg='blue.500'
+                                    bg={penColor}
                                     borderRadius={"4px"}
-                                    color='white'
+                                    color={returnColor(penColor)}
                                     mt='-10'
                                     ml='-5'
                                     w='12'
@@ -46,16 +55,25 @@ export default function Draft(){
                                     {sliderValue}%
                                 </SliderMark>
                                 <SliderTrack backgroundColor={"#dfe1dc"}>
-                                    <SliderFilledTrack/>
+                                    <SliderFilledTrack backgroundColor={penColor}/>
                                 </SliderTrack>
                                 <SliderThumb boxSize={"30px"} backgroundColor={"#dfe1dc"}>
                                     <Box color='black'  as={FaPen} />
                                 </SliderThumb>
                             </Slider>
                             <ColorSelect setPenColor={setPenColor}></ColorSelect>
+
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(false)}}>
+                                Pen
+                            </Button>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.eraseMode(true)}}>
+                                Eraser
+                            </Button>
                             <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.clearCanvas()}}>
                                 Clear
                             </Button>
+                            
+                            
                         </Flex>
                         
 
@@ -65,7 +83,8 @@ export default function Draft(){
                             width="1100px"
                             height="810px"
                             backgroundImage='/backgrounds/summonersrift.png'
-                            strokeWidth={sliderValue/2}
+                            strokeWidth={sliderValue/3}
+                            eraserWidth={sliderValue}
                             strokeColor={penColor}
                         />
                         
