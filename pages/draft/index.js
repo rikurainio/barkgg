@@ -48,7 +48,7 @@ export default function Draft(){
                                     bg={penColor}
                                     borderRadius={"4px"}
                                     color={returnColor(penColor)}
-                                    mt='-10'
+                                    mt='-12'
                                     ml='-5'
                                     w='12'
                                 >
