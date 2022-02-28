@@ -10,7 +10,7 @@
 }
 
 .sketch-canvas-eraser {
-    cursor: url(/cursors/eraser.svg) 0 35, auto;
+    cursor: url(/cursors/eraser.svg) 10 30, auto;
     pointer-events: all;
 }
 
