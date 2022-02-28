@@ -1,10 +1,13 @@
-import { Box, Flex, Image, useColorMode, Button, useColorModeValue } from '@chakra-ui/react'
+import { Box, Flex, Image, useColorMode, Button, useColorModeValue, Slider, SliderMark, SliderThumb, SliderTrack, SliderFilledTrack } from '@chakra-ui/react'
 import { React, useState, useEffect, useRef, createRef } from 'react';
+import { FaPen } from 'react-icons/fa';
+
 import { ReactSketchCanvas } from 'react-sketch-canvas';
 import ColorSelect from '../../components/colorpicker/ColorSelect';
 
 export default function Draft(){
-    const [penColor, setPenColor] = useState("cyan")
+    const [sliderValue, setSliderValue] = useState(50)
+    const [penColor, setPenColor] = useState("#00adef")
     const { colorMode, toggleColorMode } = useColorMode()
     const canvas = useRef()
 
@@ -26,16 +29,33 @@ export default function Draft(){
                     justifyContent={"center"}>
 
                     <Flex
-                        paddingTop={"20px"}
+                        paddingTop={"25px"}
                     >
-                        <Flex paddingRight={"15px"} flexDir={"column"}>
-                            <Button marginBottom={"5px"} onClick={() => {canvas.current.clearCanvas()}}>
+                        <Flex flexDir={"column"} marginRight={"30px"} marginTop={"35px"}>
+                            <Slider marginBottom={"10px"} onChange={(val) => setSliderValue(val)}>
+                                <SliderMark
+                                    value={sliderValue}
+                                    textAlign='center'
+                                    bg='blue.500'
+                                    borderRadius={"4px"}
+                                    color='white'
+                                    mt='-10'
+                                    ml='-5'
+                                    w='12'
+                                >
+                                    {sliderValue}%
+                                </SliderMark>
+                                <SliderTrack backgroundColor={"#dfe1dc"}>
+                                    <SliderFilledTrack/>
+                                </SliderTrack>
+                                <SliderThumb boxSize={"30px"} backgroundColor={"#dfe1dc"}>
+                                    <Box color='black'  as={FaPen} />
+                                </SliderThumb>
+                            </Slider>
+                            <ColorSelect setPenColor={setPenColor}></ColorSelect>
+                            <Button marginTop={"10px"} marginBottom={"1px"} onClick={() => {canvas.current.clearCanvas()}}>
                                 Clear
                             </Button>
-                            <Button marginBottom={"5px"}>
-                                Size
-                            </Button>
-                            <ColorSelect setPenColor={setPenColor}></ColorSelect>
                         </Flex>
                         
 
@@ -45,7 +65,7 @@ export default function Draft(){
                             width="1100px"
                             height="810px"
                             backgroundImage='/backgrounds/summonersrift.png'
-                            strokeWidth={10}
+                            strokeWidth={sliderValue/2}
                             strokeColor={penColor}
                         />
                         
