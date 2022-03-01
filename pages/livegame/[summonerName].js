@@ -67,7 +67,6 @@ const Summoner = () => {
                     backgroundSize={"100%"}
                     backgroundRepeat={"no-repeat"}
                     height={"1600px"}
-                    as="div" 
                     className="content-container"
                     justifyContent={"center"}
                     >
@@ -78,7 +77,7 @@ const Summoner = () => {
                                         emptyColor={colorMode == 'light' ? "#f5f5fa" : "#0E0E0E"}
                                         color={colorMode == 'light' ? "#3182CE" : "#CE3636"}
                                         boxSize={"150px"}
-                                        />
+                            />
                         </Box>
             </Flex>
         )
@@ -89,21 +88,23 @@ const Summoner = () => {
             if(liveGame.participants.length == 10){
                 return (
                     <Flex
-                        flexDir={"row"}
                         background={colorMode === 'light' ? "#F8F8F8" : "black"}
                         backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
                         backgroundSize={"100%"}
                         backgroundRepeat={"no-repeat"}
                         height={"1600px"}
-                        as="div" 
                         className="content-container"
                         justifyContent={"center"}
-                        >
-                        <HStack height={"1100px"} marginTop={"-150px"} spacing={"400px"}>
-                            <TeamContainer teamId={"100"} bluePlayers={liveGame.participants.slice(0,5)}></TeamContainer>
-                            <TeamContainer teamId={"200"} redPlayers={liveGame.participants.slice(5,10)}></TeamContainer>
-                        </HStack>
-                  
+                    >
+                        <Flex paddingTop={"30px"} flexDir={"row"}>
+                            <Box marginRight={"100px"}>
+                                <TeamContainer teamId={"100"} bluePlayers={liveGame.participants.slice(0,5)} blueBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 100)}></TeamContainer>
+                            </Box>
+                            <Box marginLeft={"100px"}>
+                                <TeamContainer teamId={"200"} redPlayers={liveGame.participants.slice(5,10)} redBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 200)}></TeamContainer>
+                            </Box>
+                        </Flex>
+                           
                     </Flex>
                 )
             }
@@ -116,7 +117,6 @@ const Summoner = () => {
                     backgroundSize={"100%"}
                     backgroundRepeat={"no-repeat"}
                     height={"1600px"}
-                    as="div" 
                     className="content-container"
                     justifyContent={"center"}
                     >

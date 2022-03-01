@@ -1,9 +1,9 @@
-import {Box} from '@chakra-ui/react'
+import {Box, Text} from '@chakra-ui/react'
 
-const LiveGameName = () => {
+const LiveGameName = ({name}) => {
     return (
-        <Box>
-            lgn
+        <Box paddingLeft={"5px"}>
+            <Text paddingTop={"40px"} textAlign={"center"} fontWeight={500} fontSize={"24px"}>{name}</Text>
         </Box>
     )
 }

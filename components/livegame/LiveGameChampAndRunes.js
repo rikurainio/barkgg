@@ -13,7 +13,7 @@ const LiveGameChampAndRunes = ({s1, s2, c}) => {
                         objectFit={"contain"}
                         src={SUMMONER_SPELL_BY_ID + s1 + ".png"}
                         borderRadius={0}
-                        width={4}
+                        width={"25px"}
                         >
                     </Image>
                     <Image
@@ -21,7 +21,7 @@ const LiveGameChampAndRunes = ({s1, s2, c}) => {
                         objectFit={"contain"}
                         src={SUMMONER_SPELL_BY_ID + s2 + ".png"}
                         borderRadius={0}
-                        width={4}
+                        width={"25px"}
                         >
                     </Image>
                 </Box>
@@ -29,7 +29,7 @@ const LiveGameChampAndRunes = ({s1, s2, c}) => {
                     objectFit={"contain"}
                     src={CHAMP_CDN_PATH}
                     borderRadius={1}
-                    width={"47px"}
+                    width={"60px"}
                     >
                 </Image>
         </Box>

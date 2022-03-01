@@ -3,7 +3,7 @@ import LiveGameBans from './LiveGameBans'
 
 import Player from './Player'
 
-const TeamContainer = ({teamId, bluePlayers, redPlayers}) => {
+const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => {
     if(teamId == "100" && bluePlayers.length == 5){
         return (
             <Box>
@@ -21,7 +21,7 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers}) => {
                 })}
                 </List>
                
-                <LiveGameBans></LiveGameBans>
+                <LiveGameBans bans={blueBans}></LiveGameBans>
             </Box>
         )
     }
@@ -42,7 +42,7 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers}) => {
                 })}
                 </List>
                
-                <LiveGameBans></LiveGameBans>
+                <LiveGameBans bans={redBans}></LiveGameBans>
             </Box>
         )
     }  

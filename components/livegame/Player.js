@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import LiveGameChampAndRunes from './LiveGameChampAndRunes'
 import LiveGameName from './LiveGameName'
 import LiveGameRank from './LiveGameRank'
@@ -23,9 +23,10 @@ const Player = ({data}) => {
 
     return (
         <Box>
+            <Flex marginBottom={"10px"}>
                 <LiveGameChampAndRunes s1={spell_1_id} s2={spell_2_id} c={championId}></LiveGameChampAndRunes>
                 <LiveGameName name={name}></LiveGameName>
-                <LiveGameRank rank={"temp(summonerInfoBox)"}></LiveGameRank>
+            </Flex>
         </Box>  
     )
 }
