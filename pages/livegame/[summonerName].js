@@ -1,48 +1,48 @@
 import { useRouter } from 'next/router'
-import { Flex, Box, useColorMode, Text, Spinner, useColorModeValue, color } from '@chakra-ui/react'
+import { Flex, Box, useColorMode, Text, Spinner, useColorModeValue, color, HStack } from '@chakra-ui/react'
 import SummonerInfoBox from '../../components/SummonerInfoBox'
 import { useState, useEffect } from 'react'
 import MatchHistoryContainer from '../../components/MatchHistoryContainer'
 import axios from 'axios'
 import { useAppContext } from '../../context/state'
-
+import TeamContainer from '../../components/livegame/TeamContainer'
 
 const Summoner = () => {
     const router = useRouter()
     const [requested, setRequested] = useState(false)
-    const [isFetching, setIsFetching] = useState(true)
+    const [isFetching, setIsFetching] = useState(false)
     const { colorMode, toggleColorMode } = useColorMode()
     const modeColorsShadowBox = useColorModeValue('rgba(255, 255, 255, 0)', 'rgba(0, 0, 0, 0)')   
-
     const [liveGame, setLiveGame] = useState()
-    const [puuid, setPuuid] = useState("")
-    const [encryptedSummonerId, setEncryptedSummonerId] = useState("")
+    const [playing, setPlaying] = useState(false)
 
     useEffect(() => {
+        setIsFetching(true)
         setRequested(false)
 
         // GOT QUERY PARAM
         if(router.isReady){
-            let configGetSummonerByName = {
-                headers: {
-                    "X-Riot-Token": process.env.API_KEY
-                }
-            }
-            let configGetLiveGameById = {
-                headers: {
-                    "X-Riot-Token": process.env.API_KEY
-                }
-            }
-            console.log("query name: ", router.query.summonerName)
-
+            let summonerPromise = {}
             // GET SUMMONER BY LITERAL NAME
-            axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + router.query.summonerName, configGetSummonerByName)
-                .then((response => {
-                    //VER 1.0
-                    setPuuid(response.data.puuid)
-                    setEncryptedSummonerId(response.data.id)
-                }))
-        }
+            summonerPromise = axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + router.query.summonerName + "?api_key=" + process.env.API_KEY)
+            summonerPromise.then(function(result){
+                let liveGamePromise = {}
+                liveGamePromise = axios.get("https://euw1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + result.data.id + "?api_key=" + process.env.API_KEY)
+                liveGamePromise.then(function(result){
+                    let liveGameData = result.data
+                    console.log("resp status: ", result.status)
+                    if(result.status == 404){
+                        setPlaying(false)
+                    }
+                    else if(result.status == 200){
+                        setLiveGame(liveGameData)
+                        setIsFetching(false)
+                        setPlaying(true)
+                    }
+                })
+            })
+        }   
+
         else{
         }
     }, [router.isReady])
@@ -72,21 +72,36 @@ const Summoner = () => {
         )
     }
     else{
-        console.log("data post fetch: ", liveGame)
-        return (
-            <Flex
-                flexDir={"row"}
-                background={colorMode === 'light' ? "#F8F8F8" : "black"}
-                backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
-                backgroundSize={"100%"}
-                backgroundRepeat={"no-repeat"}
-                height={"1600px"}
-                as="div" 
-                className="content-container"
-                justifyContent={"center"}
-                >
-            </Flex>
-        )
+        if(playing){
+            console.log("fetched livegame: ", liveGame)
+            if(liveGame.participants.length == 10){
+                return (
+                    <Flex
+                        flexDir={"row"}
+                        background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                        backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
+                        backgroundSize={"100%"}
+                        backgroundRepeat={"no-repeat"}
+                        height={"1600px"}
+                        as="div" 
+                        className="content-container"
+                        justifyContent={"center"}
+                        >
+                        <HStack height={"600px"} spacing={"400px"}>
+                            <TeamContainer teamId={"100"} bluePlayers={liveGame.participants.slice(0,5)}></TeamContainer>
+                            <TeamContainer teamId={"200"} redPlayers={liveGame.participants.slice(5,10)}></TeamContainer>
+                        </HStack>
+                  
+                    </Flex>
+                )
+            }
+        }
+        else{
+            return (
+                <Text> Summoner is not in a live game.</Text>
+            )
+        }
+        
     }
 }
 
