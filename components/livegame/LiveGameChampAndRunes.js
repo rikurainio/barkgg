@@ -1,9 +1,37 @@
-import {Box} from '@chakra-ui/react'
+import {Box, Image} from '@chakra-ui/react'
 
-const LiveGameChampAndRunes = () => {
+const LiveGameChampAndRunes = ({s1, s2, c}) => {
+    const SUMMONER_SPELL_BY_ID = "/summonerspells/"
+    const RUNE_BY_ID = "/runes/"
+    const CHAMP_CDN_PATH = "https://cdn.communitydragon.org/12.3.1/champion/" + c +"/square"
+
     return (
-        <Box>
-            lgchamprunes
+        <Box height={"100%"} w={"60px"} display={"flex"} flexDirection={"column"}>
+                <Box display={"flex"} pb={"5px"}>
+                    <Image
+                        ml={"4px"}
+                        objectFit={"contain"}
+                        src={SUMMONER_SPELL_BY_ID + s1 + ".png"}
+                        borderRadius={0}
+                        width={4}
+                        >
+                    </Image>
+                    <Image
+                        ml={"5px"}
+                        objectFit={"contain"}
+                        src={SUMMONER_SPELL_BY_ID + s2 + ".png"}
+                        borderRadius={0}
+                        width={4}
+                        >
+                    </Image>
+                </Box>
+                <Image
+                    objectFit={"contain"}
+                    src={CHAMP_CDN_PATH}
+                    borderRadius={1}
+                    width={"47px"}
+                    >
+                </Image>
         </Box>
     )
 }

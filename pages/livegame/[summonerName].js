@@ -99,7 +99,7 @@ const Summoner = () => {
                         className="content-container"
                         justifyContent={"center"}
                         >
-                        <HStack height={"600px"} spacing={"400px"}>
+                        <HStack height={"1100px"} marginTop={"-150px"} spacing={"400px"}>
                             <TeamContainer teamId={"100"} bluePlayers={liveGame.participants.slice(0,5)}></TeamContainer>
                             <TeamContainer teamId={"200"} redPlayers={liveGame.participants.slice(5,10)}></TeamContainer>
                         </HStack>
