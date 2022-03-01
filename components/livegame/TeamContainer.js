@@ -1,14 +1,21 @@
-import {Flex, Box, Text, List, ListItem} from '@chakra-ui/react'
+import {Flex, Box, Text, List, ListItem, useColorModeValue} from '@chakra-ui/react'
 import LiveGameBans from './LiveGameBans'
 
 import Player from './Player'
 
 const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => {
+
+    const modeColors = useColorModeValue('rgba(245, 245, 250, 0.4)', 'rgba(40, 43, 44, 0.4)')
+
     if(teamId == "100" && bluePlayers.length == 5){
         return (
-            <Box>
+            <Box
+                padding={"10px"}
+                borderRadius={"8px"}
+                backgroundColor={modeColors}
+            >
                 <Box>
-                    <Text fontWeight={500} fontSize={"24px"}> Blue Team</Text>
+                    <Text textAlign={"center"} fontWeight={500} fontSize={"24px"}> Blue Team</Text>
                 </Box>
 
                 <List>
@@ -25,11 +32,16 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
             </Box>
         )
     }
+
     if(teamId == "200" && redPlayers.length == 5){
         return (
-            <Box>
+            <Box
+                padding={"10px"}
+                borderRadius={"8px"}
+                backgroundColor={modeColors}
+            >
                 <Box>
-                    <Text fontWeight={500} fontSize={"24px"}> Blue Team</Text>
+                    <Text textAlign={"center"} fontWeight={500} fontSize={"24px"}> Red Team</Text>
                 </Box>
 
                 <List>

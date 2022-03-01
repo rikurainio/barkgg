@@ -97,10 +97,10 @@ const Summoner = () => {
                         justifyContent={"center"}
                     >
                         <Flex paddingTop={"30px"} flexDir={"row"}>
-                            <Box marginRight={"100px"}>
+                            <Box marginRight={"20px"}>
                                 <TeamContainer teamId={"100"} bluePlayers={liveGame.participants.slice(0,5)} blueBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 100)}></TeamContainer>
                             </Box>
-                            <Box marginLeft={"100px"}>
+                            <Box marginLeft={"20px"}>
                                 <TeamContainer teamId={"200"} redPlayers={liveGame.participants.slice(5,10)} redBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 200)}></TeamContainer>
                             </Box>
                         </Flex>

@@ -14,11 +14,15 @@ const LiveGameName = ({name}) => {
     }
 
     return (
-        <Box paddingLeft={"5px"}>
+        <Box
+            maxW={"300px"}
+            minW={"300px"}
+            paddingLeft={"5px"}>
             <Button
                 paddingTop={"40px"}
                 variant='link'
                 display={"inline-block"}
+                maxH={"100px"}
                 maxW={"400px"}
                 isTruncated
                 onClick={(event) => handleSearchPlayerViaMatchHistory(event)}
