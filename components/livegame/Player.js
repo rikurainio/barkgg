@@ -1,4 +1,4 @@
-import { Box, Flex, useColorMode } from '@chakra-ui/react'
+import { Box, Flex, useColorMode, Divider } from '@chakra-ui/react'
 import LiveGameChampAndRunes from './LiveGameChampAndRunes'
 import LiveGameName from './LiveGameName'
 import LiveGameRank from './LiveGameRank'
@@ -25,7 +25,7 @@ const Player = ({data}) => {
     return (
         <Box
             borderRadius={"5px"}
-            background={colorMode == 'light' ? 'whitesmoke' : 'rgba(40, 43, 44,1)'}
+            background={colorMode == 'light' ? 'white' : 'rgba(40, 43, 44,1)'}
         >
             <Flex marginBottom={"10px"}>
                 <LiveGameChampAndRunes s1={spell_1_id} s2={spell_2_id} c={championId}></LiveGameChampAndRunes>

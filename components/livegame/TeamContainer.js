@@ -1,4 +1,4 @@
-import {Flex, Box, Text, List, ListItem, useColorModeValue} from '@chakra-ui/react'
+import {Flex, Box, Text, List, ListItem, useColorModeValue, Divider} from '@chakra-ui/react'
 import LiveGameBans from './LiveGameBans'
 
 import Player from './Player'
@@ -6,6 +6,8 @@ import Player from './Player'
 const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => {
 
     const modeColors = useColorModeValue('rgba(255,255,255, 1)', 'rgba(72, 72, 72, 1)')
+    const winText = 'rgba(36, 160, 255, 1)'
+    const loseText = 'rgba(252, 62, 68, 1)'
 
     if(teamId == "100" && bluePlayers.length == 5){
         return (
@@ -15,7 +17,7 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
                 backgroundColor={modeColors}
             >
                 <Box>
-                    <Text fontWeight={500} fontSize={"16px"}> Blue Team</Text>
+                    <Text color={winText} fontWeight={500} fontSize={"16px"}> Blue Team</Text>
                 </Box>
 
                 <List>
@@ -23,6 +25,7 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
                     return(
                         <ListItem key={"blue-player-" + idx}>
                             <Player data={player}></Player>
+                            {idx != 4 ? <Divider></Divider> : null}
                         </ListItem>
                     )
                 })}
@@ -41,7 +44,7 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
                 backgroundColor={modeColors}
             >
                 <Box>
-                    <Text fontWeight={500} fontSize={"16px"}> Red Team</Text>
+                    <Text color={loseText} fontWeight={500} fontSize={"16px"}> Red Team</Text>
                 </Box>
 
                 <List>
@@ -49,6 +52,7 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
                     return(
                         <ListItem key={"red-player-"+ idx}> 
                             <Player data={player}></Player>
+                            {idx != 4 ? <Divider></Divider> : null}
                         </ListItem>
                     )
                 })}

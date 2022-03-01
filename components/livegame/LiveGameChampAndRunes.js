@@ -7,7 +7,7 @@ const LiveGameChampAndRunes = ({s1, s2, c}) => {
     const { colorMode, toggleColorMode } = useColorMode()
 
     return (
-        <Box padding={"10px"} height={"100%"} display={"flex"}>
+        <Box paddingX={"10px"} paddingTop={"15px"} height={"100%"} display={"flex"}>
                 <Box padding={"3px"} display={"flex"} flexDir={"column"} pb={"0px"}>
                     <Image
                         objectFit={"contain"}
