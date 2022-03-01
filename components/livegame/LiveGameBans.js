@@ -2,6 +2,14 @@ import {Box, Text, List, ListItem, Image, Flex} from '@chakra-ui/react'
 
 const LiveGameBans = ({bans}) => {
     const CHAMP_CDN_PATH = "https://cdn.communitydragon.org/12.3.1/champion/"
+    const HELMET_BRO_PATH = "../../noban.png"
+
+    function validBan(id){
+        if(id != -1){
+            return true
+        }
+        return false
+    }
 
     console.log("bans", bans)
     return (
@@ -10,13 +18,18 @@ const LiveGameBans = ({bans}) => {
             <Flex>
                 {bans.map(ban => {
                     return (
-                            <Image
+                            <Flex>
+                                <Image
                                 objectFit={"contain"}
-                                src={CHAMP_CDN_PATH + ban.championId +"/square"}
+                                src={validBan(ban.championId) ? (CHAMP_CDN_PATH + ban.championId +"/square") : (HELMET_BRO_PATH)}
                                 borderRadius={1}
                                 width={"60px"}
-                            >
-                            </Image>
+                                >
+                                </Image>
+                                <Text>
+                                    {ban.pickTurn}
+                                </Text>
+                            </Flex>
                     )
                 })}
             </Flex>
