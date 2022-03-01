@@ -16,6 +16,7 @@ const LiveGameName = ({name}) => {
     return (
         <Box paddingLeft={"5px"}>
             <Button
+                paddingTop={"40px"}
                 variant='link'
                 display={"inline-block"}
                 maxW={"400px"}
