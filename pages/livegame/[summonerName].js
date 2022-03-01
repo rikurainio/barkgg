@@ -28,18 +28,30 @@ const Summoner = () => {
             summonerPromise.then(function(result){
                 let liveGamePromise = {}
                 liveGamePromise = axios.get("https://euw1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + result.data.id + "?api_key=" + process.env.API_KEY)
-                liveGamePromise.then(function(result){
-                    let liveGameData = result.data
-                    console.log("resp status: ", result.status)
-                    if(result.status == 404){
+
+                liveGamePromise
+                    .then(function(result){
+                        if(result){
+                            let liveGameData = result.data
+                            console.log("resp status: ", result.status)
+                            if(result.status == 404){
+                                setPlaying(false)
+                            }
+                            else if(result.status == 200){
+                                setLiveGame(liveGameData)
+                                setIsFetching(false)
+                                setPlaying(true)
+                            }
+                        }
+                        else{
+                            setPlaying(false)
+                        }
+                    })
+                    .catch((err) => {
+                        console.log("summoner probably not in a live game.", err)
                         setPlaying(false)
-                    }
-                    else if(result.status == 200){
-                        setLiveGame(liveGameData)
                         setIsFetching(false)
-                        setPlaying(true)
-                    }
-                })
+                    })
             })
         }   
 
@@ -68,7 +80,7 @@ const Summoner = () => {
                                         boxSize={"150px"}
                                         />
                         </Box>
-                    </Flex>
+            </Flex>
         )
     }
     else{
@@ -98,7 +110,20 @@ const Summoner = () => {
         }
         else{
             return (
-                <Text> Summoner is not in a live game.</Text>
+                <Flex
+                    background={colorMode === 'light' ? "#F8F8F8" : "black"}
+                    backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
+                    backgroundSize={"100%"}
+                    backgroundRepeat={"no-repeat"}
+                    height={"1600px"}
+                    as="div" 
+                    className="content-container"
+                    justifyContent={"center"}
+                    >
+                        <Box marginTop={"100px"}>
+                            <Text paddingLeft={"5px"} paddingBottom={"10px"} fontWeight={500} textAlign={"center"}> Summoner is not in a live game. </Text>
+                        </Box>
+            </Flex>
             )
         }
         

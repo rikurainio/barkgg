@@ -5,12 +5,28 @@ import LiveGameRank from './LiveGameRank'
 
 const Player = ({data}) => {
     console.log("--> ", data)
+
+    // RUNE CHAMP
+    const spell_2_id = data.spell1Id
+    const spell_1_id = data.spell2Id
+    const championId = data.championId
+
+    // ACCOUNT/SUMMONER
+    const name = data.summonerName
+    const summonerId = data.summonerId
+    const iconId = data.profileIconId
+
+    // RUNES
+    const runes = data.perkIds
+    const runePrimaryTree = data.perkStyle
+    const runeSecondaryTree = data.perkSubStyle
+
     return (
         <Box>
-                <LiveGameChampAndRunes></LiveGameChampAndRunes>
-                <LiveGameName></LiveGameName>
-                <LiveGameRank></LiveGameRank>
-        </Box>
+                <LiveGameChampAndRunes s1={spell_1_id} s2={spell_2_id} c={championId}></LiveGameChampAndRunes>
+                <LiveGameName name={name}></LiveGameName>
+                <LiveGameRank rank={"temp(summonerInfoBox)"}></LiveGameRank>
+        </Box>  
     )
 }
 
