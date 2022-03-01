@@ -10,15 +10,13 @@ const LiveGameBans = ({bans}) => {
         }
         return false
     }
-
-    console.log("bans", bans)
     return (
         <Box>
             <Text fontWeight={500} fontSize={"20px"}> Bans </Text>
             <Flex>
-                {bans.map(ban => {
+                {bans.map((ban, idx) => {
                     return (
-                            <Flex>
+                            <Flex key={"ban-" + idx}>
                                 <Image
                                 objectFit={"contain"}
                                 src={validBan(ban.championId) ? (CHAMP_CDN_PATH + ban.championId +"/square") : (HELMET_BRO_PATH)}

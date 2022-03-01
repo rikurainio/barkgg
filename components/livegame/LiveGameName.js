@@ -17,9 +17,8 @@ const LiveGameName = ({name}) => {
         <Box
             maxW={"300px"}
             minW={"300px"}
-            paddingLeft={"5px"}>
+            paddingY={"22px"}>
             <Button
-                paddingTop={"40px"}
                 variant='link'
                 display={"inline-block"}
                 maxH={"100px"}
@@ -34,7 +33,7 @@ const LiveGameName = ({name}) => {
                     noOfLines={"1"}
                     fontWeight={"thin"}
                     fontWeight={500}
-                    fontSize={"24px"}
+                    fontSize={"20px"}
                     >
                         {name}
                 </Text>

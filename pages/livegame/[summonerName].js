@@ -33,7 +33,6 @@ const Summoner = () => {
                     .then(function(result){
                         if(result){
                             let liveGameData = result.data
-                            console.log("resp status: ", result.status)
                             if(result.status == 404){
                                 setPlaying(false)
                             }
@@ -84,7 +83,6 @@ const Summoner = () => {
     }
     else{
         if(playing){
-            console.log("fetched livegame: ", liveGame)
             if(liveGame.participants.length == 10){
                 return (
                     <Flex

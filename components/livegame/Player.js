@@ -1,11 +1,11 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, useColorMode } from '@chakra-ui/react'
 import LiveGameChampAndRunes from './LiveGameChampAndRunes'
 import LiveGameName from './LiveGameName'
 import LiveGameRank from './LiveGameRank'
 import Runes from './Runes'
 
 const Player = ({data}) => {
-    console.log("--> ", data)
+    const { colorMode, toggleColorMode } = useColorMode()
 
     // RUNE CHAMP
     const spell_2_id = data.spell1Id
@@ -23,11 +23,14 @@ const Player = ({data}) => {
     const runeSecondaryTree = data.perks['perkSubStyle']
 
     return (
-        <Box>
+        <Box
+            borderRadius={"5px"}
+            background={colorMode == 'light' ? 'whitesmoke' : 'rgba(40, 43, 44,1)'}
+        >
             <Flex marginBottom={"10px"}>
                 <LiveGameChampAndRunes s1={spell_1_id} s2={spell_2_id} c={championId}></LiveGameChampAndRunes>
                 <LiveGameName name={name}></LiveGameName>
-                <Runes runes={runes}></Runes>
+                <Runes runes={runes} primary={runePrimaryTree} secondary={runeSecondaryTree}></Runes>
             </Flex>
         </Box>  
     )

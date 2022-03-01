@@ -5,7 +5,7 @@ import Player from './Player'
 
 const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => {
 
-    const modeColors = useColorModeValue('rgba(245, 245, 250, 0.4)', 'rgba(40, 43, 44, 0.4)')
+    const modeColors = useColorModeValue('rgba(255,255,255, 1)', 'rgba(72, 72, 72, 1)')
 
     if(teamId == "100" && bluePlayers.length == 5){
         return (
@@ -15,13 +15,13 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
                 backgroundColor={modeColors}
             >
                 <Box>
-                    <Text textAlign={"center"} fontWeight={500} fontSize={"24px"}> Blue Team</Text>
+                    <Text fontWeight={500} fontSize={"16px"}> Blue Team</Text>
                 </Box>
 
                 <List>
-                {bluePlayers.map(player => {
+                {bluePlayers.map((player, idx) => {
                     return(
-                        <ListItem>
+                        <ListItem key={"blue-player-" + idx}>
                             <Player data={player}></Player>
                         </ListItem>
                     )
@@ -41,13 +41,13 @@ const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => 
                 backgroundColor={modeColors}
             >
                 <Box>
-                    <Text textAlign={"center"} fontWeight={500} fontSize={"24px"}> Red Team</Text>
+                    <Text fontWeight={500} fontSize={"16px"}> Red Team</Text>
                 </Box>
 
                 <List>
-                {redPlayers.map(player => {
+                {redPlayers.map((player, idx) => {
                     return(
-                        <ListItem> 
+                        <ListItem key={"red-player-"+ idx}> 
                             <Player data={player}></Player>
                         </ListItem>
                     )
