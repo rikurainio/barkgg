@@ -4,7 +4,9 @@ import { useState } from 'react'
 export default function Coinflip(){
     const answers = ["yes", "no", "nah", "not today", "yeah", "go for it", "today is your day", "I wouldn't suggest it", "free elo today", "not too free but go", "semi free",
                         "not free", "doubling your LP today", "!DANGER! DO NOT QUEUE", "go have fun :)", "yes but in duo only", "yes but solo only", "yes but flex queue only",
-                        "yes but ARAM only", "play one aram for good luck then to solo", "360 on chair before queue"                
+                        "yes but ARAM only", "play one aram for good luck then to solo", "360 on chair before queue", "!!!!! YOUR JUNGLER IS OFF THE LEASH, DONT QUEUE", "your lobby will have 2/5 humans today",
+                        "your lobby will have 5/5 humans today","your lobby will have 0/5 humans today", "yes but drink water and keep a good posture", "meditate 5 mins and go", "yes but jg only", "yes but sololane only", "yes but bot only",
+                        "if you play bard", "if you play aurelion sol", "dont...", "go..."
     ]
 
     const [answer, setAnswer] = useState("")
