@@ -23,9 +23,10 @@ const Summoner = () => {
 
         // GOT QUERY PARAM
         if(router.isReady){
+            let summonerName = router.query.summonerName
             let summonerPromise = {}
             // GET SUMMONER BY LITERAL NAME
-            summonerPromise = axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + router.query.summonerName + "?api_key=" + process.env.API_KEY)
+            summonerPromise = axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName+ "?api_key=" + process.env.API_KEY)
             summonerPromise.then(function(result){
                 let liveGamePromise = {}
                 liveGamePromise = axios.get("https://euw1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/" + result.data.id + "?api_key=" + process.env.API_KEY)

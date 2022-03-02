@@ -31,7 +31,6 @@ const LiveGameName = ({name}) => {
                     color={modeColorsText}
                     className={"search-player-name-button-text"}
                     noOfLines={"1"}
-                    fontWeight={"thin"}
                     fontWeight={100}
                     fontSize={"20px"}
                     >

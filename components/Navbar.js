@@ -72,11 +72,12 @@ const Navbar = () => {
             height={"60px"}
         >
             <Flex
+            justifyContent={"flex-start"}
             paddingTop={"20px"}
             backgroundColor={modeColorsFooterNavbar}
             >
             <Flex
-                alignItems={"center "}
+                alignItems={"center"}
                 marginBottom={"5px"}
                 paddingTop={"0px"}
                 marginTop={0}
@@ -105,9 +106,10 @@ const Navbar = () => {
                 </Box>
 
                 <Box
-                    marginLeft={"360px"}
+                    className="navbar-barkgg"
                     justifyContent={"space-between"}>   
                     <Heading
+                        marginLeft={"410px"}
                         fontSize={26}
                         pr={10}>
                         Bark.GG
