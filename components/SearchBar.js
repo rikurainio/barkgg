@@ -31,6 +31,7 @@ const SearchBar = () => {
                 >
                     <Stack>
                         <InputGroup
+                                width={"240px"}
                                 borderRadius={"10px"}
                                 size={"sm"}
                                 onSubmit={handleSearchUser}

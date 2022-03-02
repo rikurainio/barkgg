@@ -20,7 +20,7 @@ export default function Stats(){
         justifyContent={"center"}
         >
             <Box marginTop={"70px"}>
-                <Text fontWeight={500} fontSize={"20px"}> Search Summoner live game </Text>
+                <Text fontWeight={500} fontSize={"18px"}> Search Summoner live game </Text>
                 <SearchBarLiveGame></SearchBarLiveGame>
             </Box>
       </Flex>

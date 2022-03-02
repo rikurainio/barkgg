@@ -20,8 +20,8 @@ export default function Stats(){
         justifyContent={"center"}
         >
             <Box marginTop={"70px"}>
-                <Text fontWeight={500} fontSize={"20px"}> Search for multiple Summoners </Text>
-                <Text fontWeight={500} fontSize={"16px"}> (seperate names with a comma) (Max 5 Summoners!) </Text>
+                <Text fontWeight={500} fontSize={"18px"}> Search for multiple Summoners </Text>
+                <Text fontWeight={100} fontSize={"16px"} paddingBottom={"10px"}> (seperate names with a comma) (Max 5 Summoners!) </Text>
                 
                 <SearchBarMultiQuery>
                 </SearchBarMultiQuery>

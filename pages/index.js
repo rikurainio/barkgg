@@ -18,7 +18,7 @@ export default function Home() {
         >
           
           <Box marginTop={"70px"}>
-              <Text> Search for Summoner </Text>
+              <Text fontSize={"18px"}> Search for Summoner </Text>
               {/* COLLECT USER INPUT FROM UI */}
               <SearchBar>
               </SearchBar>
