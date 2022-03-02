@@ -147,8 +147,8 @@ const Navbar = () => {
                             </Text>
 
                             <Text width={"110px"} fontSize={"16px"}>
-                                <Link href={"/coinflip"}>
-                                    Coinflip
+                                <Link href={"/ask"}>
+                                    Ask
                                 </Link>
                             </Text>
                             <Box>
