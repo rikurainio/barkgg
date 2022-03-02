@@ -24,6 +24,8 @@ export default function Draft(){
     const [penColor, setPenColor] = useState("#00adef")
     const { colorMode, toggleColorMode } = useColorMode()
 
+    const modeBoxColor = useColorModeValue('rgba(226, 232, 240,1)','rgba(40, 43, 44,1)')
+
     //REFS
     const wardRef = useRef()
     const controlWardRef = useRef()
@@ -160,7 +162,7 @@ export default function Draft(){
                             >   
                                 <Box
                                     paddingTop={"5px"}
-                                        backgroundColor={"rgba(40, 43, 44,1)"}
+                                        backgroundColor={modeBoxColor}
                                         width={"1100px"}
                                         height={"60px"}
                                 >
