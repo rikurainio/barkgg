@@ -24,6 +24,7 @@ const Player = ({data}) => {
 
     return (
         <Box
+            height={"103px"}
             borderRadius={"5px"}
             background={colorMode == 'light' ? 'white' : 'rgba(40, 43, 44,1)'}
         >

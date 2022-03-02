@@ -5,7 +5,7 @@ import Player from './Player'
 
 const TeamContainer = ({teamId, bluePlayers, redPlayers, blueBans, redBans}) => {
 
-    const modeColors = useColorModeValue('rgba(255,255,255, 1)', 'rgba(72, 72, 72, 1)')
+    const modeColors = useColorModeValue('rgba(255,255,255, 1)', 'rgba(40, 43, 44, 1)')
     const winText = 'rgba(36, 160, 255, 1)'
     const loseText = 'rgba(252, 62, 68, 1)'
 

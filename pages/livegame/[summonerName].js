@@ -6,6 +6,7 @@ import MatchHistoryContainer from '../../components/MatchHistoryContainer'
 import axios from 'axios'
 import { useAppContext } from '../../context/state'
 import TeamContainer from '../../components/livegame/TeamContainer'
+import GameType from '../../components/livegame/GameType'
 
 const Summoner = () => {
     const router = useRouter()
@@ -86,23 +87,47 @@ const Summoner = () => {
             if(liveGame.participants.length == 10){
                 return (
                     <Flex
+                        flexDir={"column"}
                         background={colorMode === 'light' ? "#F8F8F8" : "black"}
                         backgroundImage={colorMode === 'light' ? '/backgrounds/anniefadedblur.png' : '/backgrounds/xinzhaoartblur.png'}
                         backgroundSize={"100%"}
                         backgroundRepeat={"no-repeat"}
-                        height={"1600px"}
+                        height={"1100px"}
                         className="content-container"
-                        justifyContent={"center"}
                     >
-                        <Flex paddingTop={"30px"} flexDir={"row"}>
-                            <Box marginRight={"20px"}>
-                                <TeamContainer teamId={"100"} bluePlayers={liveGame.participants.slice(0,5)} blueBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 100)}></TeamContainer>
-                            </Box>
-                            <Box marginLeft={"20px"}>
-                                <TeamContainer teamId={"200"} redPlayers={liveGame.participants.slice(5,10)} redBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 200)}></TeamContainer>
-                            </Box>
-                        </Flex>
-                           
+                        <Box
+                            padding={"10px"}
+                            bgColor={colorMode === 'light' ? "rgba(248,248,248, .8)" : "rgba(20,20,20, .8)"}>
+                            <GameType
+                                startTime={liveGame.gameStartTime}
+                                gameLength={liveGame.gameLength}
+                                gameMode={liveGame.gameMode}
+                                gameType={liveGame.gameType}    
+                                mapId={liveGame.mapId}
+                                queueId={liveGame.gameQueueConfigId}
+                            >
+                            </GameType>
+                        </Box>  
+
+                        <Box>
+                            <Flex justify={"center"} paddingTop={"20px"} flexDir={"row"}>
+                                <Box marginRight={"20px"}>
+                                    <TeamContainer
+                                        teamId={"100"} 
+                                        bluePlayers={liveGame.participants.slice(0,5)}
+                                        blueBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 100)}>
+                                    </TeamContainer>
+                                </Box>
+                                
+                                <Box marginLeft={"20px"}>
+                                    <TeamContainer
+                                        teamId={"200"}
+                                        redPlayers={liveGame.participants.slice(5,10)}
+                                        redBans={liveGame.bannedChampions.filter((ban) => ban.teamId == 200)}>
+                                    </TeamContainer>
+                                </Box>
+                            </Flex>
+                        </Box>
                     </Flex>
                 )
             }
