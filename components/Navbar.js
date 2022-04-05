@@ -67,27 +67,19 @@ const Navbar = () => {
     const path = "/summoner/" + summonerName + "/livegame"
 
     return (
-        <Box zIndex={100}
+        <Flex zIndex={100}
+            className={'navbar-items-container'}
             backgroundColor={modeColorsFooterNavbar}
-            height={"60px"}
+            height={"65px"}
+            paddingTop={'18px'}
         >
-            <Flex
-            justifyContent={"flex-start"}
-            paddingTop={"20px"}
-            backgroundColor={modeColorsFooterNavbar}
-            >
-            <Flex
-                alignItems={"center"}
-                marginBottom={"5px"}
-                paddingTop={"0px"}
-                marginTop={0}
+                <Flex
+                    flex={.52}
+                    paddingTop={'5px'}
+                    className="server-status-container"
                 >
-
-                <Box
-                display={"flex"}
-                className="server-status-container">
-
                     <Text
+                        minW={'150px'}
                         paddingLeft={"10px"}
                     >
                         euw server status:
@@ -103,76 +95,77 @@ const Navbar = () => {
                                 {isServerOnline() ? "online" : "down"}
                         </Badge>
                     </Box>
-                </Box>
+                </Flex>
 
-                <Box
+                <Flex
                     className="navbar-barkgg"
-                    justifyContent={"space-between"}>   
-                    <Heading
-                        marginLeft={"410px"}
-                        fontSize={26}
-                        pr={10}>
-                        Bark.GG
-                    </Heading>
-                    <Text className="navbar--text">
+                    justifyContent={"space-between"}
+                >  
+                    <Text fontSize={"26px"} fontWeight={'700'}>
+                        <Link href="/"
+                        >
+                            Bark.gg
+                        </Link>
                     </Text>
-                </Box>
-                
-                <Box
-                    display={"flex"}
-                    >
-                    <HStack
-                        spacing={"9px"}>
-                            <Text width={"65px"} fontSize={"16px"}>
-                                <Link href="/"
-                                >
-                                    Home
-                                </Link>
-                            </Text>
-
-                            <Text width={"110px"} fontSize={"16px"}>
-                                <Link href="/multiquery">
-                                    Multiquery
-                                </Link>
-                            </Text>
-
-                            <Text width={"110px"} fontSize={"16px"}>
-                                <Link href={"/livegame"}>
-                                    Live Game
-                                </Link>
-                            </Text>
-                            
-                            <Text width={"110px"} fontSize={"16px"}>
-                                <Link href={"/sketch"}>
-                                    Sketch tool
-                                </Link>
-                            </Text>
-
-                            <Text width={"110px"} fontSize={"16px"}>
-                                <Link href={"/ask"}>
-                                    Ask
-                                </Link>
-                            </Text>
-                            <Box>
-                                <SearchBar>
-                                </SearchBar>
-                            </Box>   
-                            
-                    </HStack>
-                </Box>
+                </Flex>
             
-                <Box
+                <Flex
+                    paddingTop={'7px'}
+                    paddingLeft={'40px'}
+                    className="links-container"
+                >
+                    
+
+                    <Text width={"65px"} fontSize={"16px"}>
+                        <Link href="/"
+                        >
+                            Home
+                        </Link>
+                    </Text>
+
+                    <Text width={"110px"} fontSize={"16px"}>
+                        <Link href="/multiquery">
+                            Multiquery
+                        </Link>
+                    </Text>
+
+                    <Text width={"110px"} fontSize={"16px"}>
+                        <Link href={"/livegame"}>
+                            Live Game
+                        </Link>
+                    </Text>
+                    
+                    <Text width={"110px"} fontSize={"16px"}>
+                        <Link href={"/sketch"}>
+                            Sketch tool
+                        </Link>
+                    </Text>
+
+                    <Text width={"110px"} fontSize={"16px"}>
+                        <Link href={"/ask"}>
+                            Ask
+                        </Link>
+                    </Text>
+                </Flex>
+
+                <Flex
+                    className="searchbar-container"
+                >
+                    <Box>
+                        <SearchBar>
+                        </SearchBar>
+                    </Box>   
+                </Flex>
+            
+                <Flex
                     className="color-mode-container"
-                    display={"flex"}
                     paddingLeft={"30px"}
+                    paddingTop={'4px'}
                     >
                     <Text fontSize={"16px"} marginTop={"3px"} paddingRight={"10px"}>Theme</Text>
                     <Switch size='md' defaultChecked={true} paddingTop={"5px"} onChange={toggleColorMode}/>
-                </Box>
-
                 </Flex>
             </Flex>
-        </Box>
     )
 }
 
