@@ -44,12 +44,14 @@ return (
         <Box>
             <Stack>
                 <InputGroup
+                        borderRadius={'15px'}
                         width={"1000px"}
                         size={"lg"}
                         onSubmit={handleSearchUser}
                         backgroundColor={modeColorsSearchBar}
                     >
                     <Input
+                        borderRadius={'15px'}
                         onKeyPress={(e) => {
                             if (e.key === "Enter") {
                                 handleSearchUser(e)
@@ -65,8 +67,9 @@ return (
                     </Input>
                     <InputRightElement
                         paddingBottom={"0 px"}
-                        paddingRight={"3px"}>
+                        paddingRight={"4px"}>
                         <Button
+                            borderRadius={'10px'}
                             className={"searchButton"}
                             height={"40px"}
                             type={"Submit"}

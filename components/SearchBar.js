@@ -58,7 +58,7 @@ const SearchBar = () => {
                             >
                                 <Button
                                     marginTop={"5.9px"}
-                                    marginRight={"15px"}
+                                    marginRight={"13px"}
                                     className={"searchButton"}
                                     height={"31px"}
                                     type={"Submit"}
