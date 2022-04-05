@@ -14,8 +14,6 @@ const MotionBox = motion(Box)
 // COMPONENT FOR SHOWING SINGULAR MATCH HISTORY GAME CARD
 // info PROP CONTAINS DATA FOR A SINGULAR MATCH
 const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponentStates}) => {
-    //console.log(" INFO KEYS:: ", Object.keys(info))
-
     const modeColorsWin2 = useColorModeValue('rgba(195, 229, 255, 0.9)', 'rgba(31, 45, 63, 0.90)')
     const modeColorsLose2 = useColorModeValue('rgba(255, 202, 202, 0.9)', 'rgba(70, 26, 26, 0.90)')
     const modeColorsRemake2 = useColorModeValue('rgba(188, 188, 188, 0.9)', 'rgba(54, 54, 54, 0.90)')
@@ -96,7 +94,6 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
                     self = self[0]
                 }
                 catch (error){
-                    console.log("problem settings self", error)
                 }
 
                 if(self){
@@ -142,14 +139,6 @@ const MatchHistory = ({info, metadata, selfName, setSummonerName, resetComponent
         
           
         }
-
-        //console.log("relevant info: ", relevantInfo)
-        //console.log("metadata", relevantMetaData)
-        //console.log(" MATCHHISTORY | itemsbuilt", itemsBuilt)
-        //console.log("I am: ", selfObj)
-        //console.log("my team object is: ", selfObj.teamId)
-        //console.log("my team object is : ", allyTeamObj)
-        //console.log("teams: ", team1, team2)
 
         // GIGA CHECKER
         if(info && metadata

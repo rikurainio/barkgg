@@ -199,7 +199,6 @@ export default function Stats(){
     else{
         const chunkedMatches = sliceIntoChunks(matchesAllPlayers, MATCH_COUNT)
         if(checkFetchSuccess(chunkedMatches) && chunkedMatches.length == queryLength){
-            console.log("chunked matches fetch complete: ", chunkedMatches)
             return (
                 <Flex
                     background={colorMode === 'light' ? "#F8F8F8" : "black"}

@@ -8,8 +8,6 @@ import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
 const SummonerInfoBox = ({summonerData, leagueData}) => {
-    console.log("summoner info box gets these: ", summonerData, + "\n", "leaguedata", leagueData)
-
     const solo = {}
     const flex = {}
     const tft = {}
@@ -37,10 +35,7 @@ const SummonerInfoBox = ({summonerData, leagueData}) => {
         const summonerValues = JSON.parse(summonerData)
         const summonerIconId = summonerValues['profileIconId']
         const pathToSummonerIcon2 = "https://ddragon.leagueoflegends.com/cdn/10.16.1/img/profileicon/" + summonerIconId.toString() + ".png"
-        //const pathToSummonerIconStatic = "./ddragon/dragontail-12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
-        //const testPath = "./ddragon/dragontail-12.3.1/12.3.1/img/profileicon" + summonerIconId.toString() + ".png"
         const CDN1231 = "https://ddragon.leagueoflegends.com/cdn/12.3.1/img/profileicon/" + summonerIconId.toString() + ".png"
-        //console.log("pathi: ",pathToSummonerIcon)
         const RANKED_WINGS_SRC = ""
         const NO_SOLO_RANK_WINGS_WHITE = "/wings/wings_white.png"
         const NO_SOLO_RANK_WINGS_BLACK = "/wings/wings_black.png"

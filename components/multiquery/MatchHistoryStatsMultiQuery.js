@@ -19,8 +19,6 @@ const MatchHistoryStatsMultiQuery = ({allyTeamObj, selfObj}) => {
 
         if(totalKills && participation > 0){
             const result = (participation / totalKills * 100).toPrecision(2).toString()
-            //console.log("KP calced: ", participation, "/", totalKills, "* 100",result)
-
             if(result == 100){
                 return "100"
             }

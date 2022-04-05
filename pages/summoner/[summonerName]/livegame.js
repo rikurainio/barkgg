@@ -18,7 +18,6 @@ const LiveGame = () => {
 
         // GOT QUERY PARAM
         if(router.isReady){
-            console.log("router query: ", router.query.summonerName)
             // SUMMONER LIVE GAME BY NEW
             axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
                     + router.query.summonerName + "?api_key=" + process.env.API_KEY)

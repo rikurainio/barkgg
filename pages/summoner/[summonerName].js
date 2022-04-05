@@ -31,7 +31,6 @@ const Summoner = () => {
 
         // GOT QUERY PARAM
         if(router.isReady){
-            //console.log("ready: ", router.query)
             // SUMMONER BY NAME
             axios.get("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/"
                     + router.query.summonerName + "?api_key=" + process.env.API_KEY)
@@ -88,7 +87,6 @@ const Summoner = () => {
         setMatchData({})
         setSingleMatchData([])
         setLeagueData([])
-        //console.log("resetted all")
         setRequested(true)
     }
 
